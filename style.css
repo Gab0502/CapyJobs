@@ -10,14 +10,12 @@
 .bg-verdeEscuro{
     background-color: var(--verdeEscuro);
 }
-
 .bg-verdeMedio{
     background-color: var(--verdeMedio);
 }
 .bg-veredeClaro{
     background-color: var(--verdeClaro);
 }
-
 .bg-bege{
     background-color: var(--bege);
 }
@@ -34,7 +32,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 body{
     background-color: var(--bgBranco)!important;
 }
@@ -46,8 +43,6 @@ header{
     display: block;
     padding: 15px;
 }
-
-
 .form-pesquisa-input{
     margin-top: 20%;
 

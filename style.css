@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Playfair";
+    src: url(/font/PlayfairDisplay-Regular.ttf);
+}
+
 :root{
     --verdeEscuro:#027449;
     --verdeMedio:#3b9b75;
@@ -13,7 +18,7 @@
 .bg-verdeMedio{
     background-color: var(--verdeMedio);
 }
-.bg-veredeClaro{
+.bg-verdeClaro{
     background-color: var(--verdeClaro);
 }
 .bg-bege{

@@ -1,3 +1,52 @@
 .container-custom{
     margin: 10%;
 }
+.container-custom a{
+    color: #8d8989;
+}
+.tittle{
+    font-size: 80px;
+}
+.subTittle{
+    font-size: 45px;
+    margin-left:20px ;
+}
+.form-login{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+.form-login input{
+    background-color: #ffdead;
+    border: none;
+    border-radius: 25px;
+    margin: 15px;
+    width: 60%;
+    height: 50px;
+}
+.form-login input:hover{
+    border: 1px solid black;
+}
+.form-login button{
+    background-color: #ffdead;
+    width: 30%;
+    margin-top:10px ;
+    margin-left:15% ;
+    border: none;
+    border: 25px;
+    cursor: pointer;
+}
+.img-grande{
+    margin: 15px;
+    width: 80%;
+    margin-top: 5%;
+}
+.flex-generic{
+    display: flex;
+}
+
+.flex-generic h3{
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #8d8989;
+}

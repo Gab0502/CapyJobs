@@ -37,16 +37,43 @@
     margin: 0;
     box-sizing: border-box;
 }
+.fonteIndex{
+    font-family: "Playfair";
+}
+.centrarBV{
+    margin: 3%;
+    
+}
+.centrarAo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+}
+
+.texto {
+    font-size: 24px;
+    text-align: center;
+}
+
+
 body{
     background-color: var(--bgBranco)!important;
 }
 header{
     background-color: var(--verdeEscuro)!important;
 }
+
 .center{
     justify-content: space-around;
     display: block;
     padding: 15px;
+}
+.caixaVerde{
+    
+    width: 10px;
+    align-items: center;
+    
 }
 .form-pesquisa-input{
     margin-top: 20%;
@@ -78,5 +105,5 @@ header{
 }
 .faixa{
     width: 100%;
-    height: 60px;
+    height: 40px;
 }

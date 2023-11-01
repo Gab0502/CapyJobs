@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'Apollo';
+    src: url(/font/APOLLO.otf);
+}
+
+
 .container-custom{
     margin: 10%;
+    font-family: 'Apollo';
 }
 .container-custom a{
     color: #8d8989;
@@ -32,9 +39,13 @@
     width: 30%;
     margin-top:10px ;
     margin-left:15% ;
+    border-radius: 25px;
     border: none;
     border: 25px;
     cursor: pointer;
+}
+.form-login button:hover{
+    border-radius: 1px solid black;
 }
 .img-grande{
     margin: 15px;

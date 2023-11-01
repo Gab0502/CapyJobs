@@ -64,6 +64,12 @@ body{
 header{
     background-color: var(--verdeEscuro)!important;
 }
+.quebra{
+    white-space: pre-line;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .center{
     justify-content: space-around;

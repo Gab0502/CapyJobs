@@ -69,6 +69,13 @@
     margin-top: 5%;
 
 }
+.banner{
+    background-image: url(/images/banner.png);
+    background-color: #3b9b75;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    max-height: 500px;
+}
 
 .box img {
     max-width: 100%;
@@ -113,10 +120,10 @@ header {
 
 }
 
-.form-pesquisa-input {
-    margin-top: 20%;
-
+.form-pesquisa{
+padding: 68px;
 }
+
 
 .form-pesquisa-input input {
     background-color: var(--bege);

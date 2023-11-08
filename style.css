@@ -176,6 +176,7 @@ header {
 
 .box img {
     width: 250px;
+    border: 0.1px solid black;
 
 }
 
@@ -183,6 +184,14 @@ header {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    
-    
+    margin: 50px;    
 }
+.arroz{
+    border: solid black;
+    background-color: #027449;
+}
+.batata{
+    border: solid yellow;
+    background-color: #ffdead;
+}
+

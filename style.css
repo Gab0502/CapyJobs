@@ -78,10 +78,10 @@
 
 .box img{
     height: 100%;
-    width: 25px;
+    width: 100px
 }
 
-.texto {
+.texto{
     font-size: 24px;
     text-align: center;
 }

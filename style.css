@@ -77,17 +77,7 @@
     max-height: 500px;
 }
 
-.box img {
-    max-width: 100%;
-    height: auto;
-    flex: 1;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 20px;
-}
-
-.texto{
+.texto {
     font-size: 24px;
     text-align: center;
 }
@@ -158,12 +148,13 @@ padding: 68px;
     height: 40px;
 }
 
-.flex-cards{
+.flex-cards {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.card{
+
+.card {
     padding: 50px;
     margin: 10px;
     background-color: var(--verdeClaro) !important;
@@ -172,10 +163,42 @@ padding: 68px;
     width: 11%;
     height: 350px;
 }
-.card img{
+
+.card img {
     width: 150px;
 }
-.card h1{
+
+.card h1 {
     margin-top: 15px;
     font-size: 25px;
 }
+
+.caixa-flex {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #F0F3F5;
+    flex-direction: column;
+    
+}
+
+.box img {
+    width: 250px;
+    border: 0.1px solid black;
+
+}
+
+.caixa1 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 50px;    
+}
+.arroz{
+    border: solid black;
+    background-color: #027449;
+}
+.batata{
+    border: solid yellow;
+    background-color: #ffdead;
+}
+

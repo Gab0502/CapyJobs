@@ -91,7 +91,8 @@ h1{
     background-color: #3b9b75;
     background-size: 100%;
     background-repeat: no-repeat;
-    max-height: 370px !important;
+    min-height: 370px !important;
+    max-height: 500px !important;
 }
 
 .texto {
@@ -133,6 +134,22 @@ padding: 60px;
     border: none;
     padding: 5px;
 }
+.form-pesquisa-input input:hover {
+    border: 1px solid black;
+}
+
+.form-pesquisa-input button{
+    background-color: var(--bege);
+    border-radius: 100%;
+    margin-left: -48px;
+    width: 45px;
+    height: 45px;
+    border: none;
+}
+.form-pesquisa-input button:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
 
 .header-image {
     align-self: center;
@@ -170,7 +187,7 @@ padding: 60px;
     background-color: var(--verdeClaro) !important;
     border-radius: 100%;
     align-items: center;
-    width: 11%;
+    width: 20%;
     height: 350px;
 }
 

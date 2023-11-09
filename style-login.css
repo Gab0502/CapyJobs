@@ -1,62 +1,66 @@
-@font-face {
-    font-family: 'Apollo';
-    src: url(/font/APOLLO.otf);
-}
-
-
-.container-custom{
+.container-custom {
     margin: 10%;
     font-family: 'Apollo';
 }
-.container-custom a{
+
+.container-custom a {
     color: #8d8989;
 }
-.tittle{
+
+.tittle {
     font-size: 80px;
 }
-.subTittle{
+
+.subTittle {
     font-size: 45px;
-    margin-left:20px ;
+    margin-left: 20px;
 }
-.form-login{
+
+.form-login {
     display: flex;
     flex-direction: column;
     margin: 15px;
 }
-.form-login input{
-    background-color: #ffdead;
+
+.form-login input {
+    background-color: var(--bege);
     border: none;
     border-radius: 25px;
     margin: 15px;
     width: 60%;
     height: 50px;
 }
-.form-login input:hover{
+
+.form-login input:hover {
     border: 1px solid black;
 }
-.form-login button{
-    background-color: #ffdead;
+
+.form-login button {
+    background-color: var(--bege);
     width: 30%;
-    margin-top:10px ;
-    margin-left:15% ;
+    margin-top: 10px;
+    margin-left: 15%;
     border-radius: 25px;
     border: none;
     border: 25px;
     cursor: pointer;
 }
-.form-login button:hover{
+
+.form-login button:hover {
     border-radius: 1px solid black;
 }
-.img-grande{
+
+.img-grande {
     margin: 15px;
     width: 80%;
     margin-top: 5%;
 }
-.flex-generic{
+
+.flex-generic {
     display: flex;
 }
 
-.flex-generic h3{
+.flex-generic h3 {
     margin-left: 5px;
     margin-right: 5px;
     color: #8d8989;

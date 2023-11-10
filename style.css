@@ -178,7 +178,8 @@ padding: 60px;
 .flex-cards {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
+    overflow-x: auto;
 }
 
 .card {
@@ -187,7 +188,8 @@ padding: 60px;
     background-color: var(--verdeClaro) !important;
     border-radius: 100%;
     align-items: center;
-    width: 20%;
+    /* olhar width dps */
+    width: 20%; 
     height: 350px;
 }
 
@@ -210,7 +212,7 @@ padding: 60px;
 
 .box img {
     width: 200px;
-    border: 0.1px solid #E0FEEF;
+    border: 0.1px solid black;
 
 }
 
@@ -219,6 +221,10 @@ padding: 60px;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 25px;    
+}
+.arroz{
+    border: solid black;
+    background-color: #027449;
 }
 .arroz{
     border: solid 1px var(--verdeMedio);
@@ -273,4 +279,3 @@ padding: 60px;
     text-align: center;
     margin: 150px;
 }
-

@@ -210,7 +210,7 @@ padding: 60px;
 
 .box img {
     width: 200px;
-    border: 0.1px solid black;
+    border: 0.1px solid #E0FEEF;
 
 }
 
@@ -221,11 +221,56 @@ padding: 60px;
     margin: 25px;    
 }
 .arroz{
-    border: solid black;
-    background-color: #027449;
+    border: solid 1px var(--verdeMedio);
+    background-color: var(--verdeMedio);
+    border-radius: 10px;
 }
+.form-login-index h3{
+    font-size: 55px;
+}
+.form-login-index {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    color: #ffffff
+}
+.form-login-index a{
+    color: var(--bgBranco);
+}
+
+.form-login-index input {
+    background-color: var(--bege);
+    border: none;
+    border-radius: 25px;
+    margin: 15px;
+    width: 80%;
+    height: 50px;
+    align-items: center;
+}
+
+.form-login-index input:hover {
+    border: 1px solid black;
+}
+
+.form-login-index button {
+    font-size: 20px;
+    background-color: var(--bege);
+    width: 30%;
+    margin-top: 10px;
+    margin-left: 25%;
+    border-radius: 25px;
+    border: none;
+    border: 25px;
+    cursor: pointer;
+    
+}
+
+.form-login-index button:hover {
+    border-radius: 1px solid black;
+}
+
 .batata{
-    border: solid yellow;
-    background-color: #ffdead;
+    text-align: center;
+    margin: 150px;
 }
 

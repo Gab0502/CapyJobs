@@ -286,19 +286,43 @@ padding: 60px;
 }
 .azul{
     background-color: #338d6b;
+    margin: 50px;
+    width: 25% ;
 }
-.azulclaro{
-    background-color: #3b9b75;
 
+.grupPost{
+    margin: 50px;
+    border: solid 1px var(--verdeMedio);
+    background-color: var(--verdeMedio);
+    border-radius: 10px; 
+    width: 100%;
+    height: 250px; 
 }
-.azulescuro{
-    background-color: #8ee0b7;
+.grupPost img{
+    margin: 30px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px ;
+    background-color: #F0F3F5;
 }
-.classeimg{
-    display: flex;
-    border-radius: ; 
-    width: 50px;
+.grupPost input{
+    background-color: var(--bgTextArea);
+    border: none;
+    border-radius: 25px;
+    margin: 0px;
+    width: 80%;
     height: 50px;
+    align-items: center;
+}
+.grupPost-vaga{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 
+}
+.grupPost-vaga input{
+    margin-left: 200px;
+    
 }
 
 

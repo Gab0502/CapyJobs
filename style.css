@@ -223,10 +223,6 @@ padding: 60px;
     margin: 25px;    
 }
 .arroz{
-    border: solid black;
-    background-color: #027449;
-}
-.arroz{
     border: solid 1px var(--verdeMedio);
     background-color: var(--verdeMedio);
     border-radius: 10px;
@@ -316,7 +312,7 @@ padding: 60px;
 }
 .grupPost-vaga{
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center;
     margin-right: 
 }

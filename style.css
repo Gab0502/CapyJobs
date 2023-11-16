@@ -316,14 +316,10 @@ padding: 60px;
 }
 .grupPost-vaga{
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    margin-right: 
+    justify-content: space-around;
 }
-.grupPost-vaga input{
-    margin-left: 200px;
-    
-}
+
 
 
 

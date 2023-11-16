@@ -223,10 +223,6 @@ padding: 60px;
     margin: 25px;    
 }
 .arroz{
-    border: solid black;
-    background-color: #027449;
-}
-.arroz{
     border: solid 1px var(--verdeMedio);
     background-color: var(--verdeMedio);
     border-radius: 10px;
@@ -283,6 +279,11 @@ padding: 60px;
     display:flex ;
     justify-content: space-around;
     
+}
+.azul-claro{
+    background-color: #338d6b;
+    margin: 50px;
+    width: 25% ;
 }
 .azul{
     background-color: #338d6b;

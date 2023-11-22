@@ -281,14 +281,18 @@ padding: 60px;
     
 }
 .azul-claro{
-    background-color: #338d6b;
+    background-color: var(--verdeEscuro)
     margin: 50px;
     width: 25% ;
 }
 .azul{
-    background-color: #338d6b;
-    margin: 50px;
     width: 25% ;
+}
+.azul-a{
+    background-color: var(--verdeMedio);
+}
+.azul-b{
+    background-color: var(--bgTextArea)
 }
 
 .grupPost{

@@ -124,8 +124,6 @@ header {
 .form-pesquisa{
 padding: 60px;
 }
-
-
 .form-pesquisa-input input {
     background-color: var(--bege);
     border-radius: 30px;
@@ -275,19 +273,8 @@ padding: 60px;
     text-align: center;
     margin: 150px;
 } 
-.feed{
-    display:flex ;
-    justify-content: space-around;
-    
-}
-.azul-claro{
-    background-color: var(--verdeEscuro)
-    margin: 50px;
-    width: 25% ;
-}
-.azul{
-    width: 25% ;
-}
+
+
 .azul-a{
     background-color: var(--verdeMedio);
 }
@@ -296,7 +283,7 @@ padding: 60px;
 }
 
 .grupPost{
-    margin: 50px;
+
     border: solid 1px var(--verdeMedio);
     background-color: var(--verdeMedio);
     border-radius: 10px; 

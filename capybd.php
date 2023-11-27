@@ -2,7 +2,7 @@
 //Métodos de conexão com o BD mysqli, mysql e pdo
 
 $hostname_conn_bd_ctec = "localhost";
-$database_conn_bd_ctec = "bd_ctec";
+$database_conn_bd_ctec = "capybd";
 $username_conn_bd_ctec = "root";
 $password_conn_bd_ctec = "";
 

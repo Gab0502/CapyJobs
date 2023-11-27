@@ -25,6 +25,7 @@
 .form-login input {
     background-color: var(--bege);
     border: none;
+    padding: 15px;
     border-radius: 25px;
     margin: 15px;
     width: 85%;

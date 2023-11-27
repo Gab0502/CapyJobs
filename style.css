@@ -311,3 +311,16 @@ padding: 60px;
     align-items: center;
     justify-content: space-around;
 }
+.feed{
+    margin: 30px;
+    background-color: #F9F9F9;
+}
+.feed-perfil{
+    padding: 5px;
+}
+.feed-perfil img{
+    margin: 10px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}

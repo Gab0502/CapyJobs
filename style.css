@@ -347,12 +347,16 @@ header {
 .post-user-name {
     font-size: 10px;
 }
+ .feed-img{
+    display: flex;
+    justify-content: space-around;
+ }
 
 .feed-img img{
-    margin-left: 15%;
-    height: 85%;
-    width:  75%;
+    width: 85%;
 }
-.feed-reage{
-    
+.feed-reage-button{
+    margin: 25px;
+    display: flex;
+    justify-content: space-around ;
 }

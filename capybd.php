@@ -12,7 +12,7 @@ $conn_bd_ctec = mysqli_connect
 
 //criar a consulta com o BD
 // o conteúdo da página deverá vir da da consulta ao Bd
-$query_rs_curso = "SELECT * FROM tb_cursos INNER JOIN tb_areas ON tb_cursos.idArea = tb_areas.isArea WHERE tb_cursos.ativo = 1 AND tb_cursos.home = 1 ORDER BY tb_cursos.idCurso DESC;";
+$query_rs_curso = "SELECT * FROM tb_users INNER JOIN tb_tb_pub ON tb_users.idUser = tb_pub.idUser ORDER BY tb_pub.idPub DESC";
 
 //Executar a consulta
 $rs_curso = mysqli_query($conn_bd_ctec,$query_rs_curso) or die (mysqli_error($conn_bd_ctec));

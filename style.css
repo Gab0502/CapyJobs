@@ -323,4 +323,7 @@ padding: 60px;
     border-radius: 50%;
     height: 50px;
     width: 50px;
+} 
+.post-user-name{
+    font-size: 10px;
 }

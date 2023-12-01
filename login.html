@@ -49,7 +49,7 @@
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
-                        <form onsubmit="login(); return false" class="form-login bg-verdeEscuro" style="border-radius: 25px;">
+                        <form onsubmit="login(); return false" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <h3>Login</h3>
                             <input type="text" id="username" placeholder="EMAIL">
                             <h3>Senha</h3>
@@ -127,6 +127,23 @@
         </div>
     </footer>
 </body>
+<script>
+    function login(){
+    console.log('Script está sendo executado.');
+    
+    let login = document.getElementById('username').value;
+    let senha = document.getElementById('password').value;
+
+    console.log('Login:', login);
+    console.log('Senha:', senha);
+
+    if(login === 'admin' && senha === '123'){
+        window.location.href = "pgPoste.html";
+    } else {
+        alert('Usuário ou senha incorretos');
+    }
+}
+</script>
 <script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

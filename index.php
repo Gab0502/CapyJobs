@@ -1,4 +1,4 @@
-<?php require("conn_capybd.php");?>
+<?php require("conexaoCapybd.php");?>
 <?php
     if(isset($_GET['pesquisa'])){
         $pesquisa = $_GET['pesquisa'];

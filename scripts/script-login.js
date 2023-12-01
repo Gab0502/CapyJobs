@@ -8,7 +8,7 @@ function login(){
     console.log('Senha:', senha);
 
     if(login === 'admin' && senha === '123'){
-        window.location.href = "http://stackoverflow.com";
+        window.location.href = "pgPoste.html";
     } else {
         alert('Usuário ou senha incorretos');
     }

@@ -50,7 +50,7 @@
             </div>
         </nav>
     </header>
-    <main class="container-fluid">
+    <main class="container-fluid feedFull">
         <div class="row">
             <aside class="col-xl-3 azul">
                 <div class="azul-a mt-3 ">
@@ -188,5 +188,27 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+    // Obtém o elemento textarea e o parágrafo de contagem de caracteres
+    const textarea = document.getElementById('pubText');
+    const contagemCaracteres = document.getElementById('contagemCaracteres');
+
+    // Adiciona um ouvinte de evento ao evento de entrada no textarea
+    textarea.addEventListener('input', function() {
+      // Obtém o conteúdo do textarea
+      const texto = textarea.value;
+
+      if(texto.length>255){
+        textarea.value = texto.slice(0,999)
+      }
+
+      // Conta o número de caracteres no texto
+      const numeroDeCaracteres = texto.length;
+
+      // Atualiza o parágrafo de contagem de caracteres
+      contagemCaracteres.innerHTML = `${numeroDeCaracteres}/1000`;
+    });
+</script>
 
 </html>

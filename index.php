@@ -71,7 +71,7 @@
             </form>
           </div>
           <div class="col-xl-6 bg-verdeClaro" id="banner2">
-            <img src="/images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
+            <img src="images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
           </div>
         </div>
       </div>

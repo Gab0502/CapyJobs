@@ -9,20 +9,18 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CapyJobs - Seu Site de Eventos</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="style-login.css">
+  <meta name="description" content="x">
+	<meta name="keywords" content="x">
+  <?php include("_headComum.php")?>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/logo.png"></a>
+      <a class="navbar-brand" href="index.php"><img src="images/logo.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,7 +37,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Torne-se membro</a>
+            <a class="nav-link" href="cadastro.html">CADASTRE-SE</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">LOGIN</a>
@@ -71,7 +69,7 @@
             </form>
           </div>
           <div class="col-xl-6 bg-verdeClaro" id="banner2">
-            <img src="/images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
+            <img src="images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
           </div>
         </div>
       </div>
@@ -203,57 +201,9 @@
         </div>
       </div>
   </main>
-
-  <footer class="bg-verdeEscuro text-white pt-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <!-- Coluna 1 -->
-        <div class="col-md-3 mb-4">
-          <h5>Links Rápidos</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Início</a></li>
-            <li><a href="#" class="text-white">Sobre</a></li>
-            <li><a href="#" class="text-white">Serviços</a></li>
-            <li><a href="#" class="text-white">Contato</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 2 -->
-        <div class="col-md-3 mb-4">
-          <h5>Contato</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">contato@contato.com</a></li>
-            <li><a href="#" class="text-white">+55 11 98545-4545</a></li>
-            <li><a href="#" class="text-white">Rua Exemplo: 52</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 3 -->
-        <div class="col-md-3 mb-4">
-          <h5>Redes Sociais</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Facebook</a></li>
-            <li><a href="#" class="text-white">Linkedin</a></li>
-            <li><a href="#" class="text-white">Behance</a></li>
-            <li><a href="#" class="text-white">Instagram</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 4 -->
-        <div class="col-md-3 mb-4">
-          <h5>Newletter</h5>
-          <p class="text-white">Inscreva-se para receber novidades</p>
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Digite seu e-mail">
-            </div>
-            <button type="submit" class="btn btn-primary">Inscreva-se</button>
-          </form>
-        </div>
-      </div>
-      <hr class="bg-white mb-2">
-      <div class="row d-flex justify-content-center ">
-        <p class="text-white">2023 - CC - Creative Commons - Atlantida</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <?php include("_footer.php");?>
+  <!-- FIM Footer -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

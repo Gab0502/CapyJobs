@@ -1,6 +1,6 @@
 @font-face {
     font-family: "APOLLO";
-    src: url(/font/APOLLO.otf);
+    src: url(font/APOLLO.otf);
 }
 
 :root {
@@ -289,13 +289,9 @@ header {
     margin-top: 10px;
 }
 
-.azul-a {
-    background-color: var(--verdeMedio);
-}
 
-.azul-b {
-    background-color: var(--bgTextArea)
-}
+
+
 
 .grupPost {
 
@@ -322,6 +318,18 @@ header {
     width: 80%;
     height: 150px;
     align-items: center;
+}
+.grupPost input:hover{
+    border: 1px solid var(--bege);
+}
+#pubText{
+    border-radius: 25px;
+    padding: 5px;
+    background-color: var(--bgTextArea);
+    border: none;
+}
+#pubText:hover{
+    border: 2px solid var(--verdeEscuro);
 }
 
 .grupPost-vaga {
@@ -367,13 +375,13 @@ header {
     background-color: var(--verdeEscuro);
     height: 40px;
     border-radius: 10px;
-    width: 60%;
+    width: 70%;
     margin-left: 10%;
   
 }
 .azul-b{
     background-color: var(--bgTextArea);
-    height: 15%;
+    
     text-align: center;
     border-radius: 10px;
     width: 70%;
@@ -397,7 +405,7 @@ header {
 .Vagas{
     background-color: var(--verdeEscuro);
     border-radius: 10px;
-    height: 40%;
+    height: 35px;
     width: 80%;
 }
 

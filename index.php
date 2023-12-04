@@ -12,11 +12,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CapyJobs - Seu Site de Eventos</title>
+<<<<<<< HEAD
   <meta name="description" content="Site para encontrar servicos para festa, musicas, alimentacao e muito mais. ">
 	<meta name="keywords" content="capyjobs, servicos, empregos, contrato, festa, brinquenos, musicas, banda, animacao, entreterimento, cozinha, comidas, alimentacao">
   <!-- Padrões do Head -->
   <?php include("_headComum.php")?>
   <!-- FIM Padrões do Head-->
+=======
+  <meta name="description" content="x">
+	<meta name="keywords" content="x">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+>>>>>>> 7a0d71ca9687cff4bf59f73d904727a1a2dd7e47
 </head>
 <body>
   <!-- Header -->

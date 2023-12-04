@@ -75,6 +75,7 @@
                     </div>
                 </div>
             </aside>
+
             <section class="col-xl-6 bg">
                 <section class="grupPost">
                     <div class="grupPost-input">
@@ -84,32 +85,33 @@
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h1>Conteudo</h1>
-                                        <textarea name="" id="pubText" cols="60" rows="10"
-                                            style="resize: none;"></textarea>
-                                        <div class="flex-generic" style="justify-content: flex-end;">
-                                            <p id="contagemCaracteres"></p>
-                                        </div>
-                                    </div>
-                                    <div class="flex-generic"
-                                        style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;">
-                                        <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga"
-                                            id="checkbox">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
                                 </div>
+                                <div class="modal-body">
+                                    <h1>Conteudo</h1>
+                                  <textarea name="" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
+                                  <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
+                                  <h3>Tags</h3>
+                                  <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
+
+                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga" id="checkbox"></div>
+                                <div class="checkboxFields" style="display: none;">
+                                    <h3>Titulo</h3>
+                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <h3>Localização</h3>
+                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -237,6 +239,17 @@
     // Obtém o elemento textarea e o parágrafo de contagem de caracteres
     const textarea = document.getElementById('pubText');
     const contagemCaracteres = document.getElementById('contagemCaracteres');
+    const checkboxFields = document.querySelector(".checkboxFields")
+
+    checkbox.addEventListener('change', function() {
+        // Se o checkbox estiver marcado, mostra os campos adicionais, caso contrário, os esconde
+        if (checkbox.checked) {
+            console.log("clicado")
+            checkboxFields.style.display = 'block';
+        } else {
+            checkboxFields.style.display = 'none';
+        }
+    });
 
     // Adiciona um ouvinte de evento ao evento de entrada no textarea
     textarea.addEventListener('input', function () {

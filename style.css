@@ -431,9 +431,9 @@ header {
     height: 90px;
     
 }
-
-
-
+.descricao{
+    margin: 30px;
+}
 .alinhamento1{
     font-weight: bold;
     font-size: 16px;
@@ -461,7 +461,14 @@ header {
     width: 85%;
 }
 .feed-reage-button{
-    margin: 25px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-around ;
+    align-items: center;
+}
+
+.feed-reage-button button{
+    border-radius: 10px;
+    width: 150px;
 }

@@ -36,18 +36,13 @@
                             </div>
                             <a href="/cadastro.html" class="text-white">Não possui conta? cadastre-se agora</a>
                         </form>
-
                     </div>
                 </div>
-               
                 <div class="col-xl-6">
                     <img src="/images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
                 </div>
-                
-
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->

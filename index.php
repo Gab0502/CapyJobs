@@ -3,7 +3,6 @@
     if(isset($_GET['pesquisa'])){
         $pesquisa = $_GET['pesquisa'];
         $query_vaga = "SELECT * FROM tb_pub INNER JOIN tb_tags ON tb_pub.idTag = tb_tags.idTag WHERE tb_pub.ad = 1 AND title LIKE '%$pesquisa%' OR tag LIKE '%$pesquisa%' ORDER BY tb_pub.idPub DESC";
-        $resultado = $conn_capybd->query($query_vaga);
         echo($resultado);
     }
 ?>
@@ -15,9 +14,9 @@
   <title>CapyJobs - Seu Site de Eventos</title>
   <meta name="description" content="x">
 	<meta name="keywords" content="x">
-  <!-- Padrões do Head -->
-  <?php include("_headComum.php")?>
-  <!-- FIM Padrões do Head-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
 </head>
 <body>
   <!-- Header -->

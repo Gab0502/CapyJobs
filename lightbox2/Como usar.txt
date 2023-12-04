@@ -1,0 +1,21 @@
+Lightbox2-Master para efeitos em imagens
+<!-- fonte: https://lokeshdhakar.com/projects/lightbox2/ -->
+
+
+Incluir antes do fechamento de </head>
+<link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
+
+
+Incluir antes do fechamento de </body>
+<script src="lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+
+
+
+
+
+Exemplos de uso:
+Efeitos dentro do link <a href>
+data-lightbox="example-1"	<!-- efeito individual de ABRIR -->
+data-lightbox="example-2"	<!-- efeito individual de FECHAR -->
+data-lightbox="example-set"	<!-- efeito para GALERIA de imagens -->
+

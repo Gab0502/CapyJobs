@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CapyJobs - Seu Site de Eventos</title>
-  <meta name="description" content="x">
-	<meta name="keywords" content="x">
+  <meta name="description" content="Site para encontrar servicos para festa, musicas, alimentacao e muito mais. ">
+	<meta name="keywords" content="capyjobs, servicos, empregos, contrato, festa, brinquenos, musicas, banda, animacao, entreterimento, cozinha, comidas, alimentacao">
   <!-- Padrões do Head -->
   <?php include("_headComum.php")?>
   <!-- FIM Padrões do Head-->

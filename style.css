@@ -472,3 +472,11 @@ header {
     border-radius: 10px;
     width: 150px;
 }
+
+.pag-chat{
+    display: flex;
+    justify-content: space-around;
+}
+.pag-chat-aside{
+    width: 30%;
+}

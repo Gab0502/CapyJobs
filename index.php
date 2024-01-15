@@ -1,4 +1,8 @@
-<?php require("conexaoCapybd.php");?>
+<?php require("conn_capybd.php");
+session_start();
+$idUsuario = $_SESSION['idUser'];
+print_r($_SESSION)
+?>
 <?php
     if(isset($_GET['pesquisa'])){
         $pesquisa = $_GET['pesquisa'];

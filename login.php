@@ -1,4 +1,7 @@
-<?php require("conexaoCapybd.php");?>
+<?php require("conn_capybd.php");
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +16,38 @@
 <body>
     <!-- Header -->
     <?php include("_header.php")?>
+    <!-- login -->
+    <?php
+        print_r($_SESSION);
+        if (isset($_SESSION['username'])) {
+            header('Location: feed.html');
+            exit();
+        };
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $login = "SELECT * FROM tb_users WHERE email = ? AND pw = ?"; 
+            $stmt = $conn_capybd->prepare($login);
+            $stmt->bind_param('ss', $username, $password);
+            $stmt->execute();
+            $result=$stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $idUsuario = $row['idUser'];
+                $_SESSION['idUser'] = $row['idUser'];
+
+                header('Location: index.php');  // Redirecionar para a página após o login
+                exit();
+                
+            }
+        }
+    
+    
+    
+    ?>
     <!--FIM Header-->
     <main>
         <section class="container-fluid">
@@ -22,11 +57,11 @@
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
-                        <form onsubmit="login(); return false" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                        <form onsubmit="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <h3>Login</h3>
-                            <input type="text" id="username" placeholder="EMAIL">
+                            <input type="text" id="username" name="username" placeholder="EMAIL">
                             <h3>Senha</h3>
-                            <input type="password" id="password" placeholder="SENHA">
+                            <input type="password" id="password" name="password" placeholder="SENHA">
                             <input type="submit">
                             <div class="flex-generic" style=" margin-left: 50px;">
                                 <hr class="bg-white" style="width: 35%;">
@@ -38,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <img src="/images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
+                    <img src="images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
                 </div>
             </div>
         </section>
@@ -48,23 +83,6 @@
   <?php include("_footer.php");?>
   <!-- FIM Footer -->
 </body>
-<script>
-    function login(){
-    console.log('Script está sendo executado.');
-    
-    let login = document.getElementById('username').value;
-    let senha = document.getElementById('password').value;
-
-    console.log('Login:', login);
-    console.log('Senha:', senha);
-
-    if(login === 'admin' && senha === '123'){
-        window.location.href = "pgPoste.html";
-    } else {
-        alert('Usuário ou senha incorretos');
-    }
-}
-</script>
 <script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -2,7 +2,7 @@
 //Métodos de conexão com BD MySQLI, MySQL e PDO
 
 //Conexão localhost com Dreamweaver
-$hostname_conn_capybd = "localhost:85";
+$hostname_conn_capybd = "localhost:3306";
 $database_conn_capybd = "capybd";
 $username_conn_capybd = "root";
 $password_conn_capybd = "";

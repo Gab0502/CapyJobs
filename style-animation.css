@@ -1,0 +1,24 @@
+.banner-animation {
+    background: linear-gradient(44deg, #008a8a, #027449, #3b9b75, #8ee0b7);
+    background-size: 800% 800%;
+
+    -webkit-animation: gradient 10s ease infinite;
+    -moz-animation: gradient 10s ease infinite;
+    animation: gradient 10s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:0% 94%}
+    50%{background-position:100% 7%}
+    100%{background-position:0% 94%}
+}
+@-moz-keyframes gradient {
+    0%{background-position:0% 94%}
+    50%{background-position:100% 7%}
+    100%{background-position:0% 94%}
+}
+@keyframes gradient {
+    0%{background-position:0% 94%}
+    50%{background-position:100% 7%}
+    100%{background-position:0% 94%}
+}

@@ -187,14 +187,20 @@ header {
     overflow-x: auto;
 }
 
+
+
 .card {
     padding: 50px;
     margin: 10px;
     background-color: var(--verdeClaro) !important;
     border-radius: 100%;
+    border-radius: 10px; /* Changed from 100% to 10px */
+    display: flex; /* Added flex display */
+    flex-direction: column; /* Added flex-direction for vertical alignment */
     align-items: center;
-    /* olhar width dps */
-    width: 20%;
+    align-items: center;
+    min-width: 215px !important;
+    max-width: 300px;
     height: 350px;
 }
 
@@ -217,8 +223,6 @@ header {
 
 .box img {
     width: 200px;
-    border: 0.1px solid black;
-
 }
 
 .caixa1 {

@@ -1,0 +1,14 @@
+@media screen and (max-width: 500px){
+ .disabled1{
+    display: none;
+ }
+
+
+ .caixa1{
+    justify-content: center;
+ }
+ .batata{
+    margin: 0px;
+    margin-bottom: 25px;
+ }
+}

@@ -1,4 +1,11 @@
-<?php require("conexaoCapybd.php");?>
+<?php require("conexaoCapybd.php");
+
+if (isset($_SESSION['idUser'])) {
+    // User is logged in, redirect to feed.html
+    header('Location: feed.html');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +21,45 @@
     <!-- Header -->
     <?php include("_header.php")?>
     <!-- FIM Header -->
+
+    <?php 
+    
+    if($_SERVER['REQUEST METHOD'] === 'POST'){
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $cep = $_POST['cep'];
+        $num = $_POST['num'];
+
+        $api_url = "https://api.example.com/lookup?cep=" . $cep;
+
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/json\r\n",
+                'method' => 'GET',
+            ],
+        ];
+
+        $context = stream_context_create($options);
+        $response = file_get_contents($api_url, false, $context);
+        
+        if(isset($response)){
+            $data = json_decode($response, true)
+            $cadastro = ""
+
+        }
+
+    }else{
+        echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>"
+    }
+    
+    
+    
+    
+    
+    ?>
+
+
     <main>
         <section class="container-fluid">
         
@@ -21,16 +67,17 @@
                 <div class="col-xl-6">
                     <div class="container-custom ">
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
-                        <form onsubmit="cadastro(); return false" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                        <form onsubmit="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <input type="text" id="nome" placeholder="NOME">
                             <input type="text" id="email" placeholder="EMAIL" style="width: 84%;">
                             <input type="password" id="senha" placeholder="SENHA" style="width: 84%;">
                             <div class="flex-generic">
                                 <input type="text" placeholder="CEP" id="cep" style="width: 65%;">
-                                <input type="text" placeholder="N°" style="width: 15%;">
+                                <input type="text" placeholder="N°" id="num" style="width: 15%;">
                             </div>
-                            <input type="text" placeholder="CCOMPLEMENTO" id="CCOMPLEMENTO">
-                            
+                            <input type="text" placeholder="COMPLEMENTO" id="CCOMPLEMENTO">
+
+                            <input type="checkbox">
                             <input type="submit">
                         </form>
 

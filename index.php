@@ -2,6 +2,12 @@
 session_start();
 $idUsuario = $_SESSION['idUser'];
 print_r($_SESSION)
+
+if (isset($_SESSION['idUser'])) {
+  header('Location: feed.html');
+  exit();
+}
+
 ?>
 <?php
     if(isset($_GET['pesquisa'])){
@@ -20,6 +26,8 @@ print_r($_SESSION)
 	<meta name="keywords" content="capyjobs, servicos, empregos, contrato, festa, brinquenos, musicas, banda, animacao, entreterimento, cozinha, comidas, alimentacao">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-login.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
 </head>
 <body>
@@ -49,7 +57,7 @@ print_r($_SESSION)
             </form>
           </div>
           <div class="col-xl-6 bg-verdeClaro" id="banner2">
-            <img src="images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
+            <img src="images/banner.png" id="bannerDisabled" width="90%" height="100% " style="margin-left:-15px ;" alt="">
           </div>
         </div>
       </div>
@@ -193,6 +201,8 @@ print_r($_SESSION)
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+    <script src="responsividade/script-responsive.js"></script>
+
 </body>
 
 </html>

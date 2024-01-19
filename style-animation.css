@@ -1,9 +1,19 @@
+:root {
+    --verdeEscuro: #027449;
+    --verdeMedio: #3b9b75;
+    --verdeClaro: #8ee0b7;
+    --bege: #ffdead;
+    --bgBranco: #F0F3F5;
+    --bgTextArea: #E2E7EB;
+}
+
 .banner-animation {
-    background: linear-gradient(44deg, #008a8a, #027449, #3b9b75, #8ee0b7);
+    background: linear-gradient(44deg, var(--verdeMedio), var(--verdeEscuro), #64c996);
     background-size: 800% 800%;
 
     -webkit-animation: gradient 10s ease infinite;
     -moz-animation: gradient 10s ease infinite;
+    -o-animation: gradient 10s ease infinite;
     animation: gradient 10s ease infinite;
 }
 

@@ -89,4 +89,9 @@
     width: 20px !important;
     margin-bottom: 15px !important;
 }
-.termos{}
+.termos{
+    color: white !important;
+}
+.termos:hover{
+    text-decoration: underline;
+}

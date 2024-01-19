@@ -28,10 +28,13 @@ if (isset($_SESSION['idUser'])) {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        $telefone = $_POST['telefone']
         $cep = $_POST['cep'];
         $num = $_POST['num'];
+        $comp = $_POST['complemento'];
+        $cpf = $_POST['cpf'];
 
-        $api_url = "https://api.example.com/lookup?cep=" . $cep;
+        $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
 
         $options = [
             'http' => [
@@ -44,8 +47,11 @@ if (isset($_SESSION['idUser'])) {
         $response = file_get_contents($api_url, false, $context);
         
         if(isset($response)){
-            $data = json_decode($response, true)
-            $cadastro = ""
+            $data = json_decode($response, true);
+            $cadastro = $conexao->prepare("INSERT INTO `tb_users` (`name`, `profilePic`, `likes`, `email`, `pw`, `phone`, `cep`, `UF`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $cadastro->bind_param("ssssssssssssss", $name, 'capivaraPadraoIcon.jpg', 0, $email, $senha, $telefone, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf_cnpj);
+            $cadastro->execute();
+
 
         }
 
@@ -75,10 +81,13 @@ if (isset($_SESSION['idUser'])) {
                                 <input type="text" placeholder="CEP" id="cep" style="width: 65%;">
                                 <input type="text" placeholder="N°" id="num" style="width: 15%;">
                             </div>
-                            <input type="text" placeholder="COMPLEMENTO" id="CCOMPLEMENTO">
+                            <input type="text" placeholder="COMPLEMENTO" id="complemento">
 
-                            <input type="checkbox">
-                            <input type="submit">
+                            <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
+                                <input type="checkbox" class="checkboxCustom" id="check">
+                                <a href="#" class="termos">Li e concordo com os termos de uso</a>
+                            </div>
+                            <input type="submit" id="submit" disabled>
                         </form>
 
                     </div>
@@ -97,6 +106,54 @@ if (isset($_SESSION['idUser'])) {
     <!-- Footer -->
   <?php include("_footer.php");?>
   <!-- FIM Footer -->
+
+  <script>
+        document.getElementById('telefone').addEventListener('input', formataTel);
+
+        function formataTel() {
+            let tel = document.getElementById('telefone');
+            
+            // Remove non-digit characters
+            let obrigaNum = tel.value.replace(/\D/g, '');
+
+            // Ensure the length is not more than 11 characters
+            if (obrigaNum.length > 11) {
+                obrigaNum = obrigaNum.slice(0, 11);
+            }
+
+            // Format the phone number as (11)94632-5666
+            let formattedNumber = `(${obrigaNum.substring(0, 2)})${obrigaNum.substring(2, 7)}-${obrigaNum.substring(7)}`;
+            
+            // Set the formatted number as the input value
+            tel.value = formattedNumber;
+        }
+
+        let submit = document.getElementById('submit')
+        let check = document.getElementById('check')
+
+        check.addEventListener("click",checkboxVerification);
+
+        function checkboxVerification(){
+
+        if(check.checked){
+            submit.disabled = false
+        }else{
+            submit.disabled = true
+        }
+            
+        }
+
+        submit.addEventListener('click', aviso())
+
+        function aviso(){
+            alert("3")
+        if(submit.disabled===true){
+            alert("4")
+            check.style.border="red"
+        }
+    }
+    </script>
+
 </body>
 <script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

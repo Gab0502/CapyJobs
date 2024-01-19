@@ -320,7 +320,7 @@ header {
     border-radius: 25px;
     margin: 0px;
     width: 80%;
-    height: 150px;
+    height: 90px;
     align-items: center;
 }
 .grupPost input:hover{
@@ -484,11 +484,7 @@ header {
     border-radius: 10px;
     width: 150px;
 }
+.grupPost-textArea{
+    width: 70% !important;
 
-.pag-chat{
-    display: flex;
-    justify-content: space-around;
-}
-.pag-chat-aside{
-    width: 30%;
 }

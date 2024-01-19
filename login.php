@@ -40,13 +40,9 @@ session_start();
                 $_SESSION['idUser'] = $row['idUser'];
 
                 header('Location: index.php');  // Redirecionar para a página após o login
-                exit();
-                
+                exit(); 
             }
         }
-    
-    
-    
     ?>
     <!--FIM Header-->
     <main>

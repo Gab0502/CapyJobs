@@ -28,7 +28,7 @@ if (isset($_SESSION['idUser'])) {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        $telefone = $_POST['telefone']
+        $telefone = $_POST['telefone'];
         $cep = $_POST['cep'];
         $num = $_POST['num'];
         $comp = $_POST['complemento'];
@@ -56,7 +56,7 @@ if (isset($_SESSION['idUser'])) {
         }
 
     }else{
-        echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>"
+        echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
     }
     
     

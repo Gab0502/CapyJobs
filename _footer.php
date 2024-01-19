@@ -15,9 +15,9 @@
         <div class="col-md-3 mb-4">
           <h5>Contato</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">contato@contato.com</a></li>
-            <li><a href="#" class="text-white">+55 11 98545-4545</a></li>
-            <li><a href="#" class="text-white">Rua Exemplo: 52</a></li>
+            <li><a href="#" class="text-white">capyjobs@gamil.com</a></li>
+            <li><a href="#" class="text-white">+55 11 99929-2929</a></li>
+            <li><a href="#" class="text-white">Rua jasinto pinto n°:24</a></li>
           </ul>
         </div>
         <!-- Coluna 3 -->
@@ -44,7 +44,7 @@
       </div>
       <hr class="bg-white mb-2">
       <div class="row d-flex justify-content-center ">
-        <p class="text-white">2023 - CC - Creative Commons - Atlantida</p>
+        <p class="text-white">2023 - CapyJobs  </p>
       </div>
     </div>
   </footer>

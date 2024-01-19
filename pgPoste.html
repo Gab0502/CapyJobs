@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style-responsive.css">
 </head>
+
 <body class="colore">
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
@@ -43,8 +44,8 @@
                     </ul>
 
                     <form class="d-flex">
-                        <input class="form-control me-2" type="Procurar" placeholder="Procurar" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Buscar</button>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -52,7 +53,7 @@
     </header>
     <main class="container-fluid feedFull">
         <div class="row">
-            <aside class="col-xl-3 azul disabled2">
+            <aside class="col-xl-3 azul">
                 <div class="azul-a mt-3 ">
                 </div>
                 <div class="azul-b">
@@ -76,7 +77,6 @@
                     </div>
                 </div>
             </aside>
-
             <section class="col-xl-6 bg">
                 <section class="grupPost">
                     <div class="grupPost-input">
@@ -86,33 +86,32 @@
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h1>Conteudo</h1>
+                                        <textarea name="" id="pubText" cols="60" rows="10"
+                                            style="resize: none;"></textarea>
+                                        <div class="flex-generic" style="justify-content: flex-end;">
+                                            <p id="contagemCaracteres"></p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-generic"
+                                        style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;">
+                                        <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga"
+                                            id="checkbox">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <h1>Conteudo</h1>
-                                  <textarea name="" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
-                                  <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
-                                  <h3>Tags</h3>
-                                  <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
-
-                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga" id="checkbox"></div>
-                                <div class="checkboxFields" style="display: none;">
-                                    <h3>Titulo</h3>
-                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
-                                    <h3>Localização</h3>
-                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +148,8 @@
                                 </div>
                             </div>
                             <div class="feed-img">
-                                <a data-lightbox="example-1" href="images/Palhaço.jpg"><img src="images/Palhaço.jpg"alt=""></a>
+                                <a data-lightbox="example-1" href="images/Palhaço.jpg"><img src="images/Palhaço.jpg"
+                                        alt=""></a>
                             </div>
                             <div class="feed-reage">
                                 <div class="feed-reage-button">
@@ -187,37 +187,29 @@
                     </article>
                 </section>
             </section>
-
-            <aside class="col-xl-3 mt-3 disabled2">
+            <aside class="col-xl-3 mt-3">
                 <div class="Vagas">
                 </div>
                 <div class="Vagas1">
                     <div class="d">
                         <p>Vagas em destaque</p>
                     </div>
-
                     <div class="buscando">
                         <div class="flex-generic">
                             <img src="images/Clown-pana (1).png" alt="">
                             <div class="flex-generic" style="flex-direction: column;">
-
                                 <div class="alinhamento1">
                                     <p style="margin-bottom: 2px;">ROGÉRIO ESTÁ BUSCANDO...</p>
                                 </div>
                                 <div class="alinhamento2">
-                                    <p style="margin-right: 35px; margin-bottom: 5px;">Banda de sertanejo</p>
+                                    <p style="margin-left: 10px; margin-bottom: 5px;">Banda de sertanejo</p>
                                 </div>
                                 <div class="alinhamento3">
                                     Rua Lapa Tito, São Paulo, SP
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-
-
                 </div>
             </aside>
         </div>
@@ -234,24 +226,12 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
-    <script src="responsividade/script-responsive.js"></script>
 </body>
 
 <script>
     // Obtém o elemento textarea e o parágrafo de contagem de caracteres
     const textarea = document.getElementById('pubText');
     const contagemCaracteres = document.getElementById('contagemCaracteres');
-    const checkboxFields = document.querySelector(".checkboxFields")
-
-    checkbox.addEventListener('change', function() {
-        // Se o checkbox estiver marcado, mostra os campos adicionais, caso contrário, os esconde
-        if (checkbox.checked) {
-            console.log("clicado")
-            checkboxFields.style.display = 'block';
-        } else {
-            checkboxFields.style.display = 'none';
-        }
-    });
 
     // Adiciona um ouvinte de evento ao evento de entrada no textarea
     textarea.addEventListener('input', function () {
@@ -259,7 +239,7 @@
         const texto = textarea.value;
 
         if (texto.length > 255) {
-            textarea.value = texto.slice(0, 255)
+            textarea.value = texto.slice(0, 999)
         }
 
         // Conta o número de caracteres no texto

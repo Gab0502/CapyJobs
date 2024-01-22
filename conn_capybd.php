@@ -1,8 +1,8 @@
 <?php
 //Métodos de conexão com BD MySQLI, MySQL e PDO
 
-//Conexão localhost com Dreamweaver
-$hostname_conn_capybd = "localhost:3306";
+//Conexão localhost com Visual Studio Code
+$hostname_conn_capybd = "localhost";
 $database_conn_capybd = "capybd";
 $username_conn_capybd = "root";
 $password_conn_capybd = "";
@@ -10,5 +10,4 @@ $password_conn_capybd = "";
 $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $password_conn_capybd, $database_conn_capybd) or trigger_error(mysqli_connect_errno(), E_USER_ERROR);
 
 // Verificação de conexão
-echo("Conectado!");
 ?>

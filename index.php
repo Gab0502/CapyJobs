@@ -3,19 +3,29 @@ session_start();
 $idUsuario = $_SESSION['idUser'];
 print_r($_SESSION);
 
+
 if (isset($_SESSION['idUser'])) {
   header('Location: feed.html');
   exit();
-}
- 
+};
 
 ?>
 <?php
-    if(isset($_GET['pesquisa'])){
-        $pesquisa = $_GET['pesquisa'];
-        $query_vaga = "SELECT * FROM tb_pub INNER JOIN tb_tags ON tb_pub.idTag = tb_tags.idTag WHERE tb_pub.ad = 1 AND title LIKE '%$pesquisa%' OR tag LIKE '%$pesquisa%' ORDER BY tb_pub.idPub DESC";
-        echo($resultado);
-    }
+  $query_rs_pub = "SELECT * FROM tb_pub INNER JOIN tb_tags ON tb_cursos.idArea = tb_areas.idArea WHERE tb_cursos.ativo = 1 AND tb_cursos.home = 1 ORDER BY tb_cursos.idCurso DESC";
+	//$query_rs_maisP = "SELECT * FROM tb_cursos INNER JOIN tb_areas ON tb_cursos.idArea = tb_areas.idArea WHERE tb_cursos.ativo = 1 ORDER BY tb_cursos.visualizacao DESC";
+
+  //Executar a consulta
+  $rs_pub = mysqli_query($conn_capybd, $query_rs_pub) or die(mysqli_error($conn_capybd));
+  //$rs_maisP = mysqli_query($conn_capybd, $query_rs_maisP) or die(mysqli_error($conn_capybd));
+
+  //Total de registros encontrados na consulta
+  $totalRow_rs_curso = mysqli_num_rows($rs_curso);
+  //echo($totalRow_rs_curso);
+
+  //Obter UMA linha do resultado com array
+  $row_rs_curso = mysqli_fetch_assoc($rs_curso);
+  //echo($row_rs_curso["titulo"]);
+  //echo($row_rs_curso["idCurso"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,27 +137,27 @@ if (isset($_SESSION['idUser'])) {
             <div class="divisao">
               <h2>Oportunidades no Mundo do Entretenimento</h2>
 
-              <h3>Acesso a uma ampla gama de oportunidades emocionantes na indústria do entretenimento e eventos,
-                incluindo colaborações com músicos, organizadores de eventos e talentos criativos.</h3>
-              <h2>Pesquisa Fácil e Eficaz</h2>
+                <h3>Acesso a uma ampla gama de oportunidades emocionantes na indústria do entretenimento e eventos,
+                  incluindo colaborações com músicos, organizadores de eventos e talentos criativos.</h3>
+                <h2>Pesquisa Fácil e Eficaz</h2>
 
-              <h3>Recursos avançados de pesquisa e filtros que permitem encontrar rapidamente o talento ou as
-                oportunidades certas para seus projetos, economizando tempo e esforço.</h3>
-              <h2>Perfil Personalizado</h2>
+                <h3>Recursos avançados de pesquisa e filtros que permitem encontrar rapidamente o talento ou as
+                  oportunidades certas para seus projetos, economizando tempo e esforço.</h3>
+                <h2>Perfil Personalizado</h2>
 
-              <h3>A capacidade de criar um perfil personalizado para mostrar suas habilidades, experiência e paixão,
-                permitindo que as oportunidades venham até você, se você é um talento em busca de visibilidade.</h3>
-              <h2>Conexões Significativas</h2>
+                <h3>A capacidade de criar um perfil personalizado para mostrar suas habilidades, experiência e paixão,
+                  permitindo que as oportunidades venham até você, se você é um talento em busca de visibilidade.</h3>
+                <h2>Conexões Significativas</h2>
 
-              <h3>Uma plataforma que facilita a criação de conexões significativas com artistas, bandas, organizadores
-                de eventos e profissionais da indústria, ampliando suas redes e possibilidades.</h3>
-              <h2>Sucesso na Indústria do Entretenimento</h2>
+                <h3>Uma plataforma que facilita a criação de conexões significativas com artistas, bandas, organizadores
+                  de eventos e profissionais da indústria, ampliando suas redes e possibilidades.</h3>
+                <h2>Sucesso na Indústria do Entretenimento</h2>
 
-              <h3>Compromisso em ajudar os membros a alcançar o sucesso na indústria do entretenimento, seja por meio de
-                descobertas de talento ou pela busca de oportunidades que impulsionem suas carreiras.</h3>
+                <h3>Compromisso em ajudar os membros a alcançar o sucesso na indústria do entretenimento, seja por meio de
+                  descobertas de talento ou pela busca de oportunidades que impulsionem suas carreiras.</h3>
 
+              </div>
             </div>
-          </div>
 
         </div>
       </div>

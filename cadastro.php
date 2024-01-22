@@ -1,4 +1,4 @@
-<?php require("conexaoCapybd.php");
+<?php require("conn_capybd.php");
 
 if (isset($_SESSION['idUser'])) {
     // User is logged in, redirect to feed.html
@@ -23,7 +23,7 @@ if (isset($_SESSION['idUser'])) {
     <!-- FIM Header -->
 
     <?php 
-    
+
     if($_SERVER['REQUEST METHOD'] === 'POST'){
         $nome = $_POST['nome'];
         $email = $_POST['email'];
@@ -34,18 +34,35 @@ if (isset($_SESSION['idUser'])) {
         $comp = $_POST['complemento'];
         $cpf = $_POST['cpf'];
 
-        $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
+require("conn_capybd.php");
 
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/json\r\n",
-                'method' => 'GET',
-            ],
-        ];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST['telefone'];
+    $cep = $_POST['cep'];
+    $num = $_POST['num'];
+    $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
+    // $cpf = $_POST['cpf'];
 
-        $context = stream_context_create($options);
-        $response = file_get_contents($api_url, false, $context);
+    $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
+
+    $options = [
+        'http' => [
+            'header' => "Content-type: application/json\r\n",
+            'method' => 'GET',
+        ],
+    ];
+
+    $context = stream_context_create($options);
+    $response = file_get_contents($api_url, false, $context);
+
+    if ($response !== false) { // Correção para verificar se houve resposta
+        $data = json_decode($response, true);
+        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`name`, `profilePic`, `likes`, `email`, `pw`, `phone`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `UF`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`, `doc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
+
         if(isset($response)){
             $data = json_decode($response, true);
             $cadastro = $conexao->prepare("INSERT INTO `tb_users` (`name`, `profilePic`, `likes`, `email`, `pw`, `phone`, `cep`, `UF`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -55,16 +72,25 @@ if (isset($_SESSION['idUser'])) {
 
         }
 
-    }else{
+    } else{
         echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
-    }
-    
-    
-    
-    
-    
-    ?>
 
+        $profPic = 'capivaraPadraoIcon.jpg';
+        $likes = 0;
+        $bio = '';
+        $linkedin = '';
+        $twitter = '';
+        $instagram = '';
+        $cpf = '52829157826';
+        $doc = '52829157826';
+        
+        $cadastro->bind_param("sssssssssssssssssss", $nome, $profPic , $likes, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf, $doc);        
+        $cadastro->execute();
+    }else{
+        echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
+    }
+};
+?>  
 
     <main>
         <section class="container-fluid">
@@ -73,28 +99,28 @@ if (isset($_SESSION['idUser'])) {
                 <div class="col-xl-6">
                     <div class="container-custom ">
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
-                        <form onsubmit="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
-                            <input type="text" id="nome" placeholder="NOME">
-                            <input type="text" id="email" placeholder="EMAIL" style="width: 84%;">
-                            <input type="password" id="senha" placeholder="SENHA" style="width: 84%;">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                            <input required type="text" id="nome" name="nome" placeholder="NOME">
+                            <input required type="text" id="email" name="email" placeholder="EMAIL" style="width: 84%;">
+                            <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
+                            <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
                             <div class="flex-generic">
-                                <input type="text" placeholder="CEP" id="cep" style="width: 65%;">
-                                <input type="text" placeholder="N°" id="num" style="width: 15%;">
+                                <input required type="text" id="cep" name="cep" placeholder="CEP" style="width: 65%;">
+                                <input required type="text" id="num" name="num" placeholder="N°" style="width: 15%;">
                             </div>
-                            <input type="text" placeholder="COMPLEMENTO" id="complemento">
-
+                            <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
                                 <input type="checkbox" class="checkboxCustom" id="check">
                                 <a href="#" class="termos">Li e concordo com os termos de uso</a>
                             </div>
                             <input type="submit" id="submit" disabled>
-                        </form>
+                    </form>
 
                     </div>
                 </div>
                
                 <div class="col-xl-6">
-                    <img src="/images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
+                    <img src="images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
                 </div>
                 
 
@@ -146,9 +172,7 @@ if (isset($_SESSION['idUser'])) {
         submit.addEventListener('click', aviso())
 
         function aviso(){
-            alert("3")
         if(submit.disabled===true){
-            alert("4")
             check.style.border="red"
         }
     }

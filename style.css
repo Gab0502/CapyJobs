@@ -320,9 +320,10 @@ header {
     border-radius: 25px;
     margin: 0px;
     width: 80%;
-    height: 150px;
+    height: 90px;
     align-items: center;
 }
+
 .grupPost input:hover{
     border: 1px solid var(--bege);
 }
@@ -448,20 +449,25 @@ header {
 }
 .alinhamento1{
     font-weight: bold;
-    font-size: 16px;
-    margin-left: 25px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    align-items:center ;
+    margin-left: 10px;
 }
 
 .alinhamento2{
-    text-align: left;
-    font-size: 18px;
-    
+    text-align: center;
+    font-size: 16px;
+    margin-top: -8px;
+   
 }
 
 .alinhamento3{
     text-align: left;
-    font-size: 15px;
+    font-size: 13px;
     margin-left: -40px;
+    margin-top: 10px;
+   
    
 }
 .feed-img{
@@ -484,11 +490,38 @@ header {
     border-radius: 10px;
     width: 150px;
 }
+.grupPost-textArea{
+    width: 70% !important;
 
-.pag-chat{
+}
+
+.post{
+  margin-right: 25px;
+}
+.APOLLO{
+    font-family: APOLLO;
+}
+.papel_parede{
+    width: 100%;
+    height: 250px;
+
+}
+.papel_parede img{
+    width: 100%;
+    height: 200px;
+}
+.rosto_novo{
     display: flex;
-    justify-content: space-around;
 }
-.pag-chat-aside{
-    width: 30%;
+.rosto_novo img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: -120px;
 }
+.rosto_novo h2,h6{
+    margin-left: 25px;
+    margin-top: 10px
+}
+  

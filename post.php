@@ -61,18 +61,23 @@
              </div>
     </div>
 </div>
+    <div class="public container">
+                    <div class="foto" class="flex-generic">
+                        <div class="flex-generic">
+                            <img src="images/Clown-pana (1).png" alt="">
+                            <div class="flex-generic" style="flex-direction: column;">
 
-<div class="container">
-<ul class="list-group">
-    <div>
-    <img src= "images/favicon-16x16.png">
-  <li class="list-group-item active" aria-current="true">An active item</li>
-</div>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
-</ul>
+                                <div>
+                                    <p style="margin-bottom: 2px; ">ROGÉRIO ESTÁ BUSCANDO...</p>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+    </div>
+
+                    </div>                 
+                                 
 </div>
 </body>
 </html>

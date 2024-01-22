@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         }
 
-    } else{
+    } if else{
         echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
 
         $profPic = 'capivaraPadraoIcon.jpg';
@@ -89,8 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }else{
         echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
     }
+<<<<<<< HEAD
 }
 };
+=======
+            }
+    };
+>>>>>>> 3a5a9a6e33eefc75a5c25245dca38a67b9251220
 ?>  
 
     <main>

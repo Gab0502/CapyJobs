@@ -562,48 +562,8 @@ header {
     justify-content: space-between;
     background-color: #E2E7EB;
 }
-
 .pub-perfil img{
     height: 60px;
     width: 60px;
     border-radius: 50px;
 }
-
-
-      
-  
-=======
-
-.publi{
-    height: 50px;
-    width: 50px;
-    text-align: right;
-    background-color: var(--bgBranco);
-    border-radius: 50px;
-    margin-top: 5px;
-    display: flex;
-}
-
-.public{
-    
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 10px;
-    align-items:center ;
-    margin-left: 10px;
-    display: flex;
-}
-
-
-.foto{
-    height: 50px;
-    width: 50px;
-    text-align: left;
-    background-color: var(--bgBranco);
-    border-radius: 50px;
-    margin-top: 5px;
-    display: flex;
-    margin-left: 5px;
-    
-}
->>>>>>> 3a5a9a6e33eefc75a5c25245dca38a67b9251220

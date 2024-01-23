@@ -367,6 +367,7 @@ header {
 
 .post-user-name {
     font-size: 10px;
+    
 }
 
 .azul img{
@@ -557,6 +558,16 @@ header {
     width: 100px;
     font-size: 23px;
 }
+
+.botao-bonitofeed{
+    margin: 10px;
+    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    font-size: 23px;
+    
+}
+
 .margin-pub{
     display: flex;
     justify-content: space-between;

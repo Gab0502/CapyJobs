@@ -10,23 +10,6 @@ if (isset($_SESSION['idUser'])) {
 };
 
 ?>
-<?php
-  $query_rs_pub = "SELECT * FROM tb_pub INNER JOIN tb_tags ON tb_cursos.idArea = tb_areas.idArea WHERE tb_cursos.ativo = 1 AND tb_cursos.home = 1 ORDER BY tb_cursos.idCurso DESC";
-	//$query_rs_maisP = "SELECT * FROM tb_cursos INNER JOIN tb_areas ON tb_cursos.idArea = tb_areas.idArea WHERE tb_cursos.ativo = 1 ORDER BY tb_cursos.visualizacao DESC";
-
-  //Executar a consulta
-  $rs_pub = mysqli_query($conn_capybd, $query_rs_pub) or die(mysqli_error($conn_capybd));
-  //$rs_maisP = mysqli_query($conn_capybd, $query_rs_maisP) or die(mysqli_error($conn_capybd));
-
-  //Total de registros encontrados na consulta
-  $totalRow_rs_curso = mysqli_num_rows($rs_curso);
-  //echo($totalRow_rs_curso);
-
-  //Obter UMA linha do resultado com array
-  $row_rs_curso = mysqli_fetch_assoc($rs_curso);
-  //echo($row_rs_curso["titulo"]);
-  //echo($row_rs_curso["idCurso"]);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

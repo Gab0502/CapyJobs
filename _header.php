@@ -6,16 +6,6 @@
       </button>
       <div class="collapse navbar-collapse center" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorias
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Bandas</a>
-              <a class="dropdown-item" href="#">Entreterimento</a>
-              <a class="dropdown-item" href="#">Decoração</a>
-            </div>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="cadastro.html">CADASTRE-SE</a>
           </li>

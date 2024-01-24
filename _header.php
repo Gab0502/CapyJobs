@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse center" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="cadastro.html">CADASTRE-SE</a>
+            <a class="nav-link" href="cadastro.php">CADASTRE-SE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">LOGIN</a>
+            <a class="nav-link" href="login.php">LOGIN</a>
           </li>
         </ul>
       </div>

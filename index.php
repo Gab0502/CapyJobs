@@ -84,13 +84,7 @@ if (isset($_SESSION['idUser'])) {
           <div class="col-xl-6">
             <div class="texto divisao">
               <h1 class="fonteIndex centrarAo">
-                seja bem vindo
-              </h1>
-              <h1 class="fonteIndex centrarAo">
-                ao
-              </h1>
-              <h1 class="fonteIndex centrarAo">
-                CapyJobs
+                Venha Capyjobar
               </h1>
             </div>
             <div class="caixa-flex">
@@ -154,7 +148,7 @@ if (isset($_SESSION['idUser'])) {
               Registre-se e conecte-se a eventos que buscam seu talento único.
               Estamos aqui para impulsionar sua carreira e proporcionar experiências inesquecíveis.
               Entre no palco do sucesso com o CapyJobs -
-              A rede que transforma sonhos em realidade! #CapyJobs #Eventos
+              A rede que transforma sonhos em realidade! #CapyJobs #Eventos 
             </h5>
           </div>
         </div>
@@ -174,7 +168,7 @@ if (isset($_SESSION['idUser'])) {
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="#" class="text-white">Não possui conta? cadastre-se agora</a>
+              <a href="#" class="text-white">Não possui conta? Cadastre-se agora!</a>
             </div>
           </div>
         </div>

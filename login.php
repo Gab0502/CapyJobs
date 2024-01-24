@@ -38,8 +38,16 @@ session_start();
                 $row = $result->fetch_assoc();
                 $idUsuario = $row['idUser'];
                 $_SESSION['idUser'] = $row['idUser'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['bio'] = $row['bio'];
+                $_SESSION['profilePic'] = $row['profilePic'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['phone'] = $row['phone'];
+                $_SESSION['UF'] = $row['UF'];
 
-                header('Location: index.php');  // Redirecionar para a página após o login
+
+
+                header('Location: feed-temp.php');  // Redirecionar para a página após o login
                 exit(); 
             }
         }

@@ -44,7 +44,7 @@
       </div>
       <hr class="bg-white mb-2">
       <div class="row d-flex justify-content-center ">
-        <p class="text-white">2023 - CapyJobs  </p>
+        <p class="text-white">2023 - CapyJobs</p>
       </div>
     </div>
   </footer>

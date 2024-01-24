@@ -24,17 +24,7 @@ if (isset($_SESSION['idUser'])) {
 
     <?php 
 
-    if($_SERVER['REQUEST METHOD'] === 'POST'){
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $telefone = $_POST['telefone'];
-        $cep = $_POST['cep'];
-        $num = $_POST['num'];
-        $comp = $_POST['complemento'];
-        $cpf = $_POST['cpf'];
-
-require("conn_capybd.php");
+    error_reporting(E_ALL & ~E_WARNING);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -44,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cep = $_POST['cep'];
     $num = $_POST['num'];
     $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
-    // $cpf = $_POST['cpf'];
+    $cpf = $_POST['cpf'];
 
     $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
 
@@ -60,42 +50,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($response !== false) { // Correção para verificar se houve resposta
         $data = json_decode($response, true);
-        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`name`, `profilePic`, `likes`, `email`, `pw`, `phone`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `UF`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`, `doc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
 
         if(isset($response)){
             $data = json_decode($response, true);
-            $cadastro = $conexao->prepare("INSERT INTO `tb_users` (`name`, `profilePic`, `likes`, `email`, `pw`, `phone`, `cep`, `UF`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $cadastro->bind_param("ssssssssssssss", $name, 'capivaraPadraoIcon.jpg', 0, $email, $senha, $telefone, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf_cnpj);
+            $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $profPic = 'capivaraPadraoIcon.jpg';
+            $likes = 0;
+            $bio = '';
+            $linkedin = '';
+            $twitter = '';
+            $instagram = '';
+            $cadastro->bind_param("ssssssssssssssssss", $nome, $profPic , $likes, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);        
             $cadastro->execute();
-
-
+        }else{
+            echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
         }
-
-    } if else{
-        echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
-
-        $profPic = 'capivaraPadraoIcon.jpg';
-        $likes = 0;
-        $bio = '';
-        $linkedin = '';
-        $twitter = '';
-        $instagram = '';
-        $cpf = '52829157826';
-        $doc = '52829157826';
-        
-        $cadastro->bind_param("sssssssssssssssssss", $nome, $profPic , $likes, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf, $doc);        
-        $cadastro->execute();
-    }else{
-        echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
     }
-<<<<<<< HEAD
 }
-};
-=======
-            }
-    };
->>>>>>> 3a5a9a6e33eefc75a5c25245dca38a67b9251220
+error_reporting(E_ALL);
+
 ?>  
 
     <main>
@@ -110,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input required type="text" id="email" name="email" placeholder="EMAIL" style="width: 84%;">
                             <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
                             <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
+                            <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
                             <div class="flex-generic">
                                 <input required type="text" id="cep" name="cep" placeholder="CEP" style="width: 65%;">
                                 <input required type="text" id="num" name="num" placeholder="N°" style="width: 15%;">

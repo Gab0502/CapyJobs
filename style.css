@@ -176,7 +176,7 @@ header {
 }
 
 .faixa {
-    width: 100%;
+    width: 20%;
     height: 40px;
 }
 
@@ -320,7 +320,7 @@ header {
     border-radius: 25px;
     margin: 0px;
     width: 80%;
-    height: 90px;
+    height: 70px;
     align-items: center;
 }
 
@@ -349,13 +349,14 @@ header {
 }
 
 .feed {
-    margin: 25px;
+
     border-radius: 20px;
     background-color: #F9F9F9;
 }
 
 .feed-perfil {
     padding: 5px;
+    
 }
 
 .feed-perfil img{
@@ -473,31 +474,41 @@ header {
 .feed-img{
     display: flex;
     justify-content: space-around;
+    padding: -10%;
+   
+    
+  
  }
 
 .feed-img img{
-    width: 85%;
+    width: 500px;
+    margin-left: -10px;
 }
+
+.feed-post{
+   margin-top: -45px;
+}
+
 .feed-reage-button{
     margin-top: 25px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 10px;
 }
 
 .feed-reage-button button{
     border-radius: 10px;
-    width: 150px;
+    width: 180px;
+    
 }
 .grupPost-textArea{
     width: 70% !important;
 
 }
 
-.post{
-  margin-right: 25px;
-}
+
 
 .APOLLO{
     font-family: APOLLO;
@@ -560,12 +571,12 @@ header {
 }
 
 .botao-bonitofeed{
-    margin: 10px;
-    border-radius: 25px;
+    border-radius: 15px;
     height: 40px;
-    width: 40px;
-    font-size: 23px;
-    
+    width: 150px;
+    font-size: 20px;
+    align-items: center;
+    border:none;
 }
 
 .margin-pub{

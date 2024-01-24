@@ -5,9 +5,9 @@
         <div class="col-md-3 mb-4">
           <h5>Links Rápidos</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Início</a></li>
-            <li><a href="#" class="text-white">Sobre</a></li>
-            <li><a href="#" class="text-white">Serviços</a></li>
+            <li><a href="index.php" class="text-white">Início</a></li>
+            <li><a href="login.php" class="text-white">Login</a></li>
+            <li><a href="cadastro.php" class="text-white">Cadastre-se</a></li>
             <li><a href="#" class="text-white">Contato</a></li>
           </ul>
         </div>
@@ -24,10 +24,10 @@
         <div class="col-md-3 mb-4">
           <h5>Redes Sociais</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Facebook</a></li>
-            <li><a href="#" class="text-white">Linkedin</a></li>
-            <li><a href="#" class="text-white">Behance</a></li>
-            <li><a href="#" class="text-white">Instagram</a></li>
+            <li><a href="https://www.facebook.com/" class="text-white">Facebook</a></li>
+            <li><a href="https://br.linkedin.com/" class="text-white">Linkedin</a></li>
+            <li><a href="https://www.behance.net/" class="text-white">Behance</a></li>
+            <li><a href="https://www.instagram.com/" class="text-white">Instagram</a></li>
           </ul>
         </div>
         <!-- Coluna 4 -->
@@ -44,7 +44,7 @@
       </div>
       <hr class="bg-white mb-2">
       <div class="row d-flex justify-content-center ">
-        <p class="text-white">2023 - CapyJobs  </p>
+        <p class="text-white">2023 - CapyJobs</p>
       </div>
     </div>
   </footer>

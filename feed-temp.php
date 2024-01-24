@@ -21,9 +21,9 @@
 </head>
 <body class="colore">
     <?php 
-$sql = "SELECT tb_pub.*, tb_users.name, tb_users.bio, tb_users.profilePic FROM tb_pub
+$sql = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
-ORDER BY tb_pub.datePub DESC";
+ORDER BY tb_pub.dataPub DESC";
 $result = $conn_capybd->query($sql);
 ?>
     <header>
@@ -113,12 +113,14 @@ $result = $conn_capybd->query($sql);
                                   </button>
                                 </div>
                                 <div class="modal-body">
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <h1>Conteudo</h1>
                                   <textarea name="" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
                                   <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
                                   <h3>Tags</h3>
                                   <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
-                                <br> <br>
+                                  <input type="file" name="foto">
+                                <br><br>
                                 <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga" id="checkbox"></div>
                                 <div class="checkboxFields" style="display: none;">
                                     <h3>Titulo</h3>
@@ -127,10 +129,11 @@ $result = $conn_capybd->query($sql);
                                     <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
                                 </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer"> 
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   <button type="button" class="btn btn-primary">Save changes</button>
                                 </div>
+                                </form>
                               </div>
                             </div>
                         </div>
@@ -151,7 +154,7 @@ $result = $conn_capybd->query($sql);
         echo "<img src='images/{$row['profilePic']}' alt='{$row['name']}'>";
 
         echo "<div class='post-user-name'>";
-        echo "<h5>{$row['name']}</h5>";
+        echo "<h5>{$row['nome']}</h5>";
         echo "<p>{$row['bio']}</p>"; // Você pode ajustar isso conforme necessário
         echo "</div>";
         echo "</div>";
@@ -205,6 +208,7 @@ $result = $conn_capybd->query($sql);
         echo "</section>";
     }
     ?>
+
 </section>
 </section>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/01/2024 às 15:43
+-- Tempo de geração: 24/01/2024 às 14:11
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -51,8 +51,12 @@ CREATE TABLE `tb_pub` (
 --
 
 INSERT INTO `tb_pub` (`idPub`, `ad`, `idTag`, `titulo`, `desc`, `data`, `dataPub`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `midia1`, `midia1T`) VALUES
-(1, 0, 15, '', 'Como ficar tranquileba', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98745463, '25', 'Rua tilanbu', 25, '', 'jardim lazer', 'Sao Paulo', '', ''),
-(2, 1, 14, 'Nao sei', 'como isso é possivel', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98754621, '26', 'Rua jacinto o pinto', 2, '', 'jardim corno', 'Santa Catarina', 'dgdgdf', 'dgdfg');
+(1, 0, 15, '', 'Como ficar tranquileba', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98745463, 'SP', 'Rua tilanbu', 33, '', 'jardim lazer', 'São Paulo', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(2, 1, 14, 'Nao sei', 'como isso é possivel', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98754621, 'SC', 'Rua jacinto o pinto', 123, '', 'jardim corno', 'São José', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(3, 0, 0, 'jogador', 'jogador caro', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RJ', 'Rua jacinto leite', 34, '', '', 'Rio de Janeiro', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(4, 0, 0, 'prof', 'capijogador', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RS', 'Rua pica grande', 63, '', '', 'Rio Grande', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(5, 0, 0, 'milionario', 'rico', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AC', 'Rua casa do caralho', 967, '', '', 'Acre', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(6, 0, 0, 'empresario', 'cheio de grana', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AM', 'Rua Paula Tejano', 241, '', '', 'Manaus', 'jogadeterno.jpg', 'jogadeternoTamb.jpg');
 
 -- --------------------------------------------------------
 
@@ -119,7 +123,17 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`idUser`, `nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES
-(1, 'Eric Capy', 'eric.jpg', 0, 'eric.capy@capivarias.com', 'eric123', 957910504, 'Eu sou uma capivara designer.', 'https://br.linkedin.com/', 'https://twitter.com/?lang=pt', 'https://www.instagram.com/', 66677766, '1', 'Capivarias', 67, 'Casa de baixo', 'Jardim do Lago', 'Capivari', 66677766677);
+(1, 'Eric Capy', 'eric.jpg', 0, 'eric.capy@capivarias.com', 'eric123', 957910504, 'Eu sou uma capivara designer.', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 66677766, '1', 'Capivarias', 67, 'Casa de baixo', 'Jardim do Lago', 'Capivari', 66677766677),
+(4, 'Caio Lencinho', '', 0, 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
+(5, 'Henrique e Juliano', '', 0, 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
+(6, 'Paulo', '', 0, 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
+(7, 'Lucca Dionísio', '', 0, 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
+(8, 'William Bonner', '', 0, 'boner654@gmail.com', '', 0, 'boner jornalista', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
+(9, 'Caio Mágico', '', 0, 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
+(10, 'Pedro Henrique', '', 0, 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
+(11, 'Paulo Gome', '', 0, 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
+(12, 'Lucca Baco', '', 0, 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
+(13, 'Vinícius Bonner', '', 0, 'boner654@gmail.com', '', 0, 'filho do bonner', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841);
 
 --
 -- Índices para tabelas despejadas
@@ -151,7 +165,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT de tabela `tb_pub`
 --
 ALTER TABLE `tb_pub`
-  MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `tb_tags`
@@ -163,7 +177,7 @@ ALTER TABLE `tb_tags`
 -- AUTO_INCREMENT de tabela `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -18,11 +18,7 @@ if (isset($_SESSION['idUser'])) {
   <title>CapyJobs - Seu Site de Eventos</title>
   <meta name="description" content="Site para encontrar servicos para festa, musicas, alimentacao e muito mais. ">
 	<meta name="keywords" content="capyjobs, servicos, empregos, contrato, festa, brinquenos, musicas, banda, animacao, entreterimento, cozinha, comidas, alimentacao">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style-login.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+  <?php include("_headcom.php")?>
 </head>
 <body>
   <!-- Header -->
@@ -88,13 +84,7 @@ if (isset($_SESSION['idUser'])) {
           <div class="col-xl-6">
             <div class="texto divisao">
               <h1 class="fonteIndex centrarAo">
-                seja bem vindo
-              </h1>
-              <h1 class="fonteIndex centrarAo">
-                ao
-              </h1>
-              <h1 class="fonteIndex centrarAo">
-                CapyJobs
+                Venha Capyjobar
               </h1>
             </div>
             <div class="caixa-flex">
@@ -158,7 +148,7 @@ if (isset($_SESSION['idUser'])) {
               Registre-se e conecte-se a eventos que buscam seu talento único.
               Estamos aqui para impulsionar sua carreira e proporcionar experiências inesquecíveis.
               Entre no palco do sucesso com o CapyJobs -
-              A rede que transforma sonhos em realidade! #CapyJobs #Eventos
+              A rede que transforma sonhos em realidade! #CapyJobs #Eventos 
             </h5>
           </div>
         </div>
@@ -178,7 +168,7 @@ if (isset($_SESSION['idUser'])) {
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="#" class="text-white">Não possui conta? cadastre-se agora</a>
+              <a href="#" class="text-white">Não possui conta? Cadastre-se agora!</a>
             </div>
           </div>
         </div>

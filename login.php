@@ -28,7 +28,7 @@ session_start();
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            $login = "SELECT * FROM tb_users WHERE email = ? AND pw = ?"; 
+            $login = "SELECT * FROM tb_users WHERE email = ? AND senha = ?"; 
             $stmt = $conn_capybd->prepare($login);
             $stmt->bind_param('ss', $username, $password);
             $stmt->execute();
@@ -40,7 +40,7 @@ session_start();
                 $_SESSION['idUser'] = $row['idUser'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['bio'] = $row['bio'];
-                $_SESSION['profilePic'] = $row['profilePic'];
+                $_SESSION['profilePic'] = $row['fotoPerfil'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['phone'] = $row['phone'];
                 $_SESSION['UF'] = $row['UF'];

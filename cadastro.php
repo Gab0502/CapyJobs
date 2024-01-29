@@ -49,20 +49,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = file_get_contents($api_url, false, $context);
 
     if ($response !== false) { // Correção para verificar se houve resposta
-        $data = json_decode($response, true);
-        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
-
         if(isset($response)){
             $data = json_decode($response, true);
-            $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $profPic = 'capivaraPadraoIcon.jpg';
             $likes = 0;
             $bio = '';
             $linkedin = '';
             $twitter = '';
             $instagram = '';
-            $cadastro->bind_param("ssssssssssssssssss", $nome, $profPic , $likes, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);        
+            $cadastro->bind_param("sssssssssssssssss", $nome, $profPic, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);
             $cadastro->execute();
         }else{
             echo "<script>alert('erro, verifique o CEP ou tente novamente mais tarde')</script>";
@@ -158,6 +155,9 @@ error_reporting(E_ALL);
             check.style.border="red"
         }
     }
+        function desformata(){
+            
+        }
     </script>
 
 </body>

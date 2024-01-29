@@ -41,6 +41,7 @@ CREATE TABLE `tb_likes` (
 
 CREATE TABLE `tb_pub` (
   `idPub` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
   `ad` tinyint(1) NOT NULL,
   `idTag` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,

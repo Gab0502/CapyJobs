@@ -108,7 +108,7 @@ $resultVagas = $conn_capybd->query($vagas);
             <section class="col-xl-6 bg">
                 <section class="grupPost">
                     <div class="grupPost-input">
-                        <img src="images/<?php echo($_SESSION['profilePic']);?>" alt="">
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -128,15 +128,19 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
                                 <h3>Tags</h3>
                                 <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
-                                <label for="upload-photo">asd</label>
-                                <input type="file" name="photo" id="upload-photo" />
-                                <br><br>
+                                <br><br><br>
                                 <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga" id="checkbox"></div>
                                 <div class="checkboxFields" style="display: none;">
                                     <h3>Titulo</h3>
                                     <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
                                     <h3>Localização</h3>
                                     <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                </div>
+                                <div class="flex-generic" s tyle="flex-direction: column;">
+                                <label for="upload-photo">foto</label>
+                                <input type="file" name="photo" id="upload-photo" onchange="previewImg(event)"/>
+                                <img id="preview">
+                                <button>asd</button>
                                 </div>
                                 </div>
                                 <div class="modal-footer"> 
@@ -298,6 +302,22 @@ $resultVagas = $conn_capybd->query($vagas);
         // Atualiza o parágrafo de contagem de caracteres
         contagemCaracteres.innerHTML = `${numeroDeCaracteres}/1000`;
     });
+    
+
+    var previewImg = function (event) {
+        var reader = new FileReader();
+        
+        reader.onload = function () {
+            var output = document.getElementById("preview");
+            output.src = reader.result;
+            output.style.display = "block"
+        };
+
+        if (event.target.files && event.target.files[0]) {
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        
+    };
 </script>
 
 </html>

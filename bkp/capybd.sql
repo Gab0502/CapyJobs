@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/01/2024 às 14:11
+-- Tempo de geração: 30/01/2024 às 13:26
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -24,11 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `tb_likes`
+--
+
+CREATE TABLE `tb_likes` (
+  `idLike` int(11) NOT NULL,
+  `idPub` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `tb_pub`
 --
 
 CREATE TABLE `tb_pub` (
   `idPub` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
   `ad` tinyint(1) NOT NULL,
   `idTag` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
@@ -50,13 +63,25 @@ CREATE TABLE `tb_pub` (
 -- Despejando dados para a tabela `tb_pub`
 --
 
-INSERT INTO `tb_pub` (`idPub`, `ad`, `idTag`, `titulo`, `desc`, `data`, `dataPub`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `midia1`, `midia1T`) VALUES
-(1, 0, 15, '', 'Como ficar tranquileba', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98745463, 'SP', 'Rua tilanbu', 33, '', 'jardim lazer', 'São Paulo', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
-(2, 1, 14, 'Nao sei', 'como isso é possivel', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98754621, 'SC', 'Rua jacinto o pinto', 123, '', 'jardim corno', 'São José', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
-(3, 0, 0, 'jogador', 'jogador caro', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RJ', 'Rua jacinto leite', 34, '', '', 'Rio de Janeiro', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
-(4, 0, 0, 'prof', 'capijogador', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RS', 'Rua pica grande', 63, '', '', 'Rio Grande', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
-(5, 0, 0, 'milionario', 'rico', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AC', 'Rua casa do caralho', 967, '', '', 'Acre', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
-(6, 0, 0, 'empresario', 'cheio de grana', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AM', 'Rua Paula Tejano', 241, '', '', 'Manaus', 'jogadeterno.jpg', 'jogadeternoTamb.jpg');
+INSERT INTO `tb_pub` (`idPub`, `idUser`, `ad`, `idTag`, `titulo`, `desc`, `data`, `dataPub`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `midia1`, `midia1T`) VALUES
+(1, 1, 0, 15, '', 'Como ficar tranquileba', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98745463, 'SP', 'Rua tilanbu', 33, '', 'jardim lazer', 'São Paulo', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(2, 1, 1, 14, 'Nao sei', 'como isso é possivel', '2023-12-01 14:31:57', '2023-12-01 10:36:36', 98754621, 'SP', 'Rua jacinto o pinto', 123, '', 'jardim corno', 'São José', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(3, 1, 1, 0, 'jogador', 'jogador caro', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RJ', 'Rua jacinto leite', 34, '', '', 'Rio de Janeiro', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(4, 1, 1, 0, 'prof', 'capijogador', '2024-01-24 12:46:04', '2024-01-24 08:51:06', 0, 'RS', 'Rua pica grande', 63, '', '', 'Rio Grande', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(5, 1, 1, 0, 'milionario', 'rico', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AC', 'Rua casa do caralho', 967, '', '', 'Acre', 'jogadeterno.jpg', 'jogadeternoTamb.jpg'),
+(6, 1, 1, 0, 'empresario', 'cheio de grana', '2024-01-24 12:46:04', '2024-01-24 08:51:09', 0, 'AM', 'Rua Paula Tejano', 241, '', '', 'Manaus', 'jogadeterno.jpg', 'jogadeternoTamb.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tb_seg`
+--
+
+CREATE TABLE `tb_seg` (
+  `idSeg` int(11) NOT NULL,
+  `idSeg1` int(11) NOT NULL,
+  `idSeg2` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -100,7 +125,6 @@ CREATE TABLE `tb_users` (
   `idUser` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `fotoPerfil` varchar(255) NOT NULL,
-  `seguidores` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `celular` int(11) NOT NULL,
@@ -122,28 +146,48 @@ CREATE TABLE `tb_users` (
 -- Despejando dados para a tabela `tb_users`
 --
 
-INSERT INTO `tb_users` (`idUser`, `nome`, `fotoPerfil`, `seguidores`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES
-(1, 'Eric Capy', 'eric.jpg', 0, 'eric.capy@capivarias.com', 'eric123', 957910504, 'Eu sou uma capivara designer.', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 66677766, '1', 'Capivarias', 67, 'Casa de baixo', 'Jardim do Lago', 'Capivari', 66677766677),
-(4, 'Caio Lencinho', '', 0, 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
-(5, 'Henrique e Juliano', '', 0, 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
-(6, 'Paulo', '', 0, 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
-(7, 'Lucca Dionísio', '', 0, 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
-(8, 'William Bonner', '', 0, 'boner654@gmail.com', '', 0, 'boner jornalista', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
-(9, 'Caio Mágico', '', 0, 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
-(10, 'Pedro Henrique', '', 0, 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
-(11, 'Paulo Gome', '', 0, 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
-(12, 'Lucca Baco', '', 0, 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
-(13, 'Vinícius Bonner', '', 0, 'boner654@gmail.com', '', 0, 'filho do bonner', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841);
+INSERT INTO `tb_users` (`idUser`, `nome`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES
+(1, 'Eric Capy', 'capivaraPadraoIcon.jpg', 'eric.capy@capivarias.com', 'eric123', 957910504, 'Eu sou uma capivara designer.', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 66677766, 'SP', 'Capivarias', 67, 'Casa de baixo', 'Jardim do Lago', 'Capivari', 66677766677),
+(4, 'Caio Lencinho', '', 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
+(5, 'Henrique e Juliano', '', 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
+(6, 'Paulo', '', 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
+(7, 'Lucca Dionísio', '', 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
+(8, 'William Bonner', '', 'boner654@gmail.com', '', 0, 'boner jornalista', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
+(9, 'Caio Mágico', '', 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
+(10, 'Pedro Henrique', '', 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
+(11, 'Paulo Gome', '', 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
+(12, 'Lucca Baco', '', 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
+(13, 'Vinícius Bonner', '', 'boner654@gmail.com', '', 0, 'filho do bonner', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
+(14, 'asd', 'capivaraPadraoIcon.jpg', 'asd', 'asd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, 'sdasd', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
+(15, 'asd', 'capivaraPadraoIcon.jpg', 'asd', 'dasdasdasd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, 'sdasd', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
+(16, 'asd', 'capivaraPadraoIcon.jpg', 'asd', 'ddddddddddddddddd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, '5252', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
+(17, 'asd', 'capivaraPadraoIcon.jpg', 'asd', 'ddddddddddddddddddd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, '5252', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 52525252),
+(18, 'asd', 'capivaraPadraoIcon.jpg', 'asd', 'asdasdas', 0, '', '', '', '', 3407090, 'SP', 'Rua Pinguins', 123, '123213', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 12123123123),
+(19, 'asdasdasd', 'capivaraPadraoIcon.jpg', 'asd', 'ddddasdasdasd', 0, '', '', '', '', 3407090, 'SP', 'Rua Pinguins', 123, '123213', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 12123123123),
+(20, 'Gabriel Marquez Trevisan', 'capivaraCozinheiraIcon.jpg', 'gabmt2210@gmail.com', 'asdasd', 0, '', '', '', '', 3407090, 'SP', 'Rua Pinguins', 84, 'cu', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 52829157826),
+(21, 'iori takedo', 'capivaraPadraoIcon.jpg', 'ioritakedo16@gmail.com', 'admin', 0, '', '', '', '', 2831001, 'SP', 'Rua Parapuã', 1037, 'senzala', 'Itaberaba', 'São Paulo', 53850887812);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
+-- Índices de tabela `tb_likes`
+--
+ALTER TABLE `tb_likes`
+  ADD PRIMARY KEY (`idLike`);
+
+--
 -- Índices de tabela `tb_pub`
 --
 ALTER TABLE `tb_pub`
   ADD PRIMARY KEY (`idPub`);
+
+--
+-- Índices de tabela `tb_seg`
+--
+ALTER TABLE `tb_seg`
+  ADD PRIMARY KEY (`idSeg`);
 
 --
 -- Índices de tabela `tb_tags`
@@ -162,10 +206,22 @@ ALTER TABLE `tb_users`
 --
 
 --
+-- AUTO_INCREMENT de tabela `tb_likes`
+--
+ALTER TABLE `tb_likes`
+  MODIFY `idLike` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `tb_pub`
 --
 ALTER TABLE `tb_pub`
   MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `tb_seg`
+--
+ALTER TABLE `tb_seg`
+  MODIFY `idSeg` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_tags`
@@ -177,7 +233,7 @@ ALTER TABLE `tb_tags`
 -- AUTO_INCREMENT de tabela `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

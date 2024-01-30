@@ -1,4 +1,4 @@
-<?php require("perfil.php");  
+<?php require("conn_capybd.php");  
 session_start();
 ?>
 
@@ -8,8 +8,10 @@ if(isset($_GET['idUser'])){
 
     $sql = "SELECT * FROM tb_users WHERE idUser = $idUser";
 
-    $result = $conn->query($sql);
-}
+    $result = $conn_capybd->query($sql);
+    $row = $result->fetch_assoc();
+ }
+
 
 ?>
 <!DOCTYPE html>
@@ -70,23 +72,18 @@ if(isset($_GET['idUser'])){
 
             </div>
             <div class="rosto_novo descricao">
-
-                <img src="images/capivaraPadraoIcon.jpg" alt="">
-                <!-- echo($_SESSION['idUser']);?>"><img src="images/< echo $_SESSION['profilePic']; -->
+            <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
                 <div class="ajuste-nome">
-                    <h2> <?php echo($result['nome']);?></h2>
-                    <h6>dono do perfil</h6>
-                </div>
+                 <h2> <?php echo($row['nome'])?></h2>
+</div>
 
                 <button class="botao-bonito"><i class="bi bi-chat-heart">seguir </i></button>
             </div>
 
             <div class="rosto_novo">
                 <h5>
-                    trabalhou em projetos de auto-confiança infantil <br>
-                    tarfico de sorrisos <br>
-                    venda de briquedos e festas infantis. <br>
+                    <?php echo($row['bio'])?>
                 </h5>
 
             </div>
@@ -109,9 +106,9 @@ if(isset($_GET['idUser'])){
                                 <div class="flex-generic"
                                     style="align-items: center; justify-content: space-between;">
                                     <div class="flex-generic" style="align-items: center;">
-                                        <img src="images/OIP.jfif" alt="">
+                                        <img src='images/<?php echo($row['fotoPerfil'])?>'>
                                         <div class="post-user-name">
-                                            <h5> Armando pagodeiro</h5>
+                                            <h5>  <?php  echo($row['nome'])?> </h5>
                                             <p>Ratos do porão | palhaço nas horas vagas</p>
                                         </div>
                                     </div>

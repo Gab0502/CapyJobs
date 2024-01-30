@@ -134,14 +134,18 @@ $resultVagas = $conn_capybd->query($vagas);
                                     <h3>Titulo</h3>
                                     <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
                                     <h3>Localização</h3>
-                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <div id="mensagem-cep"></div>
+                                    <input id="local" type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <h3>Data do Evento</h3>
+                                    <input type="date">
                                 </div>
-                                <div class="flex-generic" s tyle="flex-direction: column;">
+                                <div class="flex-generic" style="flex-direction: column;">
                                 <label for="upload-photo">foto</label>
                                 <input type="file" name="photo" id="upload-photo" onchange="previewImg(event)"/>
                                 <img id="preview">
-                                <button>asd</button>
                                 </div>
+                                <button></button>
+
                                 </div>
                                 <div class="modal-footer"> 
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -318,6 +322,49 @@ $resultVagas = $conn_capybd->query($vagas);
         }
         
     };
+
+    const inputCEP = document.getElementById('local');
+    const mensagemCEP = document.getElementById('mensagem-cep');
+    let timeoutId;
+
+    inputCEP.addEventListener('input', function() {
+        clearTimeout(timeoutId);
+        console.log("input detectado")
+        timeoutId = setTimeout(function() {
+            const localidade = inputCEP.value;
+            console.log("timeout")
+            // Use uma expressão regular para verificar se a localidade tem o formato esperado (pode ajustar conforme necessário)
+            if (/^[0-9]{8}$/.test(localidade)) {
+                console.log("verifica")
+                verificaCEP(localidade);
+            } else {
+                mensagemCEP.innerHTML = 'Por favor, insira um CEP válido.';
+            }
+        }, 1000); // Aguarde 1 segundo após a última entrada do usuário
+    });
+
+    function verificaCEP(cep) {
+        // Faça uma requisição AJAX para o serviço do ViaCEP
+        $.ajax({
+            url: `https://viacep.com.br/ws/${cep}/json/`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                // Verifique se a resposta do ViaCEP indica um CEP válido
+                if (!data.erro) {
+                    mensagemCEP.innerHTML = `CEP válido. Localidade: ${data.localidade}, UF: ${data.uf}`;
+                } else {
+                    console.log("vamo porra");
+                    mensagemCEP.innerHTML = 'CEP não encontrado.';
+                }
+            },
+            error: function() {
+                console.log("vamo porra");
+                mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
+            }
+        });
+    }
 </script>
 
 </html>

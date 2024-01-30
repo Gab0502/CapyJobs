@@ -136,7 +136,10 @@ $resultVagas = $conn_capybd->query($vagas);
                                     <h3>Titulo</h3>
                                     <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
                                     <h3>Localização</h3>
-                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <div id="mensagem-cep"></div>
+                                    <input id="local" type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <h3>Data do Evento</h3>
+                                    <input type="date">
                                 </div>
                                 </div>
                                 <div class="modal-footer"> 

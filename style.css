@@ -597,3 +597,11 @@ label {
     position: absolute;
     z-index: -1;
  }
+#preview{
+    background-color: white;
+    border-radius: 0px;
+    width: 80%;
+    height: 450px;
+    margin:auto ;
+    display: none;
+}

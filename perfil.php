@@ -8,7 +8,11 @@ if(isset($_GET['idUser'])){
 
     $sql = "SELECT * FROM tb_users WHERE idUser = $idUser";
 
+    $feed = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil FROM tb_pub
+    INNER JOIN tb_users ON tb_pub.idUser = $idUser";
+
     $result = $conn_capybd->query($sql);
+    
     $row = $result->fetch_assoc();
  }
 
@@ -68,7 +72,7 @@ if(isset($_GET['idUser'])){
         <section>
             <div class="papel_parede">
 
-                <img src="images/logo.png" alt="">
+                <img src="images/<?php echo($row['banner'])?>" alt="">
 
             </div>
             <div class="rosto_novo descricao">
@@ -76,9 +80,17 @@ if(isset($_GET['idUser'])){
 
                 <div class="ajuste-nome">
                  <h2> <?php echo($row['nome'])?></h2>
-</div>
-
-                <button class="botao-bonito"><i class="bi bi-chat-heart">seguir </i></button>
+                
+            </div>
+            <?php 
+            if(!$idUser == $_SESSION["idUser"]){
+                echo "<button class='botao-bonito'><i class='bi bi-chat-heart'>seguir</i></button>";
+                
+            }
+            else{
+                echo "<button class='botao-bonito'>...</button>";
+            }   
+            ?>
             </div>
 
             <div class="rosto_novo">

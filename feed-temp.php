@@ -34,6 +34,93 @@ ORDER BY tb_pub.dataPub DESC LIMIT 5";
 $result = $conn_capybd->query($feed);
 $resultVagas = $conn_capybd->query($vagas);
 
+
+// sistema de postagem
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ad = isset($_POST['ad']) && $_POST['ad'] == 'on' ? 1 : 0;
+    $desc = $_POST['pubText'];
+    $tags = $_POST['tags'];
+    $titulo = $_POST['titulo'];
+    $cep = isset($_POST['cep']) ? $_POST['cep'] : null; // CEP é opcional
+    $dia = $_POST['data'];
+    $num = $_POST['numero'];
+
+    // Verifique se a checkbox está marcada antes de processar o CEP
+    if (!empty($cep)) {
+        $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/json\r\n",
+                'method' => 'GET',
+            ],
+        ];
+
+        $context = stream_context_create($options);
+        $response = file_get_contents($api_url, false, $context);
+
+        if ($response !== false) {
+            $data = json_decode($response, true);
+        } else {
+            echo "Erro na requisição do CEP.";
+            // Tratar erro na requisição...
+            exit; // Encerrar o script se houver um erro no CEP
+        }
+    }
+
+    // Processar upload de imagem, independentemente da checkbox
+    if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
+        $nomeOriginal = $_FILES['upload-photo']['name'];
+        $tipoArquivo = $_FILES['upload-photo']['type'];
+        $tamanhoArquivo = $_FILES['upload-photo']['size'];
+        $nomeTemporario = $_FILES['upload-photo']['tmp_name'];
+
+        // Gerar um nome único para o arquivo
+        $nomeAleatorio = uniqid() . '_' . $nomeOriginal;
+
+        // Especificar o diretório de destino
+        $diretorioDestino = 'images/';  // Atualize para o seu caminho desejado
+
+        // Mover o arquivo para o diretório de destino
+        $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
+        if (move_uploaded_file($nomeTemporario, $caminhoCompleto)) {
+            if ($ad && !empty($cep)) {
+                $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp ,bairro, cidade, midia1) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $conn_capybd->prepare($sql);
+                $stmt->bind_param("iississsisssss", $_SESSION['idUser'], $ad, $tags, $titulo, $desc, $dia, $cep, $data['uf'], $data['logradouro'], $num, $data['complemento'], $data['bairro'], $data['localidade'], $nomeAleatorio);
+                $stmt->execute();
+            } else {
+                // Se a checkbox não estiver marcada, não processe o CEP e insira os dados no banco de dados
+                $fill = '';
+                $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp ,bairro, cidade, midia1) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $conn_capybd->prepare($sql);
+                $stmt->bind_param("iississsisssss", $_SESSION['idUser'], $ad, $tags, $titulo, $desc, $dia, $fill, $_SESSION['UF'], $fill, $num, $fill, $fill, $fill, $nomeAleatorio);
+                $stmt->execute();
+            }
+        } else {
+            echo "Erro ao mover o arquivo.";
+            // Tratar erro no movimento do arquivo...
+        }
+    } else {
+        // Se nenhum arquivo foi enviado, defina $nomeAleatorio como vazio
+        $nomeAleatorio = '';
+
+        // Se a checkbox estiver marcada e CEP não for vazio, insira os dados no banco de dados
+        if ($ad && !empty($cep)) {
+            $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp ,bairro, cidade, midia1) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn_capybd->prepare($sql);
+            $stmt->bind_param("iississsisssss", $_SESSION['idUser'], $ad, $tags, $titulo, $desc, $dia, $cep, $data['uf'], $data['logradouro'], $num, $data['complemento'], $data['bairro'], $data['localidade'], $nomeAleatorio);
+            $stmt->execute();
+        } else {
+            // Se a checkbox não estiver marcada, não processe o CEP e insira os dados no banco de dados
+            $fill = '';
+            $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp ,bairro, cidade, midia1) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn_capybd->prepare($sql);
+            $stmt->bind_param("iississsisssss", $_SESSION['idUser'], $ad, $tags, $titulo, $desc, $dia, $fill, $_SESSION['UF'], $fill, $num, $fill, $fill, $fill, $fill);
+            $stmt->execute();
+        }
+    }
+}
 ?>
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
@@ -108,7 +195,8 @@ $resultVagas = $conn_capybd->query($vagas);
             <section class="col-xl-6 bg">
                 <section class="grupPost">
                     <div class="grupPost-input">
-                        <img src="images/<?php echo($_SESSION['profilePic']);?>" alt="">
+                        
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -122,29 +210,55 @@ $resultVagas = $conn_capybd->query($vagas);
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                    <h1>Conteudo</h1>
-                                <textarea name="" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
+
+                                <!-- fazer postagem -->
+
+
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+
+                                <!-- descrição -->
+
+                                <h1>Conteudo</h1>
+                                <textarea name="pubText" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
                                 <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
+
+                                <!-- tags -->
                                 <h3>Tags</h3>
-                                <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
-                                <label for="upload-photo">asd</label>
-                                <input type="file" name="photo" id="upload-photo" />
-                                <br><br>
-                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" class="evaga" id="checkbox"></div>
+                                <input type="text" id="tags" name="tags" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
+                                <br><br><br>
+                                <!-- checkbox ad -->
+                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
                                 <div class="checkboxFields" style="display: none;">
+
+                                <!-- informaçoes para ads -->
+
+                                    <!-- titulo -->
                                     <h3>Titulo</h3>
-                                    <input type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <input type="text" id="titulo" name="titulo" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+
+                                    <!-- cep -->
                                     <h3>Localização</h3>
                                     <div id="mensagem-cep"></div>
-                                    <input id="local" type="text" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+                                    <div class="flex-generic">
+                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                    </div>
+
+                                    <!-- data -->
                                     <h3>Data do Evento</h3>
-                                    <input type="date">
+                                    <input type="date" id="data" name="data">
                                 </div>
+                                <div class="flex-generic" style="flex-direction: column;">
+                                <label for="upload-photo">foto</label>
+                                <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
+                                <img id="preview">
+                                </div>
+                                <button>remover foto</button>
+
                                 </div>
                                 <div class="modal-footer"> 
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                  <input type="submit">
                                 </div>
                                 </form>
                               </div>
@@ -188,13 +302,13 @@ $resultVagas = $conn_capybd->query($vagas);
                     </div>
 
                     <div class='post-text'>
-                        <p><?= $row['desc'] ?></p>
+                        <p><?= $row['descricao'] ?></p>
                     </div>
                 </div>
 
                 <!-- Displaying the image of the publication using lightbox -->
                 <div class='feed-img'>
-                    <a data-lightbox='example-1' href='images/<?= $row['media1'] ?>'><img src='images/<?= $row['media1'] ?>' alt=''></a>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt='' style='border: 1px solid black'></a>
                 </div>
 
                 <!-- Displaying interaction options (like, share, etc.) -->
@@ -301,6 +415,63 @@ $resultVagas = $conn_capybd->query($vagas);
         // Atualiza o parágrafo de contagem de caracteres
         contagemCaracteres.innerHTML = `${numeroDeCaracteres}/1000`;
     });
+    
+
+    var previewImg = function (event) {
+        var reader = new FileReader();
+        
+        reader.onload = function () {
+            var output = document.getElementById("preview");
+            output.src = reader.result;
+            output.style.display = "block"
+        };
+
+        if (event.target.files && event.target.files[0]) {
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        
+    };
+
+    const inputCEP = document.getElementById('local');
+    const mensagemCEP = document.getElementById('mensagem-cep');
+    let timeoutId;
+
+    inputCEP.addEventListener('input', function() {
+        clearTimeout(timeoutId);
+        console.log("input detectado")
+        timeoutId = setTimeout(function() {
+            const localidade = inputCEP.value;
+            console.log("timeout")
+            // Use uma expressão regular para verificar se a localidade tem o formato esperado (pode ajustar conforme necessário)
+            if (/^[0-9]{8}$/.test(localidade)) {
+                console.log("verifica")
+                verificaCEP(localidade);
+            } else {
+                mensagemCEP.innerHTML = 'Por favor, insira um CEP válido.';
+            }
+        }, 1000); // Aguarde 1 segundo após a última entrada do usuário
+    });
+
+    function verificaCEP(cep) {
+        // Faça uma requisição AJAX para o serviço do ViaCEP
+        $.ajax({
+            url: `https://viacep.com.br/ws/${cep}/json/`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                // Verifique se a resposta do ViaCEP indica um CEP válido
+                if (!data.erro) {
+                    mensagemCEP.innerHTML = `CEP válido. Localidade: ${data.localidade}, UF: ${data.uf}`;
+                } else {
+                    mensagemCEP.innerHTML = 'CEP não encontrado.';
+                }
+            },
+            error: function() { 
+                mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
+            }
+        });
+    }
 </script>
 
 </html>

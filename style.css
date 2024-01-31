@@ -2,7 +2,6 @@
     font-family: "APOLLO";
     src: url(font/APOLLO.otf);
 }
-
 :root {
     --verdeEscuro: #027449;
     --verdeMedio: #3b9b75;
@@ -11,62 +10,49 @@
     --bgBranco: #F0F3F5;
     --bgTextArea: #E2E7EB;
 }
-
 .bg-verdeEscuro {
     background-color: var(--verdeEscuro);
 }
-
 .bg-verdeMedio {
     background-color: var(--verdeMedio);
 }
-
 .bg-verdeClaro {
     background-color: var(--verdeClaro);
 }
-
 .bg-bege {
     background-color: var(--bege);
 }
-
 .bg-branco {
     background-color: var(--bgBranco);
 }
-
 .bg-TextArea {
     background-color: var(--bgTextArea);
 }
-
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 h1 {
     font-family: 'APOLLO', Arial, Helvetica, sans-serif;
 }
-
 .navbar-brand img {
     width: 50%;
 }
-
 .fonteIndex {
     font-family: "APOLLO";
     color: var(--verdeEscuro);
 }
-
 .bullet-points {
     background-color: #E0FEEF;
     margin: 25px;
 }
-
 .centrarAo {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 25%;
 }
-
 .paragrafo1 {
     float: left;
     text-align: right;
@@ -74,22 +60,18 @@ h1 {
     font-size: 25px;
 
 }
-
 .divisao {
     margin-top: 5%;
 }
-
 .divisao h2 {
     color: black;
     font-size: 30px;
 }
-
 .divisao h3 {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     font-size: 20px;
 }
-
 .banner {
     background-image: url(/images/banner.png);
     background-color: #3b9b75;
@@ -98,37 +80,30 @@ h1 {
     min-height: 370px !important;
     max-height: 500px !important;
 }
-
 .texto {
     font-size: 24px;
     text-align: center;
 }
-
 body {
     background-color: var(--bgBranco) !important;
 }
-
 header {
     background-color: var(--verdeEscuro) !important;
 }
-
 .quebra {
     white-space: pre-line;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .center {
     justify-content: space-around;
     display: block;
     padding: 15px;
 }
-
 .form-pesquisa {
     padding: 60px;
 }
-
 .form-pesquisa-input input {
     background-color: var(--bege);
     border-radius: 30px;
@@ -137,11 +112,9 @@ header {
     border: none;
     padding: 5px;
 }
-
 .form-pesquisa-input input:hover {
     border: 1px solid black;
 }
-
 .form-pesquisa-input button {
     background-color: var(--bege);
     border-radius: 100%;
@@ -150,23 +123,19 @@ header {
     height: 45px;
     border: none;
 }
-
 .form-pesquisa-input button:hover {
     border: 1px solid black;
     cursor: pointer;
 }
-
 .header-image {
     align-self: center;
     width: 65%;
 
 }
-
 .input-buttons {
     display: flex;
     align-items: center;
 }
-
 .input-buttons button {
     border-radius: 30px;
     background-color: var(--bege);
@@ -174,21 +143,16 @@ header {
     border: none;
     margin: 2px;
 }
-
 .faixa {
     width: 20%;
     height: 40px;
 }
-
 .flex-cards {
     display: flex;
     justify-content: space-around;
     flex-wrap: no-wrap;
     overflow-x: auto;
 }
-
-
-
 .card {
     padding: 50px;
     margin: 10px;
@@ -203,16 +167,13 @@ header {
     max-width: 300px;
     height: 350px;
 }
-
 .card img {
     width: 150px;
 }
-
 .card h1 {
     margin-top: 15px;
     font-size: 25px;
 }
-
 .caixa-flex {
     display: flex;
     justify-content: space-around;
@@ -220,39 +181,32 @@ header {
     flex-direction: column;
 
 }
-
 .box img {
     width: 200px;
 }
-
 .caixa1 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 25px;
 }
-
 .arroz {
     border: solid 1px var(--verdeMedio);
     background-color: var(--verdeMedio);
     border-radius: 10px;
 }
-
 .form-login-index h3 {
     font-size: 55px;
 }
-
 .form-login-index {
     display: flex;
     flex-direction: column;
     margin: 15px;
     color: #ffffff
 }
-
 .form-login-index a {
     color: var(--bgBranco);
 }
-
 .form-login-index input {
     background-color: var(--bege);
     border: none;
@@ -262,11 +216,9 @@ header {
     height: 50px;
     align-items: center;
 }
-
 .form-login-index input:hover {
     border: 1px solid black;
 }
-
 .form-login-index button {
     font-size: 20px;
     background-color: var(--bege);
@@ -279,24 +231,16 @@ header {
     cursor: pointer;
 
 }
-
 .form-login-index button:hover {
     border-radius: 1px solid black;
 }
-
 .batata {
     text-align: center;
     margin: 150px;
 }
-
 .feedFull{
     margin-top: 10px;
 }
-
-
-
-
-
 .grupPost {
 
     border: solid 1px var(--verdeMedio);
@@ -304,7 +248,6 @@ header {
     border-radius: 10px;
     width: 100%;
 }
-
 .grupPost img {
     margin: 30px;
     height: 100px;
@@ -312,7 +255,6 @@ header {
     border-radius: 50px;
     background-color: #F0F3F5;
 }
-
 .grupPost input {
     background-color: var(--bgTextArea);
     margin-top: 50px;
@@ -323,7 +265,6 @@ header {
     height: 70px;
     align-items: center;
 }
-
 .grupPost input:hover{
     border: 1px solid var(--bege);
 }
@@ -336,7 +277,6 @@ header {
 #pubText:hover{
     border: 2px solid var(--verdeEscuro);
 }
-
 .grupPost-vaga {
     display: flex;
     align-items: center;
@@ -347,18 +287,15 @@ header {
     margin-top: 5px!important;
     margin-right: 15px!important;
 }
-
 .feed {
 
     border-radius: 20px;
     background-color: #F9F9F9;
 }
-
 .feed-perfil {
     padding: 5px;
     
 }
-
 .feed-perfil img{
     margin: 10px;
     border-radius: 50%;
@@ -370,7 +307,6 @@ header {
     font-size: 10px;
     
 }
-
 .azul img{
     right: 70px;
     width: 70px;
@@ -408,14 +344,12 @@ header {
     margin: 50px;
     width: 25% ;
 }
-
 .Vagas{
     background-color: var(--verdeEscuro);
     border-radius: 10px;
     height: 35px;
     width: 80%;
 }
-
 .Vagas1{
     background-color: var(--bgTextArea);
     text-align: center;
@@ -423,7 +357,6 @@ header {
     padding: 10px;
     width: 80%;
 }
-
 .d{
     font-weight: bold;
 }
@@ -454,14 +387,12 @@ header {
     align-items:center ;
     margin-left: 10px;
 }
-
 .alinhamento2{
     text-align: center;
     font-size: 16px;
     margin-top: -8px;
    
 }
-
 .alinhamento3{
     text-align: left;
     font-size: 13px;
@@ -477,17 +408,14 @@ header {
    
     
   
- }
-
+}
 .feed-img img{
     width: 500px;
     margin-left: -10px;
 }
-
 .feed-post{
    margin-top: -45px;
 }
-
 .feed-reage-button{
     margin-top: 25px;
     margin-bottom: 10px;
@@ -496,7 +424,6 @@ header {
     align-items: center;
     padding: 10px;
 }
-
 .feed-reage-button button{
     border-radius: 10px;
     width: 180px;
@@ -506,9 +433,6 @@ header {
     width: 70% !important;
 
 }
-
-
-
 .APOLLO{
     font-family: APOLLO;
     background-color: #F0F3F5;
@@ -568,7 +492,6 @@ header {
     width: 100px;
     font-size: 23px;
 }
-
 .botao-bonitofeed{
     border-radius: 15px;
     height: 40px;
@@ -577,7 +500,6 @@ header {
     align-items: center;
     border:none;
 }
-
 .margin-pub{
     display: flex;
     justify-content: space-between;
@@ -592,7 +514,7 @@ label {
     cursor: pointer;
     /* Style as you please, it will become the visible UI component. */
  }
- 
+
  #upload-photo {
     opacity: 0;
     position: absolute;

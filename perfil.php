@@ -70,43 +70,39 @@ if(isset($_GET['idUser'])){
     </header>
     <main class="bullet-points APOLLO">
         <section>
-            <div class="papel_parede">
+            <div class="feed">
 
-                <img src="images/<?php echo($row['banner'])?>" alt="">
+                <div class="papel_parede">
+                    <img src="images/<?php echo($row['banner'])?>" alt="">
+                </div>
 
-            </div>
-            <div class="rosto_novo descricao">
-            <img src='images/<?php echo($row['fotoPerfil'])?>'>
+                <div class="rosto_novo descricao">
+                    <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
-                <div class="ajuste-nome">
-                 <h2> <?php echo($row['nome'])?></h2>
+                    <div class="ajuste-nome">
+                    <h2> <?php echo($row['nome'])?></h2>
                 
-            </div>
-            <?php 
-            if(!$idUser == $_SESSION["idUser"]){
-                echo "<button class='botao-bonito'><i class='bi bi-chat-heart'>seguir</i></button>";
-                
-            }
-            else{
-                echo "<button class='botao-bonito'>...</button>";
-            }   
-            ?>
-            </div>
+                    </div>
+                    <?php 
+                    if (!($idUser == $_SESSION["idUser"])) {
+                        echo "<button class='botao-bonito'>seguir</button>";
+                    } else {
+                    echo "<button class='botao-bonito'>...</button>";
+                    }
+               
+                    ?>
+                </div>
 
-            <div class="rosto_novo">
-                <h5>
+                <div class="rosto_novo">
+                  <h5>
                     <?php echo($row['bio'])?>
-                </h5>
+                  </h5>
+
+                </div>
 
             </div>
-
-            <div class="contato_capy">
-
-                <h5><a href="">fale conosco</a></h5>
-                <h5>@Mauá</h5>
-                <h5>#palhaço proficional
-                    #o craque da risada
-                </h5>
+            <!-- divisão para inserir infromações de  -->
+            <div>
 
             </div>
 

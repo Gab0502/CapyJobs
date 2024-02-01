@@ -9,6 +9,10 @@
     --bege: #ffdead;
     --bgBranco: #F0F3F5;
     --bgTextArea: #E2E7EB;
+    --bgpagina: #F0F3F5;
+}
+.bg-pagina{
+    background-color: var(--bgpagina);
 }
 .bg-verdeEscuro {
     background-color: var(--verdeEscuro);
@@ -144,7 +148,6 @@ header {
     margin: 2px;
 }
 .faixa {
-    width: 20%;
     height: 40px;
 }
 .flex-cards {

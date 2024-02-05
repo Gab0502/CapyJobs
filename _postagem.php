@@ -45,12 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
         if (move_uploaded_file($nomeTemporario, $caminhoCompleto)) {
             if ($ad && !empty($cep)) {
-                $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
+                $sql = "INSERT INTO tb_pub (idUser, ad, tag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
                 ('{$_SESSION['idUser']}', '$ad', '$tags', '$titulo', '$descricao', '$dia', '$cep', '{$data['uf']}', '{$data['logradouro']}', '$num', '{$data['complemento']}', '{$data['bairro']}', '{$data['localidade']}', '$nomeAleatorio')";
                 $stmt = $conn_capybd->query($sql);
             } else {
                 $fill = '';
-                $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
+                $sql = "INSERT INTO tb_pub (idUser, ad, tag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
                 ('{$_SESSION['idUser']}', '$ad', '$tags', '$titulo', '$descricao', '$dia', '$fill', '{$_SESSION['UF']}', '$fill', '$num', '$fill', '$fill', '$fill', '$nomeAleatorio')";
                 $stmt = $conn_capybd->query($sql);
             }
@@ -60,18 +60,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $nomeAleatorio = '';
         if ($ad && !empty($cep)) {
-            $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
+            $sql = "INSERT INTO tb_pub (idUser, ad, tag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
             ('{$_SESSION['idUser']}', '$ad', '$tags', '$titulo', '$descricao', '$dia', '$cep', '{$data['uf']}', '{$data['logradouro']}', '$num', '{$data['complemento']}', '{$data['bairro']}', '{$data['localidade']}', '$nomeAleatorio')";
             $stmt = $conn_capybd->query($sql);
         } else {
             $fill = '';
-            $sql = "INSERT INTO tb_pub (idUser, ad, idTag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
+            $sql = "INSERT INTO tb_pub (idUser, ad, tag, titulo, descricao, dia, cep, uf, rua, numero, comp, bairro, cidade, midia1) VALUES 
             ('{$_SESSION['idUser']}', '$ad', '$tags', '$titulo', '$descricao', '$dia', '$fill', '{$_SESSION['UF']}', '$fill', '$num', '$fill', '$fill', '$fill', '$nomeAleatorio')";
             $stmt = $conn_capybd->query($sql);
         }
     }
 }
-
+$conn_capybd->close();
 header('Location: feed-temp.php');
 exit(); 
 

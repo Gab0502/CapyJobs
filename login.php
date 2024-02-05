@@ -1,6 +1,11 @@
 <?php require("conn_capybd.php");
 session_start();
 
+if (isset($_SESSION['username'])) {
+    header('Location: feed.html');
+    exit();
+};
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +23,6 @@ session_start();
     <?php include("_header.php")?>
     <!-- login -->
     <?php
-        if (isset($_SESSION['username'])) {
-            header('Location: feed.html');
-            exit();
-        };
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $username = $_POST[ 'username'];
@@ -62,7 +63,7 @@ session_start();
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
-                        <form onsubmit="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                        <form onsubmit="_login-form.php" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <h3>Login</h3>
                             <input type="text" id="username" name="username" placeholder="EMAIL">
                             <h3>Senha</h3>
@@ -73,7 +74,7 @@ session_start();
                                 <h3 class="text-white">ou</h3>
                                 <hr class="bg-white" style="width: 35%;">
                             </div>
-                            <a href="/cadastro.html" class="text-white">Não possui conta? cadastre-se agora</a>
+                            <a href="cadastro.php" class="text-white">Não possui conta? cadastre-se agora</a>
                         </form>
                     </div>
                 </div>

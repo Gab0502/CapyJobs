@@ -219,12 +219,11 @@
         <div class="col-xl-6 fonteIndex">
           <div class="arroz">
             <div class="container-custom">
-              <form action="" class="form-login-index">
+              <form action="_login-form.php" mehtod="post" class="form-login-index">
                 <h3>Login</h3>
-                <input type="text-" id="username">
+                <input type="text-" id="username" name="username">
                 <h3>Senha</h3>
-                <input type="text" id="password">
-                <a class="text-white" href="#">Esqueceu a senha?</a>
+                <input type="text" id="password" name="password">
                 <button>Entrar</button>
               </form>
               <div class="flex-generic">

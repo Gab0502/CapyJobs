@@ -1,6 +1,11 @@
 <?php require("conn_capybd.php");
-
     session_start();
+
+    if (empty($_SESSION['idUser'])) {
+        // Redireciona para a página de login
+        header('Location: login.php');
+        exit;
+    }
 ?>
 
 
@@ -21,8 +26,18 @@
 </head>
 <body class="colore">
     <?php 
-$feed = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil FROM tb_pub
+$feed = "SELECT 
+tb_pub.*, 
+tb_users.nome, 
+tb_users.bio, 
+tb_users.fotoPerfil,
+IFNULL(SUM(tb_likes.idUser = '{$_SESSION['idUser']}'), 0) as userLiked,
+IFNULL(SUM(tb_seg.idSeg1 = '{$_SESSION['idUser']}'), 0) as following
+FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
+LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub
+LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}'
+GROUP BY tb_pub.idPub
 ORDER BY tb_pub.dataPub DESC";
 
 $vagas = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil 
@@ -235,8 +250,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <!-- botão para seguir -->
 
-                            <button class="btn-follow" onclick="follow(<?php echo $row['idUser']; ?>)">+Capyseguir</button>
-                        </div>
+                            <button class="btn-follow" onclick="followOrEdit(<?php echo $row['idUser']; ?>)">
+                            <?php
+                            if ($row['idUser'] == $_SESSION['idUser']) {
+                                // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                echo '<details>';
+                                echo '    <summary>...</summary>';
+                                echo '    <button>editar</button>';
+                                echo '    <button>excluir</button>';
+                                echo '</details>';
+                            } else {    
+                                // Caso contrário, mostra botão de seguir/seguindo
+                                echo $row['userFollowing'] ? 'Seguindo' : '+Capyseguir';
+                            }
+                            ?>
+                </div>
                     </div>
 
                     <!-- Displaying information of the publication -->
@@ -465,6 +493,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         });
     }
+
 </script>
 
 </html>

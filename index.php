@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="index.old.html"><img src="images/logo.png" title="" alt=""></a>
+      <a class="navbar-brand" href="index.php"><img src="images/logo.png" title="" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -230,7 +230,7 @@
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="#" class="text-white">Não possui conta? cadastre-se agora</a>
+              <a href="cadastro.php" class="text-white">Não possui conta? cadastre-se agora</a>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@
         <div class="col-md-3 mb-4">
           <h5>Links Rápidos</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Início</a></li>
+            <li><a href="index.php" class="text-white">Início</a></li>
             <li><a href="#" class="text-white">Sobre</a></li>
             <li><a href="#" class="text-white">Serviços</a></li>
             <li><a href="#" class="text-white">Contato</a></li>

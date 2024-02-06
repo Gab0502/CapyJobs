@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="style-login.css">
   <link rel="stylesheet" href="style-responsive.css">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-
   <link rel="stylesheet" href="style-animation.css">
 </head>
 
@@ -37,10 +36,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cadastro.old.html">CADASTRE-SE</a>
+            <a class="nav-link" href="cadastro.php">CADASTRE-SE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.old.html">LOGIN</a>
+            <a class="nav-link" href="login.php">LOGIN</a>
           </li>
         </ul>
       </div>

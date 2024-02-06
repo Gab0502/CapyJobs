@@ -1,22 +1,16 @@
+<?php require("conn_capybd.php");?>
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Painel Administrativo do Site</title>
+    <meta charset="utf-8">
+    <title>CapyJobs - Painel Administrativo</title>
 </head>
-
 <body>
-<img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+    <h1>Painel Administrativo - Listas</h1><br>
 
-<h1>Painel Administrativo do Site - Lista</h1><br>
-
-<a href="adm_pub.php">publicações</a>	
-<br>	
-
-<a href="adm_perfil.php">perfil</a>
-
-
-
-   
+    <a href="adm_pub.php">PUBLICAÇÕES</a>
+    <br><br>
+    <a href="adm_perfil.php">PERFIS</a>
 </body>
 </html>

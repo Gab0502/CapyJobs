@@ -1,24 +1,5 @@
-<!-- Solicitação de acesso única -->
 <?php require("conn_capybd.php");
 session_start()
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>feed</title>
-    <link rel="stylesheet" href="style-login.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style-responsive.css">
-</head>
-<body class="colore">
-<?php
 
 if(isset($_GET['pesquisa'])){
     $pesquisa = $_GET['pesquisa'];
@@ -36,23 +17,29 @@ FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
 LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}'
-WHERE tb_pub.tag LIKE '%$pesquisa%' OR tb_pub.titulo LIKE '%$pesquisa%' OR tb_pub.descricao LIKE '%$pesquisa%' OR tb_pub.uf LIKE '%$pesquisa%' OR tb_pub.bairro LIKE '%$pesquisa%' OR tb_pub.cidade LIKE '%$pesquisa%'
+WHERE tb_pub.tag LIKE '%$pesquisa%' 
+OR tb_pub.titulo LIKE '%$pesquisa%' 
+OR tb_pub.descricao LIKE '%$pesquisa%' 
+OR tb_pub.uf LIKE '%$pesquisa%' 
+OR tb_pub.bairro LIKE '%$pesquisa%' 
+OR tb_pub.cidade LIKE '%$pesquisa%'
 GROUP BY tb_pub.idPub
 ORDER BY tb_pub.dataPub DESC";
 
-
-$vagas = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil 
+$vagas = "SELECT tb_pub.*, 
+tb_users.nome, 
+tb_users.bio, 
+tb_users.fotoPerfil 
 FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 WHERE tb_pub.ad = 1
 ORDER BY tb_pub.dataPub DESC LIMIT 5";
 
-$result = $conn_capybd->query($feed);
+$resultFeed = $conn_capybd->query($feed);
 $resultVagas = $conn_capybd->query($vagas);
 
 
-// sistema de postagem
-
+// Sistema de postagem
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ad = isset($_POST['ad']) && $_POST['ad'] == 'on' ? 1 : 0;
     $desc = $_POST['pubText'];
@@ -84,9 +71,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
-    
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CapyJobs - Pesquisa</title>
+    <link rel="stylesheet" href="style-login.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style-responsive.css">
+</head>
+<body class="colore">
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
             <div class="container-fluid">
@@ -232,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </section>
 
-                <?php while ($row = $result->fetch_assoc()): ?>
+                <?php while ($row = $resultFeed->fetch_assoc()): ?>
     <section class='feed'>
         <article class='post'>
             <div class='feed-post'>
@@ -522,5 +521,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 </script>
-
 </html>

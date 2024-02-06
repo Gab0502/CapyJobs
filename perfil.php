@@ -1,8 +1,6 @@
 <?php require("conn_capybd.php");  
 session_start();
-?>
 
-<?php 
 if(isset($_GET['idUser'])){
     $idUser = $_GET['idUser'];
 
@@ -15,8 +13,7 @@ if(isset($_GET['idUser'])){
     
     $row = $result->fetch_assoc();
  }
-
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,7 +21,7 @@ if(isset($_GET['idUser'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>perfil</title>
+    <title>CapyJobs - Perfil de Usuário</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">

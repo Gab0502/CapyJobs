@@ -531,3 +531,44 @@ label {
     margin:auto ;
     display: none;
 }
+.btn-like{
+    -webkit-border-radius: 11;
+    -moz-border-radius: 11;
+    border-radius: 11px;
+    font-family: Arial;
+    color: #000000;
+    font-size: 20px;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border: solid var(--verdeEscuro) 1px;
+    text-decoration: none;
+}
+.btn-like:hover{
+    text-decoration: none;
+    background-color:var(--verdeEscuro);
+    color: #ffffff;
+}
+.btn-liked{
+    -webkit-border-radius: 11;
+    -moz-border-radius: 11;
+    border-radius: 11px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: var(--verdeEscuro);
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+}
+.btn-liked svg{
+    fill: #ffffff;
+}
+.btn-liked:hover{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid var(--verdeEscuro);
+}
+.btn-liked:hover svg{
+    fill: var(--verdeEscuro);
+}

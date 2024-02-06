@@ -37,7 +37,7 @@ FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
 LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}'
-GROUP BY tb_pub.idPub
+GROUP BY tb_pub.idPub 
 ORDER BY tb_pub.dataPub DESC";
 
 $vagas = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil 
@@ -234,8 +234,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php while ($row = $result->fetch_assoc()): ?>
     <section class='feed'>
         <article class='post'>
-            <div class='feed-post' >
+            <div class='feed-post'>
                 <div class='descricao'>
+                    
                     <!-- Displaying information about the user who made the post -->
                     <div class='feed-perfil'>
                         <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
@@ -279,7 +280,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php echo($row['tag']) ?>
                         </h6>
                     </div>
-                    <?php echo($row['ad']=(1) ? "<h1> " . $row['titulo'] . "</h1>" : '')?>
 
                     <div class='post-text'>
                         <p><?= $row['descricao'] ?></p>
@@ -317,13 +317,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ?>
 
                         <button class='btn-like '>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-reply-fill' viewBox='0 0 16 16'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='green' class='bi bi-reply-fill' viewBox='0 0 16 16'>
                                 <path d='M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z'/>
                             </svg>
-
-                            <!-- botão para like -->
-
-                            compartilhar
+                            contato
                         </button>
                     </div>
                     <div class='faixa'></div>

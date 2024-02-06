@@ -12,6 +12,4 @@ exit();
 }
 
 $conn_capybd->close();
-
-
 ?>

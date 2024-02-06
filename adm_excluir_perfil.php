@@ -13,19 +13,16 @@ $query_rs_img = "SELECT * FROM tb_users WHERE tb_users.idUser = $idUser";
 $rs_img = mysqli_query($conn_capybd, $query_rs_img);
 $row_rs_img = mysqli_fetch_assoc($rs_img);
 
-
-
-
 $query_rs_perf = "DELETE FROM tb_users WHERE tb_users.idUser = $idUser";
 
 $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
 
 
 if($rs_perf == 1){
-	echo('<script> alert("Excluido com sucesso!!!");
+	echo('<script> alert("Registro deletado com sucesso!");
 	window.location.href="adm_perfil.php"; </script>');
 } else{
-	echo("Falha ao excluir dados!");
+	echo("Falha ao excluir registro!");
 };
 /*
 $curso = $_GET['idCurso'];

@@ -13,17 +13,16 @@ if(isset($_GET['idPub'])){
 //$rs_img = mysqli_query($conn_capybd, $query_rs_img);
 //$row_rs_img = mysqli_fetch_assoc($rs_img);
 
-
 $query_rs_pub = "DELETE FROM tb_pub WHERE tb_pub.idPub = $idPub";
 
 $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
 
 
 if($rs_pub == 1){
-	echo('<script> alert("Excluido com sucesso!!!");
+	echo('<script> alert("Registro deletado com sucesso!");
 	window.location.href="adm_pub.php"; </script>');
 } else{
-	echo("Falha ao excluir dados!");
+	echo("Falha ao excluir registro!");
 };
 /*
 $curso = $_GET['idCurso'];
@@ -38,17 +37,12 @@ $conn_bd_ctec->query($query);*/
 //exit();
 
 ?>
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Excluir</title>
+<title>Excluir-Pub</title>
 </head>
-
 <body>
-
-<h1>Excluir</h1>	
-	
 </body>
 </html>

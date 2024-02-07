@@ -532,7 +532,6 @@ label {
     height: 450px;
     margin:auto ;
     display: none;
-<<<<<<< HEAD
 }
 .btn-like{
     -webkit-border-radius: 11;
@@ -574,6 +573,4 @@ label {
 }
 .btn-liked:hover svg{
     fill: var(--verdeEscuro);
-=======
->>>>>>> 4d4f3289758d4c5a9adbca2836d8122696889fbb
 }

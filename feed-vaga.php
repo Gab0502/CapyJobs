@@ -104,13 +104,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
                         </li>
 
-                        <li class="nav-item ">
-                            <a class="nav-link cabeca" style="color: #ffff;" href="#">Notificação</a>
-                        </li>
+                        <?php 
+                        if (strpos($_SESSION['email'], '@capivarias') !== false) {
+                            echo " <li class='nav-item'>
+                            <a class='nav-link active' style='color: #ffff;' aria-current='page' href='#'>ADMIN</a>
+                                </li>";
+                        }
+                        ?>
 
-                        <li>
-                            <a class="nav-link" style="color: #ffff;" href="#">Mensagens</a>
-                        </li>
 
                     </ul>
 

@@ -19,27 +19,27 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
 <body>
 <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
 <h1>Painel Administrativo - Lista de Publicações</h1>
-
+<p></p>
 <table width="100%" border="0">
   <tbody>
     <tr>
-      <td><strong>Excluir</strong></td><hr>
-      <td><strong>Pub ID</strong></td><hr>
-      <td><strong>User ID</strong></td><hr>
-      <td><strong>AD?</strong></td><hr>
-      <td><strong>Tag</strong></td><hr>
-      <td><strong>Título</strong></td><hr>
-      <td><strong>Descrição</strong></td><hr>
-      <td><strong>Data (AD)</strong></td><hr>
-      <td><strong>Data (Pub)</strong></td><hr>
-      <td><strong>CEP</strong></td><hr>
-      <td><strong>UF</strong></td><hr>
-      <td><strong>Rua</strong></td><hr>
-      <td><strong>Número</strong></td><hr>
-      <td><strong>Compremento</strong></td><hr>
-      <td><strong>Bairro</strong></td><hr>
-      <td><strong>Cidade</strong></td><hr>
-      <td><strong>Poster</strong></td><hr>
+      <td><strong>Excluir</strong></td>
+      <td><strong>Pub ID</strong></td>
+      <td><strong>User ID</strong></td>
+      <td><strong>AD?</strong></td>
+      <td><strong>Tag</strong></td>
+      <td><strong>Título</strong></td>
+      <td><strong>Descrição</strong></td>
+      <td><strong>Data (AD)</strong></td>
+      <td><strong>Data (Pub)</strong></td>
+      <td><strong>CEP</strong></td>
+      <td><strong>UF</strong></td>
+      <td><strong>Rua</strong></td>
+      <td><strong>Número</strong></td>
+      <td><strong>Compremento</strong></td>
+      <td><strong>Bairro</strong></td>
+      <td><strong>Cidade</strong></td>
+      <td><strong>Poster</strong></td>
     </tr>
 	  
     <!-- INÍCIO do Loop -->	 

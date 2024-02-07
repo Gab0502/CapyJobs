@@ -23,26 +23,26 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
 <table width="100%" border="0">
   <tbody>
     <tr>
-      <td><strong>Excluir</strong></td><hr>
-      <td><strong>User ID</strong></td><hr>
-      <td><strong>Nome</strong></td><hr>
-      <td><strong>Banner</strong></td><hr>
-      <td><strong>Foto de Perfil</strong></td><hr>
-      <td><strong>Email</strong></td><hr>
-      <td><strong>Senha</strong></td><hr>
-      <td><strong>Contato</strong></td><hr>
-      <td><strong>Bio</strong></td><hr>
-      <td><strong>Linkedin</strong></td><hr>
-      <td><strong>Twitter</strong></td><hr>
-      <td><strong>Instagram</strong></td><hr>
-      <td><strong>CEP</strong></td><hr>
-      <td><strong>UF</strong></td><hr>
-      <td><strong>Rua</strong></td><hr>
-      <td><strong>Número</strong></td><hr>
-      <td><strong>Compremento</strong></td><hr>
-      <td><strong>Bairro</strong></td><hr>
-      <td><strong>Cidade</strong></td><hr>
-      <td><strong>CPF</strong></td><hr>
+      <td><strong>Excluir</strong></td>
+      <td><strong>User ID</strong></td>
+      <td><strong>Nome</strong></td>
+      <td><strong>Banner</strong></td>
+      <td><strong>Foto de Perfil</strong></td>
+      <td><strong>Email</strong></td>
+      <td><strong>Senha</strong></td>
+      <td><strong>Contato</strong></td>
+      <td><strong>Bio</strong></td>
+      <td><strong>Linkedin</strong></td>
+      <td><strong>Twitter</strong></td>
+      <td><strong>Instagram</strong></td>
+      <td><strong>CEP</strong></td>
+      <td><strong>UF</strong></td>
+      <td><strong>Rua</strong></td>
+      <td><strong>Número</strong></td>
+      <td><strong>Compremento</strong></td>
+      <td><strong>Bairro</strong></td>
+      <td><strong>Cidade</strong></td>
+      <td><strong>CPF</strong></td>
     </tr>
 	  
     <!-- INÍCIO do Loop -->	  	

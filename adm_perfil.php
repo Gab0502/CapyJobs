@@ -62,9 +62,9 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
       <td><?php echo($row_rs_perf['senha']);?></td>
       <td><?php echo($row_rs_perf['celular']);?></td>
       <td><?php echo($row_rs_perf['bio']);?></td>
-      <td><?php echo($row_rs_perf['linkedin']);?></td>
-      <td><?php echo($row_rs_perf['twitter']);?></td>
-      <td><?php echo($row_rs_perf['instagram']);?></td>
+      <td><a href="<?php echo($row_rs_perf['linkedin']);?>"><?php echo($row_rs_perf['linkedin']);?></td>
+      <td><a href="<?php echo($row_rs_perf['twitter']);?>"><?php echo($row_rs_perf['twitter']);?></td>
+      <td><a href="<?php echo($row_rs_perf['instagram']);?>"><?php echo($row_rs_perf['instagram']);?></td>
       <td><?php echo($row_rs_perf['cep']);?></td>
       <td><?php echo($row_rs_perf['uf']);?></td>
       <td><?php echo($row_rs_perf['rua']);?></td>

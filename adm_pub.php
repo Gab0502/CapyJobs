@@ -21,7 +21,7 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
 <h1>Painel Administrativo - Lista de Publicações</h1>
 <a href="adm.php">Voltar</a>
 <br><br><br>
-<table width="100%" border="0">
+<table width="100%" border="1">
   <tbody>
     <tr>
       <td><strong>Excluir</strong></td>

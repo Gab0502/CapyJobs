@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </ul>
 
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="Procurar" placeholder="Procurar" aria-label="Search">
+                    <form action="pesquisa.php" method="get" id="form-pesquisa" class="d-flex">
+                        <input name = "pesquisa" id = "pesquisa "class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
                 </div>

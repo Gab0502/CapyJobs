@@ -1,3 +1,4 @@
+<!-- Solicitação de acesso única -->
 <?php require("conn_capybd.php");
 session_start();
 
@@ -6,7 +7,7 @@ if(isset($_GET['pesquisa'])){
     $pesquisa = $_GET['pesquisa'];
 };
 var_dump($pesquisa);
-
+// Criação da consulta do BD
 $feed = "SELECT 
 tb_pub.*, 
 tb_users.nome, 
@@ -18,29 +19,23 @@ FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
 LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}'
-WHERE tb_pub.tag LIKE '%$pesquisa%' 
-OR tb_pub.titulo LIKE '%$pesquisa%' 
-OR tb_pub.descricao LIKE '%$pesquisa%' 
-OR tb_pub.uf LIKE '%$pesquisa%' 
-OR tb_pub.bairro LIKE '%$pesquisa%' 
-OR tb_pub.cidade LIKE '%$pesquisa%'
+WHERE tb_pub.tag LIKE '%$pesquisa%' OR tb_pub.titulo LIKE '%$pesquisa%' OR tb_pub.descricao LIKE '%$pesquisa%' OR tb_pub.uf LIKE '%$pesquisa%' OR tb_pub.bairro LIKE '%$pesquisa%' OR tb_pub.cidade LIKE '%$pesquisa%'
 GROUP BY tb_pub.idPub
 ORDER BY tb_pub.dataPub DESC";
 
-$vagas = "SELECT tb_pub.*, 
-tb_users.nome, 
-tb_users.bio, 
-tb_users.fotoPerfil 
+
+$vagas = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil 
 FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 WHERE tb_pub.ad = 1
 ORDER BY tb_pub.dataPub DESC LIMIT 5";
 
-$resultFeed = $conn_capybd->query($feed);
+$result = $conn_capybd->query($feed);
 $resultVagas = $conn_capybd->query($vagas);
 
 
-// Sistema de postagem
+// sistema de postagem
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ad = isset($_POST['ad']) && $_POST['ad'] == 'on' ? 1 : 0;
     $desc = $_POST['pubText'];
@@ -72,21 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
+    
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CapyJobs - Pesquisa</title>
-    <link rel="stylesheet" href="style-login.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style-responsive.css">
-</head>
-<body class="colore">
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
             <div class="container-fluid">
@@ -98,16 +81,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
 
                 <div class="collapse navbar-collapse alinhamento" id="navbarSupportedContent">
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 centro">
+
                         <li class="nav-item ">
-                            <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Jobs</a>
+                            <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
                         </li>
+
                         <li class="nav-item ">
-                            <a class="nav-link cabeca" style="color: #ffff;" href="#">Notificações</a>
+                            <a class="nav-link cabeca" style="color: #ffff;" href="#">Notificação</a>
                         </li>
+
+                        <li>
+                            <a class="nav-link" style="color: #ffff;" href="#">Mensagens</a>
+                        </li>
+
                     </ul>
+
                     <form action="pesquisa.php" method="get" id="form-pesquisa" class="d-flex">
-                        <input name="pesquisa" id="pesquisa "class="form-control me-2" type="search" placeholder="O que procura?" aria-label="Search" required>
+                        <input name = "pesquisa" id = "pesquisa "class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
                         <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
                 </div>
@@ -116,173 +108,175 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
     <main class="container-fluid feedFull">
         <div class="row">
-            <?php if (isset($_SESSION['idUser'])):?>
-                <aside class="col-xl-3 azul disabled2">
-                    <div class="azul-a mt-3"></div>
-                    <div class="azul-b">
-                        <div class="IMG">
-                            <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil"></a>
-                        </div>
-                        <div class="azul-b2">
-                            <p alt="nome do usuario"><?php echo $_SESSION['name']; ?></p>
-                            <p alt="bio do usuario"><?php echo $_SESSION['bio']; ?></p>
-                        </div>
-                        <div class="azul-b3">
-                            <div class="contatos">
-                                Contatos:
-                                <p>Email: <?php echo $_SESSION['email']; ?></p>
-                                <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
-                            </div>
+        <?php if (isset($_SESSION['idUser'])) : ?>
+            <aside class="col-xl-3 azul disabled2">
+                <div class="azul-a mt-3">
+                </div>
+                <div class="azul-b">
+                    <div class="IMG">
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil"></a>
+                    </div>
+                    <div class="azul-b2">
+                        <p alt="nome do usuario"><?php echo $_SESSION['name']; ?></p>
+                        <p alt="bio do usuario"><?php echo $_SESSION['bio']; ?></p>
+                    </div>
+                    <div class="azul-b3">
+                        <div class="contatos">
+                            Contatos:
+                            <p>Email: <?php echo $_SESSION['email']; ?></p>
+                            <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
                         </div>
                     </div>
-                </aside>
-            <?php else :?>
-                <aside class="col-xl-3 azul disabled2">
-                    <div class="azul-a mt-3">
-                    </div>
-                    <div class="azul-b">
-                        <p>Você não está logado! <a href="login.php">Clique aqui para fazer LOGIN</a></p>
-                    </div>
-                </aside>  
-            <?php endif;?>
+                </div>
+            </aside>
+        <?php else : ?>
+            <aside class="col-xl-3 azul disabled2">
+                <div class="azul-a mt-3">
+                </div>
+                <div class="azul-b">
+                <p>Você não está logado. Faça <a href="login.php">login</a>.</p>
+        </div>
+        </aside>
+            
+        <?php endif; ?>
+
             <section class="col-xl-6 bg">
                 <section class="grupPost">
                     <div class="grupPost-input">
-                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>">
-                            <img src="images/<?php echo($_SESSION['profilePic']);?>" alt="">
-                        </a>
+                        
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                         <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- fazer postagem -->
-                                        <form action="_postagem.php" method="post" enctype="multipart/form-data">
-
-                                            <!-- 'descricao' -->
-                                            <h1>Conteúdo:</h1>
-                                            <textarea name="pubText" id="pubText" cols="60" rows="10" style="resize: none;" placeholder="Descreva esta publicação:"></textarea>
-                                            <div class="flex-generic" style="justify-content: flex-end;"><p id="contagemCaracteres">0/1000</p></div>
-
-                                            <!-- 'tags' -->
-                                            <h3>Tags</h3>
-                                            <input type="text" id="tags" name="tags" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS (Ex.: #festa, #musica)">
-                                            <br><br><br>
-
-                                            <!-- checkbox 'ad' -->
-                                            <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;">
-                                                <label for="#checkbox">é vaga?</label>
-                                                <input type="checkbox" name="ad" class="evaga" id="checkbox">
-                                            </div>
-                                            
-                                            <!-- informações para 'ad' -->
-                                            <div class="checkboxFields" style="display: none;">
-
-                                                <!-- 'titulo' -->
-                                                <h3>Título</h3>
-                                                <input type="text" id="titulo" name="titulo" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TÍTULO (Ex.: Procuro banda para festa)">
-
-                                                <!-- 'cep' -->
-                                                <h3>Local</h3>
-                                                <div id="mensagem-cep"></div>
-                                                <div class="flex-generic">
-                                                    <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL (Digite o CEP do local do evento)">
-                                                    <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
-                                                </div>
-
-                                                <!-- 'dia' -->
-                                                <h3>Data</h3>
-                                                <input type="date" id="data" name="data">
-                                                </div>
-                                                <div class="flex-generic" style="flex-direction: column;">
-                                                    <label for="upload-photo">Foto</label>
-                                                    <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
-                                                    <img id="preview">
-                                                </div>
-                                                <button>Remover Foto</button>
-                                            </div>
-                                            <div class="modal-footer"> 
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                <input type="submit">
-                                            </div>
-                                        </form>
-                                    </div>
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Publicação</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
                                 </div>
+                                <div class="modal-body">
+
+                                <!-- fazer postagem -->
+
+
+                                <form action="_postagem.php" method="post" enctype="multipart/form-data">
+
+                                <!-- descrição -->
+
+                                <h1>Conteudo</h1>
+                                <textarea name="pubText" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
+                                <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
+
+                                <!-- tags -->
+                                <h3>Tags</h3>
+                                <input type="text" id="tags" name="tags" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
+                                <br><br><br>
+                                <!-- checkbox ad -->
+                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
+                                <div class="checkboxFields" style="display: none;">
+
+                                <!-- informaçoes para ads -->
+
+                                    <!-- titulo -->
+                                    <h3>Titulo</h3>
+                                    <input type="text" id="titulo" name="titulo" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TITULO ex:Procuro banda para festa">
+
+                                    <!-- cep -->
+                                    <h3>Localização</h3>
+                                    <div id="mensagem-cep"></div>
+                                    <div class="flex-generic">
+                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                    </div>
+
+                                    <!-- data -->
+                                    <h3>Data do Evento</h3>
+                                    <input type="date" id="data" name="data">
+                                </div>
+                                <div class="flex-generic" style="flex-direction: column;">
+                                <label for="upload-photo">foto</label>
+                                <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
+                                <img id="preview">
+                                </div>
+                                <button>remover foto</button>
+
+                                </div>
+                                <div class="modal-footer"> 
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <input type="submit">
+                                </div>
+                                </form>
+                              </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <?php while ($row = $resultFeed->fetch_assoc()): ?>
-                <section class='feed'>
-                    <article class='post'>
-                        <div class='feed-post'>
-                            <div class='descricao'>
-                                
-                                <!-- dados do usuário que fez a postagem -->
-                                <div class='feed-perfil'>
-                                    <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
-                                        <div class='flex-generic' style='align-items: center;'>
-                                            <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
-                                            <div class='post-user-name'>
-                                                <h5><?= $row['nome'] ?></h5>
-                                                <p><?= $row['bio'] ?></p> <!-- AJUSTAR! -->
-                                            </div>
-                                        </div>
+                <?php while ($row = $result->fetch_assoc()): ?>
+    <section class='feed'>
+        <article class='post'>
+            <div class='feed-post'>
+                <div class='descricao'>
+                    
+                    <!-- Displaying information about the user who made the post -->
+                    <div class='feed-perfil'>
+                        <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
+                            <div class='flex-generic' style='align-items: center;'>
+                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
+                                <div class='post-user-name'>
+                                    <h5><?= $row['nome'] ?></h5>
+                                    <p><?= $row['bio'] ?></p> <!-- You can adjust this as needed -->
+                                </div>
+                            </div>
 
-                                        <!-- botões para 'seguir' e 'editar/ecluir' -->
-                                        <?php
-                                        $following = ($row['following'] > 0);
-                                        if(isset($row['following'])){
-                                            echo("ta funcionando sa porra");
-                                        }
-                                        if ($row['idUser'] == $_SESSION['idUser']) {
-                                            // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                            echo '<details>';
-                                            echo '    <summary>...</summary>';
-                                            echo '    <button>editar</button>';
-                                            echo '    <button onclick="deletePost('. $row['idPub'] .')">excluir</button>';
-                                            echo '</details>';
-                                        } else {    
-                                            // Caso contrário, mostra botão de seguir/seguindo
-                                            if ($following) {
-                                                // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                                echo "<button onclick=\"follow({$row['idUser']})\">Capyseguindo</button>";
-                                            } else {
-                                                // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                                echo "<button onclick=\"follow({$row['idUser']})\">+Capyseguir</button>";
-                                            }                          
-                                        }
-                                        ?>
+                            <!-- botão para seguir -->
+
+                            <?php
+                            $following = ($row['following'] > 0);
+                            if(isset($row['following'])){
+                                echo("ta funcionando sa porra");
+                            }
+                            if ($row['idUser'] == $_SESSION['idUser']) {
+                                // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                echo '<details>';
+                                echo '    <summary>...</summary>';
+                                echo '    <button>editar</button>';
+                                echo '    <button onclick="deletePost('. $row['idPub'] .')">excluir</button>';
+                                echo '</details>';
+                            } else {    
+                                // Caso contrário, mostra botão de seguir/seguindo
+                                if ($following) {
+                                    // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                    echo "<button onclick=\"follow({$row['idUser']})\">Capyseguindo</button>";
+                                } else {
+                                    // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                    echo "<button onclick=\"follow({$row['idUser']})\">+Capyseguir</button>";
+                                }                          
+                            }
+                            ?>
                             
-                                    </div>
-                                </div>
+                </div>
+                    </div>
+                    <!-- Displaying information of the publication -->
+                    <div class='post-content'>
+                        <h6 class='tags'>
+                            <!-- Retrieving tags associated with the publication -->
+                            <?php echo($row['tag']) ?>
+                        </h6>
+                    </div>
 
-                                <!-- area de 'tag' -->
-                                <div class='post-content'>
-                                    <h6 class='tags'>
-                                        <?php echo($row['tag']) ?>
-                                    </h6>
-                                </div>
-                                
-                                <!-- area de 'descricao' -->
-                                <div class='post-text'>
-                                    <p><?= $row['descricao'] ?></p>
-                                </div>
-                            </div>
+                    <div class='post-text'>
+                        <p><?= $row['descricao'] ?></p>
+                    </div>
+                </div>
 
-                            <!-- abrir imagem com lightbox -->
-                            <div class='feed-img'>
-                                <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt=''></a>
-                            </div>
+                <!-- Displaying the image of the publication using lightbox -->
+                <div class='feed-img'>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt=''></a>
+                </div>
 
                             <!-- botões de interação -->
                             <div class='feed-reage'>
@@ -318,17 +312,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </section>
                 <?php endwhile; ?>
             </section>
-                        <aside class="col-xl-3 mt-3 disabled2">
+
+            <aside class="col-xl-3 mt-3 disabled2">
                 <div class="Vagas"></div>
                 <div class="Vagas1">
                     <div class="d">
-                        <p>Jobs em Destaque</p>
+                        <p>Vagas em destaque</p>
                     </div>
-                    <?php while ($rowVagas = $resultVagas->fetch_assoc()):?>
+                <?php while ($rowVagas = $resultVagas->fetch_assoc()):  ?>
                     <div class="buscando">
                         <div class="flex-generic">
                             <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="">
                             <div class="flex-generic" style="flex-direction: column;">
+
                                 <div class="alinhamento1">
                                     <p style="margin-bottom: 2px;"><?php echo($rowVagas['nome']);?> ESTÁ BUSCANDO...</p>
                                 </div>
@@ -342,6 +338,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                     <?php endwhile;?>
+
+
                 </div>
             </aside>
         </div>
@@ -362,7 +360,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 <script>
-    // Obtém o elemento 'textarea' e o parágrafo de contagem de caracteres
+    // Obtém o elemento textarea e o parágrafo de contagem de caracteres
     const textarea = document.getElementById('pubText');
     const contagemCaracteres = document.getElementById('contagemCaracteres');
     const checkboxFields = document.querySelector(".checkboxFields")
@@ -503,5 +501,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     }
 }
+
 </script>
+
 </html>

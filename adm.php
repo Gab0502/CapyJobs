@@ -6,11 +6,14 @@
     <title>CapyJobs - Painel Administrativo</title>
 </head>
 <body>
-    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+    <a href="feed-temp.php">
+    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/></a>
     <h1>Painel Administrativo - Listas</h1><br>
 
     <a href="adm_pub.php">PUBLICAÇÕES</a>
     <br><br>
     <a href="adm_perfil.php">PERFIS</a>
+    <br><br>
+    <a href="feed-temp.php">voltar</a>
 </body>
 </html>

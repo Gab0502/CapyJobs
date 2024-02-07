@@ -29,6 +29,25 @@ if(isset($_GET['idUser'])){
 </head>
 
 <body class="coloracao-body">
+    <?php 
+    $feed = "SELECT
+    tb_pub.*, 
+    tb_users.nome, 
+    tb_users.bio, 
+    tb_users.fotoPerfil,
+    IFNULL(SUM(tb_likes.idUser = '{$_SESSION['idUser']}'), 0) as userLiked,
+    IFNULL(SUM(tb_seg.idSeg2 = '{$_SESSION['idUser']}'), 0) as following
+    FROM tb_pub
+    INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
+    LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
+    LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}' WHERE tb_pub.idUser= $idUser
+    GROUP BY tb_pub.idPub
+    ORDER BY tb_pub.dataPub DESC";
+
+    $result = $conn_capybd->query($feed);
+    
+?>
+
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
             <div class="container-fluid">
@@ -81,14 +100,27 @@ if(isset($_GET['idUser'])){
                     <h2> <?php echo($row['nome'])?></h2>
                 
                     </div>
-                    <?php 
-                    if (!($idUser == $_SESSION["idUser"])) {
-                        echo "<button class='botao-bonito'>seguir</button>";
-                    } else {
-                    echo "<button class='botao-bonito'>...</button>";
-                    }
-               
-                    ?>
+                        <?php
+                        $following = ($row['following'] > 0);
+                        if ($row['idUser'] == $_SESSION['idUser']) {
+                                // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                echo '<details>';
+                                echo '    <summary>...</summary>';
+                                echo '    <button class="btn-edit">editar</button>';
+                                echo '    <button onclick="deletePost('. $row['idPub'] .')" class="btn-edit">excluir</button>';
+                                echo '</details>';
+                        } else {    
+                                // Caso contrário, mostra botão de seguir/seguindo
+                                if ($following) {
+                                    // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                    echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
+                            } else {
+                                    // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
+                            }                          
+                        }
+                        ?>
+
                 </div>
                 <!-- sessão de detalhes  -->
 

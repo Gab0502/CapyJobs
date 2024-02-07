@@ -17,17 +17,18 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
 </head>
 
 <body>
-<img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+<a href="feed-temp.php">
+    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/></a>
 <h1>Painel Administrativo - Lista de Usuários</h1>
-<a src="adm.php">Voltar</a>
+<a href="adm.php">Voltar</a>
 <br><br><br>
-<table width="100%" border="0">
+<table width="100%" border="1">
   <tbody>
     <tr>
       <td><strong>Excluir</strong></td>
       <td><strong>User ID</strong></td>
       <td><strong>Nome</strong></td>
-      <td><strong>Banner</strong></td>
+      <td><strong>Banner  </strong></td>
       <td><strong>Foto de Perfil</strong></td>
       <td><strong>Email</strong></td>
       <td><strong>Senha</strong></td>
@@ -47,25 +48,24 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
     </tr>
 	  
     <!-- INÍCIO do Loop -->	  	
-    <?php do {?>   
-      <tr>
+    <?php do {?>
+      <tr>   
         <td>
           <a href="adm_excluir_perfil.php?idUser=<?php echo($row_rs_perf["idUser"])?>" onclick="return confirm('deseja realmente excluir? <?php echo($row_rs_perf['idUser'])?>')">
             <img src="images/adm/delete.gif" width="20" height="20" alt=""/>
           </a>
         </td>
-      </tr>
       <td><?php echo($row_rs_perf['idUser']);?></td>
       <td><?php echo($row_rs_perf['nome']);?></td>
       <td><img src="images/<?php echo($row_rs_perf['banner']);?>" width=50 ></td>
-      <td><img src="images/<?php echo($row_rs_pub['fotoPerfil']);?>" width=50 ></td>
+      <td><img src="images/<?php echo($row_rs_perf['fotoPerfil']);?>" width=50 ></td>
       <td><?php echo($row_rs_perf['email']);?></td>
       <td><?php echo($row_rs_perf['senha']);?></td>
       <td><?php echo($row_rs_perf['celular']);?></td>
       <td><?php echo($row_rs_perf['bio']);?></td>
-      <td><?php echo($row_rs_perf['linkedin']);?></td>
-      <td><?php echo($row_rs_perf['twitter']);?></td>
-      <td><?php echo($row_rs_perf['instagram']);?></td>
+      <td><a href="<?php echo($row_rs_perf['linkedin']);?>"><?php echo($row_rs_perf['linkedin']);?></td>
+      <td><a href="<?php echo($row_rs_perf['twitter']);?>"><?php echo($row_rs_perf['twitter']);?></td>
+      <td><a href="<?php echo($row_rs_perf['instagram']);?>"><?php echo($row_rs_perf['instagram']);?></td>
       <td><?php echo($row_rs_perf['cep']);?></td>
       <td><?php echo($row_rs_perf['uf']);?></td>
       <td><?php echo($row_rs_perf['rua']);?></td>
@@ -74,7 +74,7 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
       <td><?php echo($row_rs_perf['bairro']);?></td>
       <td><?php echo($row_rs_perf['cidade']);?></td>
       <td><?php echo($row_rs_perf['cpf_cnpj']);?></td>
-      
+    </tr>
     <?php } while($row_rs_perf = mysqli_fetch_assoc($rs_perf));?>
     <!-- FIM do Loop -->
   </tbody>

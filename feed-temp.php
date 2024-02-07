@@ -262,10 +262,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 // Caso contrário, mostra botão de seguir/seguindo
                                 if ($following) {
                                     // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                    echo "<button onclick=\"follow({$row['idUser']})\">Capyseguindo</button>";
+                                    echo "<button onclick=\"follow({$row['idUser']})\" id='user".$row['idUser'].">Capyseguindo</button>";
                                 } else {
                                     // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                    echo "<button onclick=\"follow({$row['idUser']})\">+Capyseguir</button>";
+                                    echo "<button onclick=\"follow({$row['idUser']})\" id='user".$row['idUser'].">+Capyseguir</button>";
                                 }                          
                             }
                             ?>

@@ -19,7 +19,8 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
 <body>
 <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
 <h1>Painel Administrativo - Lista de Publicações</h1>
-<p></p>
+<a href="adm.php">Voltar</a>
+<br><br><br>
 <table width="100%" border="0">
   <tbody>
     <tr>

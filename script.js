@@ -94,9 +94,21 @@ function verificaCEP(cep) {
         type: 'POST',
         url: '_processa-like.php',
         data: { postId: postId },
+        dataType: 'json',
         success: function(response) {
-            // Processar a resposta do servidor (opcional)
-            console.log(response);
+            // Processar a resposta do servidor
+            console.log(response); // Esta linha mostra o retorno do servidor no console
+            // Se você deseja realizar alguma ação com base no retorno, pode fazer isso aqui
+            if (response === "like") {
+                // Faça algo se o retorno for "like"
+                console.log("O usuário curtiu a publicação.");
+            } else if (response === "deslike") {
+                // Faça algo se o retorno for "deslike"
+                console.log("O usuário removeu a curtida da publicação.");
+            } else {
+                // Trate outros casos se necessário
+                console.log("Resposta inesperada do servidor:", response);
+            }
         },
         error: function(error) {
             // Lidar com erros de requisição (opcional)

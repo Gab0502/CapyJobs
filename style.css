@@ -550,6 +550,9 @@ label {
     background-color:var(--verdeEscuro);
     color: #ffffff;
 }
+.btn-like:hover svg{
+    fill: #ffffff;
+}
 .btn-liked{
     -webkit-border-radius: 11;
     -moz-border-radius: 11;

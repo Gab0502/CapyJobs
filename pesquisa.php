@@ -1,5 +1,5 @@
 <?php require("conn_capybd.php");
-session_start()
+session_start();
 
 // INÍCIO (variáveis e consulta) de "pesquisa"
 if(isset($_GET['pesquisa'])){
@@ -318,8 +318,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </section>
                 <?php endwhile; ?>
             </section>
-
-            <aside class="col-xl-3 mt-3 disabled2">
+                        <aside class="col-xl-3 mt-3 disabled2">
                 <div class="Vagas"></div>
                 <div class="Vagas1">
                     <div class="d">

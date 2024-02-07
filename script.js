@@ -89,14 +89,26 @@ function verificaCEP(cep) {
     // Função para lidar com a ação de like
 
     function like(postId) {
-        alert("")
         $.ajax({
         type: 'POST',
         url: '_processa-like.php',
         data: { postId: postId },
+        dataType: 'json',
         success: function(response) {
-            // Processar a resposta do servidor (opcional)
-            console.log(response);
+            // Processar a resposta do servidor
+            console.log(response); // Esta linha mostra o retorno do servidor no console
+            // Se você deseja realizar alguma ação com base no retorno, pode fazer isso aqui
+            if (response['status'] === "like") {
+                document.getElementById(postId).classList.remove('btn-like');
+                document.getElementById(postId).classList.add('btn-liked')
+            } else if (response['status'] === "deslike") {
+                // Faça algo se o retorno for "deslike"
+                document.getElementById(postId).classList.remove('btn-liked');
+                document.getElementById(postId).classList.add('btn-like')
+            } else {
+                // Trate outros casos se necessário
+                console.log("Resposta inesperada do servidor:", response);
+            }
         },
         error: function(error) {
             // Lidar com erros de requisição (opcional)

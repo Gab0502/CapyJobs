@@ -17,7 +17,8 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
 </head>
 
 <body>
-<img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+<a href="feed-temp.php">
+    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/></a>
 <h1>Painel Administrativo - Lista de Usuários</h1>
 <a href="adm.php">Voltar</a>
 <br><br><br>
@@ -62,9 +63,9 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
       <td><?php echo($row_rs_perf['senha']);?></td>
       <td><?php echo($row_rs_perf['celular']);?></td>
       <td><?php echo($row_rs_perf['bio']);?></td>
-      <td><?php echo($row_rs_perf['linkedin']);?></td>
-      <td><?php echo($row_rs_perf['twitter']);?></td>
-      <td><?php echo($row_rs_perf['instagram']);?></td>
+      <td><a href="<?php echo($row_rs_perf['linkedin']);?>"><?php echo($row_rs_perf['linkedin']);?></td>
+      <td><a href="<?php echo($row_rs_perf['twitter']);?>"><?php echo($row_rs_perf['twitter']);?></td>
+      <td><a href="<?php echo($row_rs_perf['instagram']);?>"><?php echo($row_rs_perf['instagram']);?></td>
       <td><?php echo($row_rs_perf['cep']);?></td>
       <td><?php echo($row_rs_perf['uf']);?></td>
       <td><?php echo($row_rs_perf['rua']);?></td>

@@ -6,10 +6,10 @@ if(isset($_GET['idPub'])){
 };
 
 // Excluir as imagens da pasta
-//$query_rs_img = "SELECT * FROM tb_pub WHERE tb_pub.idPub = $idPub";
-//$rs_img = mysqli_query($conn_capybd, $query_rs_img);
-//$row_rs_img = mysqli_fetch_assoc($rs_img);
-//unlink("imagens/upload/$");
+$query_rs_img = "SELECT * FROM tb_pub WHERE tb_pub.idPub = $idPub";
+$rs_img = mysqli_query($conn_capybd, $query_rs_img);
+$row_rs_img = mysqli_fetch_assoc($rs_img);
+unlink("images/". $row_rs_img['midia1']);
 
 $query_rs_pub = "DELETE FROM tb_pub WHERE tb_pub.idPub = $idPub";
 

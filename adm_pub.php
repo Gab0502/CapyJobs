@@ -17,11 +17,12 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
 </head>
 
 <body>
-<img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
+<a href="feed-temp.php">
+    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/></a>
 <h1>Painel Administrativo - Lista de Publicações</h1>
 <a href="adm.php">Voltar</a>
 <br><br><br>
-<table width="100%" border="0">
+<table width="100%" border="1">
   <tbody>
     <tr>
       <td><strong>Excluir</strong></td>

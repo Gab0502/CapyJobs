@@ -19,7 +19,8 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
 <body>
 <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/>
 <h1>Painel Administrativo - Lista de Usuários</h1>
-
+<a src="adm.php">Voltar</a>
+<br><br><br>
 <table width="100%" border="0">
   <tbody>
     <tr>

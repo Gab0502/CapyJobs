@@ -18,18 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insertLikeQuery = "INSERT INTO tb_likes (idPub, idUser) VALUES ($postId, $userId)";
         $conn_capybd->query($insertLikeQuery);
 
+        $result="like";
+
         // Responder ao cliente (pode adicionar mais informações conforme necessário)
     } else {
         // Se o usuário já curtiu, enviar mensagem de erro
         $deleteLikeQuery = "DELETE FROM tb_likes WHERE idPub = $postId AND idUser = $userId";
-        $conn_capybd->query($deleteLikeQuery);    
+        $conn_capybd->query($deleteLikeQuery);
+        $result="deslike";    
     }
-} else {
-    // Caso não seja uma solicitação POST, retornar erro
-    http_response_code(400);
-    echo json_encode(['error' => 'Bad Request']);
 }
-
+echo json_encode(array("status" => $result));
 // Fechar a conexão com o banco de dados
 $conn_capybd->close();
 

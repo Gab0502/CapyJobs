@@ -1,11 +1,3 @@
-<?php require("conn_capybd.php");
-
-if (isset($_SESSION['idUser'])) {
-    // User is logged in, redirect to feed.html
-    header('Location: feed.html');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,14 +75,15 @@ error_reporting(E_ALL);
                             <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
                             <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
                             <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
-                            <div class="flex-generic">
-                                <input required type="text" id="cep" name="cep" placeholder="CEP" style="width: 65%;">
-                                <input required type="text" id="num" name="num" placeholder="N°" style="width: 15%;">
-                            </div>
+                            <div id="mensagem-cep" style='color: white; margin-left:10px;'></div>
+                                    <div class="flex-generic">
+                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                    </div>
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
                                 <input type="checkbox" class="checkboxCustom" id="check">
-                                <a href="#" class="termos">Li e concordo com os termos de uso</a>
+                                <a href="#" class="termos" onclick="openModal()">Li e concordo com os termos de uso</a>
                             </div>
                             <input type="submit" id="submit" disabled>
                     </form>
@@ -112,7 +105,52 @@ error_reporting(E_ALL);
   <?php include("_footer.php");?>
   <!-- FIM Footer -->
 
+  <div id="myModal" class="modal">
+        <div class="termos-modal">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Termos de Uso do Serviço</h2>
+            <p>Bem-vindo aos Termos de Uso do Serviço! Estes termos regem o uso dos nossos serviços online. Ao acessar ou usar nossos serviços, você concorda com estes termos. Leia-os atentamente antes de prosseguir.</p>
+            <p><strong>1. Aceitação dos Termos:</strong> Ao acessar ou usar nossos serviços, você concorda em cumprir estes Termos de Uso. Se você não concordar com estes termos, não poderá acessar ou usar nossos serviços.</p>
+            <p><strong>2. Uso do Serviço:</strong> Você concorda em usar nossos serviços apenas para fins legais e de acordo com estes termos. Você concorda em não usar nossos serviços de maneira que possa danificar, desativar, sobrecarregar ou prejudicar o funcionamento dos serviços ou interferir no uso e aproveitamento de outros usuários.</p>
+            <p><strong>3. Conteúdo:</strong> Nossos serviços podem permitir que você envie, publique, vincule, armazene ou compartilhe conteúdo. Ao fazer isso, você concede a nós uma licença mundial, não exclusiva, gratuita, sublicenciável e transferível para usar, reproduzir, distribuir, preparar trabalhos derivados, exibir e executar esse conteúdo.</p>
+            <p><strong>4. Privacidade:</strong> Respeitamos a sua privacidade e protegemos suas informações de acordo com nossa Política de Privacidade. Ao usar nossos serviços, você concorda com a coleta e uso de informações conforme descrito em nossa Política de Privacidade.</p>
+            <p><strong>5. Modificações:</strong> Podemos modificar ou atualizar estes Termos de Uso periodicamente. Se fizermos alterações significativas, iremos notificá-lo, e o uso continuado dos serviços após as alterações entrar em vigor constituirá sua aceitação dos novos termos.</p>
+            <p><strong>6. Rescisão:</strong> Podemos rescindir ou suspender seu acesso aos nossos serviços imediatamente, sem aviso prévio ou responsabilidade, por qualquer motivo, incluindo, sem limitação, se você violar estes Termos de Uso.</p>
+            <p><strong>7. Limitação de Responsabilidade:</strong> Em nenhuma circunstância seremos responsáveis perante você ou qualquer terceiro por danos indiretos, incidentais, especiais, punitivos ou consequentes, decorrentes ou relacionados ao uso ou incapacidade de uso dos serviços.</p>
+            <p><strong>8. Lei Aplicável:</strong> Estes Termos de Uso são regidos e interpretados de acordo com as leis do Brasil. Qualquer disputa decorrente destes termos será submetida à jurisdição exclusiva dos tribunais localizados no Brasil.</p>
+            <div class="termos-footer">
+                <a href="#" onclick="closeModal()">Fechar</a>
+            </div>
+        </div>
+    </div>
+
   <script>
+        // Funções do modal
+        function openModal() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        // Funções de verificação do checkbox
+        let submit = document.getElementById('submit')
+        let check = document.getElementById('check')
+
+        check.addEventListener("click",checkboxVerification);
+
+        function checkboxVerification(){
+            if(check.checked){
+                submit.disabled = false
+            }else{
+                submit.disabled = true
+            }
+        }
+
+        
+
+        // Função de formatação do telefone
         document.getElementById('telefone').addEventListener('input', formataTel);
 
         function formataTel() {
@@ -161,7 +199,6 @@ error_reporting(E_ALL);
     </script>
 
 </body>
-<script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -1,22 +1,17 @@
 <?php require("conn_capybd.php");  
 session_start();
-?>
 
-<?php 
 if(isset($_GET['idUser'])){
     $idUser = $_GET['idUser'];
 
     $sql = "SELECT * FROM tb_users WHERE idUser = $idUser";
 
-    $feed = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil FROM tb_pub
-    INNER JOIN tb_users ON tb_pub.idUser = $idUser";
 
     $result = $conn_capybd->query($sql);
     
     $row = $result->fetch_assoc();
  }
-
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,7 +19,7 @@ if(isset($_GET['idUser'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>perfil</title>
+    <title>CapyJobs - Perfil de Usuário</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -32,6 +27,27 @@ if(isset($_GET['idUser'])){
 </head>
 
 <body class="coloracao-body">
+    <?php 
+    $feed = "SELECT
+    tb_pub.*, 
+    tb_users.nome, 
+    tb_users.bio, 
+    tb_users.fotoPerfil,
+    IFNULL(SUM(tb_likes.idUser = '{$_SESSION['idUser']}'), 0) as userLiked,
+    IFNULL(SUM(tb_seg.idSeg2 = '{$_SESSION['idUser']}'), 0) as following
+    FROM tb_pub
+    INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
+    LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
+    LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}' WHERE tb_pub.idUser
+    GROUP BY tb_pub.idPub
+    ORDER BY tb_pub.dataPub DESC";
+
+    $pub = $conn_capybd->query($feed);
+
+    $pubs = $pub->fetch_assoc();
+    
+?>
+
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
             <div class="container-fluid">
@@ -73,30 +89,42 @@ if(isset($_GET['idUser'])){
             <!-- sessão de rosto-perfil .-->
             <div class="feed">
 
-                <div class="papel_parede">
+                <div class="papel_parede ">
                     <img src="images/<?php echo($row['banner'])?>" alt="">
                 </div>
 
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
-                    <div class="ajuste-nome">
+                    <div class="ajuste-nome muda">
                     <h2> <?php echo($row['nome'])?></h2>
                 
                     </div>
-                    <?php 
-                    if (!($idUser == $_SESSION["idUser"])) {
-                        echo "<button class='botao-bonito'>seguir</button>";
-                    } else {
-                    echo "<button class='botao-bonito'>...</button>";
-                    }
-               
-                    ?>
+                        <?php
+                        $following = ($pubs['following'] > 0);
+                        if ($row['idUser'] == $_SESSION['idUser']) {
+                                // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                echo '<details>';
+                                echo '    <summary>...</summary>';
+                                echo '    <button id="btn-editar "class="btn-edit">editar</button>';
+                                echo '</details>';
+                        } else {    
+                                // Caso contrário, mostra botão de seguir/seguindo
+                                if ($following) {
+                                    // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                    echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
+                            } else {
+                                    // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
+                            }                          
+                        }
+                        ?>
+
                 </div>
                 <!-- sessão de detalhes  -->
 
             </div>
-            <div class="feed">
+            <div class="feed muda">
                 <h3>sobre</h3> <BR>
 
                 <h5><?php echo($row['bio'])?></h5>

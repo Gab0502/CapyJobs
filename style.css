@@ -352,6 +352,7 @@ header {
     border-radius: 10px;
     height: 35px;
     width: 80%;
+   
 }
 .Vagas1{
     background-color: var(--bgTextArea);
@@ -532,4 +533,132 @@ label {
     height: 450px;
     margin:auto ;
     display: none;
+}
+.btn-like{
+    -webkit-border-radius: 11;
+    -moz-border-radius: 11;
+    border-radius: 11px;
+    font-family: Arial;
+    color: #000000;
+    font-size: 20px;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border: solid var(--verdeEscuro) 1px;
+    text-decoration: none;
+}
+.btn-like:hover{
+    text-decoration: none;
+    background-color:var(--verdeEscuro);
+    color: #ffffff;
+}
+.btn-like:hover svg{
+    fill: #ffffff;
+}
+.btn-liked{
+    -webkit-border-radius: 11;
+    -moz-border-radius: 11;
+    border-radius: 11px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: var(--verdeEscuro);
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+}
+.btn-liked svg{
+    fill: #ffffff;
+}
+.btn-liked:hover{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid var(--verdeEscuro);
+}
+.btn-liked:hover svg{
+    fill: var(--verdeEscuro);
+}
+.btn-edit{
+
+    font-weight: 900;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #027449;
+    padding: 9px 19px;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+    transition : 0ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+details{
+    text-decoration: none;
+}
+
+details summary{
+    list-style: none;
+}
+.termos-modal {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.termos-modal h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.termos-modal p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.termos-modal p strong {
+    color: #000;
+}
+
+.termos-modal p:last-child {
+    margin-bottom: 0;
+}
+
+.termos-modal .close-modal {
+    color: #999;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.termos-modal .close-modal:hover {
+    color: #777;
+}
+
+.termos-modal .termos-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.termos-modal .termos-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.termos-modal .termos-footer a:hover {
+    text-decoration: underline;
 }

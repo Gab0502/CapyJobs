@@ -6,8 +6,6 @@ if(isset($_GET['idUser'])){
 
     $sql = "SELECT * FROM tb_users WHERE idUser = $idUser";
 
-    $feed = "SELECT tb_pub.*, tb_users.nome, tb_users.bio, tb_users.fotoPerfil FROM tb_pub
-    INNER JOIN tb_users ON tb_pub.idUser = $idUser";
 
     $result = $conn_capybd->query($sql);
     
@@ -40,11 +38,13 @@ if(isset($_GET['idUser'])){
     FROM tb_pub
     INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
     LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
-    LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}' WHERE tb_pub.idUser= $idUser
+    LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}' WHERE tb_pub.idUser
     GROUP BY tb_pub.idPub
     ORDER BY tb_pub.dataPub DESC";
 
-    $result = $conn_capybd->query($feed);
+    $pub = $conn_capybd->query($feed);
+
+    $pubs = $pub->fetch_assoc();
     
 ?>
 
@@ -89,25 +89,24 @@ if(isset($_GET['idUser'])){
             <!-- sessão de rosto-perfil .-->
             <div class="feed">
 
-                <div class="papel_parede">
+                <div class="papel_parede ">
                     <img src="images/<?php echo($row['banner'])?>" alt="">
                 </div>
 
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
-                    <div class="ajuste-nome">
+                    <div class="ajuste-nome muda">
                     <h2> <?php echo($row['nome'])?></h2>
                 
                     </div>
                         <?php
-                        $following = ($row['following'] > 0);
+                        $following = ($pubs['following'] > 0);
                         if ($row['idUser'] == $_SESSION['idUser']) {
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
-                                echo '    <button class="btn-edit">editar</button>';
-                                echo '    <button onclick="deletePost('. $row['idPub'] .')" class="btn-edit">excluir</button>';
+                                echo '    <button id="btn-editar "class="btn-edit">editar</button>';
                                 echo '</details>';
                         } else {    
                                 // Caso contrário, mostra botão de seguir/seguindo
@@ -125,7 +124,7 @@ if(isset($_GET['idUser'])){
                 <!-- sessão de detalhes  -->
 
             </div>
-            <div class="feed">
+            <div class="feed muda">
                 <h3>sobre</h3> <BR>
 
                 <h5><?php echo($row['bio'])?></h5>

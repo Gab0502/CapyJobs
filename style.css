@@ -602,3 +602,63 @@ details{
 details summary{
     list-style: none;
 }
+.termos-modal {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.termos-modal h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.termos-modal p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.termos-modal p strong {
+    color: #000;
+}
+
+.termos-modal p:last-child {
+    margin-bottom: 0;
+}
+
+.termos-modal .close-modal {
+    color: #999;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.termos-modal .close-modal:hover {
+    color: #777;
+}
+
+.termos-modal .termos-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.termos-modal .termos-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.termos-modal .termos-footer a:hover {
+    text-decoration: underline;
+}

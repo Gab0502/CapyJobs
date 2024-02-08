@@ -83,10 +83,11 @@ error_reporting(E_ALL);
                             <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
                             <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
                             <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
-                            <div class="flex-generic">
-                                <input required type="text" id="cep" name="cep" placeholder="CEP" style="width: 65%;">
-                                <input required type="text" id="num" name="num" placeholder="N°" style="width: 15%;">
-                            </div>
+                            <div id="mensagem-cep" style='color: white; margin-left:10px;'></div>
+                                    <div class="flex-generic">
+                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                    </div>
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
                                 <input type="checkbox" class="checkboxCustom" id="check">
@@ -148,20 +149,52 @@ error_reporting(E_ALL);
             
         }
 
-        submit.addEventListener('click', aviso())
 
-        function aviso(){
-        if(submit.disabled===true){
-            check.style.border="red"
+        const inputCEP = document.getElementById('local');
+        const mensagemCEP = document.getElementById('mensagem-cep');
+        let timeoutId;
+        console.log(inputCEP.value)
+
+inputCEP.addEventListener('input', function() {
+    clearTimeout(timeoutId);
+    console.log("input detectado")
+    timeoutId = setTimeout(function() {
+        const localidade = inputCEP.value;
+        console.log("timeout")
+        // Use uma expressão regular para verificar se a localidade tem o formato esperado (pode ajustar conforme necessário)
+        if (/^[0-9]{8}$/.test(localidade)) {
+            console.log("verifica")
+            verificaCEP(localidade);
+        } else {
+            mensagemCEP.innerHTML = 'Por favor, insira um CEP válido.';
         }
-    }
-        function desformata(){
-            
+    }, 1000); // Aguarde 1 segundo após a última entrada do usuário
+});
+
+function verificaCEP(cep) {
+    // Faça uma requisição AJAX para o serviço do ViaCEP
+    $.ajax({
+        url: `https://viacep.com.br/ws/${cep}/json/`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            // Verifique se a resposta do ViaCEP indica um CEP válido
+            if (!data.erro) {
+                mensagemCEP.innerHTML = `CEP válido. Localidade: ${data.localidade}, UF: ${data.uf}`;
+            } else {
+                mensagemCEP.innerHTML = 'CEP não encontrado.';
+            }
+        },
+        error: function() { 
+            mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
         }
+    });
+}
+
     </script>
 
 </body>
-<script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

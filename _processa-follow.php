@@ -3,7 +3,6 @@ require("conn_capybd.php");
 session_start();
 header('Content-Type: application/json');
 
-echo("recebido");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $seguidor = $_SESSION['idUser'];
@@ -17,21 +16,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $insertFollowQuery = "INSERT INTO tb_seg (idSeg1, idSeg2) VALUES ($seguido, $seguidor)";
         $conn_capybd->query($insertFollowQuery);
 
-        echo"tudo certo";
+        $result = 'follow';
 
         // Responder ao cliente (pode adicionar mais informações conforme necessário)
     } else {
         // Se o usuário já está seguindo, remover o follow
         $deleteFollowQuery = "DELETE FROM tb_seg WHERE idSeg1 = $seguido AND idSeg2 = $seguidor";
         $conn_capybd->query($deleteFollowQuery);
-
-        // Responder ao cliente (pode adicionar mais informações conforme necessário)
+        $result = "unfollow";
     }
-} else {
-    // Caso não seja uma solicitação POST, retornar erro
-    http_response_code(400);
-    echo json_encode(['error' => 'Bad Request']);
-}
+} 
+echo json_encode(array("status" => $result));
+
 
 // Fechar a conexão com o banco de dados
 $conn_capybd->close();

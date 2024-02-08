@@ -123,9 +123,16 @@ function follow(userIdToFollow) {
         type: 'POST',
         url: '_processa-follow.php',
         data: { userIdToFollow: userIdToFollow },
+        dataType:'json',
         success: function(response) {
-            // Processar a resposta do servidor (opcional)
-            console.log(response);
+            if(response['status']==="follow"){
+                document.getElementById('follow'+userIdToFollow).innerText="+capyseguidor";
+            }else if(response['status']==='unfollow'){
+                document.getElementById('follow'+userIdToFollow).innerHTML="+capyseguir";
+
+            }else{
+                console.log("follow error")
+            }
         },
         error: function(error) {
             // Lidar com erros de requisição (opcional)

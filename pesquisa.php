@@ -6,7 +6,6 @@ session_start();
 if(isset($_GET['pesquisa'])){
     $pesquisa = $_GET['pesquisa'];
 };
-var_dump($pesquisa);
 // Criação da consulta do BD
 $feed = "SELECT 
 tb_pub.*, 
@@ -70,6 +69,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feed</title>
+    <link rel="stylesheet" href="style-login.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style-responsive.css">
+</head>
     <header>
         <nav class="navbar navbar-expand-lg bg-verdeEscuro">
             <div class="container-fluid">
@@ -236,9 +250,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <?php
                             $following = ($row['following'] > 0);
-                            if(isset($row['following'])){
-                                echo("ta funcionando sa porra");
-                            }
                             if ($row['idUser'] == $_SESSION['idUser']) {
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
@@ -311,6 +322,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </article>
                 </section>
                 <?php endwhile; ?>
+
+
+
             </section>
 
             <aside class="col-xl-3 mt-3 disabled2">
@@ -346,6 +360,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
     <footer class="preto">
     </footer>
+    <script src='script.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -359,148 +374,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="responsividade/script-responsive.js"></script>
 </body>
 
-<script>
-    // Obtém o elemento textarea e o parágrafo de contagem de caracteres
-    const textarea = document.getElementById('pubText');
-    const contagemCaracteres = document.getElementById('contagemCaracteres');
-    const checkboxFields = document.querySelector(".checkboxFields")
-
-    checkbox.addEventListener('change', function() {
-        // Se o checkbox estiver marcado, mostra os campos adicionais, caso contrário, os esconde
-        if (checkbox.checked) {
-            console.log("clicado")
-            checkboxFields.style.display = 'block';
-        } else {
-            checkboxFields.style.display = 'none';
-        }
-    });
-
-    // Adiciona um ouvinte de evento ao evento de entrada no textarea
-    textarea.addEventListener('input', function () {
-        // Obtém o conteúdo do textarea
-        const texto = textarea.value;
-
-        if (texto.length > 255) {
-            textarea.value = texto.slice(0, 255)
-        }
-
-        // Conta o número de caracteres no texto
-        const numeroDeCaracteres = texto.length;
-
-        // Atualiza o parágrafo de contagem de caracteres
-        contagemCaracteres.innerHTML = `${numeroDeCaracteres}/1000`;
-    });
-    
-
-    var previewImg = function (event) {
-        var reader = new FileReader();
-        
-        reader.onload = function () {
-            var output = document.getElementById("preview");
-            output.src = reader.result;
-            output.style.display = "block"
-        };
-
-        if (event.target.files && event.target.files[0]) {
-            reader.readAsDataURL(event.target.files[0]);
-        }
-        
-    };
-
-    const inputCEP = document.getElementById('local');
-    const mensagemCEP = document.getElementById('mensagem-cep');
-    let timeoutId;
-
-    inputCEP.addEventListener('input', function() {
-        clearTimeout(timeoutId);
-        console.log("input detectado")
-        timeoutId = setTimeout(function() {
-            const localidade = inputCEP.value;
-            console.log("timeout")
-            // Use uma expressão regular para verificar se a localidade tem o formato esperado (pode ajustar conforme necessário)
-            if (/^[0-9]{8}$/.test(localidade)) {
-                console.log("verifica")
-                verificaCEP(localidade);
-            } else {
-                mensagemCEP.innerHTML = 'Por favor, insira um CEP válido.';
-            }
-        }, 1000); // Aguarde 1 segundo após a última entrada do usuário
-    });
-
-    function verificaCEP(cep) {
-        // Faça uma requisição AJAX para o serviço do ViaCEP
-        $.ajax({
-            url: `https://viacep.com.br/ws/${cep}/json/`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                // Verifique se a resposta do ViaCEP indica um CEP válido
-                if (!data.erro) {
-                    mensagemCEP.innerHTML = `CEP válido. Localidade: ${data.localidade}, UF: ${data.uf}`;
-                } else {
-                    mensagemCEP.innerHTML = 'CEP não encontrado.';
-                }
-            },
-            error: function() { 
-                mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
-            }
-        });
-    }
-
-
-        // Função para lidar com a ação de like
-
-        function like(postId) {
-            alert("")
-            $.ajax({
-            type: 'POST',
-            url: '_processa-like.php',
-            data: { postId: postId },
-            success: function(response) {
-                // Processar a resposta do servidor (opcional)
-                console.log(response);
-            },
-            error: function(error) {
-                // Lidar com erros de requisição (opcional)
-                console.error(error);
-            }
-        });
-    }
-
-    // Função para lidar com a ação de follow
-    function follow(userIdToFollow) {
-        $.ajax({
-            type: 'POST',
-            url: '_processa-follow.php',
-            data: { userIdToFollow: userIdToFollow },
-            success: function(response) {
-                // Processar a resposta do servidor (opcional)
-                console.log(response);
-            },
-            error: function(error) {
-                // Lidar com erros de requisição (opcional)
-                console.error(error);
-            }
-        });
-    }
-
-    function deletePost(idPub){
-        var result =confirm("Deseja mesmo excluir essa publicação")
-        if(result == true){
-        $.ajax({
-            type: 'POST',
-            url: '_excluir-pub.php',
-            data: {idPub:idPub},
-            success:function(response){
-                window.location.reload(); // Isto irá recarregar a página
-            },
-            error:function(error){
-                console.error(error);
-            }
-        });
-    }
-}
 
 </script>
 

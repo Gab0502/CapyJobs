@@ -193,9 +193,14 @@ error_reporting(E_ALL);
             check.style.border="red"
         }
     }
-        function desformata(){
-            
-        }
+
+    // Remover formatação do telefone antes de enviar o formulário
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var telefoneInput = document.getElementById('telefone');
+        telefoneInput.value = telefoneInput.value.match(/\d+/g).join('');
+    });
+
+
     </script>
 
 </body>

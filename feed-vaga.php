@@ -37,6 +37,7 @@ FROM tb_pub
 INNER JOIN tb_users ON tb_pub.idUser = tb_users.idUser
 LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub AND tb_likes.idUser = '{$_SESSION['idUser']}'
 LEFT JOIN tb_seg ON tb_pub.idUser = tb_seg.idSeg1 AND tb_seg.idSeg2 = '{$_SESSION['idUser']}'
+WHERE tb_pub.ad=1
 GROUP BY tb_pub.idPub 
 ORDER BY tb_pub.dataPub DESC";
 

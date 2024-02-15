@@ -11,7 +11,10 @@ $rs_img = mysqli_query($conn_capybd, $query_rs_img);
 $row_rs_img = mysqli_fetch_assoc($rs_img);
 unlink("images/". $row_rs_img['midia1']);
 
-$query_rs_pub = "DELETE FROM tb_pub WHERE tb_pub.idPub = $idPub";
+$query_rs_pub = "DELETE tb_pub, tb_likes 
+FROM tb_pub 
+LEFT JOIN tb_likes ON tb_pub.idPub = tb_likes.idPub
+WHERE tb_pub.idPub = $pub";
 
 $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
 

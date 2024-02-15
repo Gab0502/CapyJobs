@@ -86,42 +86,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
 ?>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-verdeEscuro">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"> <img src="images/logo.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<header>
+<nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
+  <a class="" href="#"><img src="images/logo.png" alt="" width="250px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav mr-auto">
 
-                <div class="collapse navbar-collapse alinhamento" id="navbarSupportedContent">
+    <li class="nav-item ">
+        <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
+    </li>
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 centro">
+    <?php 
+    if (strpos($_SESSION['email'], '@capivarias') !== false) {
+        echo " <li class='nav-item'>
+        <a class='nav-link active' style='color: #ffff;' aria-current='page' href='adm.php'>ADMIN</a>
+                </li>";
+    }
+    ?>
 
-                        <li class="nav-item ">
-                            <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
-                        </li>
-
-                        <?php 
-                        if (strpos($_SESSION['email'], '@capivarias') !== false) {
-                            echo " <li class='nav-item'>
-                            <a class='nav-link active' style='color: #ffff;' aria-current='page' href='adm.php'>ADMIN</a>
-                                    </li>";
-                        }
-                        ?>
-
-                    </ul>
-
-                    <form action="pesquisa.php" method="get" id="form-pesquisa" class="d-flex">
-                        <input name = "pesquisa" id = "pesquisa "class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
+   </ul>
+   
+   <form action="pesquisa.php" method="get" id="form-pesquisa" class="flex-generic">
+                        <input name = "pesquisa" id = "pesquisa "class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
                         <button class="btn btn-success" type="submit">Buscar</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
+    </form>
+  </div>
+</nav>
+</header>
+
+
     <main class="container-fluid feedFull">
         <div class="row">
         <?php if (isset($_SESSION['idUser'])) : ?>

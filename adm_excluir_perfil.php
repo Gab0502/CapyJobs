@@ -16,7 +16,10 @@ if($row_rs_img['fotoPerfil'] != 'capivaraPadraoIcon.jpg' || $row_rs_img['fotoPer
 
 }
 
-$query_rs_perf = "DELETE FROM tb_users WHERE tb_users.idUser = $idUser";
+$query_rs_perf = "DELETE tb_users, tb_seg
+                 FROM tb_users
+                 LEFT JOIN tb_seg ON tb_users.idUser = tb_seg.idSeg1
+                 WHERE tb_users.idUser = $idUser";
 
 $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
 

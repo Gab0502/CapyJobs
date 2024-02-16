@@ -157,17 +157,3 @@ function deletePost(idPub){
     });
 }
 }
-
-document.getElementById('btn-editar').addEventListener('click', function() {
-    Tfor();
-});
-
-function Tfor() {
-    var elementosAjuste = document.querySelectorAll('.alteracao');
-    
-    elementosAjuste.forEach(function(elemento) {
-        var nome = nome.textContent;
-
-        elemento.innerHTML = '<input type="text" value="' + nome + '">';
-    });
-}

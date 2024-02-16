@@ -213,8 +213,22 @@ if(isset($_GET['idUser'])){
     </main>
 
 </body>
+<script>
+document.getElementById('btn-editar').addEventListener('click', function() {
+    Tfor();
+});
+
+function Tfor() {
+    var elementosAjuste = document.querySelectorAll('.alteracao');
+    
+    elementosAjuste.forEach(function(elemento) {
+        var nome = elemento.textContent;
+
+        elemento.innerHTML = '<input type="text" value="' + nome + '">';
+    });
+}
+</script>
 <script> src="script.js"</script>
-<script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

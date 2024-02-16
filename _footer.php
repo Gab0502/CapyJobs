@@ -16,17 +16,16 @@
           <h5>Contato</h5>
           <ul class="list-unstyled">
             <li><a href="#" class="text-white">capyjobs@gamil.com</a></li>
-            <li><a href="#" class="text-white">+55 11 99929-2929</a></li>
-            <li><a href="#" class="text-white">Rua jasinto pinto n°:24</a></li>
+            <li><a href="#" class="text-white">+55 11 9 6969-6969</a></li>
+            <li><a href="#" class="text-white">Rua Jacinto Pinto n°24</a></li>
           </ul>
         </div>
         <!-- Coluna 3 -->
         <div class="col-md-3 mb-4">
           <h5>Redes Sociais</h5>
           <ul class="list-unstyled">
-            <li><a href="https://www.facebook.com/" class="text-white">Facebook</a></li>
             <li><a href="https://br.linkedin.com/" class="text-white">Linkedin</a></li>
-            <li><a href="https://www.behance.net/" class="text-white">Behance</a></li>
+            <li><a href="https://www.facebook.com/" class="text-white">Facebook</a></li>
             <li><a href="https://www.instagram.com/" class="text-white">Instagram</a></li>
           </ul>
         </div>

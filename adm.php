@@ -1,6 +1,6 @@
 <?php require("conn_capybd.php");?>
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <title>CapyJobs - Painel Administrativo</title>

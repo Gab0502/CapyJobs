@@ -1,3 +1,12 @@
+<?php require("conn_capybd.php");
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: feed.html');
+    exit();
+};
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

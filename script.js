@@ -157,18 +157,17 @@ function deletePost(idPub){
     });
 }
 }
- document.getElementById('btn-editar').addEventListener('click', function(){
+
+document.getElementById('btn-editar').addEventListener('click', function() {
     Tfor();
- });
-    function Tfor(){
-        var mudanca = document.querySelector('muda');
-    }
+});
 
+function Tfor() {
+    var elementosAjuste = document.querySelectorAll('.alteracao');
+    
+    elementosAjuste.forEach(function(elemento) {
+        var nome = nome.textContent;
 
-    // <div class="papel_parede">
-    //  <img src="images/<?php echo($row['banner'])?>" alt="">
-    //  </div>
-
-    // var nomeElemento = document.querySelector('.ajuste-nome h2');
-    // var nome = nomeElemento.textContent;
-    //  nomeElemento.innerHTML = '<input type="text" value="' + nome + '">';
+        elemento.innerHTML = '<input type="text" value="' + nome + '">';
+    });
+}

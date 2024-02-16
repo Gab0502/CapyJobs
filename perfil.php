@@ -26,7 +26,7 @@ if(isset($_GET['idUser'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="coloracao-body">
+<body">
     <?php 
     $feed = "SELECT
     tb_pub.*, 
@@ -96,8 +96,8 @@ if(isset($_GET['idUser'])){
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
-                    <div class="ajuste-nome muda">
-                    <h2> <?php echo($row['nome'])?></h2>
+                    <div class="ajuste-nome">
+                    <h2 class="alteracao"> <?php echo($row['nome'])?></h2>
                 
                     </div>
                         <?php
@@ -106,7 +106,7 @@ if(isset($_GET['idUser'])){
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
-                                echo '    <button id="btn-editar "class="btn-edit">editar</button>';
+                                echo '    <button id="btn-editar" class="btn-edit">editar</button>';
                                 echo '</details>';
                         } else {    
                                 // Caso contrário, mostra botão de seguir/seguindo
@@ -119,6 +119,7 @@ if(isset($_GET['idUser'])){
                             }                          
                         }
                         ?>
+                    </div>
 
                 </div>
                 <!-- sessão de detalhes  -->
@@ -212,6 +213,7 @@ if(isset($_GET['idUser'])){
     </main>
 
 </body>
+<script> src="script.js"</script>
 <script src="script-login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

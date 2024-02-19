@@ -100,7 +100,7 @@ if(isset($_GET['idUser'])){
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
                     <div class="ajuste-nome">
-                    <h2 class="alteracao"> <?php echo($row['nome'])?></h2>
+                    <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
                 
                     </div>
                         <?php

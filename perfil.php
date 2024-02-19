@@ -93,6 +93,9 @@ if(isset($_GET['idUser'])){
                     <img src="images/<?php echo($row['banner'])?>" alt="">
                 </div>
 
+                <!-- forma para alterar dados -->
+
+                <form method="POST" >
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
@@ -106,7 +109,7 @@ if(isset($_GET['idUser'])){
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
-                                echo '    <button id="btn-editar" class="btn-edit">editar</button>';
+                                echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
                                 echo '</details>';
                         } else {    
                                 // Caso contrário, mostra botão de seguir/seguindo
@@ -133,17 +136,15 @@ if(isset($_GET['idUser'])){
             </div>
             <!-- sessão de contato -->
             <div class="feed">
-                <h5>
-                Celular: <?php echo($row['celular']) ?> <br>
-                E-mail: <?php echo($row['email'])?> <br>
-                Localidade:
-                Bairro:<?php echo($row['bairro'])?> | cidade: <?php echo($row['cidade'])?><br>
-                Linkedin: <a href=""><?php echo($row['linkedin'])?></a> <br>
-                Twitter: <a href=""><?php echo($row['twitter'])?></a> <br>
-                Instagram: <a href=""><?php echo($row['instagram'])?></a> 
-                </h5>
-
+                <h5 class='alteracao' id='celular'>Celular: <?php echo($row['celular']) ?></h5>
+                <h5 class='alteracao' id='email'>E-mail: <?php echo($row['email']) ?></h5>
+                <h5 class='alteracao' id='bairro'>Bairro: <?php echo($row['bairro']) ?></h5>  
+                <h5 class='alteracao' id='cidade'>Cidade: <?php echo($row['cidade']) ?></h5>
+                <h5 class='alteracao' id='linkedin'>Linkedin: <a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                <h5 class='alteracao' id='twitter'>Twitter: <a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                <h5 class='alteracao' id='instagram'>Instagram: <a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
             </div>
+            </form>
 
             </div>
             <!-- divisão para inserir infromações de  -->
@@ -223,8 +224,8 @@ function Tfor() {
     
     elementosAjuste.forEach(function(elemento) {
         var nome = elemento.textContent;
-
-        elemento.innerHTML = '<input type="text" value="' + nome + '">';
+        var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '">';
+        elemento.innerHTML = input;
     });
 }
 </script>

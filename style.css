@@ -683,3 +683,8 @@ details summary{
 .navbar-expand{
     flex-wrap: wrap !important;
 }
+.iconNav{
+    border-radius: 50%;
+    width: 55px;
+    margin-right: 10px;
+}

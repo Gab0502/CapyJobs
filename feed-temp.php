@@ -94,11 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav mr-auto">
-
     <li class="nav-item ">
-        <a class="nav-link active" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
+        <a class="nav-link" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
     </li>
-
     <?php 
     if (strpos($_SESSION['email'], '@capivarias') !== false) {
         echo " <li class='nav-item'>
@@ -106,9 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </li>";
     }
     ?>
-
    </ul>
-   
+    <details >
+        <summary><img src="images/<?php echo($_SESSION['profilePic'])  ?>" alt="" class="iconNav"></summary>
+        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" class="nav-link" style="color: #ffff;">Perfil</a>
+        <a href="_logout.php" class="nav-link" style="color: #dc3545">logout</a>
+    </details>
    <form action="pesquisa.php" method="get" id="form-pesquisa" class="flex-generic">
                         <input name = "pesquisa" id = "pesquisa "class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
                         <button class="btn btn-success" type="submit">Buscar</button>

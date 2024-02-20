@@ -1,6 +1,6 @@
 <?php require("conn_capybd.php");
 
-$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg2 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
+$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg1 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
 $topusers_row = mysqli_fetch_assoc($topusers_exe);
 

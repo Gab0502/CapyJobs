@@ -1,4 +1,13 @@
 <?php require("conn_capybd.php");
+
+$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg2 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
+$topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
+$topusers_row = mysqli_fetch_assoc($topusers_exe);
+
+$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfiL, COUNT(l.idLike) AS num_likes FROM tb_pub p INNER JOIN tb_users u ON p.idUser = u.idUser INNER JOIN tb_likes l ON p.idPub = l.idPub WHERE l.idLike = 7 GROUP BY p.idPub, p.titulo ORDER BY num_likes DESC LIMIT 4";
+$minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
+$minifeed_row = mysqli_fetch_assoc($minifeed_exe);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,35 +60,34 @@
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
       <div class="flex-cards col-xl-3">
-        <?php// do{ ?>
+        <?php do{ ?>
         <div class="card">
           <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
-          <p> nome do usuário </p>
-          <P> tag | tag | tag | tag </P>
+          <p><?php echo($topusers_row['nome']);?></p>
+          <P><?php echo($topusers_row['bio']);?></P>
         </div>
-        <?php// } while();?>
+        <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
       </div>
-    </section>
-    
-      <div class="col-xl-3">
-        <section class="feed">
+      </section>
+      <section class="feed">
+        <?php do{ ?>
+        <div class="col-xl-3">
           <div class="flex-generic">
             <div class="flex-generic" style="align-items: center;">
               <div class="post-user-name pub-perfil">
-                <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
-                <h5> Nome do usuário </h5>
+                <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário.">
+                <h5><?php echo($minifeed_row['nome']);?></h5>
+              </div>
+              <P><?php echo($minifeed_row['titulo']);?></P>
+              <p><?php echo($minifeed_row['descricao']);?></p>
+              <div class="post-content">
+                <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
             </div>
-            <p>Descrição da Publicação.</p>
-            <div class="post-content">
-              <h6 class="tags">#tag #tag #tag</h6>
-            </div>
-          </section>
           </div>
         </div>
-      </div>
-    </div>
-    </section>
+        <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
+      </section>
     <section>
       <div class="container-fluid bullet-points">
         <div class="row">

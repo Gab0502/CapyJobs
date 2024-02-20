@@ -55,8 +55,8 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
       </div>
     </section>
 
-    <!-- não alterar e colocar nada nessa linha, apenas estilo -->
-    <div class="faixa bg-bege"></div>
+    <div class="faixa bg-bege"></div> <!-- NÃO ALTERAR LINHA! (apenas estilo) -->
+
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
       <div class="flex-cards col-xl-3">

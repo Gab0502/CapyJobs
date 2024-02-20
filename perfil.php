@@ -21,12 +21,11 @@ if(isset($_GET['idUser'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Perfil de Usuário</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body">
+<body>
     <?php 
     $feed = "SELECT
     tb_pub.*, 
@@ -45,6 +44,17 @@ if(isset($_GET['idUser'])){
     $pub = $conn_capybd->query($feed);
 
     $pubs = $pub->fetch_assoc();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $telefone = $_POST['telefone'];
+        $cep = $_POST['cep'];
+        $num = $_POST['num'];
+        $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
+        $cpf = $_POST['cpf'];
+    }
     
 ?>
 
@@ -96,6 +106,9 @@ if(isset($_GET['idUser'])){
                 <!-- forma para alterar dados -->
 
                 <form method="POST" >
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    if(){}
+
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
@@ -110,7 +123,10 @@ if(isset($_GET['idUser'])){
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
                                 echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
+                                echo '    <button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
+                                echo '    <button style = "display: none;" type="button" id="btn-salvar" class="btn-edit">salva</button>';
                                 echo '</details>';
+
                         } else {    
                                 // Caso contrário, mostra botão de seguir/seguindo
                                 if ($following) {
@@ -131,7 +147,7 @@ if(isset($_GET['idUser'])){
             <div class="feed muda">
                 <h3>sobre</h3> <BR>
 
-                <h5><?php echo($row['bio'])?></h5>
+                <h5 class='alteracao id=''><?php echo($row['bio'])?></h5>
 
             </div>
             <!-- sessão de contato -->
@@ -215,7 +231,10 @@ if(isset($_GET['idUser'])){
 
 </body>
 <script>
-document.getElementById('btn-editar').addEventListener('click', function() {
+    document.getElementById('btn-editar').addEventListener('click', function() {
+        document.getElementById('btn-editar').style.display = "none";
+        document.getElementById('btn-cancelar').style.display = "inline-block";
+        document.getElementById('btn-salvar').style.display = "inline-block";
     Tfor();
 });
 
@@ -228,6 +247,14 @@ function Tfor() {
         elemento.innerHTML = input;
     });
 }
+    document.getElementById('btn-cancelar').addEventListener('click', function() {
+        document.getElementById('tbn-editar').style.display = "inline-block";
+        document.getElementById('btn-cancelar').style.display = "none";
+        document.getElementById('tbn-salvar').style.display = "none";
+    
+})
+
+
 </script>
 <script> src="script.js"</script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

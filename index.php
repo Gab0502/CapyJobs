@@ -1,3 +1,14 @@
+<?php require("conn_capybd.php");
+
+$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg2 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
+$topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
+$topusers_row = mysqli_fetch_assoc($topusers_exe);
+
+$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfiL, COUNT(l.idLike) AS num_likes FROM tb_pub p INNER JOIN tb_users u ON p.idUser = u.idUser INNER JOIN tb_likes l ON p.idPub = l.idPub WHERE l.idLike = 7 GROUP BY p.idPub, p.titulo ORDER BY num_likes DESC LIMIT 4";
+$minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
+$minifeed_row = mysqli_fetch_assoc($minifeed_exe);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,43 +25,14 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="index.php"><img src="images/logo.png" title="" alt=""></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse center" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorias
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Bandas</a>
-              <a class="dropdown-item" href="#">Entreterimento</a>
-              <a class="dropdown-item" href="#">Decoração</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cadastro.php">CADASTRE-SE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">LOGIN</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <?php include("_header.php");?>
   <main>
     <section class="image-fluid bg-verdeMedio">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xl-6 form-pesquisa" id="banner1">
             <form onsubmit="" class="form-pesquisa-input">
-              <input type="text" placeholder="  Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
+              <input type="text" placeholder="    Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
                 id="barradepesquisa">
               <button>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -59,11 +41,10 @@
                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </button>
+              <br><br>
               <div class="input-buttons">
-                <p>Relevantes:</p>
-                <button class="buttons">banda</button>
-                <button class="buttons">entrenimento</button>
-                <button class="buttons">brinquedos</button>
+                <h3 style="color: white">Relevantes: </h3>
+                <button class="buttons"><?php?></button>
               </div>
             </form>
           </div>
@@ -73,67 +54,40 @@
         </div>
       </div>
     </section>
-    </section>
 
-    <!-- não alterar e colocar nada nessa linha, apenas estilo -->
-    <div class="faixa bg-bege"></div>
+    <div class="faixa bg-bege"></div> <!-- NÃO ALTERAR LINHA! (apenas estilo) -->
+
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards">
+      <div class="flex-cards col-xl-3">
+        <?php do{ ?>
         <div class="card">
-          <img src="images/capivaraCozinheiraIcon.jpg" alt="">
-          <p> cozinheiro</p>
-          <P>cozinheiro Profissional | nodeste |Festas em Familia | Entreterimento</P>
+          <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
+          <p><?php echo($topusers_row['nome']);?></p>
+          <P><?php echo($topusers_row['bio']);?></P>
         </div>
-        <div class="card">
-          <img src="images/capivaraTernoIcon.jpg" alt="">
-          <p> organizador de eventos</p>
-          <P>organização de eventos | contração |Festas em Familia | Entreterimento</P>
-        </div>
-        <div class="card">
-          <img src="images/capivaraPalhacoIcon.jpg" alt="">
-          <p> MANO LOUCOS SHOW</p>
-          <P>Palhaço Profissional | Balões |Festas em Familia | Entreterimento</P>
-        </div>
-        <div class="card">
-          <img src="images/capivaraPagodeIcon.jpg" alt="">
-          <p> cantor de eventos</p>
-          <P>pagode | samba |Festas em Familia e new era | Entreterimento</P>
-        </div>
-
+        <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
       </div>
-    </section>
-    
-      <div class="col-xl-3">
-        <section class="feed">
-
+      </section>
+      <section class="feed">
+        <?php do{ ?>
+        <div class="col-xl-3">
           <div class="flex-generic">
             <div class="flex-generic" style="align-items: center;">
               <div class="post-user-name pub-perfil">
-                <img src="images/OIP.jfif" alt="">
-                <h5> Armando pagodeiro</h5>
-                <p>Ratos do porão | palhaço nas horas vagas</p>
+                <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário.">
+                <h5><?php echo($minifeed_row['nome']);?></h5>
+              </div>
+              <P><?php echo($minifeed_row['titulo']);?></P>
+              <p><?php echo($minifeed_row['descricao']);?></p>
+              <div class="post-content">
+                <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
             </div>
-            <div>
-            </div>
           </div>
-
-          <div class="post-content">
-            <h6 class="tags">#festa #jonasBrothers #kanyeWest</h6>
-          </div>
-
-          <p>É com alegria que anunciamos a incrível artista circense, nossa palhaça
-            extraordinária! Seu brilho cativante e sua habilidade única encantam multidões,
-
-
-          </p>
-        </section>
-      </div>
-    </div>
-    </div>
-    </div>
-    </section>
+        </div>
+        <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
+      </section>
     <section>
       <div class="container-fluid bullet-points">
         <div class="row">
@@ -235,56 +189,8 @@
       </div>
   </main>
 
-  <footer class="bg-verdeEscuro text-white pt-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <!-- Coluna 1 -->
-        <div class="col-md-3 mb-4">
-          <h5>Links Rápidos</h5>
-          <ul class="list-unstyled">
-            <li><a href="index.php" class="text-white">Início</a></li>
-            <li><a href="#" class="text-white">Sobre</a></li>
-            <li><a href="#" class="text-white">Serviços</a></li>
-            <li><a href="#" class="text-white">Contato</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 2 -->
-        <div class="col-md-3 mb-4">
-          <h5>Contato</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">contato@contato.com</a></li>
-            <li><a href="#" class="text-white">+55 11 98545-4545</a></li>
-            <li><a href="#" class="text-white">Rua Exemplo: 52</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 3 -->
-        <div class="col-md-3 mb-4">
-          <h5>Redes Sociais</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Facebook</a></li>
-            <li><a href="#" class="text-white">Linkedin</a></li>
-            <li><a href="#" class="text-white">Behance</a></li>
-            <li><a href="#" class="text-white">Instagram</a></li>
-          </ul>
-        </div>
-        <!-- Coluna 4 -->
-        <div class="col-md-3 mb-4">
-          <h5>Newletter</h5>
-          <p class="text-white">Inscreva-se para receber novidades</p>
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Digite seu e-mail">
-            </div>
-            <button type="submit" class="btn btn-primary">Inscreva-se</button>
-          </form>
-        </div>
-      </div>
-      <hr class="bg-white mb-2">
-      <div class="row d-flex justify-content-center ">
-        <p class="text-white">2023 - CC - Creative Commons - Atlantida</p>
-      </div>
-    </div>
-  </footer>
+  <?php include("_footer.php");?>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -297,6 +203,4 @@
   <script src="responsividade/script-responsive.js"></script>
 
 </body>
-</script>
-
 </html>

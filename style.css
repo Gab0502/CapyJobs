@@ -54,8 +54,7 @@ h1 {
 .centrarAo {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 25%;
+    align-items: center;    
 }
 .paragrafo1 {
     float: left;
@@ -264,7 +263,6 @@ header {
     border: none;
     border-radius: 25px;
     margin: 0px;
-    width: 80%;
     height: 70px;
     align-items: center;
 }
@@ -436,7 +434,7 @@ header {
     
 }
 .grupPost-textArea{
-    width: 70% !important;
+    width: 70%;
 
 }
 .APOLLO{

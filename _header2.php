@@ -43,12 +43,18 @@ if (isset($_SESSION['username'])) {
                 </li>";
     }
     ?>
-   </ul>
-    <details >
-        <summary><img src="images/<?php echo($_SESSION['profilePic'])  ?>" alt="" class="iconNav"></summary>
-        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" class="nav-link" style="color: #ffff;">Perfil</a>
-        <a href="_logout.php" class="nav-link" style="color: #dc3545">logout</a>
+  </ul>
+  <?php if(isset($_SESSION['idUser'])): ?>
+    <!-- Se o usuário estiver logado -->
+    <details>
+        <summary><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="" class="iconNav"></summary>
+        <a href="perfil.php?idUser=<?php echo $_SESSION['idUser']; ?>" class="nav-link" style="color: #ffff;">Perfil</a>
+        <a href="_logout.php" class="nav-link" style="color: #dc3545;">Logout</a>
     </details>
+    <?php else: ?>
+        <!-- Se o usuário não estiver logado -->
+        <a href="login.php" class="nav-link" style="color: #ffff;">Se conecte</a>
+    <?php endif; ?>
    <form action="pesquisa.php" method="get" id="form-pesquisa" class="flex-generic">
                         <input name = "pesquisa" id = "pesquisa "class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
                         <button class="btn btn-success" type="submit">Buscar</button>

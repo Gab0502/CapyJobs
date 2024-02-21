@@ -118,10 +118,10 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
               </div>
               <div class="caixa1">
                 <div class="box">
-                  <img src="images/pastry chef-pana.png" class="disabled1" alt="">
+                  <img src="images/pastry chef-pana.png" class="disabled2" alt="">
                 </div>
                 <div class="box">
-                  <img src="images/Puppet show-amico.png" class="disabled1" alt="">
+                  <img src="images/Puppet show-amico.png" class="disabled2" alt="">
                 </div>
               </div>
             </div>
@@ -174,11 +174,11 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
         <div class="col-xl-6 fonteIndex">
           <div class="arroz">
             <div class="container-custom">
-              <form action="_login-form.php" mehtod="post" class="form-login-index">
+              <form action="_login-form.php" method="post" class="form-login-index">
                 <h3>Login</h3>
                 <input type="text-" id="username" name="username">
                 <h3>Senha</h3>
-                <input type="text" id="password" name="password">
+                <input type="password" id="password" name="password">
                 <button>Entrar</button>
               </form>
               <div class="flex-generic">

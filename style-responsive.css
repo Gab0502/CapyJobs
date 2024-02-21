@@ -3,6 +3,15 @@
     display: none;
  }
 
+ .feed-img img{
+   width: 400px;
+ }
+ .form-header{
+   width: 140px !important;
+ }
+ .grupPost-textArea{
+   width: 100%;
+ }
 
  .caixa1{
     justify-content: center;

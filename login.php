@@ -22,38 +22,6 @@ if (isset($_SESSION['username'])) {
     <!-- Header -->
     <?php include("_header.php")?>
     <!-- login -->
-    <?php
-
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $username = $_POST[ 'username'];
-            $password = $_POST['password'];
-
-            $login = "SELECT * FROM tb_users WHERE email = ? AND senha = ?"; 
-            $stmt = $conn_capybd->prepare($login);
-            $stmt->bind_param('ss', $username, $password);
-            $stmt->execute();
-            $result=$stmt->get_result();
-            
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $idUsuario = $row['idUser'];
-                $_SESSION['idUser'] = $row['idUser'];
-                $_SESSION['name'] = $row['name'];
-                $_SESSION['bio'] = $row['bio'];
-                $_SESSION['profilePic'] = $row['fotoPerfil'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['phone'] = $row['phone'];
-                $_SESSION['UF'] = $row['UF'];
-
-
-
-                header('Location: feed-temp.php');  // Redirecionar para a página após o login
-                exit(); 
-            }else{
-                echo("erro");
-            }
-        }
-    ?>
     <!--FIM Header-->
     <main>
         <section class="container-fluid">
@@ -63,7 +31,7 @@ if (isset($_SESSION['username'])) {
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
-                        <form onsubmit="_login-form.php" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                        <form action='_login-form.php' method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <h3>Login</h3>
                             <input type="text" id="username" name="username" placeholder="EMAIL">
                             <h3>Senha</h3>
@@ -90,9 +58,6 @@ if (isset($_SESSION['username'])) {
   <!-- FIM Footer -->
 </body>
 <script>
-    document.getElementById('logar').addEventListener(onsubmit,function(event){
-        event.preventDefault()
-    });
 
 
 </script>

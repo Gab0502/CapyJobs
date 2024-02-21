@@ -228,6 +228,4 @@ if (isset($_SESSION['username'])) {
 
 </body>
 
-<?php include("_complementos.php")?>
-
 </html>

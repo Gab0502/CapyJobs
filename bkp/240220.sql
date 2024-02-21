@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/02/2024 às 12:15
+-- Tempo de geração: 20/02/2024 às 15:40
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -38,9 +38,7 @@ CREATE TABLE `tb_likes` (
 --
 
 INSERT INTO `tb_likes` (`idLike`, `idPub`, `idUser`) VALUES
-(3, 61, 1),
-(5, 63, 1),
-(6, 72, 1);
+(7, 74, 1);
 
 -- --------------------------------------------------------
 
@@ -86,6 +84,13 @@ CREATE TABLE `tb_seg` (
   `idSeg1` int(11) NOT NULL,
   `idSeg2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_seg`
+--
+
+INSERT INTO `tb_seg` (`idSeg`, `idSeg1`, `idSeg2`) VALUES
+(5, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -176,7 +181,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT de tabela `tb_likes`
 --
 ALTER TABLE `tb_likes`
-  MODIFY `idLike` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idLike` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `tb_pub`
@@ -188,7 +193,7 @@ ALTER TABLE `tb_pub`
 -- AUTO_INCREMENT de tabela `tb_seg`
 --
 ALTER TABLE `tb_seg`
-  MODIFY `idSeg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idSeg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_users`

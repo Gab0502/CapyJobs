@@ -2,7 +2,7 @@ function checkWindowWidth() {
     var windowWidth = window.innerWidth;
     var banner1Element = document.getElementById("banner1");
 
-    if (windowWidth <= 1290) {
+    if (windowWidth <= 1360) {
         document.getElementById("banner2").style.display = "none";
         banner1Element.classList.remove("col-xl-6");
         banner1Element.classList.add("col-xl-12");

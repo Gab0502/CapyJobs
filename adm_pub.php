@@ -26,6 +26,7 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
   <tbody>
     <tr>
       <td><strong>Excluir</strong></td>
+      <td><strong>Editar</strong></td>
       <td><strong>Pub ID</strong></td>
       <td><strong>User ID</strong></td>
       <td><strong>AD?</strong></td>
@@ -52,21 +53,26 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
             <img src="images/adm/delete.gif" width="20" height="20" alt=""/>
           </a>
         </td>
-        <td><?php echo($row_rs_pub['idPub']);?></td>
-        <td><?php echo($row_rs_pub['idUser']);?></td>
-        <td><?php echo($row_rs_pub['ad']);?></td>
-        <td><?php echo($row_rs_pub['tag']);?></td>
-        <td><?php echo($row_rs_pub['titulo']);?></td>
-        <td><?php echo($row_rs_pub['descricao']);?></td>
-        <td><?php echo($row_rs_pub['dia']);?></td>
-        <td><?php echo($row_rs_pub['dataPub']);?></td>
-        <td><?php echo($row_rs_pub['cep']);?></td>
-        <td><?php echo($row_rs_pub['uf']);?></td>
-        <td><?php echo($row_rs_pub['rua']);?></td>
-        <td><?php echo($row_rs_pub['numero']);?></td>
-        <td><?php echo($row_rs_pub['comp']);?></td>
-        <td><?php echo($row_rs_pub['bairro']);?></td>
-        <td><?php echo($row_rs_pub['cidade']);?></td>
+        <td>
+          <a href="adm_editar.php?idPub=<?php echo($row_rs_pub["idPub"])?>" >
+            <img src="images/adm/edit.gif" width="20" height="20" alt=""/>
+          </a>
+        </td>
+        <td><?php echo($row_rs_pub ['idPub']); ?></td>
+        <td><?php echo($row_rs_pub ['idUser']); ?></td>
+        <td><?php echo($row_rs_pub ['ad']); ?></td>
+        <td><?php echo($row_rs_pub ['tag']); ?></td>
+        <td><?php echo($row_rs_pub ['titulo']); ?></td>
+        <td><?php echo($row_rs_pub ['descricao']); ?></td>
+        <td><?php echo($row_rs_pub ['dia']); ?></td>
+        <td><?php echo($row_rs_pub ['dataPub']); ?></td>
+        <td><?php echo($row_rs_pub ['cep']); ?></td>
+        <td><?php echo($row_rs_pub ['uf']); ?></td>
+        <td><?php echo($row_rs_pub ['rua']); ?></td>
+        <td><?php echo($row_rs_pub ['numero']); ?></td>
+        <td><?php echo($row_rs_pub ['comp']); ?></td>
+        <td><?php echo($row_rs_pub ['bairro']); ?></td>
+        <td><?php echo($row_rs_pub ['cidade']); ?></td>
         <td><img src="images/<?php echo($row_rs_pub['midia1']);?>" width=50 ></td>
         <td colspan="10"><hr></td>
       </tr>

@@ -1,3 +1,5 @@
+<a href="login.php">
+
 <?php require("conn_capybd.php");
 
 $topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg1 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
@@ -69,25 +71,32 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
         <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
       </div>
       </section>
-      <section class="feed">
         <?php do{ ?>
         <div class="col-xl-3">
+        <section class="feed">
           <div class="flex-generic">
-            <div class="flex-generic" style="align-items: center;">
+            <div  style="align-items: center;">
               <div class="post-user-name pub-perfil">
-                <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário.">
+                <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário." width="5px">
                 <h5><?php echo($minifeed_row['nome']);?></h5>
               </div>
-              <P><?php echo($minifeed_row['titulo']);?></P>
-              <p><?php echo($minifeed_row['descricao']);?></p>
               <div class="post-content">
                 <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
+              <p><?php echo($minifeed_row['titulo']);?></p>
+              <p>cusujo</p>
             </div>
           </div>
+          </section>
         </div>
         <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
-      </section>
+
+          
+
+
+
+
+
     <section>
       <div class="container-fluid bullet-points">
         <div class="row">
@@ -96,12 +105,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
               <h1 class="fonteIndex centrarAo">
                 seja bem vindo
               </h1>
-              <h1 class="fonteIndex centrarAo">
-                ao
-              </h1>
-              <h1 class="fonteIndex centrarAo">
-                CapyJobs
-              </h1>
+
             </div>
             <div class="caixa-flex">
               <div class="caixa1">
@@ -201,6 +205,5 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
   <script src="responsividade/script-responsive.js"></script>
-
 </body>
 </html>

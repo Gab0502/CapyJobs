@@ -47,6 +47,7 @@ if(isset($_GET['idUser'])){
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['nome'];
+        $bio = $_POST['bio'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         $telefone = $_POST['telefone'];
@@ -54,6 +55,7 @@ if(isset($_GET['idUser'])){
         $num = $_POST['num'];
         $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
         $cpf = $_POST['cpf'];
+        
     }
     
 ?>
@@ -147,7 +149,7 @@ if(isset($_GET['idUser'])){
             <div class="feed muda">
                 <h3>sobre</h3> <BR>
 
-                <h5 class='alteracao id=''><?php echo($row['bio'])?></h5>
+                <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
 
             </div>
             <!-- sessão de contato -->
@@ -231,6 +233,9 @@ if(isset($_GET['idUser'])){
 
 </body>
 <script>
+
+    var valOrig = []; 
+
     document.getElementById('btn-editar').addEventListener('click', function() {
         document.getElementById('btn-editar').style.display = "none";
         document.getElementById('btn-cancelar').style.display = "inline-block";
@@ -251,8 +256,20 @@ function Tfor() {
         document.getElementById('tbn-editar').style.display = "inline-block";
         document.getElementById('btn-cancelar').style.display = "none";
         document.getElementById('tbn-salvar').style.display = "none";
-    
-})
+    Cfor();
+});
+function Cfor(){
+
+        var elementosAjuste = document.querySelectorAll('.alteracao');
+        valOrig = []; // Limpar array de valores originais
+            elementosAjuste.forEach(function(elemento) {
+                var nome = elemento.textContent;
+                valOrig.push(nome); // Armazenar valor original
+                var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '">';
+                elemento.innerHTML = input;
+            });
+        }
+
 
 
 </script>

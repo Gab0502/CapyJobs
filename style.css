@@ -51,6 +51,9 @@ h1 {
     background-color: #E0FEEF;
     margin: 25px;
 }
+.flex-generic{
+    display: flex;
+}
 .centrarAo {
     display: flex;
     justify-content: center;

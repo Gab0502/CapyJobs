@@ -57,6 +57,25 @@ if(isset($_GET['idUser'])){
         $cpf = $_POST['cpf'];
         
     }
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        $nome = $_POST['nome'];
+        $bio = $_POST['bio'];
+        $celular = $_POST['celular'];
+        $email = $_POST['email'];
+        $bairro = $_POST['bairro'];
+        $cidade = $_POST['cidade'];
+        $linkedin = $_POST['linkedin'];
+        $twitter = $_POST['twitter'];
+        $instagram = $_POST['instagram'];
+
+
+        $sql = "UPDATE `tb_users` SET `nome` = '$nome', `email` = '$email', `bio` = '$bio', `linkedin` = '$linkedin', `twitter` = '$twitter', `instagram` = '$instagram', `bairro` = '$bairro', `cidade` = '$cidade' WHERE `tb_users`.`idUser` = '$idUser'";
+
+        
+
+    }
     
 ?>
 
@@ -107,10 +126,8 @@ if(isset($_GET['idUser'])){
 
                 <!-- forma para alterar dados -->
 
-                <form method="POST" >
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    if(){}
-
+                
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="rosto_novo descricao">
                     <img src='images/<?php echo($row['fotoPerfil'])?>'>
 
@@ -126,7 +143,7 @@ if(isset($_GET['idUser'])){
                                 echo '    <summary>...</summary>';
                                 echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
                                 echo '    <button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
-                                echo '    <button style = "display: none;" type="button" id="btn-salvar" class="btn-edit">salva</button>';
+                                echo '    <button type="submit" style = "display: none;" type="button" id="btn-salvar" class="btn-edit">salva</button>';
                                 echo '</details>';
 
                         } else {    
@@ -154,13 +171,35 @@ if(isset($_GET['idUser'])){
             </div>
             <!-- sessão de contato -->
             <div class="feed">
-                <h5 class='alteracao' id='celular'>Celular: <?php echo($row['celular']) ?></h5>
-                <h5 class='alteracao' id='email'>E-mail: <?php echo($row['email']) ?></h5>
-                <h5 class='alteracao' id='bairro'>Bairro: <?php echo($row['bairro']) ?></h5>  
-                <h5 class='alteracao' id='cidade'>Cidade: <?php echo($row['cidade']) ?></h5>
-                <h5 class='alteracao' id='linkedin'>Linkedin: <a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-                <h5 class='alteracao' id='twitter'>Twitter: <a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-                <h5 class='alteracao' id='instagram'>Instagram: <a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+                <div class="flex-generic">
+                    <h5>Celular:</h5>
+                    <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>E-mail:</h5>
+                    <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>Bairro:</h5>
+                    <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>Cidade:</h5>
+                    <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>Linkedin:</h5>
+                    <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>Twitter:</h5>
+                    <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                </div>
+                <div class="flex-generic">
+                    <h5>Instagram:</h5>
+                    <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+                </div>
+
             </div>
             </form>
 
@@ -233,42 +272,30 @@ if(isset($_GET['idUser'])){
 
 </body>
 <script>
-
+    var elementosAjuste = document.querySelectorAll('.alteracao');
     var valOrig = []; 
 
     document.getElementById('btn-editar').addEventListener('click', function() {
         document.getElementById('btn-editar').style.display = "none";
         document.getElementById('btn-cancelar').style.display = "inline-block";
         document.getElementById('btn-salvar').style.display = "inline-block";
-    Tfor();
+    Tform();
 });
 
-function Tfor() {
-    var elementosAjuste = document.querySelectorAll('.alteracao');
-    
+function Tform() {    
     elementosAjuste.forEach(function(elemento) {
         var nome = elemento.textContent;
-        var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '">';
+        valOrig.push(nome);
+        for (i = 0; i < valOrig.length; i++){
+            console.log(valOrig[i])
+        }
+        var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '" class="alteracao">';
         elemento.innerHTML = input;
     });
 }
     document.getElementById('btn-cancelar').addEventListener('click', function() {
-        document.getElementById('tbn-editar').style.display = "inline-block";
-        document.getElementById('btn-cancelar').style.display = "none";
-        document.getElementById('tbn-salvar').style.display = "none";
-    Cfor();
+        location.reload()
 });
-function Cfor(){
-
-        var elementosAjuste = document.querySelectorAll('.alteracao');
-        valOrig = []; // Limpar array de valores originais
-            elementosAjuste.forEach(function(elemento) {
-                var nome = elemento.textContent;
-                valOrig.push(nome); // Armazenar valor original
-                var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '">';
-                elemento.innerHTML = input;
-            });
-        }
 
 
 

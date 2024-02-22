@@ -25,7 +25,7 @@ textarea.addEventListener('input', function () {
     const numeroDeCaracteres = texto.length;
 
     // Atualiza o parágrafo de contagem de caracteres
-    contagemCaracteres.innerHTML = `${numeroDeCaracteres}/1000`;
+    contagemCaracteres.innerHTML = `${numeroDeCaracteres}/255`;
 });
 
 

@@ -519,7 +519,7 @@ header {
 }
 label {
     cursor: pointer;
-    /* Style as you please, it will become the visible UI component. */
+
  }
 
  #upload-photo {
@@ -689,3 +689,38 @@ details summary{
     width: 55px;
     margin-right: 10px;
 }
+.upload-label {
+    position: relative;
+    display: inline-block;
+}
+
+.upload-input {
+    display: none;
+}
+
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: -155px;
+}
+
+
+
+.fa-camera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Cor do ícone */
+    font-size: 24px; /* Tamanho do ícone */
+    opacity: 0; /* Inicialmente invisível */
+}
+
+.profile-image-container:hover .fa-camera {
+    opacity: 1; /* Torna o ícone visível ao passar o mouse */
+}
+

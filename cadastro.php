@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-    header('Location: feed.html');
+    header('Location: feed-temp.php');
     exit();
 };
 

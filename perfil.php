@@ -11,8 +11,8 @@ if(isset($_GET['idUser'])){
     
     $row = $result->fetch_assoc();
  }
- 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -45,21 +45,8 @@ if(isset($_GET['idUser'])){
 
     $pubs = $pub->fetch_assoc();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nome = $_POST['nome'];
-        $bio = $_POST['bio'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $telefone = $_POST['telefone'];
-        $cep = $_POST['cep'];
-        $num = $_POST['num'];
-        $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
-        $cpf = $_POST['cpf'];
-        
-    }
-
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
+        var_dump($_POST['bio']);
         $nome = $_POST['nome'];
         $bio = $_POST['bio'];
         $celular = $_POST['celular'];
@@ -70,10 +57,27 @@ if(isset($_GET['idUser'])){
         $twitter = $_POST['twitter'];
         $instagram = $_POST['instagram'];
 
+    // Preparando a consulta SQL
+    $sql = "UPDATE tb_users SET nome = ?, email = ?, bio = ?, linkedin = ?, twitter = ?, instagram = ?, bairro = ?, cidade = ? WHERE idUser = ?";
 
-        $sql = "UPDATE `tb_users` SET `nome` = '$nome', `email` = '$email', `bio` = '$bio', `linkedin` = '$linkedin', `twitter` = '$twitter', `instagram` = '$instagram', `bairro` = '$bairro', `cidade` = '$cidade' WHERE `tb_users`.`idUser` = '$idUser'";
+    // Preparando a declaração
+    $stmt = mysqli_prepare($conn_capybd, $sql);
 
-        
+    // Vinculando parâmetros
+    mysqli_stmt_bind_param($stmt, "ssssssssi", $nome, $email, $bio, $linkedin, $twitter, $instagram, $bairro, $cidade, $idUser);
+
+    // Executando a declaração
+    mysqli_stmt_execute($stmt);
+
+    // Verificando se a atualização foi bem-sucedida
+    if(mysqli_stmt_affected_rows($stmt) > 0) {
+        // Redirecionando após a atualização
+        header("Location: perfil.php?idUser=$idUser");
+        exit();
+    } else {
+        echo "Erro ao atualizar o perfil." . mysqli_error($conn_capybd);
+    }
+    mysqli_stmt_close($stmt);
 
     }
     
@@ -127,80 +131,88 @@ if(isset($_GET['idUser'])){
                 <!-- forma para alterar dados -->
 
                 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <div class="rosto_novo descricao">
-                    <img src='images/<?php echo($row['fotoPerfil'])?>'>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                    <div class="rosto_novo descricao">
+                    <?php
+                    // Verifique se o usuário na sessão é o mesmo do parâmetro GET
+                    if ($_SESSION['idUser'] == $_GET['idUser']) {
+                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'>
+                        </label>";
+                        echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
+                    } else {
+                        echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
+                    }
+                    ?>
 
-                    <div class="ajuste-nome">
-                    <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
-                
+
+                        <div class="ajuste-nome">
+                        <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
+                        </div>
+                            <?php
+                            $following = ($pubs['following'] > 0);
+                            if ($row['idUser'] == $_SESSION['idUser']) {
+                                    // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                    echo '<details>';
+                                    echo '    <summary>...</summary>';
+                                    echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
+                                    echo '    <button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
+                                    echo '    <input type="button" style = "display: none;" id="btn-salvar" class="btn-edit" value="salvar">';
+                                    echo '</details>';
+
+                            } else {    
+                                    // Caso contrário, mostra botão de seguir/seguindo
+                                    if ($following) {
+                                        // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                        echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
+                                } else {
+                                        // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                        echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
+                                }                          
+                            }
+                            ?>
+                        
+
                     </div>
-                        <?php
-                        $following = ($pubs['following'] > 0);
-                        if ($row['idUser'] == $_SESSION['idUser']) {
-                                // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                echo '<details>';
-                                echo '    <summary>...</summary>';
-                                echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
-                                echo '    <button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
-                                echo '    <button type="submit" style = "display: none;" type="button" id="btn-salvar" class="btn-edit">salva</button>';
-                                echo '</details>';
+                    <!-- sessão de detalhes  -->
 
-                        } else {    
-                                // Caso contrário, mostra botão de seguir/seguindo
-                                if ($following) {
-                                    // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                    echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
-                            } else {
-                                    // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
-                            }                          
-                        }
-                        ?>
+                </div>
+                    <div class="feed muda">
+                        <h3>sobre</h3> <BR>
+                        <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
+                    </div>
+                    <!-- sessão de contato -->
+                    <div class="feed">
+                    <div class="flex-generic">
+                        <h5>Celular:</h5>
+                        <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>E-mail:</h5>
+                        <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Bairro:</h5>
+                        <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Cidade:</h5>
+                        <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Linkedin:</h5>
+                        <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Twitter:</h5>
+                        <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Instagram:</h5>
+                        <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
                     </div>
 
                 </div>
-                <!-- sessão de detalhes  -->
-
-            </div>
-            <div class="feed muda">
-                <h3>sobre</h3> <BR>
-
-                <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
-
-            </div>
-            <!-- sessão de contato -->
-            <div class="feed">
-                <div class="flex-generic">
-                    <h5>Celular:</h5>
-                    <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>E-mail:</h5>
-                    <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>Bairro:</h5>
-                    <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>Cidade:</h5>
-                    <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>Linkedin:</h5>
-                    <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>Twitter:</h5>
-                    <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-                </div>
-                <div class="flex-generic">
-                    <h5>Instagram:</h5>
-                    <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
-                </div>
-
-            </div>
+                        
             </form>
 
             </div>
@@ -273,7 +285,6 @@ if(isset($_GET['idUser'])){
 </body>
 <script>
     var elementosAjuste = document.querySelectorAll('.alteracao');
-    var valOrig = []; 
 
     document.getElementById('btn-editar').addEventListener('click', function() {
         document.getElementById('btn-editar').style.display = "none";
@@ -285,25 +296,61 @@ if(isset($_GET['idUser'])){
 function Tform() {    
     elementosAjuste.forEach(function(elemento) {
         var nome = elemento.textContent;
-        valOrig.push(nome);
-        for (i = 0; i < valOrig.length; i++){
-            console.log(valOrig[i])
-        }
-        var input = '<input type="text" name="' + elemento.id + '" value="' + nome + '" class="alteracao">';
+        var input = '<input type="text" id="' + elemento.id + '" value="' + nome + '" class="alteracao">';
         elemento.innerHTML = input;
     });
 }
     document.getElementById('btn-cancelar').addEventListener('click', function() {
-        location.reload()
+        location.reload();
 });
-
-
-
+document.getElementById('btn-salvar').addEventListener('click',function(){
+    var valoresCampos = {};
+    var inputs = document.querySelectorAll('.alteracao input'); // Seleciona todos os inputs dentro dos elementos com classe 'alteracao'
+    inputs.forEach(function(input) {
+        valoresCampos[input.id] = input.value;
+    });    
+    $.ajax({
+        type: 'POST',
+        url:'_edit-perfil.php',
+        data:{valoresCampos},
+        dataType: 'json',
+        success:function(response){
+            location.reload();
+            if(response['status']==='sucesso'){
+                window.location.href = window.location.href;
+            }
+        }
+    })
+})
+function uploadFoto(){
+    alert('oi')
+    var input = document.getElementById('upload-photo');
+    // Verificar se um arquivo foi selecionado
+    if (input.files && input.files[0]) {
+        alert('oi')
+        var file = input.files[0];
+        var formData = new FormData();
+        formData.append('foto', file); // Adicionar arquivo ao FormData
+        $.ajax({
+            url: '_upload-fotoPerfil.php', // URL para o script PHP que lidará com o upload
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // Lidar com erros de upload (se necessário)
+                console.error('Erro durante o upload:', error);
+            }
+        });
+    }
+}
 </script>
-<script> src="script.js"</script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>

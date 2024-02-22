@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                                 <h1>Conteudo</h1>
                                 <textarea name="pubText" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
-                                <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/1000</p></div>
+                                <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/255</p></div>
 
                                 <!-- tags -->
                                 <h3>Tags</h3>

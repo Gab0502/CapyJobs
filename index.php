@@ -36,7 +36,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
             <form onsubmit="" class="form-pesquisa-input">
               <input type="text" placeholder="    Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
                 id="barradepesquisa">
-              <button>
+              <button type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                   viewBox="0 0 16 16">
                   <path
@@ -46,7 +46,9 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
               <br><br>
               <div class="input-buttons">
                 <h3 style="color: white">Relevantes: </h3>
-                <button class="buttons"><?php?></button>
+                <button action="" class="buttons">Bandas</button>
+                <button class="buttons">Cozinha</button>
+                <button class="buttons">Brinquedos</button>
               </div>
             </form>
           </div>

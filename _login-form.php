@@ -2,7 +2,7 @@
 require("conn_capybd.php");
 session_start();
 var_dump($_POST);
-echo('<script>alert("oi")</script>');
+
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $username = $_POST[ 'username'];

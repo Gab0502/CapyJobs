@@ -136,12 +136,14 @@ if(isset($_GET['idUser'])){
                     <?php
                     // Verifique se o usuário na sessão é o mesmo do parâmetro GET
                     if ($_SESSION['idUser'] == $_GET['idUser']) {
-                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'>
-                        </label>";
+                        echo "<form method='POST' enctype='multipart/form-data'>";
+                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
                         echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
+                        echo "</form>";
                     } else {
                         echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
                     }
+                    
                     ?>
 
 
@@ -322,19 +324,18 @@ document.getElementById('btn-salvar').addEventListener('click',function(){
         }
     })
 })
-function uploadFoto(){
-    alert('oi')
+function uploadFoto() {
     var input = document.getElementById('upload-photo');
     // Verificar se um arquivo foi selecionado
     if (input.files && input.files[0]) {
-        alert('oi')
+        alert('foto recebida');
         var file = input.files[0];
         var formData = new FormData();
         formData.append('foto', file); // Adicionar arquivo ao FormData
         $.ajax({
-            url: '_upload-fotoPerfil.php', // URL para o script PHP que lidará com o upload
             type: 'POST',
-            data: formData,
+            url: '_upload-fotoPerfil.php', // URL para o script PHP que lidará com o upload
+            data: formData, // Remova as chaves aqui
             contentType: false,
             processData: false,
             success: function(response) {
@@ -342,11 +343,12 @@ function uploadFoto(){
             },
             error: function(xhr, status, error) {
                 // Lidar com erros de upload (se necessário)
-                console.error('Erro durante o upload:', error);
+                alert('error');
             }
         });
     }
 }
+
 </script>
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

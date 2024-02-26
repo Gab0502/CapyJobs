@@ -1,7 +1,6 @@
 <?php 
 require("conn_capybd.php");
 session_start();
-header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idUser = $_SESSION['idUser']; // ID do usuário da sessão
@@ -9,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica se um arquivo foi enviado corretamente
     if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
         // Verifica o tipo de arquivo enviado
-        $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
+        $allowedExtensions = array('jpg', 'jpeg', 'png');
         $temp = explode('.', $_FILES['upload-photo']['name']);
         $extension = strtolower(end($temp));
         

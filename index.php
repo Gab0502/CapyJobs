@@ -33,7 +33,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
       <div class="container-fluid">
         <div class="row">
           <div class="col-xl-6 form-pesquisa" id="banner1">
-            <form onsubmit="" class="form-pesquisa-input">
+            <form action="pesquisa.php" method="get" class="form-pesquisa-input">
               <input type="text" placeholder="    Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
                 id="barradepesquisa">
               <button type="submit">
@@ -86,7 +86,6 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
                 <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
               <p><?php echo($minifeed_row['titulo']);?></p>
-              <p>cusujo</p>
             </div>
           </div>
           </section>

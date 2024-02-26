@@ -36,6 +36,9 @@ if (isset($_SESSION['username'])) {
         $num = $_POST['num'];
         $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
         $cpf = $_POST['cpf'];
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        
     
         // Verifica se o e-mail contém o domínio "@capivarias"
         if (strpos($email, '@capivarias') !== false) {
@@ -91,6 +94,9 @@ if (isset($_SESSION['username'])) {
             } else {
                 echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
             }
+        }
+        }else{
+            echo('<script>alert("email invalido")</script>');
         }
     }
     
@@ -172,6 +178,47 @@ if (isset($_SESSION['username'])) {
         function closeModal() {
             document.getElementById('myModal').style.display = "none";
         }    
+        const inputCEP = document.getElementById('local');
+const mensagemCEP = document.getElementById('mensagem-cep');
+let timeoutId;
+
+inputCEP.addEventListener('input', function() {
+    clearTimeout(timeoutId);
+    console.log("input detectado")
+    timeoutId = setTimeout(function() {
+        const localidade = inputCEP.value;
+        console.log("timeout")
+        // Use uma expressão regular para verificar se a localidade tem o formato esperado (pode ajustar conforme necessário)
+        if (/^[0-9]{8}$/.test(localidade)) {
+            console.log("verifica")
+            verificaCEP(localidade);
+        } else {
+            mensagemCEP.innerHTML = 'Por favor, insira um CEP válido.';
+        }
+    }, 1000); // Aguarde 1 segundo após a última entrada do usuário
+});
+
+function verificaCEP(cep) {
+    // Faça uma requisição AJAX para o serviço do ViaCEP
+    $.ajax({
+        url: `https://viacep.com.br/ws/${cep}/json/`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            // Verifique se a resposta do ViaCEP indica um CEP válido
+            if (!data.erro) {
+                mensagemCEP.innerHTML = `CEP válido. Localidade: ${data.localidade}, UF: ${data.uf}`;
+            } else {
+                mensagemCEP.innerHTML = 'CEP não encontrado.';
+            }
+        },
+        error: function() { 
+            mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
+        }
+    });
+}
+
 
         // Função de formatação do telefone
         document.getElementById('telefone').addEventListener('input', formataTel);

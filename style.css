@@ -412,9 +412,6 @@ header {
     display: flex;
     justify-content: space-around;
     padding: -10%;
-   
-    
-  
 }
 .feed-img img{
     width: 500px;
@@ -447,31 +444,27 @@ header {
 .papel_parede{
     width: 100%;
     height: 250px;
-
 }
 .papel_parede img{
     width: 100%;
     height: 300px;
+    object-fit: cover;
 }
 .rosto_novo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    font-size: 2rem;
 }
-.descricao{
-    margin-top: 60px;
 
-}
 .rosto_novo img{
     width: 250px;
     height: 250px;
     border-radius: 50%;
     margin-left: 50px;
-    margin-top: -155px;
-    
-}
-.rosto_novo h2,h6,h5{
+    margin-top: -310px;
+    -webkit-box-shadow: -5px 10px 21px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 10px 21px -6px rgba(0,0,0,0.75);
+    box-shadow: -5px 10px 21px -6px rgba(0,0,0,0.75);}
+
+.rosto_novo h6,h5{
     margin-left: 25px;
     margin-top: 10px;
 }
@@ -488,10 +481,7 @@ header {
     width: 100%;
     background-color: #027449;
 }
-.ajuste-nome{
-    margin-right: 50%;
-    margin-left: -200px;
-}
+
 .botao-bonito{
     margin: 10px;
     border-radius: 25px;
@@ -526,6 +516,12 @@ label {
     opacity: 0;
     position: absolute;
     z-index: -1;
+ }
+ #upload-banner {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    
  }
 #preview{
     background-color: white;
@@ -570,15 +566,7 @@ label {
 .btn-liked svg{
     fill: #ffffff;
 }
-.btn-liked:hover{
-    text-decoration: none;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid var(--verdeEscuro);
-}
-.btn-liked:hover svg{
-    fill: var(--verdeEscuro);
-}
+
 .btn-edit{
 
     font-weight: 900;
@@ -722,5 +710,8 @@ details summary{
 
 .profile-image-container:hover .fa-camera {
     opacity: 1; /* Torna o ícone visível ao passar o mouse */
+}
+.banner-label{
+    display: block !important;
 }
 

@@ -52,71 +52,12 @@ $resultVagas = $conn_capybd->query($vagas);
 
 // sistema de postagem
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ad = isset($_POST['ad']) && $_POST['ad'] == 'on' ? 1 : 0;
-    $desc = $_POST['pubText'];
-    $tags = $_POST['tags'];
-    $titulo = $_POST['titulo'];
-    $cep = isset($_POST['cep']) ? $_POST['cep'] : null; // CEP é opcional
-    $dia = $_POST['data'];
-    $num = $_POST['numero'];
-
-    // Verifique se a checkbox está marcada antes de processar o CEP
-    if (!empty($cep)) {
-        $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/json\r\n",
-                'method' => 'GET',
-            ],
-        ];
-
-        $context = stream_context_create($options);
-        $response = file_get_contents($api_url, false, $context);
-
-        if ($response !== false) {
-            $data = json_decode($response, true);
-        } else {
-            echo "Erro na requisição do CEP.";
-            exit; // Encerrar o script se houver um erro no CEP
-        }
-    }
-}
 
 
     
 ?>
-<header>
-<nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
-  <a class="" href="#"><img src="images/logo.png" alt="" width="250px"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item ">
-        <a class="nav-link" style="color: #ffff;" aria-current="page" href="#">Vagas</a>
-    </li>
-    <?php 
-    if (strpos($_SESSION['email'], '@capivarias') !== false) {
-        echo " <li class='nav-item'>
-        <a class='nav-link active' style='color: #ffff;' aria-current='page' href='adm.php'>ADMIN</a>
-                </li>";
-    }
-    ?>
-   </ul>
-    <details >
-        <summary><img src="images/<?php echo($_SESSION['profilePic'])  ?>" alt="" class="iconNav"></summary>
-        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" class="nav-link" style="color: #ffff;">Perfil</a>
-        <a href="_logout.php" class="nav-link" style="color: #dc3545">logout</a>
-    </details>
-   <form action="pesquisa.php" method="get" id="form-pesquisa" class="flex-generic">
-        <input name = "pesquisa" id = "pesquisa "class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
-        <button class="btn btn-success" type="submit">Buscar</button>
-    </form>
-  </div>
-</nav>
-</header>
+
+<?php include('_header2.php') ?>
 
 
     <main class="container-fluid feedFull">
@@ -228,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </section>
 
-                <?php while ($row = $result->fetch_assoc()): ?>
+    <?php while ($row = $result->fetch_assoc()): ?>
     <section class='feed'>
         <article class='post'>
             <div class='feed-post' >

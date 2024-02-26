@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/02/2024 às 12:37
+-- Tempo de geração: 26/02/2024 às 12:59
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -20,77 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `capybd`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tb_likes`
---
-
-CREATE TABLE `tb_likes` (
-  `idLike` int(11) NOT NULL,
-  `idPub` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Despejando dados para a tabela `tb_likes`
---
-
-INSERT INTO `tb_likes` (`idLike`, `idPub`, `idUser`) VALUES
-(0, 74, 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tb_pub`
---
-
-CREATE TABLE `tb_pub` (
-  `idPub` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  `ad` tinyint(1) NOT NULL,
-  `tag` varchar(255) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
-  `descricao` longtext DEFAULT NULL,
-  `dia` datetime NOT NULL,
-  `dataPub` datetime NOT NULL DEFAULT current_timestamp(),
-  `cep` int(11) DEFAULT NULL,
-  `uf` varchar(2) DEFAULT NULL,
-  `rua` varchar(255) DEFAULT NULL,
-  `numero` int(4) DEFAULT NULL,
-  `comp` varchar(255) DEFAULT NULL,
-  `bairro` varchar(255) DEFAULT NULL,
-  `cidade` varchar(255) DEFAULT NULL,
-  `midia1` varchar(255) DEFAULT NULL,
-  `midia1T` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Despejando dados para a tabela `tb_pub`
---
-
-INSERT INTO `tb_pub` (`idPub`, `idUser`, `ad`, `tag`, `titulo`, `descricao`, `dia`, `dataPub`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `midia1`, `midia1T`) VALUES
-(74, 1, 0, '#CapyJobs', '', 'Bem-vindos à CapyJobs: O Espaço dos Profissionais que Transformam Eventos! ? Sou o Eric Capy, o mascote mais animado! Se você vive e ama eventos, este é seu palco para brilhar. Desapegue do currículo, mostre seu talento, e faça história conosco! ?', '0000-00-00 00:00:00', '2024-02-05 11:17:50', 0, '', '', 0, '', '', '', '65c0ee0ed304b_capivaraPagodeIcon.jpg', NULL);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tb_seg`
---
-
-CREATE TABLE `tb_seg` (
-  `idSeg` int(11) NOT NULL,
-  `idSeg1` int(11) NOT NULL,
-  `idSeg2` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Despejando dados para a tabela `tb_seg`
---
-
-INSERT INTO `tb_seg` (`idSeg`, `idSeg1`, `idSeg2`) VALUES
-(1, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +42,7 @@ CREATE TABLE `tb_users` (
   `cep` int(11) NOT NULL,
   `uf` varchar(2) NOT NULL,
   `rua` varchar(255) NOT NULL,
-  `numero` int(4) NOT NULL,
+  `numero` bigint(4) NOT NULL,
   `comp` varchar(255) NOT NULL,
   `bairro` varchar(255) NOT NULL,
   `cidade` varchar(255) NOT NULL,
@@ -153,24 +82,6 @@ INSERT INTO `tb_users` (`idUser`, `nome`, `banner`, `fotoPerfil`, `email`, `senh
 --
 
 --
--- Índices de tabela `tb_likes`
---
-ALTER TABLE `tb_likes`
-  ADD PRIMARY KEY (`idLike`);
-
---
--- Índices de tabela `tb_pub`
---
-ALTER TABLE `tb_pub`
-  ADD PRIMARY KEY (`idPub`);
-
---
--- Índices de tabela `tb_seg`
---
-ALTER TABLE `tb_seg`
-  ADD PRIMARY KEY (`idSeg`);
-
---
 -- Índices de tabela `tb_users`
 --
 ALTER TABLE `tb_users`
@@ -179,24 +90,6 @@ ALTER TABLE `tb_users`
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
-
---
--- AUTO_INCREMENT de tabela `tb_likes`
---
-ALTER TABLE `tb_likes`
-  MODIFY `idLike` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `tb_pub`
---
-ALTER TABLE `tb_pub`
-  MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
-
---
--- AUTO_INCREMENT de tabela `tb_seg`
---
-ALTER TABLE `tb_seg`
-  MODIFY `idSeg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_users`

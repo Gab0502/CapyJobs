@@ -14,6 +14,7 @@ $row_rs_pub = mysqli_fetch_assoc($rs_pub);
 <head>
 <meta charset="utf-8">
 <title>CapyJobs - ADM Publicações</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 
 <body>

@@ -52,36 +52,6 @@ $resultVagas = $conn_capybd->query($vagas);
 
 // sistema de postagem
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ad = isset($_POST['ad']) && $_POST['ad'] == 'on' ? 1 : 0;
-    $desc = $_POST['pubText'];
-    $tags = $_POST['tags'];
-    $titulo = $_POST['titulo'];
-    $cep = isset($_POST['cep']) ? $_POST['cep'] : null; // CEP é opcional
-    $dia = $_POST['data'];
-    $num = $_POST['numero'];
-
-    // Verifique se a checkbox está marcada antes de processar o CEP
-    if (!empty($cep)) {
-        $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/json\r\n",
-                'method' => 'GET',
-            ],
-        ];
-
-        $context = stream_context_create($options);
-        $response = file_get_contents($api_url, false, $context);
-
-        if ($response !== false) {
-            $data = json_decode($response, true);
-        } else {
-            echo "Erro na requisição do CEP.";
-            exit; // Encerrar o script se houver um erro no CEP
-        }
-    }
-}
 
 
     

@@ -1,4 +1,5 @@
 <?php require("conn_capybd.php");
+
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -27,22 +28,17 @@ if (isset($_SESSION['username'])) {
 
     <?php 
 
-    error_reporting(E_ALL & ~E_WARNING);
-
+    var_dump($_POST);
+        
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (!empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['senha']) && !empty($_POST['telefone']) && !empty($_POST['cep']) && !empty($_POST['num']) && !empty($_POST['CCOMPLEMENTO']) && !empty($_POST['cpf'])) {
-
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         $telefone = $_POST['telefone'];
         $cep = $_POST['cep'];
-        $num = $_POST['num'];
+        $num = $_POST['numero'];
         $comp = $_POST['CCOMPLEMENTO'];  // Correção no nome do campo
         $cpf = $_POST['cpf'];
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-        
     
         // Verifica se o e-mail contém o domínio "@capivarias"
         if (strpos($email, '@capivarias') !== false) {
@@ -50,63 +46,70 @@ if (isset($_SESSION['username'])) {
         } else {
             // Se o e-mail não contiver o domínio "@capivarias", continue com o cadastro
     
-            $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
+            // Verifica se o e-mail contém um domínio válido
+            $email_domain = substr(strrchr($email, "@"), 1);
+            $valid_domains = array("gmail.com", "yahoo.com", "hotmail.com"); // Adicione os domínios permitidos aqui
     
-            $options = [
-                'http' => [
-                    'header' => "Content-type: application/json\r\n",
-                    'method' => 'GET',
-                ],
-            ];
-    
-            $context = stream_context_create($options);
-            $response = file_get_contents($api_url, false, $context);
-    
-            if ($response !== false) {
-                // Verifica se o e-mail já está cadastrado
-                $stmt_verifica_email = $conn_capybd->prepare("SELECT COUNT(*) FROM tb_users WHERE email = ?");
-                $stmt_verifica_email->bind_param("s", $email);
-                $stmt_verifica_email->execute();
-                $stmt_verifica_email->bind_result($email_count);
-                $stmt_verifica_email->fetch();
-    
-                // Verifica se o CPF já está cadastrado
-                $stmt_verifica_cpf = $conn_capybd->prepare("SELECT COUNT(*) FROM tb_users WHERE cpf_cnpj = ?");
-                $stmt_verifica_cpf->bind_param("s", $cpf);
-                $stmt_verifica_cpf->execute();
-                $stmt_verifica_cpf->bind_result($cpf_count);
-                $stmt_verifica_cpf->fetch();
-    
-                // Verifica se o e-mail ou o CPF já estão cadastrados
-                if ($email_count > 0) {
-                    echo "<script>alert('E-mail já cadastrado. Por favor, utilize outro e-mail.')</script>";
-                } elseif ($cpf_count > 0) {
-                    echo "<script>alert('CPF já cadastrado. Por favor, utilize outro CPF.')</script>";
-                } else {
-                    // Se o e-mail e o CPF não estiverem cadastrados, proceda com o cadastro
-                    $data = json_decode($response, true);
-                    $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    $profPic = 'capivaraPadraoIcon.jpg';
-                    $likes = 0;
-                    $bio = '';
-                    $linkedin = '';
-                    $twitter = '';
-                    $instagram = '';
-                    $cadastro->bind_param("sssssssssssssssss", $nome, $profPic, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);
-                    $cadastro->execute();
-                }
+            if (!in_array($email_domain, $valid_domains)) {
+                echo "<script>alert('E-mails com o domínio $email_domain não são permitidos. Por favor, utilize outro e-mail.')</script>";
             } else {
-                echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
+                // Se o e-mail contiver um domínio válido, continue com o cadastro
+    
+                $api_url = "https://viacep.com.br/ws/" . $cep . "/json";
+    
+                $options = [
+                    'http' => [
+                        'header' => "Content-type: application/json\r\n",
+                        'method' => 'GET',
+                    ],
+                ];
+    
+                $context = stream_context_create($options);
+                $response = file_get_contents($api_url, false, $context);
+    
+                if ($response !== false) {
+                    // Verifica se o e-mail já está cadastrado
+                    $stmt_verifica_email = $conn_capybd->prepare("SELECT COUNT(*) FROM tb_users WHERE email = ?");
+                    $stmt_verifica_email->bind_param("s", $email);
+                    $stmt_verifica_email->execute();
+                    $stmt_verifica_email->bind_result($email_count);
+                    $stmt_verifica_email->fetch();
+                    $stmt_verifica_email->close(); // Close the statement after fetching results
+    
+    
+                    // Verifica se o CPF já está cadastrado
+                    $stmt_verifica_cpf = $conn_capybd->prepare("SELECT COUNT(*) FROM tb_users WHERE cpf_cnpj = ?");
+                    $stmt_verifica_cpf->bind_param("s", $cpf);
+                    $stmt_verifica_cpf->execute();
+                    $stmt_verifica_cpf->bind_result($cpf_count);
+                    $stmt_verifica_cpf->fetch();
+                    $stmt_verifica_cpf->close(); // Close the statement after fetching results
+    
+    
+                    // Verifica se o e-mail ou o CPF já estão cadastrados
+                    if ($email_count > 0) {
+                        echo "<script>alert('E-mail já cadastrado. Por favor, utilize outro e-mail.')</script>";
+                    } elseif ($cpf_count > 0) {
+                        echo "<script>alert('CPF já cadastrado. Por favor, utilize outro CPF.')</script>";
+                    } else {
+                        // Se o e-mail e o CPF não estiverem cadastrados, proceda com o cadastro
+                        $data = json_decode($response, true);
+                        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        $profPic = 'capivaraPadraoIcon.jpg';
+                        $likes = 0;
+                        $bio = '';
+                        $linkedin = '';
+                        $twitter = '';
+                        $instagram = '';
+                        $cadastro->bind_param("sssssssssssssssss", $nome, $profPic, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);
+                        $cadastro->execute();
+                    }
+                } else {
+                    echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";
+                }
             }
         }
-        }else{
-            echo('<script>alert("email invalido")</script>');
-        }
-    }}
-    
-    error_reporting(E_ALL);
-    
-    $conn_capybd->close();
+    }
     ?>
     
   
@@ -118,7 +121,7 @@ if (isset($_SESSION['username'])) {
                 <div class="col-xl-6">
                     <div class="container-custom ">
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-login bg-verdeMedio" style="border-radius: 25px;">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <input required type="text" id="nome" name="nome" placeholder="NOME">
                             <input required type="text" id="email" name="email" placeholder="EMAIL" style="width: 84%;">
                             <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
@@ -276,6 +279,14 @@ function verificaCEP(cep) {
 
 
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>       
 
 </body>
 

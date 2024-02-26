@@ -28,6 +28,8 @@ if (isset($_SESSION['username'])) {
     error_reporting(E_ALL & ~E_WARNING);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['senha']) && !empty($_POST['telefone']) && !empty($_POST['cep']) && !empty($_POST['num']) && !empty($_POST['CCOMPLEMENTO']) && !empty($_POST['cpf'])) {
+
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -98,7 +100,7 @@ if (isset($_SESSION['username'])) {
         }else{
             echo('<script>alert("email invalido")</script>');
         }
-    }
+    }}
     
     error_reporting(E_ALL);
     

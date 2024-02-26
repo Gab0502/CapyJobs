@@ -44,7 +44,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
                 </svg>
               </button>
               <br><br>
-              <div style="color: white" class="input-buttons">
+              <div class="input-buttons">
                 <h3 style="color: white">Relevantes: </h3>
                 <button action="" class="buttons">Bandas</button>
                 <button class="buttons">Cozinha</button>
@@ -86,7 +86,6 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
                 <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
               <p><?php echo($minifeed_row['titulo']);?></p>
-              <p>cusujo</p>
             </div>
           </div>
           </section>

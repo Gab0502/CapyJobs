@@ -13,6 +13,7 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Entrar</title>
+  <link rel="icon" href="images/favicon-16x16.png">
     <meta name="description" content="Entre com seu login">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style-login.css">

@@ -40,6 +40,7 @@ if($rs_perf == 1){
 <head>
 <meta charset="utf-8">
 <title>adm_excluir_perfil</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 <body>
 </body>

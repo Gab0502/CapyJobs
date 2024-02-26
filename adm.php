@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>CapyJobs - Painel Administrativo</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 <body>
     <a href="feed-temp.php">

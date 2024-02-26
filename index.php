@@ -86,7 +86,6 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
                 <h6 class="tags"><?php echo($minifeed_row['tag']);?></h6>
               </div>
               <p><?php echo($minifeed_row['titulo']);?></p>
-              <p>cusujo</p>
             </div>
           </div>
           </section>

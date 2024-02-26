@@ -20,6 +20,7 @@ if(isset($_GET['idUser'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Perfil de Usuário</title>
+    <link rel="icon" href="images/favicon-16x16.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -51,92 +52,87 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
 
     $pubs = $follow->fetch_assoc();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idUser = $_SESSION['idUser']; // ID do usuário da sessão
-    
-    // Verifica se um arquivo foi enviado corretamente para foto de perfil
-    if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
-        // Verifica o tipo de arquivo enviado
-        $allowedExtensions = array('jpg', 'jpeg', 'png');
-        $temp = explode('.', $_FILES['upload-photo']['name']);
-        $extension = strtolower(end($temp));
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $idUser = $_SESSION['idUser']; // ID do usuário da sessão
         
-        if (!in_array($extension, $allowedExtensions)) {
-            echo json_encode(array("status" => "error", "message" => "Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil."));
-            exit();
-        }
-    
-        // Gera um nome único para a imagem
-        $nomeAleatorio = uniqid('', true) . '_' . $_FILES['upload-photo']['name'];
-        $diretorioDestino = 'images/';
-        $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
-    
-        // Move o arquivo para o diretório de destino
-        if (move_uploaded_file($_FILES['upload-photo']['tmp_name'], $caminhoCompleto)) {
-            // Prepara a declaração SQL usando declarações preparadas para evitar injeção de SQL
-            $sql = "UPDATE tb_users SET fotoPerfil = ? WHERE idUser = ?";
-            $stmt = $conn_capybd->prepare($sql);
-            if ($stmt) {
-                $stmt->bind_param("si", $nomeAleatorio, $idUser);
-                if ($stmt->execute()) {
-                    echo json_encode(array("status" => "success"));
+        // Verifica se um arquivo foi enviado corretamente para foto de perfil
+        if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
+            // Verifica o tipo de arquivo enviado
+            $allowedExtensions = array('jpg', 'jpeg', 'png');
+            $temp = explode('.', $_FILES['upload-photo']['name']);
+            $extension = strtolower(end($temp));
+            
+            if (!in_array($extension, $allowedExtensions)) {
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil.');</script>";
+                exit();
+            }
+        
+            // Gera um nome único para a imagem
+            $nomeAleatorio = uniqid('', true) . '_' . $_FILES['upload-photo']['name'];
+            $diretorioDestino = 'images/';
+            $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
+        
+            // Move o arquivo para o diretório de destino
+            if (move_uploaded_file($_FILES['upload-photo']['tmp_name'], $caminhoCompleto)) {
+                // Prepara a declaração SQL usando declarações preparadas para evitar injeção de SQL
+                $sql = "UPDATE tb_users SET fotoPerfil = ? WHERE idUser = ?";
+                $stmt = $conn_capybd->prepare($sql);
+                if ($stmt) {
+                    $stmt->bind_param("si", $nomeAleatorio, $idUser);
+                    if ($stmt->execute()) {
+                        echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');</script>";
+                    } else {
+                        echo "<script>alert('Erro ao executar a atualização da imagem para foto de perfil.');</script>";
+                    }
+                    $stmt->close();
                 } else {
-                    echo json_encode(array("status" => "error", "message" => "Erro ao executar a atualização da imagem para foto de perfil."));
+                    echo "<script>alert('Erro ao preparar a declaração SQL para foto de perfil.');</script>";
                 }
-                $stmt->close();
             } else {
-                echo json_encode(array("status" => "error", "message" => "Erro ao preparar a declaração SQL para foto de perfil."));
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para foto de perfil.');</script>";
+            }
+        } 
+        // Verifica se um arquivo foi enviado corretamente para o banner
+        else if(isset($_FILES['upload-banner']) && $_FILES['upload-banner']['error'] === UPLOAD_ERR_OK){
+            // Verifica o tipo de arquivo enviado para o banner
+            $allowedExtensions = array('jpg', 'jpeg', 'png');
+            $temp = explode('.', $_FILES['upload-banner']['name']);
+            $extension = strtolower(end($temp));
+            
+            if (!in_array($extension, $allowedExtensions)) {
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner.');</script>";
+                exit();
+            }
+        
+            // Gera um nome único para o banner
+            $nomeAleatorio = uniqid('', true) . '_' . $_FILES['upload-banner']['name'];
+            $diretorioDestino = 'images/';
+            $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
+        
+            // Move o arquivo para o diretório de destino
+            if (move_uploaded_file($_FILES['upload-banner']['tmp_name'], $caminhoCompleto)) {
+                // Prepara a declaração SQL usando declarações preparadas para evitar injeção de SQL
+                $sql = "UPDATE tb_users SET banner = ? WHERE idUser = ?";
+                $stmt = $conn_capybd->prepare($sql);
+                if ($stmt) {
+                    $stmt->bind_param("si", $nomeAleatorio, $idUser);
+                    if ($stmt->execute()) {
+                        echo "<script>alert('Imagem para banner atualizada com sucesso.');</script>";
+                    } else {
+                        echo "<script>alert('Erro ao executar a atualização da imagem para banner.');</script>";
+                    }
+                    $stmt->close();
+                } else {
+                    echo "<script>alert('Erro ao preparar a declaração SQL para banner.');</script>";
+                }
+            } else {
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para banner.');</script>";
             }
         } else {
-            echo json_encode(array("status" => "error", "message" => "Erro ao mover o arquivo para o diretório de destino para foto de perfil."));
+            echo "<script>alert('Nenhum arquivo enviado ou erro no envio do arquivo.');</script>";
         }
-    } 
-    // Verifica se um arquivo foi enviado corretamente para o banner
-    else if(isset($_FILES['upload-banner']) && $_FILES['upload-banner']['error'] === UPLOAD_ERR_OK){
-        // Verifica o tipo de arquivo enviado para o banner
-        $allowedExtensions = array('jpg', 'jpeg', 'png');
-        $temp = explode('.', $_FILES['upload-banner']['name']);
-        $extension = strtolower(end($temp));
-        
-        if (!in_array($extension, $allowedExtensions)) {
-            echo json_encode(array("status" => "error", "message" => "Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner."));
-            exit();
-        }
-    
-        // Gera um nome único para o banner
-        $nomeAleatorio = uniqid('', true) . '_' . $_FILES['upload-banner']['name'];
-        $diretorioDestino = 'images/';
-        $caminhoCompleto = $diretorioDestino . $nomeAleatorio;
-    
-        // Move o arquivo para o diretório de destino
-        if (move_uploaded_file($_FILES['upload-banner']['tmp_name'], $caminhoCompleto)) {
-            // Prepara a declaração SQL usando declarações preparadas para evitar injeção de SQL
-            $sql = "UPDATE tb_users SET banner = ? WHERE idUser = ?";
-            $stmt = $conn_capybd->prepare($sql);
-            if ($stmt) {
-                $stmt->bind_param("si", $nomeAleatorio, $idUser);
-                if ($stmt->execute()) {
-                    echo json_encode(array("status" => "success"));
-                } else {
-                    echo json_encode(array("status" => "error", "message" => "Erro ao executar a atualização da imagem para banner."));
-                }
-                $stmt->close();
-            } else {
-                echo json_encode(array("status" => "error", "message" => "Erro ao preparar a declaração SQL para banner."));
-            }
-        } else {
-            echo json_encode(array("status" => "error", "message" => "Erro ao mover o arquivo para o diretório de destino para banner."));
-        }
-    } else {
-        echo json_encode(array("status" => "error", "message" => "Nenhum arquivo enviado ou erro no envio do arquivo."));
     }
-    
-    
-}
-
-
-    
-?>
+?>    
 
    <?php include('_header2.php')?>
     <main class="bullet-points APOLLO">
@@ -148,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="papel_parede">
                 <?php
                 if ($_SESSION['idUser'] == $_GET['idUser']) {
-                    echo "<label for='upload-banner'><img src='images/{$row['banner']}'></label>";
+                    echo "<label for='upload-banner'class='banner-label'><img src='images/{$row['banner']}'></label>";
                     echo "<input type='file' name='upload-banner' id='upload-banner' onchange='uploadFoto()'/>";
                     echo "<input type='submit' style='display:none;' id='submitBtn'/>"; // Supondo que isso faça parte de um formulário
                 } else {
@@ -177,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     ?>
 
-                        
+                        <div class="flex-generic" style='justify-content:space-between;'>
                         <div class="ajuste-nome">
                         <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
                         </div>
@@ -201,8 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 }                          
                             }
                             ?>
-                        </div>
-                        
+                        </div>                        
                     </div>
                     <!-- sessão de detalhes  -->
 

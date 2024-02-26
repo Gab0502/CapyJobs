@@ -14,9 +14,11 @@ if (isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Cadastro</title>
     <meta name="description" content="Crie seu cadastro para o CapyJobs">
+    <link rel="icon" href="images/favicon-16x16.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
     <!-- Header -->

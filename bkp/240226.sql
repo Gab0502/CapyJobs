@@ -113,7 +113,7 @@ CREATE TABLE `tb_users` (
   `cep` int(11) NOT NULL,
   `uf` varchar(2) NOT NULL,
   `rua` varchar(255) NOT NULL,
-  `numero` bigint(20) NOT NULL,
+  `numero` bigint(12) NOT NULL,
   `comp` varchar(255) NOT NULL,
   `bairro` varchar(255) NOT NULL,
   `cidade` varchar(255) NOT NULL,

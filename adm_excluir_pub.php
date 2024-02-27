@@ -35,6 +35,7 @@ if($rs_pub == 1){
 <head>
 <meta charset="utf-8">
 <title>adm_excluir_pub</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 <body>
 </body>

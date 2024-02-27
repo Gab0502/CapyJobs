@@ -87,11 +87,13 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
 <head>
 <meta charset="utf-8">
 <title>Editar Registro - Administração do Site</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 
 <body>
 	
 <h1>Editar Registro - Administração do Site</h1>	
+
 	
 <form action="<?=$_SERVER["PHP_SELF"]?>" method="post" enctype="multipart/form-data" id="form_editar">
 	

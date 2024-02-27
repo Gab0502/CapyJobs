@@ -14,6 +14,7 @@ $row_rs_perf = mysqli_fetch_assoc($rs_perf);
 <head>
 <meta charset="utf-8">
 <title>CapyJobs - ADM Usuários</title>
+<link rel="icon" href="images/favicon-16x16.png">
 </head>
 
 <body>

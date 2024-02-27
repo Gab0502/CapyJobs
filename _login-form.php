@@ -30,7 +30,7 @@ var_dump($_POST);
                 header('Location: feed-temp.php');  // Redirecionar para a página após o login
                 exit(); 
             }else{
-                echo("erro");
+                echo('<script>alert("Login e/ou senha não encontrados")</script>');
             }
         }
     ?>

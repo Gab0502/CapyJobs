@@ -156,7 +156,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
                                 <img id="preview">
                                 </div>
-                                <button>remover foto</button>
+                                <button id="removeFoto">remover foto</button>
 
                                 </div>
                                 <div class="modal-footer"> 
@@ -194,7 +194,6 @@ $resultVagas = $conn_capybd->query($vagas);
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
-                                echo '    <button class="btn-edit">editar</button>';
                                 echo '    <button onclick="deletePost('. $row['idPub'] .')" class="btn-edit">excluir</button>';
                                 echo '</details>';
                             } else {    

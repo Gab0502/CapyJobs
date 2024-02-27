@@ -155,7 +155,7 @@ header {
 .flex-cards {
     display: flex;
     justify-content: space-around;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
     overflow-x: auto;
 }
 .card {
@@ -237,7 +237,7 @@ header {
 
 }
 .form-login-index button:hover {
-    border-radius: 1px solid black;
+    border: 1px solid black;
 }
 .batata {
     text-align: center;
@@ -328,7 +328,8 @@ header {
 }
 .azul-b{
     background-color: var(--bgTextArea);
-    
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     text-align: center;
     border-radius: 10px;
     width: 70%;
@@ -352,7 +353,6 @@ header {
     background-color: var(--verdeEscuro);
     border-radius: 10px;
     height: 35px;
-    width: 80%;
    
 }
 .Vagas1{
@@ -360,7 +360,6 @@ header {
     text-align: center;
     border-radius: 10px;
     padding: 10px;
-    width: 80%;
 }
 .d{
     font-weight: bold;
@@ -381,6 +380,10 @@ header {
     border-radius: 10px;
     margin-bottom: 5px;
     
+}
+.buscando p{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .descricao{
     margin: 30px;
@@ -411,7 +414,6 @@ header {
 .feed-img{
     display: flex;
     justify-content: space-around;
-    padding: -10%;
 }
 .feed-img img{
     width: 500px;

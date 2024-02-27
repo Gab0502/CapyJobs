@@ -229,7 +229,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                             echo '<details>';
                             echo '    <summary>...</summary>';
-                            echo '    <button class="btn-edit">editar</button>';
                             echo '    <button onclick="deletePost('. $row['idPub'] .')" class="btn-edit">excluir</button>';
                             echo '</details>';
                         } else {    

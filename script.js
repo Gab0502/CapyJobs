@@ -44,6 +44,10 @@ var previewImg = function (event) {
     
 };
 
+document.getElementById('removeFoto').addEventListener('click', function(){
+    document.getElementById("preview").style.display = "none"
+    document.getElementById("upload-photo").value=""
+})
 const inputCEP = document.getElementById('local');
 const mensagemCEP = document.getElementById('mensagem-cep');
 let timeoutId;

@@ -28,7 +28,6 @@ if (isset($_SESSION['username'])) {
 
     <?php 
 
-    var_dump($_POST);
         
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['nome'];
@@ -94,15 +93,18 @@ if (isset($_SESSION['username'])) {
                     } else {
                         // Se o e-mail e o CPF não estiverem cadastrados, proceda com o cadastro
                         $data = json_decode($response, true);
-                        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        $cadastro = $conn_capybd->prepare("INSERT INTO `tb_users` (`nome`, `banner`, `fotoPerfil`, `email`, `senha`, `celular`, `bio`, `linkedin`, `twitter`, `instagram`, `cep`, `uf`, `rua`, `numero`, `comp`, `bairro`, `cidade`, `cpf_cnpj`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                         $profPic = 'capivaraPadraoIcon.jpg';
                         $likes = 0;
                         $bio = '';
                         $linkedin = '';
                         $twitter = '';
                         $instagram = '';
-                        $cadastro->bind_param("sssssssssssssssss", $nome, $profPic, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);
+                        $banner = 'logo.png';
+                        $cadastro->bind_param("ssssssssssssssssss", $nome, $banner , $profPic, $email, $senha, $telefone, $bio, $linkedin, $twitter, $instagram, $cep, $data['uf'], $data['logradouro'], $num, $comp, $data['bairro'], $data['localidade'], $cpf);
                         $cadastro->execute();
+                        header('Location: login.php');
+                        exit();
                     }
                 } else {
                     echo "<script>alert('Erro, verifique o CEP ou tente novamente mais tarde')</script>";

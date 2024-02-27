@@ -278,7 +278,6 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                                 // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
                                 echo '<details>';
                                 echo '    <summary>...</summary>';
-                                echo '    <button class="btn-edit">editar</button>';
                                 echo '    <button onclick="deletePost('. $row['idPub'] .')" class="btn-edit">excluir</button>';
                                 echo '</details>';
                             } else {    

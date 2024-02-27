@@ -88,16 +88,11 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
               </div>
               <p><?php echo($minifeed_row['titulo']);?></p>
             </div>
+              <p> <?php echo($minifeed_row['descricao']);?></p>
           </div>
           </section>
         </div>
         <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
-
-          
-
-
-
-
 
     <section>
       <div class="container-fluid bullet-points">

@@ -156,7 +156,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
                                 <img id="preview">
                                 </div>
-                                <button id="removeFoto">remover foto</button>
+                                <button class="botao-foto" id="removeFoto" type="button">remover foto</button>
 
                                 </div>
                                 <div class="modal-footer"> 

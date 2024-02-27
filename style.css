@@ -716,4 +716,8 @@ details summary{
 .banner-label{
     display: block !important;
 }
-
+.botao-foto{
+    border-radius: 10px;
+    border-color: red;  
+    font: optional; color: red;
+}

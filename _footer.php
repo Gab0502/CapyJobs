@@ -8,7 +8,7 @@
             <li><a href="index.php" class="text-white">Início</a></li>
             <li><a href="login.php" class="text-white">Login</a></li>
             <li><a href="cadastro.php" class="text-white">Cadastre-se</a></li>
-            <li><a href="#" class="text-white">Contato</a></li>
+            <li><a href="contato.php" class="text-white">Contato</a></li>
           </ul>
         </div>
         <!-- Coluna 2 -->

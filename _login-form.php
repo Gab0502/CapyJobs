@@ -1,8 +1,6 @@
 <?php
 require("conn_capybd.php");
 session_start();
-var_dump($_POST);
-
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $username = $_POST[ 'username'];
@@ -30,7 +28,9 @@ var_dump($_POST);
                 header('Location: feed-temp.php');  // Redirecionar para a página após o login
                 exit(); 
             }else{
-                echo('<script>alert("Login e/ou senha não encontrados")</script>');
+                echo "<script>alert('Login e/ou senha não encontrados');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         }
     ?>

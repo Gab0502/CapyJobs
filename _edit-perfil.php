@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $instagram = $valoresCampos['instagram'];
         $idUser = $_SESSION['idUser'];
 
+        if (strpos($email, '@capivarias') !== false) {
+            echo "<script>alert('E-mails com o domínio @capivarias não são permitidos. Por favor, utilize outro e-mail.')</script>";
+        }
+
         // Preparando a consulta SQL
         $sql = "UPDATE tb_users SET nome = ?, email = ?, bio = ?, linkedin = ?, twitter = ?, instagram = ?, bairro = ?, cidade = ? WHERE idUser = ?";
 

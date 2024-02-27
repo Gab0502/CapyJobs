@@ -1,6 +1,12 @@
 <?php require("conn_capybd.php");  
 session_start();
 
+if (empty($_SESSION['idUser'])) {
+    // Redireciona para a página de login
+    header('Location: login.php');
+    exit;
+}
+
 if(isset($_GET['idUser'])){
     $idUser = $_GET['idUser'];
 
@@ -63,7 +69,8 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             $extension = strtolower(end($temp));
             
             if (!in_array($extension, $allowedExtensions)) {
-                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil.');</script>";
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
                 exit();
             }
         
@@ -80,16 +87,23 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                 if ($stmt) {
                     $stmt->bind_param("si", $nomeAleatorio, $idUser);
                     if ($stmt->execute()) {
-                        echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');</script>";
+                        echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     } else {
-                        echo "<script>alert('Erro ao executar a atualização da imagem para foto de perfil.');</script>";
+                        echo "<script>alert('Erro ao executar a atualização da imagem para foto de perfil.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     }
-                    $stmt->close();
                 } else {
-                    echo "<script>alert('Erro ao preparar a declaração SQL para foto de perfil.');</script>";
+                    echo "<script>alert('Erro ao preparar a declaração SQL para foto de perfil.');
+                    window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                    exit();
                 }
             } else {
-                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para foto de perfil.');</script>";
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para foto de perfil.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         } 
         // Verifica se um arquivo foi enviado corretamente para o banner
@@ -100,7 +114,8 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             $extension = strtolower(end($temp));
             
             if (!in_array($extension, $allowedExtensions)) {
-                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner.');</script>";
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
                 exit();
             }
         
@@ -117,22 +132,32 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                 if ($stmt) {
                     $stmt->bind_param("si", $nomeAleatorio, $idUser);
                     if ($stmt->execute()) {
-                        echo "<script>alert('Imagem para banner atualizada com sucesso.');</script>";
+                        echo "<script>alert('Imagem para banner atualizada com sucesso.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     } else {
-                        echo "<script>alert('Erro ao executar a atualização da imagem para banner.');</script>";
+                        echo "<script>alert('Erro ao executar a atualização da imagem para banner.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     }
-                    $stmt->close();
                 } else {
-                    echo "<script>alert('Erro ao preparar a declaração SQL para banner.');</script>";
+                    echo "<script>alert('Erro ao preparar a declaração SQL para banner.');
+                    window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                    exit();
                 }
             } else {
-                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para banner.');</script>";
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para banner.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         } else {
-            echo "<script>alert('Nenhum arquivo enviado ou erro no envio do arquivo.');</script>";
+            echo "<script>alert('Nenhum arquivo enviado ou erro no envio do arquivo.');
+            window.location.href = 'perfil.php?idUser=$idUser';</script>";
+            exit();
         }
     }
-?>    
+    ?>
+      
 
    <?php include('_header2.php')?>
     <main class="bullet-points APOLLO">

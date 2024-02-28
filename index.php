@@ -2,11 +2,24 @@
 
 <?php require("conn_capybd.php");
 
-$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg1 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
+$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg 
+FROM tb_users u 
+LEFT JOIN tb_seg s ON u.idUser = s.idSeg1 
+GROUP BY u.idUser 
+ORDER BY num_seg DESC 
+LIMIT 4;
+";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
 $topusers_row = mysqli_fetch_assoc($topusers_exe);
 
-$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfiL, COUNT(l.idLike) AS num_likes FROM tb_pub p INNER JOIN tb_users u ON p.idUser = u.idUser INNER JOIN tb_likes l ON p.idPub = l.idPub WHERE l.idLike = 7 GROUP BY p.idPub, p.titulo ORDER BY num_likes DESC LIMIT 4";
+$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfil, COUNT(l.idLike) AS num_likes 
+FROM tb_pub p 
+INNER JOIN tb_users u ON p.idUser = u.idUser 
+LEFT JOIN tb_likes l ON p.idPub = l.idPub 
+GROUP BY p.idPub 
+ORDER BY num_likes DESC 
+LIMIT 3 ;
+";
 $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
 $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 
@@ -37,7 +50,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
             <form action="pesquisa.php" method="get" class="form-pesquisa-input">
               <input type="text" placeholder="    Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
                 id="barradepesquisa">
-              <button type="submit">
+              <button type="submit" class='disabled1'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                   viewBox="0 0 16 16">
                   <path
@@ -64,7 +77,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards col-xl-3">
+      <div class="flex-cards">
         <?php do{ ?>
         <div class="card">
           <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
@@ -74,10 +87,11 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
         <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
       </div>
       </section>
+      <div class="flex-cards">
         <?php do{ ?>
         <div class="col-xl-3">
         <section class="feed">
-          <div class="flex-generic">
+          <div class="">
             <div  style="align-items: center;">
               <div class="post-user-name pub-perfil">
                 <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário." width="5px">
@@ -93,6 +107,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
           </section>
         </div>
         <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
+        </div>
 
     <section>
       <div class="container-fluid bullet-points">

@@ -23,13 +23,19 @@ if(isset($_GET['idUser'])){
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CapyJobs - Perfil de Usuário</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CapyJobs - Vagas</title>
     <link rel="icon" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style-responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -233,34 +239,36 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     </div>
                     <!-- sessão de contato -->
                     <div class="feed">
-                    <div class="flex-generic">
-                        <h5>Celular:</h5>
-                        <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>E-mail:</h5>
-                        <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Bairro:</h5>
-                        <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Cidade:</h5>
-                        <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Linkedin:</h5>
-                        <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Twitter:</h5>
-                        <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Instagram:</h5>
-                        <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
-                    </div>
+    <div class="flex-generic">
+        <h5>Celular: </h5>
+        <h5 class='alteracao' id='celular' style="margin-left: 0;"><?php echo($row['celular']) ?></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>E-mail: </h5>
+        <h5 class='alteracao' id='email' style="margin-left: 0;"><?php echo($row['email']) ?></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>Bairro: </h5>
+        <h5 class='alteracao' id='bairro' style="margin-left: 0;"><?php echo($row['bairro']) ?></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>Cidade: </h5>
+        <h5 class='alteracao' id='cidade' style="margin-left: 0;"><?php echo($row['cidade']) ?></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>Linkedin: </h5>
+        <h5 class='alteracao' id='linkedin' style="margin-left: 0;"><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>Twitter: </h5>
+        <h5 class='alteracao' id='twitter' style="margin-left: 0;"><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+    </div>
+    <div class="flex-generic">
+        <h5>Instagram: </h5>
+        <h5 class='alteracao' id='instagram' style="margin-left: 0;"><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+    </div>
+</div>
+
                     <?php
                     if ($row['idUser'] == $_SESSION['idUser']) {
                                     // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
@@ -363,14 +371,11 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                         
                         ?>
 
-                        <button class='btn-like '>
+                        <button class='btn-like' onclick="window.location.href='perfil.php?idUser=<?php echo $row['idUser']; ?>'">
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-reply-fill' viewBox='0 0 16 16'>
                                 <path d='M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z'/>
                             </svg>
-
-                            <!-- botão para like -->
-
-                            compartilhar
+                            contatos
                         </button>
                     </div>
                     <div class='faixa'></div>

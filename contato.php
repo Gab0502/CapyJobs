@@ -94,7 +94,7 @@ $mailer->CharSet = 'UTF-8';
 
 // Dados da sua conta do provedor de hospedagem para autenticação e envio
 $usuario = 'contato@capyjobs.com.br';
-$senha = 'Ti382024!!';
+$senha = 'capymail2024!!';
 $seuEmail = 'contato@capyjobs.com.br';
 
 // Conta do usuário
@@ -119,7 +119,7 @@ $mailer->Subject = $assunto;
 $mailer->MsgHTML($corpoMSG);
 
 // anexar arquivo no máximo 2MB
-$mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']);
+$mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']0);
 
 if(!$mailer->Send()) {
    echo "Erro: " . $mailer->ErrorInfo;

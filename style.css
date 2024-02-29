@@ -92,6 +92,9 @@ h1 {
 }
 body {
     background-color: var(--bgBranco) !important;
+    overflow-x: hidden; /* Para evitar a barra de rolagem horizontal */
+    width: 100%;
+
 }
 header {
     background-color: var(--verdeEscuro) !important;
@@ -385,6 +388,10 @@ header {
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
+.feed p, h5{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 .descricao{
     margin: 30px;
     margin-top: 60px;
@@ -516,12 +523,10 @@ label {
 
  #upload-photo {
     opacity: 0;
-    position: absolute;
     z-index: -1;
  }
  #upload-banner {
     opacity: 0;
-    position: absolute;
     z-index: -1;
     
  }
@@ -700,15 +705,6 @@ details summary{
 
 
 
-.fa-camera {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Cor do ícone */
-    font-size: 24px; /* Tamanho do ícone */
-    opacity: 0; /* Inicialmente invisível */
-}
 
 .profile-image-container:hover .fa-camera {
     opacity: 1; /* Torna o ícone visível ao passar o mouse */

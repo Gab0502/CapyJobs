@@ -1,7 +1,7 @@
 <?php
 //Métodos de conexão com BD MySQLI, MySQL e PDO
 
-/*
+
 //Conexão localhost com Visual Studio Code
 $hostname_conn_capybd = "localhost";
 $database_conn_capybd = "capybd";
@@ -32,7 +32,7 @@ $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $pas
 /*
 //Barra de comentário para desativar conexão web
 //Conexão LOCALWEB com Dreamweaver
-$hostname_conn_capybd = "localhost";
+/*$hostname_conn_capybd = "localhost";
 $database_conn_capybd = "bd_ctec";
 $username_conn_capybd = "root";
 $password_conn_capybd = "";
@@ -43,4 +43,6 @@ mysqli_set_charset('utf-8')
 
 // Verificação de conexão
 //echo("Conectado!");
+
+mysqli_set_charset($conn_capybd, 'utf8');
 ?>

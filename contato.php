@@ -13,9 +13,7 @@
 </head>
     
 <body>
-  <header>
-    <?php include("_header.php")?>
-  </header>
+  <?php include("_header.php")?>
  	<main>
     <div class="">    
       <div class="alert alert-success" role="alert" style="text-align: center">
@@ -57,76 +55,76 @@
           <button type="submit" class="btn btn-primary">Enviar mensagem</button>
           <br><br>
         </form>
-<?php include("_footer.php");?>
-<?php
-require 'PHPMailerAutoload.php';
-require 'class.phpmailer.php';
+        <?php include("_footer.php");?>
+        <?php
+        require 'PHPMailerAutoload.php';
+        require 'class.phpmailer.php';
 
-error_reporting(E_ALL & ~E_WARNING);
+        error_reporting(E_ALL & ~E_WARNING);
 
 
-$mailer = new PHPMailer;
-$mailer->isSMTP(); // Set mailer to use SMTP
-$mailer->SMTPOptions = array(
-'ssl' => array(
-'verify_peer' => false,
-'verify_peer_name' => false,
-'allow_self_signed' => true
-)
-);
+        $mailer = new PHPMailer;
+        $mailer->isSMTP(); // Set mailer to use SMTP
+        $mailer->SMTPOptions = array(
+        'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+        )
+        );
 
-if($_GET['acao'] == 'enviar'){
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$telefone = $_POST['telefone'];
-$assunto = $_POST['assunto'];
-$mensagem = $_POST['mensagem'];
-$arquivo = $_FILES["arquivo"];
+        if($_GET['acao'] == 'enviar'){
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $assunto = $_POST['assunto'];
+        $mensagem = $_POST['mensagem'];
+        $arquivo = $_FILES["arquivo"];
 
-$mailer->Host = 'plesk12l0002.hospedagemdesites.ws';
-$mailer->SMTPAuth = true; // Enable SMTP authentication
-$mailer->IsSMTP();
-$mailer->isHTML(true); // Set email format to HTML
-$mailer->Port = 587;
+        $mailer->Host = 'plesk12l0002.hospedagemdesites.ws';
+        $mailer->SMTPAuth = true; // Enable SMTP authentication
+        $mailer->IsSMTP();
+        $mailer->isHTML(true); // Set email format to HTML
+        $mailer->Port = 587;
 
-// Ativar condição caracteres
-$mailer->CharSet = 'UTF-8';
+        // Ativar condição caracteres
+        $mailer->CharSet = 'UTF-8';
 
-// Dados da sua conta do provedor de hospedagem para autenticação e envio
-$usuario = 'contato@capyjobs.com.br';
-$senha = 'capymail2024!!';
-$seuEmail = 'contato@capyjobs.com.br';
+        // Dados da sua conta do provedor de hospedagem para autenticação e envio
+        $usuario = 'contato@capyjobs.com.br';
+        $senha = 'capymail2024!!';
+        $seuEmail = 'contato@capyjobs.com.br';
 
-// Conta do usuário
-$mailer->Username = $usuario; // SMTP username
-$mailer->Password = $senha; // SMTP password
+        // Conta do usuário
+        $mailer->Username = $usuario; // SMTP username
+        $mailer->Password = $senha; // SMTP password
 
-// E-mail do destinatario
-$address = $seuEmail;
+        // E-mail do destinatario
+        $address = $seuEmail;
 
-// Corpo do e-mail em html
-$corpoMSG = "<strong>Nome:</strong> $nome <br><br> <strong>E-mail:</strong> $email <br><br> <strong>Telefone:</strong> $telefone <br><br> <strong>Assunto:</strong> $assunto <br><br> <strong>Mensagem:</strong> $mensagem <br><br>";
+        // Corpo do e-mail em html
+        $corpoMSG = "<strong>Nome:</strong> $nome <br><br> <strong>E-mail:</strong> $email <br><br> <strong>Telefone:</strong> $telefone <br><br> <strong>Assunto:</strong> $assunto <br><br> <strong>Mensagem:</strong> $mensagem <br><br>";
 
-$mailer->AddAddress($address, "destinatario");
-$mailer->Sender = $seuEmail;
-$mailer->FromName = $nome;
-$mailer->From = $email;
+        $mailer->AddAddress($address, "destinatario");
+        $mailer->Sender = $seuEmail;
+        $mailer->FromName = $nome;
+        $mailer->From = $email;
 
-// assunto da mensagem
-$mailer->Subject = $assunto;
+        // assunto da mensagem
+        $mailer->Subject = $assunto;
 
-// corpo da mensagem
-$mailer->MsgHTML($corpoMSG);
+        // corpo da mensagem
+        $mailer->MsgHTML($corpoMSG);
 
-// anexar arquivo no máximo 2MB
-$mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']0);
+        // anexar arquivo no máximo 2MB
+        $mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']0);
 
-if(!$mailer->Send()) {
-   echo "Erro: " . $mailer->ErrorInfo;
-  } else {
-   echo('<script> alert("Mensagem enviada com sucesso!"); window.location.href="index.php"; </script>');
-  }
-}
-?>
+        if(!$mailer->Send()) {
+          echo "Erro: " . $mailer->ErrorInfo;
+        } else {
+          echo('<script> alert("Mensagem enviada com sucesso!"); window.location.href="index.php"; </script>');
+        }
+        }
+  ?>
 </body>
 </html>

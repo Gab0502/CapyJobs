@@ -13,58 +13,51 @@
 </head>
     
 <body>
-			<header>
-                <?php include("_header.php")?>
-			</header>
- 		<main>
+  <header>
+    <?php include("_header.php")?>
+  </header>
+ 	<main>
+    <div class="">    
+      <div class="alert alert-success" role="alert" style="text-align: center">
+        <h2>Fale Conosco:</h2>
+      </div>
+      </div>
+        <form action="?acao=enviar" method="post" enctype="multipart/form-data" id="form1" style="padding:10px">
+          <div class="form-group">
+          <label><strong>Nome</strong>:*</label>
+          <input name="nome" type="text" required="required" class="form-control">
+          </div>
 
+          <div class="form-group">
+          <label><strong>E-mail</strong>:*</label>
+          <input name="email" type="email" required="required" class="form-control">
+          </div>
 
-            <div class="">    
-                <div class="alert alert-success" role="alert" style="text-align: center">
-                    <h2>Fale conosco</h2>
-                </div>
-            </div>
-            <form action="?acao=enviar" method="post" enctype="multipart/form-data" id="form1" style="padding:10px">
+          <div class="form-group">
+          <label><strong>Telefone</strong>:</label>
+          <input name="telefone" type="tel" class="form-control">
+          </div>
+        
+          <div class="form-group">
+          <label><strong>Assunto</strong>:*</label>
+          <input name="assunto" type="text" required="required" class="form-control">
+          </div>
+      
+          <div class="form-group">
+          <label><strong>Mensagem</strong>:*</label>
+          <textarea name="mensagem" rows="10" required class="form-control"></textarea>
+          </div>
 
-<div class="form-group">
-<label><strong>Nome</strong>:*</label>
-<input name="nome" type="text" required="required" class="form-control">
-</div>
+          <div class="form-group">
+          <label><strong>Anexo</strong>:</label>
+          <input name="arquivo" type="file" class="form-control-file">
+          </div>
 
-<div class="form-group">
-<label><strong>E-mail</strong>:*</label>
-<input name="email" type="email" required="required" class="form-control">
-</div>
-
-<div class="form-group">
-<label><strong>Telefone</strong>:</label>
-<input name="telefone" type="tel" class="form-control">
-</div>
-  
-<div class="form-group">
-<label><strong>Assunto</strong>:*</label>
-<input name="assunto" type="text" required="required" class="form-control">
-</div>
- 
-<div class="form-group">
-<label><strong>Mensagem</strong>:*</label>
-<textarea name="mensagem" rows="10" required class="form-control"></textarea>
-</div>
-
-<div class="form-group">
-<label><strong>Anexo</strong>:</label>
-<input name="arquivo" type="file" class="form-control-file">
-</div>
-
-<br>
-<button type="submit" class="btn btn-primary">Enviar mensagem</button>
-<br><br>
-
-</form>
-
+          <br>
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <br><br>
+        </form>
 <?php include("_footer.php");?>
-
-
 <?php
 require 'PHPMailerAutoload.php';
 require 'class.phpmailer.php';
@@ -91,22 +84,22 @@ $mensagem = $_POST['mensagem'];
 $arquivo = $_FILES["arquivo"];
 
 $mailer->Host = 'plesk12l0002.hospedagemdesites.ws';
-$mailer->SMTPAuth = true;     // Enable SMTP authentication
+$mailer->SMTPAuth = true; // Enable SMTP authentication
 $mailer->IsSMTP();
-$mailer->isHTML(true);       // Set email format to HTML
+$mailer->isHTML(true); // Set email format to HTML
 $mailer->Port = 587;
 
 // Ativar condição caracteres
 $mailer->CharSet = 'UTF-8';
 
 // Dados da sua conta do provedor de hospedagem para autenticação e envio
-$usuario = 'ti38@sandromir.com.br';
+$usuario = 'contato@capyjobs.com.br';
 $senha = 'Ti382024!!';
-$seuEmail = 'ti38@sandromir.com';
+$seuEmail = 'contato@capyjobs.com.br';
 
 // Conta do usuário
 $mailer->Username = $usuario; // SMTP username
-$mailer->Password = $senha;    // SMTP password
+$mailer->Password = $senha; // SMTP password
 
 // E-mail do destinatario
 $address = $seuEmail;
@@ -126,22 +119,14 @@ $mailer->Subject = $assunto;
 $mailer->MsgHTML($corpoMSG);
 
 // anexar arquivo no máximo 2MB
-$mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']  );
+$mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']);
 
 if(!$mailer->Send()) {
    echo "Erro: " . $mailer->ErrorInfo;
   } else {
    echo('<script> alert("Mensagem enviada com sucesso!"); window.location.href="index.php"; </script>');
-
   }
 }
 ?>
-
-
-			
-			
-			<!-- Rodapé -->
-			<!-- FIM Rodapé -->
-		
-	</body>
+</body>
 </html>

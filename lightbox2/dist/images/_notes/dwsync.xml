@@ -32,4 +32,8 @@
 <file name="prev.png" server="ftp.sandromir.com/httpdocs/ctec/" local="133138502156780771" remote="133137733800000000" Dst="0" />
 <file name="next.png" server="ftp.sandromir.com/httpdocs/ctec/" local="133138502157444942" remote="133137733800000000" Dst="0" />
 <file name="close.png" server="ftp.sandromir.com/httpdocs/ctec/" local="133138502157514754" remote="133137733800000000" Dst="0" />
+<file name="loading.gif" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225849233" remote="133535187000000000" Dst="0" />
+<file name="prev.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008226000881" remote="133535187000000000" Dst="0" />
+<file name="next.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225990930" remote="133535187000000000" Dst="0" />
+<file name="close.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225849233" remote="133535187000000000" Dst="0" />
 </dwsync>

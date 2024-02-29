@@ -1,2 +1,0 @@
-USE capybd;
-SELECT p.idPub, p.titulo, p.descricao, p.tag, p.dia, p.dataPub, u.idUser, u.nome, u.fotoPerfil, COUNT(l.idLike) AS num_likes FROM tb_pub p INNER JOIN tb_likes l ON p.idPub = l.idPub INNER JOIN tb_users u ON u.idUser = p.idUser WHERE l.idLike = 1 GROUP BY p.idPub, p.titulo ORDER BY num_likes DESC LIMIT 4;

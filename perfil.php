@@ -166,7 +166,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
       
 
    <?php include('_header2.php')?>
-    <main class="bullet-points APOLLO">
+    <main class="perfil-margin">
         <section>
             <!-- sessão de rosto-perfil .-->
             <div class="feed">

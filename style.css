@@ -717,3 +717,6 @@ details summary{
     border-color: red;  
     font: optional; color: red;
 }
+.perfil-margin{
+    margin: 25px;
+}

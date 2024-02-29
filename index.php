@@ -1,5 +1,3 @@
-<a href="login.php">
-
 <?php require("conn_capybd.php");
 
 $topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg 
@@ -10,7 +8,6 @@ ORDER BY num_seg DESC
 LIMIT 4;
 ";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
-$topusers_row = mysqli_fetch_assoc($topusers_exe);
 
 $minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfil, COUNT(l.idLike) AS num_likes 
 FROM tb_pub p 
@@ -21,7 +18,6 @@ ORDER BY num_likes DESC
 LIMIT 3 ;
 ";
 $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
-$minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 
 ?>
 <!DOCTYPE html>
@@ -78,17 +74,19 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
       <div class="flex-cards">
-        <?php do{ ?>
-        <div class="card">
-          <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
-          <p><?php echo($topusers_row['nome']);?></p>
-          <P><?php echo($topusers_row['bio']);?></P>
-        </div>
-        <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
-      </div>
+        <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
+          
+            <div class="card">
+                <img src="images/<?php echo($topusers_row['fotoPerfil']) ?>" alt="Foto de perfil de <?php echo ($topusers_row['nome']) ?>.">
+                <p><?php echo ($topusers_row['nome']); ?></p>
+                <P><?php echo ($topusers_row['bio']); ?></P>
+            </div>
+        <?php } ?>
+    </div>
+
       </section>
-      <div class="flex-cards">
-        <?php do{ ?>
+      <div class="flex-cards" id='mini-feed'>
+        <?php while($minifeed_row = mysqli_fetch_assoc($minifeed_exe)){ ?>
         <div class="col-xl-3">
         <section class="feed">
           <div class="">
@@ -106,7 +104,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
           </div>
           </section>
         </div>
-        <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
+        <?php }?>
         </div>
 
     <section>
@@ -169,10 +167,10 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
     </section>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-6 fonteIndex">
+        <div class="col-xl-6">
           <div class="batata">
-            <h1>Junte-se a nós!!</h1>
-            <h5>
+            <h1 class="fonteIndex">Junte-se a nós!!</h1>
+            <h5 style='color: #027449'>
               Descubra novas oportunidades no CapyJobs!
               Seja você um músico, palhaço ou organizador de festas, nossa plataforma é o lugar perfeito para se
               destacar.

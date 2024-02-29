@@ -20,6 +20,9 @@
     margin: 0px;
     margin-bottom: 25px;
  }
+ #mini-feed{
+   flex-direction: column;
+ }
 }
 @media screen and (max-width: 1200px){
    .disabled2{

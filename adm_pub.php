@@ -1,6 +1,6 @@
 <?php require("conn_capybd.php");
  
-$query_rs_pub = "SELECT * FROM tb_pub ORDER BY tb_pub.idPub ";
+$query_rs_pub = "SELECT * FROM tb_pub ORDER BY tb_pub.idPub DESC";
 
 $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
 ?>

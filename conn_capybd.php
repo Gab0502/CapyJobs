@@ -13,7 +13,7 @@ $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $pas
 // Verificação de conexão
 //echo("Conectado!");
 //Barra de comentário para desativar conexão local
-*/
+/*
 
 
 
@@ -26,10 +26,6 @@ $password_conn_capybd = "Capys2024!";
 //Criando a conexão usando as variáveis
 $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $password_conn_capybd, $database_conn_capybd) or trigger_error(mysqli_connect_errno(), E_USER_ERROR);
 
-
-
-
-/*
 //Barra de comentário para desativar conexão web
 //Conexão LOCALWEB com Dreamweaver
 /*$hostname_conn_capybd = "localhost";

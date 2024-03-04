@@ -3,84 +3,100 @@
 $query_rs_pub = "SELECT * FROM tb_pub ORDER BY tb_pub.idPub ";
 
 $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
-
-$row_rs_pub = mysqli_fetch_assoc($rs_pub);
-
-//$totalRow_rs_pub = mysqli_num_rows($rs_pub);
-
 ?>
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>CapyJobs - ADM Publicações</title>
 <link rel="icon" href="images/favicon-16x16.png">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f3f5;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .feed {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Alterado para alinhar as publicações à esquerda */
+        gap: 20px; /* Espaçamento entre as publicações */
+        margin-bottom: -20px; /* Ajuste para o último item não criar espaço extra */
+        max-width: 800px; /* Definindo a largura máxima do .feed */
+        margin-left: auto; /* Centralizando o .feed */
+        margin-right: auto; /* Centralizando o .feed */
+    }
+    .post {
+        width: calc(50% - 20px);
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .post-content {
+        margin-bottom: 10px;
+    }
+    .post img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .post-date {
+        text-align: right;
+        color: #999;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+</style>
 </head>
 
 <body>
-<a href="feed-temp.php">
-    <img src="images/capivaraPadraoIcon.jpg" width="100" alt=""/></a>
-<h1>Painel Administrativo - Lista de Publicações</h1>
-<a href="adm.php">Voltar</a>
-<br><br><br>
-<table width="100%" border="1">
-  <tbody>
-    <tr>
-      <td><strong>Excluir</strong></td>
-      <td><strong>Editar</strong></td>
-      <td><strong>Pub ID</strong></td>
-      <td><strong>User ID</strong></td>
-      <td><strong>AD?</strong></td>
-      <td><strong>Tag</strong></td>
-      <td><strong>Título</strong></td>
-      <td><strong>Descrição</strong></td>
-      <td><strong>Data (AD)</strong></td>
-      <td><strong>Data (Pub)</strong></td>
-      <td><strong>CEP</strong></td>
-      <td><strong>UF</strong></td>
-      <td><strong>Rua</strong></td>
-      <td><strong>Número</strong></td>
-      <td><strong>Compremento</strong></td>
-      <td><strong>Bairro</strong></td>
-      <td><strong>Cidade</strong></td>
-      <td><strong>Poster</strong></td>
-    </tr>
-	  
-    <!-- INÍCIO do Loop -->	 
-    <?php do {?>
-      <tr>
-        <td>
-          <a href="adm_excluir_pub.php?idPub=<?php echo($row_rs_pub["idPub"])?>" onclick="return confirm('deseja realmente excluir? <?php echo($row_rs_pub['idPub'])?>')">
-            <img src="images/adm/delete.gif" width="20" height="20" alt=""/>
-          </a>
-        </td>
-        <td>
-          <a href="adm_editar.php?idPub=<?php echo($row_rs_pub["idPub"])?>" >
-            <img src="images/adm/edit.gif" width="20" height="20" alt=""/>
-          </a>
-        </td>
-        <td><?php echo($row_rs_pub ['idPub']); ?></td>
-        <td><?php echo($row_rs_pub ['idUser']); ?></td>
-        <td><?php echo($row_rs_pub ['ad']); ?></td>
-        <td><?php echo($row_rs_pub ['tag']); ?></td>
-        <td><?php echo($row_rs_pub ['titulo']); ?></td>
-        <td><?php echo($row_rs_pub ['descricao']); ?></td>
-        <td><?php echo($row_rs_pub ['dia']); ?></td>
-        <td><?php echo($row_rs_pub ['dataPub']); ?></td>
-        <td><?php echo($row_rs_pub ['cep']); ?></td>
-        <td><?php echo($row_rs_pub ['uf']); ?></td>
-        <td><?php echo($row_rs_pub ['rua']); ?></td>
-        <td><?php echo($row_rs_pub ['numero']); ?></td>
-        <td><?php echo($row_rs_pub ['comp']); ?></td>
-        <td><?php echo($row_rs_pub ['bairro']); ?></td>
-        <td><?php echo($row_rs_pub ['cidade']); ?></td>
-        <td><img src="images/<?php echo($row_rs_pub['midia1']);?>" width=50 ></td>
-        <td colspan="10"><hr></td>
-      </tr>
-    <?php } while($row_rs_pub = mysqli_fetch_assoc($rs_pub));?>
-    <!-- FIM do Loop -->
-  </tbody>
-</table>
-
+<div class="container">
+    <a href="feed-temp.php">
+        <img src="images/capivaraPadraoIcon.jpg" width="100" alt="Capybara Icon">
+    </a>
+    <h1>Painel Administrativo - Lista de Publicações</h1>
+    <a href="adm.php" class="btn">Voltar</a>
+    <br><br>
+    <div class="feed">
+        <?php while($row_rs_pub = mysqli_fetch_assoc($rs_pub)) { ?>
+        <div class="post">
+            <div class="post-content">
+                <h6><?php echo $row_rs_pub['idPub']; ?></h6>
+                <p><?php echo $row_rs_pub['titulo']; ?></p>
+            </div>
+            <a href="adm_editar.php?idPub=<?php echo $row_rs_pub['idPub']; ?>">
+                <img src="images/<?php echo $row_rs_pub['midia1']; ?>" width="100" alt="Poster">
+            </a>
+            <p class="post-date"><?php echo $row_rs_pub['dataPub']; ?></p>
+        </div>
+        <?php } ?>
+    </div>
+</div>
 </body>
 </html>

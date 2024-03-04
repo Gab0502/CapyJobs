@@ -4,7 +4,6 @@ $query_rs_perf = "SELECT * FROM tb_users ORDER BY tb_users.idUser DESC";
 
 $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
 
-$row_rs_perf = mysqli_fetch_assoc($rs_perf);
 
 //$totalRow_rs_perf = mysqli_num_rows($rs_perf);
 

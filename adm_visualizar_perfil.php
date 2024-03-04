@@ -93,6 +93,7 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
                 <p><strong>User ID:</strong> <?php echo $row_rs_perf['idUser']; ?></p>
                 <p><strong>Nome:</strong> <?php echo $row_rs_perf['nome']; ?></p>
                 <p><strong>Email:</strong> <?php echo $row_rs_perf['email']; ?></p>
+                <p><strong>Senha:</strong> Não falamos Senha do usuario </p>
                 <p><strong>Contato:</strong> <?php echo $row_rs_perf['celular']; ?></p>
                 <p><strong>Bio:</strong> <?php echo $row_rs_perf['bio']; ?></p>
                 <p><strong>Linkedin:</strong> <a href="<?php echo $row_rs_perf['linkedin']; ?>"><?php echo $row_rs_perf['linkedin']; ?></a></p>

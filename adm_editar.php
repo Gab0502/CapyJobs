@@ -207,7 +207,6 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
     </tr>
 </table>
 <a class="btn" href="adm_pub.php">Voltar</a>
-<a class="delete-link" href="adm_excluir_perfil.php?idUser=<?php echo($row_rs_perf["idUser"])?>" onclick="return confirm('Deseja realmente excluir o usuário <?php echo($row_rs_perf['nome'])?>?')">Excluir Perfil</a>
 </form>
 </body>
 </html>

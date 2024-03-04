@@ -80,7 +80,7 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
         <img src="images/capivaraPadraoIcon.jpg" width="100" alt="Capybara Icon">
     </a>
     <h1>Painel Administrativo - Detalhes do Usuário</h1>
-    <a href="adm.php">Voltar</a>
+    <a href="adm_perfil.php">Voltar</a>
     <br><br>
     <table>
         <tr>
@@ -93,7 +93,6 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
                 <p><strong>User ID:</strong> <?php echo $row_rs_perf['idUser']; ?></p>
                 <p><strong>Nome:</strong> <?php echo $row_rs_perf['nome']; ?></p>
                 <p><strong>Email:</strong> <?php echo $row_rs_perf['email']; ?></p>
-                <p><strong>Senha:</strong> <?php echo $row_rs_perf['senha']; ?></p>
                 <p><strong>Contato:</strong> <?php echo $row_rs_perf['celular']; ?></p>
                 <p><strong>Bio:</strong> <?php echo $row_rs_perf['bio']; ?></p>
                 <p><strong>Linkedin:</strong> <a href="<?php echo $row_rs_perf['linkedin']; ?>"><?php echo $row_rs_perf['linkedin']; ?></a></p>
@@ -104,12 +103,14 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
                 <p><strong>Rua:</strong> <?php echo $row_rs_perf['rua']; ?></p>
                 <p><strong>Número:</strong> <?php echo $row_rs_perf['numero']; ?></p>
                 <p><strong>Complemento:</strong> <?php echo $row_rs_perf['comp']; ?></p>
+            </td>
+            <td>  
                 <p><strong>Bairro:</strong> <?php echo $row_rs_perf['bairro']; ?></p>
                 <p><strong>Cidade:</strong> <?php echo $row_rs_perf['cidade']; ?></p>
                 <p><strong>CPF:</strong> <?php echo $row_rs_perf['cpf_cnpj']; ?></p>
-            </td>
-            <td>
-                <img src="images/<?php echo $row_rs_perf['fotoPerfil']; ?>" alt="Foto de Perfil">
+            
+                <p><img src="images/<?php echo $row_rs_perf['banner']; ?>" alt="Banner do Perfil"></p><br><br>
+                <p><img src="images/<?php echo $row_rs_perf['fotoPerfil']; ?>" alt="Foto de Perfil"></p>
             </td>
         </tr>
         <?php } ?>

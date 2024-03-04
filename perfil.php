@@ -195,7 +195,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     // Verifique se o usuário na sessão é o mesmo do parâmetro GET
                     if ($_SESSION['idUser'] == $_GET['idUser']) {
                         echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
-                        echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
+                        echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()' style='font-size:1px;'/>";
                         echo "<input type='submit' style='display:none;' id='submitBtn'/>";
                         echo "</form>";
                     } else {
@@ -245,7 +245,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
     </div>
     <div class="flex-generic">
         <h5>E-mail: </h5>
-        <h5 class='alteracao' id='email' style="margin-left: 0;"><?php echo($row['email']) ?></h5>
+        <h5 id='email' style="margin-left: 0;"><?php echo($row['email']) ?></h5>
     </div>
     <div class="flex-generic">
         <h5>Bairro: </h5>
@@ -283,9 +283,6 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
 
             </div>
             <!-- divisão para inserir infromações de  -->
-            <div>
-
-            </div>
 
             <?php while ($row = $pub->fetch_assoc()): ?>
         <section class='feed'>
@@ -317,10 +314,10 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                                 // Caso contrário, mostra botão de seguir/seguindo
                                 if ($following) {
                                     // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                    echo "<button onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
+                                    echo "<button type='button' onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
                                 } else {
                                     // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
+                                    echo "<button type='button'class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
                                 }                          
                             }
                             ?>
@@ -383,6 +380,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             </div>
         </article>
     </section>
+    </section>
 <?php endwhile; ?>
     </main>
 
@@ -407,25 +405,28 @@ function Tform() {
     document.getElementById('btn-cancelar').addEventListener('click', function() {
         location.reload();
 });
-document.getElementById('btn-salvar').addEventListener('click',function(){
+document.getElementById('btn-salvar').addEventListener('click', function() {
     var valoresCampos = {};
-    var inputs = document.querySelectorAll('.alteracao input'); // Seleciona todos os inputs dentro dos elementos com classe 'alteracao'
+    var inputs = document.querySelectorAll('.alteracao input');
     inputs.forEach(function(input) {
         valoresCampos[input.id] = input.value;
-    });    
+    });
+
     $.ajax({
         type: 'POST',
-        url:'_edit-perfil.php',
-        data:{valoresCampos},
+        url: '_edit-perfil.php',
+        data: {valoresCampos},
         dataType: 'json',
-        success:function(response){
-            location.reload();
-            if(response['status']==='sucesso'){
-                window.location.href = window.location.href;
+        success: function(response) {
+            console.log(response)
+            if (response['status'] === 'sucesso') {
+                // Recarregar a página após uma atualização bem-sucedida
+                location.reload();
             }
         }
-    })
-})
+    });
+});
+
 
 function uploadFoto() {
     var submitButton = document.getElementById('submitBtn');

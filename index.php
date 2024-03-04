@@ -171,7 +171,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
         <div class="col-xl-6">
           <div class="batata">
             <h1 class="fonteIndex">Junte-se a nós!!</h1>
-            <h5 style='color: #027449'>
+            <h5 style='color : '>
               Descubra novas oportunidades no CapyJobs!
               Seja você um músico, palhaço ou organizador de festas, nossa plataforma é o lugar perfeito para se
               destacar.
@@ -205,7 +205,15 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
   </main>
 
   <?php include("_footer.php");?>
+<<<<<<< HEAD
   <script src="index.js"></script>
+=======
+
+  <script>
+    
+  </script>
+
+>>>>>>> 1a3d067269077484f9dbb7fdf998b87b5971ce93
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

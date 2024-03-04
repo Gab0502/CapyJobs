@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $valoresCampos['nome'];
         $bio = $valoresCampos['bio'];
         $celular = $valoresCampos['celular'];
-        $email = $valoresCampos['email'];
         $bairro = $valoresCampos['bairro'];
         $cidade = $valoresCampos['cidade'];
         $linkedin = $valoresCampos['linkedin'];
@@ -21,25 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $instagram = $valoresCampos['instagram'];
         $idUser = $_SESSION['idUser'];
 
-        if (strpos($email, '@capivarias') !== false) {
-            echo "<script>alert('E-mails com o domínio @capivarias não são permitidos. Por favor, utilize outro e-mail.')</script>";
-        }
-
         // Preparando a consulta SQL
-        $sql = "UPDATE tb_users SET nome = ?, email = ?, bio = ?, linkedin = ?, twitter = ?, instagram = ?, bairro = ?, cidade = ? WHERE idUser = ?";
+        $sql = "UPDATE tb_users SET nome = ?, bio = ?, linkedin = ?, twitter = ?, instagram = ?, bairro = ?, cidade = ? WHERE idUser = ?";
 
         // Preparando a declaração
         $stmt = mysqli_prepare($conn_capybd, $sql);
 
         // Vinculando parâmetros
-        mysqli_stmt_bind_param($stmt, "ssssssssi", $nome, $email, $bio, $linkedin, $twitter, $instagram, $bairro, $cidade, $idUser);
+        mysqli_stmt_bind_param($stmt, "sssssssi", $nome, $bio, $linkedin, $twitter, $instagram, $bairro, $cidade, $idUser);
 
         // Executando a declaração
-        mysqli_stmt_execute($stmt);
-
-        // Verificando se a atualização foi bem-sucedida
-        $num_rows = mysqli_stmt_num_rows($stmt);
-        if ($num_rows > 0) {
+        if (mysqli_stmt_execute($stmt)) {
             // Atualização bem-sucedida
             $result = 'sucesso';
         } else {
@@ -49,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $result = 'dados não recebidos';
     }
-        // Enviar uma resposta JSON de volta ao cliente
+    
+    // Enviar uma resposta JSON de volta ao cliente
     echo json_encode(array("status" => $result));
 }
 ?>

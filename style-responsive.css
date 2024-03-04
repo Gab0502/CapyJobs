@@ -2,6 +2,9 @@
  .disabled1{
     display: none;
  }
+ h5{
+   font-size: 14px;
+ }
 
  .feed-img img{
    width: 400px;

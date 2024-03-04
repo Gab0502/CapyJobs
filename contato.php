@@ -115,9 +115,9 @@
 
         // corpo da mensagem
         $mailer->MsgHTML($corpoMSG);
-
+        
         // anexar arquivo no máximo 2MB
-        $mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']0);
+        $mailer->AddAttachment($arquivo['tmp_name'], $arquivo['name']);
 
         if(!$mailer->Send()) {
           echo "Erro: " . $mailer->ErrorInfo;

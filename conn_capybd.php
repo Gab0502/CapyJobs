@@ -1,7 +1,7 @@
 <?php
 //Métodos de conexão com BD MySQLI, MySQL e PDO
 
-
+/*
 //Conexão localhost com Visual Studio Code
 $hostname_conn_capybd = "localhost";
 $database_conn_capybd = "capybd";

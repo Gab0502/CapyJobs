@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha = md5($_POST['senha'].'#capy');
         $telefone = $_POST['telefone'];
         $cep = $_POST['cep'];
         $num = $_POST['numero'];

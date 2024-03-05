@@ -1,10 +1,12 @@
 <?php
 require("conn_capybd.php");
 session_start();
+var_dump($password);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $username = $_POST[ 'username'];
-            $password = $_POST['password'];
+            $password = md5($_POST['password'].'#capy');
+            var_dump($password);
 
             $login = "SELECT * FROM tb_users WHERE email = ? AND senha = ?"; 
             $stmt = $conn_capybd->prepare($login);

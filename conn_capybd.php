@@ -35,8 +35,7 @@ $username_conn_capybd = "ctsdi_capysbd";
 $password_conn_capybd = "Capys2024!";
 // Criando a conexão usando as variáveis
 $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $password_conn_capybd, $database_conn_capybd) or trigger_error(mysqli_connect_errno(), E_USER_ERROR);
-mysqli_set_charset('utf-8');
-
+mysqli_set_charset($conn_capybd, 'utf8');
 
 
 

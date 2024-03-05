@@ -46,4 +46,5 @@
         <p class="text-white">2023 - CapyJobs</p>
       </div>
     </div>
+    <script src="pwa/myscripts.js"></script>
   </footer>

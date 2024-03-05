@@ -1,3 +1,4 @@
+<link rel="manifest" href="manifest.json">
 <header>
 <nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
   <a class="" href="feed-temp.php"><img src="images/capyIcon.png" alt="" width="100px"></a>
@@ -9,6 +10,7 @@
     <li class="nav-item ">
         <a class="nav-link" style="color: #ffff;" aria-current="page" href="feed-vaga.php">Vagas</a>
     </li>
+    
 <?php if(isset($_SESSION['email']) && strpos($_SESSION['email'], '@capivarias') !== false): ?>
   <li class='nav-item'>
       <a class='nav-link active' style='color: #ffff;' aria-current='page' href='adm.php'>ADMIN</a>
@@ -16,7 +18,7 @@
 <?php endif; ?>
 
 </ul>
-<?php if(isset($_SESSION['idUser'])): ?>
+<?php if(isset($_SESSION['idUser'])):?>
     <details>
         <summary><img src="images/<?php echo($_SESSION['profilePic']) ?>" alt="" class="iconNav"></summary>
         <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" class="nav-link" style="color: #ffff;">Perfil</a>

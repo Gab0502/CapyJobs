@@ -18,7 +18,7 @@ var_dump($password);
                 $row = $result->fetch_assoc();
                 $idUsuario = $row['idUser'];
                 $_SESSION['idUser'] = $row['idUser'];
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['name'] = $row['nome'];
                 $_SESSION['bio'] = $row['bio'];
                 $_SESSION['profilePic'] = $row['fotoPerfil'];
                 $_SESSION['email'] = $row['email'];

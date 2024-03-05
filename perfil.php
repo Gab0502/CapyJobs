@@ -139,120 +139,116 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
         <section>
             <!-- sessão de rosto-perfil .-->
             <div class="feed">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype='multipart/form-data'>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype='multipart/form-data'>
 
-            <div class="papel_parede">
-                <?php
-                if ($_SESSION['idUser'] == $_GET['idUser']) {
-                    echo "<label for='upload-banner'class='banner-label'><img src='images/{$row['banner']}'></label>";
-                    echo "<input type='file' name='upload-banner' id='upload-banner' onchange='uploadFoto()'/>";
-                    echo "<input type='submit' style='display:none;' id='submitBtn'/>"; // Supondo que isso faça parte de um formulário
-                } else {
-                    echo "<img src='images/{$row['banner']}' alt='Banner'>";
-                }
-                ?>
-            </div>
+                <div class="papel_parede">
+                    <?php
+                    if ($_SESSION['idUser'] == $_GET['idUser']) {
+                        echo "<label for='upload-banner'class='banner-label'><img src='images/{$row['banner']}'></label>";
+                        echo "<input type='file' name='upload-banner' id='upload-banner' onchange='uploadFoto()'/>";
+                        echo "<input type='submit' style='display:none;' id='submitBtn'/>"; // Supondo que isso faça parte de um formulário
+                    } else {
+                        echo "<img src='images/{$row['banner']}' alt='Banner'>";
+                    }
+                    ?>
+                </div>
 
 
-                <!-- forma para alterar dados -->
+                    <!-- forma para alterar dados -->
 
-                
+
                     <div class="rosto_novo descricao">
 
 
-                    <?php
-                    // Verifique se o usuário na sessão é o mesmo do parâmetro GET
-                    if ($_SESSION['idUser'] == $_GET['idUser']) {
-                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
-                        echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
-                        echo "<input type='submit' style='display:none;' id='submitBtn'/>";
-                        echo "</form>";
-                    } else {
-                        echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
-                    }
-                    
-                    ?>
+                        <?php
+                        // Verifique se o usuário na sessão é o mesmo do parâmetro GET
+                        if ($_SESSION['idUser'] == $_GET['idUser']) {
+                            echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
+                            echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
+                            echo "<input type='submit' style='display:none;' id='submitBtn'/>";
+                            echo "</form>";
+                        } else {
+                            echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
+                        }
 
-                        <div class="flex-generic" style='justify-content:space-between;'>
-                        <div class="ajuste-nome">
-                        <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
+                        ?>
+
+                            <div class="flex-generic" style='justify-content:space-between;'>
+                            <div class="ajuste-nome">
+                            <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
+                            </div>
+                                <?php
+                                $following = ($pubs['isFollowing'] > 0);
+                                if ($row['idUser'] == $_SESSION['idUser']) {
+                                        // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                        echo '<details>';
+                                        echo '    <summary>...</summary>';
+                                        echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
+                                        echo '</details>';
+
+                                } else {    
+                                        // Caso contrário, mostra botão de seguir/seguindo
+                                        if ($following) {
+                                            // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                            echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
+                                    } else {
+                                            // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                            echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
+                                    }                          
+                                }
+                                ?>
+                            </div>                        
                         </div>
-                            <?php
-                            $following = ($pubs['isFollowing'] > 0);
-                            if ($row['idUser'] == $_SESSION['idUser']) {
-                                    // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                    echo '<details>';
-                                    echo '    <summary>...</summary>';
-                                    echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
-                                    echo '</details>';
+                        <!-- sessão de detalhes  -->
 
-                            } else {    
-                                    // Caso contrário, mostra botão de seguir/seguindo
-                                    if ($following) {
-                                        // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                        echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
-                                } else {
-                                        // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                        echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
-                                }                          
-                            }
-                            ?>
-                        </div>                        
                     </div>
-                    <!-- sessão de detalhes  -->
+                        <div class="feed muda">
+                            <h3>sobre</h3> <BR>
+                            <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
+                        </div>
+                        <!-- sessão de contato -->
+                        <div class="flex-generic">
+                            <h5>Celular:</h5>
+                            <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>E-mail:</h5>
+                            <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>Bairro:</h5>
+                            <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>Cidade:</h5>
+                            <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>Linkedin:</h5>
+                            <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>Twitter:</h5>
+                            <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                        </div>
+                        <div class="flex-generic">
+                            <h5>Instagram:</h5>
+                            <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+                        </div>
+                        <?php
+                        if ($row['idUser'] == $_SESSION['idUser']) {
+                                        // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                        echo '<button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
+                                        echo '    <input type="button" style = "display: none;" id="btn-salvar" class="btn-edit" value="salvar">';
+                                }
+                        ?>
 
-                </div>
-                    <div class="feed muda">
-                        <h3>sobre</h3> <BR>
-                        <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
                     </div>
-                    <!-- sessão de contato -->
-                    <div class="feed">
-                    <div class="flex-generic">
-                        <h5>Celular:</h5>
-                        <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>E-mail:</h5>
-                        <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Bairro:</h5>
-                        <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Cidade:</h5>
-                        <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Linkedin:</h5>
-                        <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Twitter:</h5>
-                        <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-                    </div>
-                    <div class="flex-generic">
-                        <h5>Instagram:</h5>
-                        <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
-                    </div>
-                    <?php
-                    if ($row['idUser'] == $_SESSION['idUser']) {
-                                    // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                    echo '<button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
-                                    echo '    <input type="button" style = "display: none;" id="btn-salvar" class="btn-edit" value="salvar">';
-                            }
-                    ?>
-
-                </div>
-                        
-            </form>
+                            
+                </form>
 
             </div>
             <!-- divisão para inserir infromações de  -->
-            <div>
-
-            </div>
 
             <?php while ($row = $pub->fetch_assoc()): ?>
         <section class='feed'>
@@ -293,7 +289,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                             ?>
                             
                 </div>
-                    </div>
+
                     <!-- Displaying information of the publication -->
                     <div class='post-content'>
                         <h6 class='tags'>

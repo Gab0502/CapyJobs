@@ -77,7 +77,7 @@ $resultVagas = $conn_capybd->query($vagas);
                     </div>
                     <div class="azul-b3">
                         <div class="contatos">
-                            Contatos:
+                            <p>nome: <?php ?></p>
                             <p>Email: <?php echo $_SESSION['email']; ?></p>
                             <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
                         </div>
@@ -272,7 +272,7 @@ $resultVagas = $conn_capybd->query($vagas);
 <?php endwhile; ?>
 
 </section>
-</section>
+
 
             <aside class="col-xl-3 mt-3 disabled2">
                 <div class="Vagas">

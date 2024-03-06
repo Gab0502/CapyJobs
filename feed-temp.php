@@ -85,7 +85,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 </div>
                 <div class="azul-b">
                 <p>Você não está logado. Faça <a href="login.php">login</a>.</p>
-        </div>
+                </div>
         </aside>
             
         <?php endif; ?>
@@ -97,8 +97,7 @@ $resultVagas = $conn_capybd->query($vagas);
                         <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -112,7 +111,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <!-- fazer postagem -->
 
 
-                                <form action="_postagem.php" method="post" enctype="multipart/form-data">
+                            <form action="_postagem.php" method="post" enctype="multipart/form-data">
 
                                 <!-- descrição -->
 
@@ -125,7 +124,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <input type="text" id="tags" name="tags" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
                                 <br><br><br>
                                 <!-- checkbox ad -->
-                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="#checkbox">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
+                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="checkbox">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
                                 <div class="checkboxFields" style="display: none;">
 
                                 <!-- informaçoes para ads -->
@@ -148,17 +147,15 @@ $resultVagas = $conn_capybd->query($vagas);
                                 </div>
                                 <div class="flex-generic" style="flex-direction: column;">
                                 <label for="upload-photo">foto</label>
-                                <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)"/>
-                                <img id="preview">
+                                <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)">
+                                <img id="preview" alt="preview da imagem postada">
                                 </div>
                                 <button class="botao-foto" id="removeFoto" type="button">remover foto</button>
-
-                                </div>
                                 <div class="modal-footer"> 
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   <input type="submit">
                                 </div>
-                                </form>
+                            </form>
                               </div>
                             </div>
                         </div>
@@ -198,7 +195,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                     echo "<button onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
                                 } else {
                                     // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
+                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."'>+Capyseguir</button>";
                                 }                          
                             }
                             ?>
@@ -221,7 +218,7 @@ $resultVagas = $conn_capybd->query($vagas);
 
                 <!-- Displaying the image of the publication using lightbox -->
                 <div class='feed-img'>
-                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt=''></a>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação'></a>
                 </div>
 
                 <!-- Displaying interaction options (like, share, etc.) -->
@@ -277,7 +274,7 @@ $resultVagas = $conn_capybd->query($vagas);
                     <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;">
                     <div class="buscando">
                         <div class="flex-generic">
-                            <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="">
+                            <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="foto de perfil de <?php echo($rowVagas['nome']) ?>">
                             <div class="flex-generic" style="flex-direction: column;">
 
                                 <div class="alinhamento1">

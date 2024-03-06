@@ -28,7 +28,7 @@
 <?php endif; ?>
 
    <form action="pesquisa.php" method="get" id="form-pesquisa" class="flex-generic">
-        <input name = "pesquisa" id = "pesquisa "class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" requered>
+        <input name = "pesquisa" id = "pesquisa" class="form-header me-2" type="search" placeholder="Procurar" aria-label="Search" required>
         <button class="btn btn-success disabled1" type="submit">Buscar</button>
     </form>
   </div>

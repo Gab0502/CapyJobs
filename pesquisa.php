@@ -77,6 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CapyJobs - Pesquisa</title>
@@ -358,6 +360,8 @@ if (isset($_SESSION['idUser'])) {
 </main>
 <footer class="preto">
 </footer>
+<script src="pwa/myscripts.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

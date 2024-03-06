@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
     <meta charset="UTF-8">
     <title>Painel Administrativo - Listas</title>
     <style>
@@ -72,6 +73,7 @@
         <a href="feed-temp.php">Voltar</a>
     </nav>
 </div>
+<script src="pwa/myscripts.js"></script>
 
 </body>
 </html>

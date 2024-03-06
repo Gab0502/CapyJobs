@@ -1,4 +1,3 @@
-<link rel="manifest" href="pwa/manifest.json">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="" href="index.php"><img src="images/capyIcon.png" width="100px"></a>

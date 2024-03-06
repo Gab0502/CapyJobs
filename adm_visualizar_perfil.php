@@ -15,6 +15,8 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
+
 <meta charset="UTF-8">
 <title>CapyJobs - ADM Usuários</title>
 <link rel="icon" href="images/favicon-16x16.png">
@@ -117,5 +119,7 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
         <?php } ?>
     </table>
 </div>
+<script src="pwa/myscripts.js"></script>
+
 </body>
 </html>

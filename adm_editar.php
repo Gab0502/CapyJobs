@@ -84,6 +84,7 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
 <meta charset="UTF-8">
 <title>Editar Registro - Administração do Site</title>
 <link rel="icon" href="images/favicon-16x16.png">
@@ -208,5 +209,6 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
 </table>
 <a class="btn" href="adm_pub.php">Voltar</a>
 </form>
+<script src="pwa/myscripts.js"></script>
 </body>
 </html>

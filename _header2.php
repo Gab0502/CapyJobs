@@ -1,4 +1,3 @@
-<link rel="manifest" href="manifest.json">
 <header>
 <nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
   <a class="" href="feed-temp.php"><img src="images/capyIcon.png" alt="" width="100px"></a>
@@ -8,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item ">
-        <a class="nav-link" style="color: #ffff;" aria-current="page" href="feed-vaga.php">Vagas</a>
+        <a class="nav-link" style="color: #ffff;" aria-current="page" href="feed-vaga.php">Jobs</a>
     </li>
     
 <?php if(isset($_SESSION['email']) && strpos($_SESSION['email'], '@capivarias') !== false): ?>

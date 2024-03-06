@@ -1,6 +1,6 @@
 {
-  "name": "CTec App",
-  "short_name": "CTec",
+  "name": "CapyJobs",
+  "short_name": "Capy",
   "start_url": "index.php",
   "scope": "./",
   "icons": [

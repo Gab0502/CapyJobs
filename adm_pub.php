@@ -7,6 +7,8 @@ $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
+
 <meta charset="UTF-8">
 <title>CapyJobs - ADM Publicações</title>
 <link rel="icon" href="images/favicon-16x16.png">
@@ -98,5 +100,7 @@ $rs_pub = mysqli_query($conn_capybd, $query_rs_pub);
         <?php } ?>
     </div>
 </div>
+<script src="pwa/myscripts.js"></script>
+
 </body>
 </html>

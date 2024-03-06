@@ -321,6 +321,8 @@ $resultVagas = $conn_capybd->query($vagas);
     <script src="lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
     <script src="responsividade/script-responsive.js"></script>
     <script src="script.js"></script>
+    <script src="pwa/myscripts.js"></script>
+
 </body>
 
 

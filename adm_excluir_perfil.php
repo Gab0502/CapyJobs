@@ -38,10 +38,14 @@ if($rs_perf == 1){
 <!doctype html>
 <html>
 <head>
+<link rel="manifest" href="pwa/manifest.json">
+
 <meta charset="utf-8">
 <title>adm_excluir_perfil</title>
 <link rel="icon" href="images/favicon-16x16.png">
 </head>
 <body>
+<script src="pwa/myscripts.js"></script>
+
 </body>
 </html>

@@ -24,6 +24,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 <html lang="pt-br">
 
 <head>
+<link rel="manifest" href="pwa/manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.webmanifest">

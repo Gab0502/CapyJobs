@@ -5,10 +5,6 @@
 <file name="banner.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225519877" remote="133535187600000000" Dst="0" />
 <file name="capivaraCozinheiraIcon.jpg" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225519877" remote="133535187600000000" Dst="0" />
 <file name="capivaraPadraoIcon.jpg" server="ftp.capyjobs.com.br/httpdocs/" local="133518776878912070" remote="133535187600000000" Dst="0" />
-<file name="female chef-pana.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225519877" remote="133535187600000000" Dst="0" />
-<file name="jazz band-amico.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225682073" remote="133535187600000000" Dst="0" />
-<file name="pastry chef-pana.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225682073" remote="133535187600000000" Dst="0" />
-<file name="Puppet show-amico.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225511202" remote="133535187600000000" Dst="0" />
 <file name="65c0ee0ed304b_capivaraPagodeIcon.jpg" server="ftp.capyjobs.com.br/httpdocs/" local="133517008225349674" remote="133535190600000000" Dst="0" />
 <file name="65c4cb22a7846_capivaraTernoIcon.jfif" server="ftp.capyjobs.com.br/httpdocs/" local="133518776878912070" remote="133535190600000000" Dst="0" />
 <file name="65c218cf636cc_65c0ee0ed304b_capivaraPagodeIcon.jpg" server="ftp.capyjobs.com.br/httpdocs/" local="133518776878912070" remote="133535190600000000" Dst="0" />
@@ -80,4 +76,8 @@
 <file name="65e5d53fcb0a24.25382641_px8bioy751l91.png" server="ftp.capyjobs.com.br/httpdocs/" local="133540378383824840" remote="133541994000000000" Dst="0" />
 <file name="65e5d54fb4ca74.00388193_px8bioy751l91.png" server="ftp.capyjobs.com.br/httpdocs/" local="133540378383981049" remote="133541994000000000" Dst="0" />
 <file name="capyIcon.png" server="ftp.capyjobs.com.br/httpdocs/" local="133536919416632545" remote="133541994000000000" Dst="0" />
+<file name="jazzband-amico.png" server="ftp.capyjobs.com.br/httpdocs/" local="133542013297021353" remote="133542015000000000" Dst="0" />
+<file name="femalechef-pana.png" server="ftp.capyjobs.com.br/httpdocs/" local="133542013296949119" remote="133542015000000000" Dst="0" />
+<file name="pastrychef-pana.png" server="ftp.capyjobs.com.br/httpdocs/" local="133542013297081194" remote="133542015000000000" Dst="0" />
+<file name="Puppetshow-amico.png" server="ftp.capyjobs.com.br/httpdocs/" local="133542013296908426" remote="133542015000000000" Dst="0" />
 </dwsync>

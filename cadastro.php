@@ -11,6 +11,7 @@ if (isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="pt-bt">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Cadastro</title>
@@ -160,7 +161,7 @@ if (isset($_SESSION['username'])) {
                 </div>
                
                 <div class="col-xl-6">
-                    <img src="images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem cadastro">
                 </div>
                 
 

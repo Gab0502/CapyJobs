@@ -10,6 +10,8 @@ if (isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="manifest" href="pwa/manifest.json">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapyJobs - Entrar</title>
@@ -48,7 +50,7 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <img src="images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem login">
                 </div>
             </div>
         </section>
@@ -58,10 +60,7 @@ if (isset($_SESSION['username'])) {
   <?php include("_footer.php");?>
   <!-- FIM Footer -->
 </body>
-<script>
 
-
-</script>
 <script src="script.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

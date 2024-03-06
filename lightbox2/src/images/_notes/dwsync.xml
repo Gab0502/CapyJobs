@@ -8,4 +8,8 @@
 <file name="loading.gif" server="C:/xampp/htdocs/ctec/" local="131562083050000000" remote="131562119050000000" Dst="0" />
 <file name="next.png" server="C:/xampp/htdocs/ctec/" local="131562083050000000" remote="131562119050000000" Dst="0" />
 <file name="prev.png" server="C:/xampp/htdocs/ctec/" local="131562083050000000" remote="131562119050000000" Dst="0" />
+<file name="loading.gif" server="ftp.capyjobs.com.br/httpdocs/" local="133517008226217325" remote="133541994000000000" Dst="0" />
+<file name="prev.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008226237037" remote="133541994000000000" Dst="0" />
+<file name="close.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008226207443" remote="133541994000000000" Dst="0" />
+<file name="next.png" server="ftp.capyjobs.com.br/httpdocs/" local="133517008226227295" remote="133541994000000000" Dst="0" />
 </dwsync>

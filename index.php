@@ -1,14 +1,23 @@
-<a href="login.php">
-
 <?php require("conn_capybd.php");
 
-$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg FROM tb_users u INNER JOIN tb_seg s ON u.idUser = s.idSeg1 WHERE s.idSeg = 5 GROUP BY u.idUser, u.nome ORDER BY num_seg DESC LIMIT 4";
+$topusers = "SELECT u.idUser, u.nome, u.fotoPerfil, u.bio, COUNT(s.idSeg) AS num_seg 
+FROM tb_users u 
+LEFT JOIN tb_seg s ON u.idUser = s.idSeg1 
+GROUP BY u.idUser 
+ORDER BY num_seg DESC 
+LIMIT 4;
+";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
-$topusers_row = mysqli_fetch_assoc($topusers_exe);
 
-$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfiL, COUNT(l.idLike) AS num_likes FROM tb_pub p INNER JOIN tb_users u ON p.idUser = u.idUser INNER JOIN tb_likes l ON p.idPub = l.idPub WHERE l.idLike = 7 GROUP BY p.idPub, p.titulo ORDER BY num_likes DESC LIMIT 4";
+$minifeed = "SELECT p.idPub, p.tag, p.titulo, p.descricao, u.idUser, u.nome, u.fotoPerfil, COUNT(l.idLike) AS num_likes 
+FROM tb_pub p 
+INNER JOIN tb_users u ON p.idUser = u.idUser 
+LEFT JOIN tb_likes l ON p.idPub = l.idPub 
+GROUP BY p.idPub 
+ORDER BY num_likes DESC 
+LIMIT 3 ;
+";
 $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
-$minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 
 ?>
 <!DOCTYPE html>
@@ -17,8 +26,9 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>CapyJobs - Seu Site de Eventos</title>
-<link rel="icon" href="images/favicon-16x16.png">
+  <link rel="icon" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="style-login.css">
@@ -37,7 +47,7 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
             <form action="pesquisa.php" method="get" class="form-pesquisa-input">
               <input type="text" placeholder="    Pesquise por uma vaga ou prestador de serviço:" name="pesquisa"
                 id="barradepesquisa">
-              <button type="submit">
+              <button type="submit" class='disabled1'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                   viewBox="0 0 16 16">
                   <path
@@ -64,20 +74,23 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
 
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards col-xl-3">
-        <?php do{ ?>
-        <div class="card">
-          <img src="images/capivaraCozinheiraIcon.jpg" alt="Foto de perfil do usuário.">
-          <p><?php echo($topusers_row['nome']);?></p>
-          <P><?php echo($topusers_row['bio']);?></P>
-        </div>
-        <?php } while($conn_capybd = mysqli_fetch_assoc($topusers_exe));?>
-      </div>
+      <div class="flex-cards">
+        <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
+          
+            <div class="card">
+                <img src="images/<?php echo($topusers_row['fotoPerfil']) ?>" alt="Foto de perfil de <?php echo ($topusers_row['nome']) ?>.">
+                <p><?php echo ($topusers_row['nome']); ?></p>
+                <P><?php echo ($topusers_row['bio']); ?></P>
+            </div>
+        <?php } ?>
+    </div>
+
       </section>
-        <?php do{ ?>
+      <div class="flex-cards" id='mini-feed'>
+        <?php while($minifeed_row = mysqli_fetch_assoc($minifeed_exe)){ ?>
         <div class="col-xl-3">
         <section class="feed">
-          <div class="flex-generic">
+          <div class="">
             <div  style="align-items: center;">
               <div class="post-user-name pub-perfil">
                 <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário." width="5px">
@@ -92,7 +105,8 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
           </div>
           </section>
         </div>
-        <?php } while($conn_capybd = mysqli_fetch_assoc($minifeed_exe));?>
+        <?php }?>
+        </div>
 
     <section>
       <div class="container-fluid bullet-points">
@@ -154,10 +168,10 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
     </section>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-6 fonteIndex">
+        <div class="col-xl-6">
           <div class="batata">
-            <h1>Junte-se a nós!!</h1>
-            <h5>
+            <h1 class="fonteIndex">Junte-se a nós!!</h1>
+            <h5 style='color : '>
               Descubra novas oportunidades no CapyJobs!
               Seja você um músico, palhaço ou organizador de festas, nossa plataforma é o lugar perfeito para se
               destacar.
@@ -191,7 +205,15 @@ $minifeed_row = mysqli_fetch_assoc($minifeed_exe);
   </main>
 
   <?php include("_footer.php");?>
+<<<<<<< HEAD
+  <script src="index.js"></script>
+=======
 
+  <script>
+    
+  </script>
+
+>>>>>>> 1a3d067269077484f9dbb7fdf998b87b5971ce93
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

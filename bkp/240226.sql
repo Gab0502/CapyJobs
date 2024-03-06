@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/02/2024 às 15:46
+-- Tempo de geração: 05/03/2024 às 14:43
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -105,7 +105,7 @@ CREATE TABLE `tb_users` (
   `fotoPerfil` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `celular` int(11) NOT NULL,
+  `celular` bigint(20) NOT NULL,
   `bio` longtext NOT NULL,
   `linkedin` varchar(255) NOT NULL,
   `twitter` varchar(255) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `tb_users` (
   `cep` int(11) NOT NULL,
   `uf` varchar(2) NOT NULL,
   `rua` varchar(255) NOT NULL,
-  `numero` bigint(4) NOT NULL,
+  `numero` bigint(12) NOT NULL,
   `comp` varchar(255) NOT NULL,
   `bairro` varchar(255) NOT NULL,
   `cidade` varchar(255) NOT NULL,
@@ -130,23 +130,7 @@ INSERT INTO `tb_users` (`idUser`, `nome`, `banner`, `fotoPerfil`, `email`, `senh
 (3, 'Iori Takedo', '', 'capivaraCozinheiraIcon.jpg', 'ioritakedo16@capivarias.com', 'admin', 0, '', '', '', '', 2831001, 'SP', 'Rua Parapuã', 1037, 'senzala', 'Itaberaba', 'São Paulo', 53850887812),
 (4, 'Ana Lemes', '', 'capivaraCozinheiraIcon.jpg', 'al@capivarias.com', 'fds', 0, '', '', '', '', 0, '', '', 0, '', '', '', 0),
 (5, 'Kauã Calisto', '', 'capivaraCozinheiraIcon.jpg', 'kv@capivarias.com', 'fds', 0, '', '', '', '', 0, '', '', 0, '', '', '', 0),
-(6, 'Lucca Gomes', '', 'capivaraCozinheiraIcon.jpg', 'lucca.ag@capivarias.com', '7U@r&o02#capyjobs', 0, '', '', '', '', 0, '', '', 0, '', '', '', 0),
-(7, 'Lucca Dionísio', '', 'capivaraCozinheiraIcon.jpg', 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
-(8, 'William Bonner', '', 'capivaraCozinheiraIcon.jpg', 'boner654@gmail.com', '', 0, 'boner jornalista', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
-(9, 'Caio Mágico', '', 'capivaraCozinheiraIcon.jpg', 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
-(10, 'Pedro Henrique', '', 'capivaraCozinheiraIcon.jpg', 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
-(11, 'Paulo Gome', '', 'capivaraCozinheiraIcon.jpg', 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845),
-(12, 'Lucca Baco', '', 'capivaraCozinheiraIcon.jpg', 'lucca4547@gmail.com', '', 0, 'lucca empreedimento', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 8976541351),
-(13, 'Vinícius Bonner', '', 'capivaraCozinheiraIcon.jpg', 'boner654@gmail.com', '', 0, 'filho do bonner', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 879841),
-(14, 'asd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'asd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, 'sdasd', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
-(15, 'asd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'dasdasdasd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, 'sdasd', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
-(16, 'asd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'ddddddddddddddddd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, '5252', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 0),
-(17, 'asd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'ddddddddddddddddddd', 0, '', '', '', '', 3407, 'SP', 'Rua Pinguins', 12, '5252', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 52525252),
-(18, 'asd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'asdasdas', 0, '', '', '', '', 3407090, 'SP', 'Rua Pinguins', 123, '123213', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 12123123123),
-(19, 'asdasdasd', '', 'capivaraCozinheiraIcon.jpg', 'asd', 'ddddasdasdasd', 0, '', '', '', '', 3407090, 'SP', 'Rua Pinguins', 123, '123213', 'Chácara Santo Antônio (Zona Leste)', 'São Paulo', 12123123123),
-(20, 'Caio Lencinho', '', '', 'caio432@gmail.com', '', 0, 'caio o melhor', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 84654, '', '', 0, '', '', '', 0),
-(21, 'Henrique e Juliano', '', '', 'henrique8676@gmai.com', '', 0, 'henrique digital ', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 875687987),
-(22, 'Paulo', '', '', 'paulo08497@gmail.com', '', 0, 'paulao da grandeza', 'https://br.linkedin.com', 'https://twitter.com/?lang=pt', 'https://www.instagram.com', 0, '', '', 0, '', '', '', 9879845);
+(6, 'Lucca Gomes', '', 'capivaraCozinheiraIcon.jpg', 'lucca.ag@capivarias.com', '7U@r&o02#capyjobs', 0, '', '', '', '', 0, '', '', 0, '', '', '', 0);
 
 --
 -- Índices para tabelas despejadas

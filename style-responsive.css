@@ -2,6 +2,9 @@
  .disabled1{
     display: none;
  }
+ h5{
+   font-size: 14px;
+ }
 
  .feed-img img{
    width: 400px;
@@ -19,6 +22,9 @@
  .batata{
     margin: 0px;
     margin-bottom: 25px;
+ }
+ #mini-feed{
+   flex-direction: column;
  }
 }
 @media screen and (max-width: 1200px){

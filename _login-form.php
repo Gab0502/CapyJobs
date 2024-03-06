@@ -1,12 +1,12 @@
 <?php
 require("conn_capybd.php");
 session_start();
-var_dump($_POST);
-
+var_dump($password);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $username = $_POST[ 'username'];
-            $password = $_POST['password'];
+            $password = md5($_POST['password'].'#capy');
+            var_dump($password);
 
             $login = "SELECT * FROM tb_users WHERE email = ? AND senha = ?"; 
             $stmt = $conn_capybd->prepare($login);
@@ -30,7 +30,9 @@ var_dump($_POST);
                 header('Location: feed-temp.php');  // Redirecionar para a página após o login
                 exit(); 
             }else{
-                echo('<script>alert("Login e/ou senha não encontrados")</script>');
+                echo "<script>alert('Login e/ou senha não encontrados');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         }
     ?>

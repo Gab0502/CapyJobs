@@ -70,7 +70,7 @@ if(isset($_GET['idPub'])){
 	$id = $_GET['idPub'];
 }; //fechamento isset da consulta
 
-$query_rs_pub = "SELECT * FROM tb_pub WHERE idPub = $id ";
+$query_rs_pub = "SELECT * FROM tb_pub WHERE idPub = $id";
 
 $rs_pub = mysqli_query($conn_capybd, $query_rs_pub) or die(mysqli_error($conn_capybd));
 
@@ -81,71 +81,132 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
 //echo($row_rs_curso['idPub']);
 
 ?>
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Editar Registro - Administração do Site</title>
 <link rel="icon" href="images/favicon-16x16.png">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f3f5;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th {
+        background-color: #3b9b75;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: left;
+    }
+    td {
+        padding: 10px 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    img {
+        display: block;
+        margin: 10px auto;
+        border-radius: 8px;
+        max-width: 100%;
+        height: auto;
+    }
+    .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    .delete-link {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #f44336;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .delete-link:hover {
+        background-color: #d32f2f;
+    }
+</style>
 </head>
-
 <body>
-	
-<h1>Editar Registro - Administração do Site</h1>	
-
-	
+<h1>Editar Registro - Administração do Site</h1>
 <form action="<?=$_SERVER["PHP_SELF"]?>" method="post" enctype="multipart/form-data" id="form_editar">
-	
-id da Publicação:<?php echo($row_rs_pub ['idPub']); ?><br><br>
-
-id do Usuario<?php echo($row_rs_pub ['idUser']); ?><br><br>
-
-ad:<?php echo($row_rs_pub ['ad']); ?><br><br>
-
-tag:<?php echo($row_rs_pub ['tag']); ?><br><br>
-
-titulo: <?php echo($row_rs_pub ['titulo']); ?><br><br>
-
-Descrição: <?php echo($row_rs_pub ['descricao']); ?><br><br>
-
-Data do evento: <?php echo($row_rs_pub ['dia']); ?><br><br>
-
-Data da Publicação: <?php echo($row_rs_pub ['dataPub']); ?><br><br>
-
-CEP: <?php echo($row_rs_pub ['cep']); ?><br><br>
-
-UF: <?php echo($row_rs_pub ['uf']); ?><br><br>
-
-Rua: <?php echo($row_rs_pub ['rua']); ?><br><br>
-
-numero: <?php echo($row_rs_pub ['numero']); ?><br><br>
-
-Compremento: <?php echo($row_rs_pub ['comp']); ?><br><br>
-
-Bairro: <?php echo($row_rs_pub ['bairro']); ?><br><br>
-
-Cidade: <?php echo($row_rs_pub ['cidade']); ?><br><br>
-
-Imagem grande: <?php echo($row_rs_pub['midia1']); ?><br><br>
-<img src="images/<?php echo($row_rs_pub['midia1']); ?>" width="100"><br>
-
-<input name="midia11G" type="hidden" id="midia11G" value="<?php echo($row_rs_pub['midia1']); ?>"><br><br>
-
-<input name="midia1" type="file" id="midia1" value=""><br><br>
-
-Imagem pequena: <?php echo($row_rs_pub['midia1T']); ?><br><br>
-<img src="images/<?php echo($row_rs_pub['midia1T']); ?>" width="100"><br>
-
-<input name="midia1TGt" type="hidden" id="midia1TGt" value="<?php echo($row_rs_pub['midia1T']); ?>"><br><br>
-
-<input name="midia1T" type="file" id="midia1T" value=""><br><br>
-	
-<br><br><br><br><br>
-<input name="submit" type="submit" id="submit">	<br><br>
-<a href=adm_pub.php><h1 style="color: black">Voltar</h1>
-</form>	
-	
-	
+<table>
+    <tr>
+        <th colspan="2">Detalhes da Publicação</th>
+    </tr>
+    <tr>
+        <td>
+            <label for="idPub">ID da Publicação:</label><br>
+            <?php echo($row_rs_pub ['idPub']); ?><br><br>
+            <label for="idUser">ID do Usuário:</label><br>
+            <?php echo($row_rs_pub ['idUser']); ?><br><br>
+            <label for="ad">Ad:</label><br>
+            <?php echo($row_rs_pub ['ad']); ?><br><br>
+            <label for="tag">Tag:</label><br>
+            <?php echo($row_rs_pub ['tag']); ?><br><br>
+            <label for="titulo">Título:</label><br>
+            <?php echo($row_rs_pub ['titulo']); ?><br><br>
+            <label for="descricao">Descrição:</label><br>
+            <?php echo($row_rs_pub ['descricao']); ?><br><br>
+            <label for="dia">Data do Evento:</label><br>
+            <?php echo($row_rs_pub ['dia']); ?><br><br>
+            <label for="dataPub">Data da Publicação:</label><br>
+            <?php echo($row_rs_pub ['dataPub']); ?><br><br>
+            <label for="cep">CEP:</label><br>
+            <?php echo($row_rs_pub ['cep']); ?><br><br>
+        </td>
+        <td>
+            <label for="uf">UF:</label><br>
+            <?php echo($row_rs_pub ['uf']); ?><br><br>
+            <label for="rua">Rua:</label><br>
+            <?php echo($row_rs_pub ['rua']); ?><br><br>
+            <label for="numero">Número:</label><br>
+            <?php echo($row_rs_pub ['numero']); ?><br><br>
+            <label for="comp">Complemento:</label><br>
+            <?php echo($row_rs_pub ['comp']); ?><br><br>
+            <label for="bairro">Bairro:</label><br>
+            <?php echo($row_rs_pub ['bairro']); ?><br><br>
+            <label for="cidade">Cidade:</label><br>
+            <?php echo($row_rs_pub ['cidade']); ?><br><br>
+            <label for="midia1">Imagem Grande:</label><br>
+            <img src="images/<?= $row_rs_pub['midia1']; ?>"><br><br>
+            <label for="midia1T">Imagem Pequena:</label><br>
+            <img src="images/<?= $row_rs_pub['midia1T']; ?>"><br><br>
+        </td>
+    </tr>
+</table>
+<a class="btn" href="adm_pub.php">Voltar</a>
+</form>
 </body>
 </html>

@@ -1,6 +1,12 @@
 <?php require("conn_capybd.php");  
 session_start();
 
+if (empty($_SESSION['idUser'])) {
+    // Redireciona para a página de login
+    header('Location: login.php');
+    exit;
+}
+
 if(isset($_GET['idUser'])){
     $idUser = $_GET['idUser'];
 
@@ -17,13 +23,19 @@ if(isset($_GET['idUser'])){
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CapyJobs - Perfil de Usuário</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CapyJobs - Vagas</title>
     <link rel="icon" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="lightbox2/dist/css/lightbox.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style-responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -63,7 +75,8 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             $extension = strtolower(end($temp));
             
             if (!in_array($extension, $allowedExtensions)) {
-                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil.');</script>";
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para foto de perfil.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
                 exit();
             }
         
@@ -80,16 +93,23 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                 if ($stmt) {
                     $stmt->bind_param("si", $nomeAleatorio, $idUser);
                     if ($stmt->execute()) {
-                        echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');</script>";
+                        echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     } else {
-                        echo "<script>alert('Erro ao executar a atualização da imagem para foto de perfil.');</script>";
+                        echo "<script>alert('Erro ao executar a atualização da imagem para foto de perfil.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     }
-                    $stmt->close();
                 } else {
-                    echo "<script>alert('Erro ao preparar a declaração SQL para foto de perfil.');</script>";
+                    echo "<script>alert('Erro ao preparar a declaração SQL para foto de perfil.');
+                    window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                    exit();
                 }
             } else {
-                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para foto de perfil.');</script>";
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para foto de perfil.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         } 
         // Verifica se um arquivo foi enviado corretamente para o banner
@@ -100,7 +120,8 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             $extension = strtolower(end($temp));
             
             if (!in_array($extension, $allowedExtensions)) {
-                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner.');</script>";
+                echo "<script>alert('Apenas arquivos JPG, JPEG, PNG e GIF são permitidos para banner.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
                 exit();
             }
         
@@ -117,25 +138,35 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                 if ($stmt) {
                     $stmt->bind_param("si", $nomeAleatorio, $idUser);
                     if ($stmt->execute()) {
-                        echo "<script>alert('Imagem para banner atualizada com sucesso.');</script>";
+                        echo "<script>alert('Imagem para banner atualizada com sucesso.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     } else {
-                        echo "<script>alert('Erro ao executar a atualização da imagem para banner.');</script>";
+                        echo "<script>alert('Erro ao executar a atualização da imagem para banner.');
+                        window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                        exit();
                     }
-                    $stmt->close();
                 } else {
-                    echo "<script>alert('Erro ao preparar a declaração SQL para banner.');</script>";
+                    echo "<script>alert('Erro ao preparar a declaração SQL para banner.');
+                    window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                    exit();
                 }
             } else {
-                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para banner.');</script>";
+                echo "<script>alert('Erro ao mover o arquivo para o diretório de destino para banner.');
+                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                exit();
             }
         } else {
-            echo "<script>alert('Nenhum arquivo enviado ou erro no envio do arquivo.');</script>";
+            echo "<script>alert('Nenhum arquivo enviado ou erro no envio do arquivo.');
+            window.location.href = 'perfil.php?idUser=$idUser';</script>";
+            exit();
         }
     }
-?>    
+    ?>
+      
 
    <?php include('_header2.php')?>
-    <main class="bullet-points APOLLO">
+    <main class="perfil-margin">
         <section>
             <!-- sessão de rosto-perfil .-->
             <div class="feed">
@@ -160,18 +191,18 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     <div class="rosto_novo descricao">
 
 
-                        <?php
-                        // Verifique se o usuário na sessão é o mesmo do parâmetro GET
-                        if ($_SESSION['idUser'] == $_GET['idUser']) {
-                            echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
-                            echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
-                            echo "<input type='submit' style='display:none;' id='submitBtn'/>";
-                            echo "</form>";
-                        } else {
-                            echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
-                        }
-
-                        ?>
+                    <?php
+                    // Verifique se o usuário na sessão é o mesmo do parâmetro GET
+                    if ($_SESSION['idUser'] == $_GET['idUser']) {
+                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
+                        echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()'/>";
+                        echo "<input type='submit' style='display:none;' id='submitBtn'/>";
+                        echo "</form>";
+                    } else {
+                        echo "<img src='images/{$row['fotoPerfil']}' alt='Foto de Perfil'>";
+                    }
+                    
+                    ?>
 
                             <div class="flex-generic" style='justify-content:space-between;'>
                             <div class="ajuste-nome">
@@ -201,47 +232,48 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                         </div>
                         <!-- sessão de detalhes  -->
 
+                </div>
+                    <div class="feed muda">
+                        <h3>sobre</h3> <BR>
+                        <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
                     </div>
-                        <div class="feed muda">
-                            <h3>sobre</h3> <BR>
-                            <h5 class='alteracao' id='bio'><?php echo($row['bio'])?></h5>
-                        </div>
-                        <!-- sessão de contato -->
-                        <div class="flex-generic">
-                            <h5>Celular:</h5>
-                            <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>E-mail:</h5>
-                            <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>Bairro:</h5>
-                            <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>Cidade:</h5>
-                            <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>Linkedin:</h5>
-                            <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>Twitter:</h5>
-                            <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-                        </div>
-                        <div class="flex-generic">
-                            <h5>Instagram:</h5>
-                            <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
-                        </div>
-                        <?php
-                        if ($row['idUser'] == $_SESSION['idUser']) {
-                                        // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                        echo '<button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
-                                        echo '    <input type="button" style = "display: none;" id="btn-salvar" class="btn-edit" value="salvar">';
-                                }
-                        ?>
+                    <!-- sessão de contato -->
+                    <div class="feed">
+                    <div class="flex-generic">
+                        <h5>Celular:</h5>
+                        <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>E-mail:</h5>
+                        <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Bairro:</h5>
+                        <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Cidade:</h5>
+                        <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Linkedin:</h5>
+                        <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Twitter:</h5>
+                        <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Instagram:</h5>
+                        <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+                    </div>
+                    <?php
+                    if ($row['idUser'] == $_SESSION['idUser']) {
+                                    // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                    echo '<button style = "display: none;" type="button" id="btn-cancelar" class="btn-edit">cancela</button>';
+                                    echo '    <input type="button" style = "display: none;" id="btn-salvar" class="btn-edit" value="salvar">';
+                            }
+                    ?>
 
                     </div>
                             
@@ -280,10 +312,10 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                                 // Caso contrário, mostra botão de seguir/seguindo
                                 if ($following) {
                                     // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                    echo "<button onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
+                                    echo "<button type='button' onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
                                 } else {
                                     // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                    echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
+                                    echo "<button type='button'class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
                                 }                          
                             }
                             ?>
@@ -334,20 +366,18 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                         
                         ?>
 
-                        <button class='btn-like '>
+                        <button class='btn-like' onclick="window.location.href='perfil.php?idUser=<?php echo $row['idUser']; ?>'">
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-reply-fill' viewBox='0 0 16 16'>
                                 <path d='M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z'/>
                             </svg>
-
-                            <!-- botão para like -->
-
-                            compartilhar
+                            contatos
                         </button>
                     </div>
                     <div class='faixa'></div>
                 </div>
             </div>
         </article>
+    </section>
     </section>
 <?php endwhile; ?>
     </main>
@@ -373,25 +403,28 @@ function Tform() {
     document.getElementById('btn-cancelar').addEventListener('click', function() {
         location.reload();
 });
-document.getElementById('btn-salvar').addEventListener('click',function(){
+document.getElementById('btn-salvar').addEventListener('click', function() {
     var valoresCampos = {};
-    var inputs = document.querySelectorAll('.alteracao input'); // Seleciona todos os inputs dentro dos elementos com classe 'alteracao'
+    var inputs = document.querySelectorAll('.alteracao input');
     inputs.forEach(function(input) {
         valoresCampos[input.id] = input.value;
-    });    
+    });
+
     $.ajax({
         type: 'POST',
-        url:'_edit-perfil.php',
-        data:{valoresCampos},
+        url: '_edit-perfil.php',
+        data: {valoresCampos},
         dataType: 'json',
-        success:function(response){
-            location.reload();
-            if(response['status']==='sucesso'){
-                window.location.href = window.location.href;
+        success: function(response) {
+            console.log(response)
+            if (response['status'] === 'sucesso') {
+                // Recarregar a página após uma atualização bem-sucedida
+                location.reload();
             }
         }
-    })
-})
+    });
+});
+
 
 function uploadFoto() {
     var submitButton = document.getElementById('submitBtn');

@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha = md5($_POST['senha'].'#capy');
         $telefone = $_POST['telefone'];
         $cep = $_POST['cep'];
         $num = $_POST['numero'];
@@ -47,8 +47,22 @@ if (isset($_SESSION['username'])) {
     
             // Verifica se o e-mail contém um domínio válido
             $email_domain = substr(strrchr($email, "@"), 1);
-            $valid_domains = array("gmail.com", "yahoo.com", "hotmail.com"); // Adicione os domínios permitidos aqui
-    
+            $valid_domains = array(
+                "gmail.com", 
+                "yahoo.com", 
+                "hotmail.com", 
+                "outlook.com", 
+                "aol.com",
+                "icloud.com",
+                "live.com",
+                "mail.com",
+                "protonmail.com",
+                "terra.com",
+                "uol.com",
+                "bing.com",
+                "ctsdigital.com",
+                
+            );    
             if (!in_array($email_domain, $valid_domains)) {
                 echo "<script>alert('E-mails com o domínio $email_domain não são permitidos. Por favor, utilize outro e-mail.')</script>";
             } else {

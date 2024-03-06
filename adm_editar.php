@@ -84,80 +84,75 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<link rel="manifest" href="pwa/manifest.json">
-<meta charset="UTF-8">
-<title>Editar Registro - Administração do Site</title>
-<link rel="icon" href="images/favicon-16x16.png">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f3f5;
-        margin: 0;
-        padding: 0;
-    }
-    h1 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    form {
-        max-width: 800px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-    th {
-        background-color: #3b9b75;
-        color: #fff;
-        padding: 10px 20px;
-        text-align: left;
-    }
-    td {
-        padding: 10px 20px;
-    }
-    label {
-        font-weight: bold;
-    }
-    img {
-        display: block;
-        margin: 10px auto;
-        border-radius: 8px;
-        max-width: 100%;
-        height: auto;
-    }
-    .btn {
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: #4CAF50;
-        color: white;
-        text-decoration: none;
-        border-radius: 15px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .btn:hover {
-        background-color: #45a049;
-    }
-    .delete-link {
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: #f44336;
-        color: white;
-        text-decoration: none;
-        border-radius: 15px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .delete-link:hover {
-        background-color: #d32f2f;
-    }
-</style>
+    <link rel="manifest" href="pwa/manifest.json">
+    <meta charset="UTF-8">
+    <title>Editar Registro - Administração do Site</title>
+    <link rel="icon" href="images/favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f3f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #3b9b75;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 20px;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 <h1>Editar Registro - Administração do Site</h1>

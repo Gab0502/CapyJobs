@@ -161,7 +161,7 @@ if (isset($_SESSION['username'])) {
                 </div>
                
                 <div class="col-xl-6">
-                    <img src="images/Puppet show-amico.png" class="img-grande" width="50%" alt="">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem cadastro">
                 </div>
                 
 

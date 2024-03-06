@@ -1,11 +1,6 @@
 <?php require("conn_capybd.php");
     session_start();
 
-    if (empty($_SESSION['idUser'])) {
-        // Redireciona para a página de login
-        header('Location: login.php');
-        exit;
-    }
 ?>
 
 

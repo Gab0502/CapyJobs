@@ -152,7 +152,7 @@ if (isset($_SESSION['username'])) {
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
                                 <input type="checkbox" class="checkboxCustom" id="check">
-                                <a href="#" class="termos" onclick="openModal()">Li e concordo com os termos de uso</a>
+                                <a href="#" class="termos" onclick="openModal()" title="termos de uso">Li e concordo com os termos de uso</a>
                             </div>
                             <input type="submit" id="submit" disabled>
                     </form>

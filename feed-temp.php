@@ -64,7 +64,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 </div>
                 <div class="azul-b">
                     <div class="IMG">
-                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil"></a>
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil"></a>
                     </div>
                     <div class="azul-b2">
                         <p alt="nome do usuario"><?php echo $_SESSION['name']; ?></p>
@@ -94,7 +94,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 <section class="grupPost">
                     <div class="grupPost-input">
                         
-                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -171,7 +171,7 @@ $resultVagas = $conn_capybd->query($vagas);
                     <div class='feed-perfil'>
                         <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
                             <div class='flex-generic' style='align-items: center;'>
-                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
+                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>" title="<?php echo($_SESSION['name']);?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
                                 <div class='post-user-name'>
                                     <h5><?= $row['nome'] ?></h5>
                                     <p><?= $row['bio'] ?></p> <!-- You can adjust this as needed -->
@@ -271,7 +271,7 @@ $resultVagas = $conn_capybd->query($vagas);
                         <p>Vagas em destaque</p>
                     </div>
                 <?php while ($rowVagas = $resultVagas->fetch_assoc()):  ?>
-                    <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;">
+                    <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;" title="<?php echo($rowVagas['titulo']);?>">
                     <div class="buscando">
                         <div class="flex-generic">
                             <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="foto de perfil de <?php echo($rowVagas['nome']) ?>">

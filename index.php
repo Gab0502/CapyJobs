@@ -58,14 +58,14 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
               <br><br>
               <div class="input-buttons">
                 <h3 style="color: white">Relevantes: </h3>
-                <button action="" class="buttons">Bandas</button>
+                <button class="buttons">Bandas</button>
                 <button class="buttons">Cozinha</button>
                 <button class="buttons">Brinquedos</button>
               </div>
             </form>
           </div>
           <div class="col-xl-6 bg-verdeClaro" id="banner2">
-            <img src="images/banner.png" id="bannerDisabled" width="90%" style="margin-left:-15px ;" alt="">
+            <img src="images/banner.png" id="bannerDisabled" style="margin-left:-15px; width:90%;" alt="">
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
           <div class="">
             <div  style="align-items: center;">
               <div class="post-user-name pub-perfil">
-                <img src="images/capivaraPadraoIcon.jpg" alt="Foto de perfil do usuário." width="5px">
+                <img src="images/<?php echo($minifeed_row['fotoPerfil']) ?>" alt="Foto de perfil do usuário." width="5">
                 <h5><?php echo($minifeed_row['nome']);?></h5>
               </div>
               <div class="post-content">
@@ -122,18 +122,18 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
             <div class="caixa-flex">
               <div class="caixa1">
                 <div class="box">
-                  <img src="images/jazz band-amico.png" alt="">
+                  <img src="images/jazzband-amico.png" alt="">
                 </div>
                 <div class="box">
-                  <img src="images/female chef-pana.png" class="disabled1" alt="">
+                  <img src="images/femalechef-pana.png" class="disabled1" alt="">
                 </div>
               </div>
               <div class="caixa1">
                 <div class="box">
-                  <img src="images/pastry chef-pana.png" class="disabled2" alt="">
+                  <img src="images/pastrychef-pana.png" class="disabled2" alt="">
                 </div>
                 <div class="box">
-                  <img src="images/Puppet show-amico.png" class="disabled2" alt="">
+                  <img src="images/Puppetshow-amico.png" class="disabled2" alt="">
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
         <div class="col-xl-6">
           <div class="batata">
             <h1 class="fonteIndex">Junte-se a nós!!</h1>
-            <h5 style='color : '>
+            <h5>
               Descubra novas oportunidades no CapyJobs!
               Seja você um músico, palhaço ou organizador de festas, nossa plataforma é o lugar perfeito para se
               destacar.
@@ -188,7 +188,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
             <div class="container-custom">
               <form action="_login-form.php" method="post" class="form-login-index">
                 <h3>Login</h3>
-                <input type="text-" id="username" name="username">
+                <input type="text" id="username" name="username">
                 <h3>Senha</h3>
                 <input type="password" id="password" name="password">
                 <button>Entrar</button>
@@ -203,6 +203,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
           </div>
         </div>
       </div>
+    </div>
   </main>
 
   <?php include("_footer.php");?>

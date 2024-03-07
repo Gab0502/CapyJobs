@@ -1,1 +1,0 @@
-barra de testamento apenas do usuario KAUÃ

@@ -1,6 +1,12 @@
 <?php require("conn_capybd.php");  
 session_start();
 
+if (empty($_SESSION['idUser'])) {
+    // Redireciona para a página de login
+    header('Location: login.php');
+    exit;
+}
+
 
 
 if(isset($_GET['idUser'])){
@@ -173,7 +179,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             <div class="papel_parede">
                 <?php
                 if ($_SESSION['idUser'] == $_GET['idUser']) {
-                    echo "<label for='upload-banner'class='banner-label'><img src='images/{$row['banner']}'></label>";
+                    echo "<label for='upload-banner' class='banner-label'><img src='images/{$row['banner']}' alt='banner' title='banner'></label>";
                     echo "<input type='file' name='upload-banner' id='upload-banner' onchange='uploadFoto()'/>";
                     echo "<input type='submit' style='display:none;' id='submitBtn'/>"; // Supondo que isso faça parte de um formulário
                 } else {
@@ -192,7 +198,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     <?php
                     // Verifique se o usuário na sessão é o mesmo do parâmetro GET
                     if ($_SESSION['idUser'] == $_GET['idUser']) {
-                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
+                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}' alt='{$row['nome']}' title='{$row['nome']}'></label>";
                         echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()' style='font-size:1px;'/>";
                         echo "<input type='submit' style='display:none;' id='submitBtn'/>";
                         echo "</form>";
@@ -291,7 +297,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     <div class='feed-perfil'>
                         <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
                             <div class='flex-generic' style='align-items: center;'>
-                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
+                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>' title='<?= $row['name'] ?>'></a>
                                 <div class='post-user-name'>
                                     <h5><?= $row['nome'] ?></h5>
                                     <p><?= $row['bio'] ?></p> <!-- You can adjust this as needed -->
@@ -338,7 +344,11 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
 
                 <!-- Displaying the image of the publication using lightbox -->
                 <div class='feed-img'>
-                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt=''></a>
+                <?php if (isset($row['midia1']) && !empty($row['midia1'])): ?>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'>
+                        <img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação' title='imagem da publicação'>
+                    </a>
+                <?php endif; ?>
                 </div>
 
                 <!-- Displaying interaction options (like, share, etc.) -->

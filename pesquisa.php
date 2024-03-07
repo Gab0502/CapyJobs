@@ -249,7 +249,7 @@ if (isset($_SESSION['idUser'])) {
             echo "<button onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."' class='btn-edit'>Capyseguindo</button>";
         } else {
             // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-            echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit'  id='follow". $row['idUser'] ."'>+Capyseguir</button>";
+            echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" id='follow". $row['idUser'] ."'>+Capyseguir</button>";
         }
     }
 } else {
@@ -276,7 +276,11 @@ if (isset($_SESSION['idUser'])) {
 
             <!-- Displaying the image of the publication using lightbox -->
             <div class='feed-img'>
-                <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt=''></a>
+                <?php if (isset($row['midia1']) && !empty($row['midia1'])): ?>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'>
+                        <img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação' title='imagem da publicação'>
+                    </a>
+                <?php endif; ?>
             </div>
 
             <!-- Displaying interaction options (like, share, etc.) -->

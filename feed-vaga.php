@@ -1,7 +1,11 @@
 <?php require("conn_capybd.php");
     session_start();
 
-
+    if (empty($_SESSION['idUser'])) {
+        // Redireciona para a página de login
+        header('Location: login.php');
+        exit;
+    }
 ?>
 
 
@@ -221,7 +225,11 @@ $resultVagas = $conn_capybd->query($vagas);
 
             <!-- Displaying the image of the publication using lightbox -->
             <div class='feed-img'>
-                <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'><img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação'></a>
+                <?php if (isset($row['midia1']) && !empty($row['midia1'])): ?>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'>
+                        <img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação' title='imagem da publicação'>
+                    </a>
+                <?php endif; ?>
             </div>
 
             <!-- Displaying interaction options (like, share, etc.) -->

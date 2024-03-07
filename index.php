@@ -27,7 +27,14 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 <link rel="manifest" href="pwa/manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+  <meta name="author" content="CapyCorps">
+  <meta name="publisher" content="Professor Sandromir Almeida">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
   <link rel="manifest" href="manifest.webmanifest">
+
   <title>CapyJobs - Seu Site de Eventos</title>
   <link rel="icon" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style.css">
@@ -65,7 +72,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
             </form>
           </div>
           <div class="col-xl-6 bg-verdeClaro" id="banner2">
-            <img src="images/banner.png" id="bannerDisabled" style="margin-left:-15px; width:90%;" alt="">
+            <img src="images/banner.png" id="bannerDisabled" style="margin-left:-15px; width:90%;" alt="banner CapyJobs" title="banner CapyJobs">
           </div>
         </div>
       </div>
@@ -79,7 +86,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
         <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
           
             <div class="card">
-                <img src="images/<?php echo($topusers_row['fotoPerfil']) ?>" alt="Foto de perfil de <?php echo ($topusers_row['nome']) ?>.">
+                <img src="images/<?php echo($topusers_row['fotoPerfil']) ?>" alt="Foto de perfil de <?php echo ($topusers_row['nome']) ?>." title="Foto de perfil de <?php echo ($topusers_row['nome'])?>.">
                 <p><?php echo ($topusers_row['nome']); ?></p>
                 <P><?php echo ($topusers_row['bio']); ?></P>
             </div>
@@ -94,7 +101,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
           <div class="">
             <div  style="align-items: center;">
               <div class="post-user-name pub-perfil">
-                <img src="images/<?php echo($minifeed_row['fotoPerfil']) ?>" alt="Foto de perfil do usuário." width="5">
+                <img src="images/<?php echo($minifeed_row['fotoPerfil']) ?>" alt="Foto de perfil do usuário." width="5" title="Foto de perfil de <?php echo ($minifeed_row['nome'])?>.">
                 <h5><?php echo($minifeed_row['nome']);?></h5>
               </div>
               <div class="post-content">
@@ -122,18 +129,18 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
             <div class="caixa-flex">
               <div class="caixa1">
                 <div class="box">
-                  <img src="images/jazzband-amico.png" alt="">
+                  <img src="images/jazzband-amico.png" alt="svg banda" title="svg banda">
                 </div>
                 <div class="box">
-                  <img src="images/femalechef-pana.png" class="disabled1" alt="">
+                  <img src="images/femalechef-pana.png" class="disabled1" alt="svg chefe" title="svg chefe">
                 </div>
               </div>
               <div class="caixa1">
                 <div class="box">
-                  <img src="images/pastrychef-pana.png" class="disabled2" alt="">
+                  <img src="images/pastrychef-pana.png" class="disabled2" alt="svg chefe" title="svg chefe">
                 </div>
                 <div class="box">
-                  <img src="images/Puppetshow-amico.png" class="disabled2" alt="">
+                  <img src="images/Puppetshow-amico.png" class="disabled2" alt="svg show de bonecos" title="svg show de bonecos">
                 </div>
               </div>
             </div>
@@ -198,7 +205,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="cadastro.php" class="text-white">Não possui conta? cadastre-se agora</a>
+              <a href="cadastro.php" class="text-white" title='cadastro'>Não possui conta? cadastre-se agora</a>
             </div>
           </div>
         </div>

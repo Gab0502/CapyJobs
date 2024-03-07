@@ -27,12 +27,14 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 <link rel="manifest" href="pwa/manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
   <meta name="author" content="CapyCorps">
   <meta name="publisher" content="Professor Sandromir Almeida">
   <meta name="robots" content="index,follow">
   <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
   <link rel="manifest" href="manifest.webmanifest">
+
   <title>CapyJobs - Seu Site de Eventos</title>
   <link rel="icon" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style.css">

@@ -1,8 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<link rel="manifest" href="pwa/manifest.json">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CapyJobs - Seu Site de Eventos</title>
@@ -12,55 +10,102 @@
   <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-login.css">
   <link rel="stylesheet" href="style-responsive.css">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style-animation.css">
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    .containeer {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin-top: 20px;
+    }
+    .alert {
+      background-color: #28a745;
+      color: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-control {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      border-radius: 5px;
+      background-color: #28a745;
+      border-color: #28a745;
+      padding: 10px 20px;
+    }
+    .btn-primary:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+    .p{
+      font-size: 40px;
+    }
+  </style>
 </head>
-    
 <body>
-  <?php include("_header.php")?>
- 	<main>
-    <div class="">    
-      <div class="alert alert-success" role="alert" style="text-align: center">
-        <h2>Fale Conosco:</h2>
+  <?php include("_header.php") ?>
+  <div class="containeer">
+    <main>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert" role="alert">
+            <h2>Envie seu relatorio para que nos possa ajudar</h2>
+          </div>
+          <form action="?acao=enviar" method="post" enctype="multipart/form-data" id="form1">
+            <div class="form-group">
+              <label><strong>Nome:</strong></label>
+              <input name="nome" type="text" required="required" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><strong>E-mail:</strong></label>
+              <input name="email" type="email" required="required" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><strong>Telefone:</strong></label>
+              <input name="telefone" type="tel" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><strong>Assunto:</strong></label>
+              <input name="assunto" type="text" required="required" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><strong>Mensagem:</strong></label>
+              <textarea name="mensagem" rows="5" required class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label><strong>Anexo:</strong></label>
+              <input name="arquivo" type="file" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="image-container">
+            <p class="p">CapyJobs esta em desenvolvimento para melhora sua navegaçao, para isso precisamos que ajude nos a melhorar</p>
+            <img src="images/capyIcon.png" alt="Imagem de exemplo">
+          </div>
+        </div>
       </div>
-      </div>
-        <form action="?acao=enviar" method="post" enctype="multipart/form-data" id="form1" style="padding:10px">
-          <div class="form-group">
-          <label><strong>Nome</strong>:*</label>
-          <input name="nome" type="text" required="required" class="form-control">
-          </div>
-
-          <div class="form-group">
-          <label><strong>E-mail</strong>:*</label>
-          <input name="email" type="email" required="required" class="form-control">
-          </div>
-
-          <div class="form-group">
-          <label><strong>Telefone</strong>:</label>
-          <input name="telefone" type="tel" class="form-control">
-          </div>
-        
-          <div class="form-group">
-          <label><strong>Assunto</strong>:*</label>
-          <input name="assunto" type="text" required="required" class="form-control">
-          </div>
-      
-          <div class="form-group">
-          <label><strong>Mensagem</strong>:*</label>
-          <textarea name="mensagem" rows="10" required class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-          <label><strong>Anexo</strong>:</label>
-          <input name="arquivo" type="file" class="form-control-file">
-          </div>
-
-          <br>
-          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
-          <br><br>
-        </form>
+    </main>
+  </div>
         <?php include("_footer.php");?>
         <?php
         require 'PHPMailerAutoload.php';

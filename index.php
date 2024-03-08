@@ -5,7 +5,7 @@ FROM tb_users u
 LEFT JOIN tb_seg s ON u.idUser = s.idSeg1 
 GROUP BY u.idUser 
 ORDER BY num_seg DESC 
-LIMIT 4;
+LIMIT 3;
 ";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
 
@@ -31,10 +31,10 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
   <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
   <meta name="author" content="CapyCorps">
   <meta name="publisher" content="Professor Sandromir Almeida">
-  <meta name="robots" content="index,follow">
   <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
-  <link rel="manifest" href="manifest.webmanifest">
 
+  <meta name="robots" content="index,follow">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>CapyJobs - Seu Site de Eventos</title>
   <link rel="icon" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style.css">
@@ -200,12 +200,12 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
                 <input type="password" id="password" name="password">
                 <button>Entrar</button>
               </form>
-              <div class="flex-generic">
+              <div class="flex-generic" style='margin-left:10% ;'>
                 <hr class="bg-branco" style="width: 35%;">
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="cadastro.php" class="text-white" title='cadastro'>Não possui conta? cadastre-se agora</a>
+              <a href="cadastro.php" class="text-white" title='cadastro' style="margin-left:10%">Não possui conta? cadastre-se agora</a>
             </div>
           </div>
         </div>

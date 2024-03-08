@@ -14,6 +14,10 @@ if (isset($_SESSION['username'])) {
 <link rel="manifest" href="pwa/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
+    <meta name="author" content="CapyCorps">
+    <meta name="publisher" content="Professor Sandromir Almeida">
     <title>CapyJobs - Cadastro</title>
     <meta name="description" content="Crie seu cadastro para o CapyJobs">
     <link rel="icon" href="images/favicon-16x16.png">

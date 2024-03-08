@@ -10,6 +10,12 @@ if (isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
+<meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+<meta name="author" content="CapyCorps">
+<meta name="publisher" content="Professor Sandromir Almeida">
+<meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
+
 <link rel="manifest" href="pwa/manifest.json">
 
     <meta charset="UTF-8">

@@ -15,6 +15,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CapyJobs - Vagas</title>
+    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+    <meta name="author" content="CapyCorps">
+    <meta name="publisher" content="Professor Sandromir Almeida">
+    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
     <link rel="icon" href="images/favicon-16x16.png">
     <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="style.css">

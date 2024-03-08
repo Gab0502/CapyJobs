@@ -1,8 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="" href="index.php"><img src="images/capyIcon.png" width="100" title="index"></a>
+      <a href="index.php" title='CapyJobs'><img src="images/capyIcon.png" width="100" alt='CapyJobs' title='CapyJobs'></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse center" id="navbarNavDropdown">
         <ul class="navbar-nav">

@@ -50,7 +50,7 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem login">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem login" title='imagem login'>
                 </div>
             </div>
         </section>

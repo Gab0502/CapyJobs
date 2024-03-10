@@ -323,7 +323,7 @@ header {
     background-color: var(--verdeEscuro);
     height: 40px;
     border-radius: 10px;
-    width: 70%;
+    width: 250px;
     margin-left: 10%;
   
 }
@@ -333,7 +333,7 @@ header {
     word-wrap: break-word;
     text-align: center;
     border-radius: 10px;
-    width: 70%;
+    width: 250px;
     margin-left: 10%;
     }
 .azul-b2{
@@ -353,7 +353,7 @@ header {
 .Vagas{
     background-color: var(--verdeEscuro);
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
    
 }
 .Vagas1{

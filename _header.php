@@ -6,6 +6,12 @@
       </button>
       <div class="collapse navbar-collapse center" id="navbarNavDropdown">
         <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="contato.php" title="contato">CONTATO</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php#sobre" title="sobre">SOBRE</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="cadastro.php" title="cadastro">CADASTRE-SE</a>
           </li>

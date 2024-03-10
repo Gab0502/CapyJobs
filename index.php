@@ -116,7 +116,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
         <?php }?>
         </div>
 
-    <section>
+    <section id="sobre">
       <div class="container-fluid bullet-points">
         <div class="row">
           <div class="col-xl-6">

@@ -36,7 +36,7 @@ if (isset($_SESSION['username'])) {
         <section class="container-fluid">
         
             <div class="row bg-branco">
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
@@ -54,9 +54,6 @@ if (isset($_SESSION['username'])) {
                             <a href="cadastro.php" class="text-white">Não possui conta? cadastre-se agora</a>
                         </form>
                     </div>
-                </div>
-                <div class="col-xl-6">
-                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem login" title='imagem login'>
                 </div>
             </div>
         </section>

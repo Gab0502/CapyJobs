@@ -14,6 +14,10 @@ if (isset($_SESSION['username'])) {
 <link rel="manifest" href="pwa/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
+    <meta name="author" content="CapyCorps">
+    <meta name="publisher" content="Professor Sandromir Almeida">
     <title>CapyJobs - Cadastro</title>
     <meta name="description" content="Crie seu cadastro para o CapyJobs">
     <link rel="icon" href="images/favicon-16x16.png">
@@ -135,7 +139,7 @@ if (isset($_SESSION['username'])) {
         <section class="container-fluid">
         
             <div class="row bg-branco">
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <div class="container-custom ">
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="form-login bg-verdeMedio" style="border-radius: 25px;">
@@ -146,7 +150,7 @@ if (isset($_SESSION['username'])) {
                             <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
                             <div id="mensagem-cep" style='color: white; margin-left:10px;'></div>
                                     <div class="flex-generic">
-                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
+                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="CEP">
                                         <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
                                     </div>
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
@@ -160,9 +164,6 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
                
-                <div class="col-xl-6">
-                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem cadastro" title='imagem cadastro'>
-                </div>
                 
 
             </div>

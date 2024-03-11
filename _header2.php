@@ -1,6 +1,6 @@
 <header>
 <nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
-  <a class="" href="feed-temp.php" title="feed"><img src="images/capyIcon.png" alt="icone capyjobs" width="100" title="feed"></a>
+  <a href="feed-temp.php" title="feed"><img src="images/capyIcon.png" alt="icone capyjobs" width="100" title="feed"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

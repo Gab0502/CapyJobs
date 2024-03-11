@@ -15,6 +15,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CapyJobs - Feed</title>
+    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+    <meta name="author" content="CapyCorps">
+    <meta name="publisher" content="Professor Sandromir Almeida">
+    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
     <link rel="icon" href="images/favicon-16x16.png">
     <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="style.css">
@@ -65,31 +69,35 @@ $resultVagas = $conn_capybd->query($vagas);
         <div class="row">
         <?php if (isset($_SESSION['idUser'])) : ?>
             <aside class="col-xl-3 azul disabled2">
-                <div class="azul-a mt-3">
-                </div>
-                <div class="azul-b">
-                    <div class="IMG">
-                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil"></a>
+                <div style="position: sticky; top: 25px; left: 0;">
+                    <div class="azul-a mt-3">
                     </div>
-                    <div class="azul-b2">
-                        <p alt="nome do usuario"><?php echo $_SESSION['name']; ?></p>
-                        <p alt="bio do usuario"><?php echo $_SESSION['bio']; ?></p>
-                    </div>
-                    <div class="azul-b3">
-                        <div class="contatos">
-                            <p>nome: <?php ?></p>
-                            <p>Email: <?php echo $_SESSION['email']; ?></p>
-                            <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
+                    <div class="azul-b">
+                        <div class="IMG">
+                            <a href="perfil.php?idUser=<?php echo($_SESSION['idUser']);?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo $_SESSION['profilePic']; ?>" alt="foto de perfil" title="<?php echo($_SESSION['name'])?>"></a>
+                        </div>
+                        <div class="azul-b2">
+                            <p alt="nome do usuario"><?php echo $_SESSION['name']; ?></p>
+                            <p alt="bio do usuario"><?php echo $_SESSION['bio']; ?></p>
+                        </div>
+                        <div class="azul-b3">
+                            <div class="contatos">
+                                <p>nome: <?php echo $_SESSION['name'];?></p>
+                                <p>Email: <?php echo $_SESSION['email']; ?></p>
+                                <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </aside>
         <?php else : ?>
             <aside class="col-xl-3 azul disabled2">
-                <div class="azul-a mt-3">
-                </div>
-                <div class="azul-b">
-                <p>Você não está logado. Faça <a href="login.php">login</a>.</p>
+                <div style="position:fixed;">
+                    <div class="azul-a mt-3">
+                    </div>
+                    <div class="azul-b">
+                    <p>Você não está logado. Faça <a href="login.php">login</a>.</p>
+                    </div>
                 </div>
         </aside>
             
@@ -99,7 +107,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 <section class="grupPost">
                     <div class="grupPost-input">
                         
-                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt=""></a>
+                        <a href="perfil.php?idUser=<?php echo($_SESSION['idUser'])?>" title="<?php echo($_SESSION['name'])?>"><img src="images/<?php echo($_SESSION['profilePic']);?>" alt="<?php echo($_SESSION['name'])?>" title='<?php echo($_SESSION['name'])?>'></a>
                         <input type="text" class="grupPost-textArea" data-toggle="modal"
                             data-target="#exampleModalCenter" placeholder="Nos conte sobre o que esta pensando">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -153,7 +161,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <div class="flex-generic" style="flex-direction: column;">
                                 <label for="upload-photo">foto</label>
                                 <input type="file" name="upload-photo" id="upload-photo" onchange="previewImg(event)">
-                                <img id="preview" alt="preview da imagem postada" src="#">
+                                <img id="preview" alt="preview da imagem postada" src="#" title='preview da imagem'>
                                 </div>
                                 <button class="botao-foto" id="removeFoto" type="button">remover foto</button>
                                 <div class="modal-footer"> 
@@ -176,7 +184,7 @@ $resultVagas = $conn_capybd->query($vagas);
                     <div class='feed-perfil'>
                         <div class='flex-generic' style='align-items: center; justify-content: space-between;'>
                             <div class='flex-generic' style='align-items: center;'>
-                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>" title="<?php echo($_SESSION['name']);?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['name'] ?>'></a>
+                                <a href="perfil.php?idUser=<?php echo($row['idUser']) ?>" title="<?php echo($_SESSION['name']);?>"><img src='images/<?= $row['fotoPerfil'] ?>' alt='<?= $row['nome'] ?>' title='<?= $row['nome'] ?>'></a>
                                 <div class='post-user-name'>
                                     <h5><?= $row['nome'] ?></h5>
                                     <p><?= $row['bio'] ?></p> <!-- You can adjust this as needed -->
@@ -224,7 +232,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 <!-- Displaying the image of the publication using lightbox -->
                 <div class='feed-img'>
                 <?php if (isset($row['midia1']) && !empty($row['midia1'])): ?>
-                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>' title="imagen publicação">
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>' title='imagem da publicação'>
                         <img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação' title='imagem da publicação'>
                     </a>
                 <?php endif; ?>
@@ -269,9 +277,8 @@ $resultVagas = $conn_capybd->query($vagas);
 <?php endwhile; ?>
 
 </section>
-
-
             <aside class="col-xl-3 mt-3 disabled2">
+            <div style="position: sticky; top: 25px; left: 0;">
                 <div class="Vagas">
                 </div>
                 <div class="Vagas1">
@@ -282,7 +289,7 @@ $resultVagas = $conn_capybd->query($vagas);
                     <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;" title="<?php echo($rowVagas['titulo']);?>">
                     <div class="buscando">
                         <div class="flex-generic">
-                            <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="foto de perfil de <?php echo($rowVagas['nome']) ?>">
+                            <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="foto de perfil de <?php echo($rowVagas['nome']) ?>" title="foto de perfil de <?php echo($rowVagas['nome']) ?>">
                             <div class="flex-generic" style="flex-direction: column;">
 
                                 <div class="alinhamento1">
@@ -302,6 +309,7 @@ $resultVagas = $conn_capybd->query($vagas);
 
 
                 </div>
+            </div>
             </aside>
         </div>
     </main>

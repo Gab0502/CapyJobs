@@ -10,12 +10,6 @@ if (isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
-<meta name="author" content="CapyCorps">
-<meta name="publisher" content="Professor Sandromir Almeida">
-<meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
-
 <link rel="manifest" href="pwa/manifest.json">
 
     <meta charset="UTF-8">
@@ -36,7 +30,7 @@ if (isset($_SESSION['username'])) {
         <section class="container-fluid">
         
             <div class="row bg-branco">
-                <div class="col-xl-12">
+                <div class="col-xl-6">
                     <div class="container-custom">
                         <h1 class="tittle">Precisando de um job?</h1>
                         <h2 class="subTittle">Entre agora</h2>
@@ -54,6 +48,9 @@ if (isset($_SESSION['username'])) {
                             <a href="cadastro.php" class="text-white">Não possui conta? cadastre-se agora</a>
                         </form>
                     </div>
+                </div>
+                <div class="col-xl-6">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem login" title='imagem login'>
                 </div>
             </div>
         </section>

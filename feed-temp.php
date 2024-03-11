@@ -224,7 +224,7 @@ $resultVagas = $conn_capybd->query($vagas);
                 <!-- Displaying the image of the publication using lightbox -->
                 <div class='feed-img'>
                 <?php if (isset($row['midia1']) && !empty($row['midia1'])): ?>
-                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>'>
+                    <a data-lightbox='example-1' href='images/<?= $row['midia1'] ?>' title="imagen publicação">
                         <img src='images/<?= $row['midia1'] ?>' alt='imagem da publicação' title='imagem da publicação'>
                     </a>
                 <?php endif; ?>

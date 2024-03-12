@@ -23,6 +23,7 @@
     margin: 0px;
     margin-bottom: 25px;
  }
+
  #mini-feed{
    flex-direction: column;
  }
@@ -30,6 +31,12 @@
 @media screen and (max-width: 1200px){
    .disabled2{
       display: none;
+   }
+   .arroz{
+    margin-right: 0px;
+   }
+   .batata{
+    margin: 75px;
    }
    
 }

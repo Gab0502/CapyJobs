@@ -71,12 +71,12 @@ h1 {
 }
 .divisao h2 {
     color: black;
-    font-size: 30px;
+    font-size: 25px;
 }
 .divisao h3 {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    font-size: 20px;
+    font-size: 15px;
 }
 .banner {
     background-image: url(/images/banner.png);
@@ -171,11 +171,10 @@ header {
     flex-direction: column; /* Added flex-direction for vertical alignment */
     align-items: center;
     align-items: center;
-    min-width: 215px !important;
-    max-width: 300px;
+    width: 215px;
     height: 350px;
 }
-.card img {
+.card img{
     width: 150px;
 }
 .card h1 {
@@ -190,7 +189,7 @@ header {
 
 }
 .box img {
-    width: 200px;
+    width: 150px;
 }
 .caixa1 {
     display: flex;
@@ -199,12 +198,12 @@ header {
     margin: 25px;
 }
 .arroz {
-    border: solid 1px var(--verdeMedio);
     background-color: var(--verdeMedio);
     border-radius: 10px;
+    margin-right: 75px;
 }
 .form-login-index h3 {
-    font-size: 55px;
+    font-size: 35px;
 }
 .form-login-index {
     display: flex;
@@ -220,7 +219,6 @@ header {
     border: none;
     border-radius: 25px;
     margin: 15px;
-    width: 80%;
     height: 50px;
     align-items: center;
 }
@@ -232,7 +230,7 @@ header {
     background-color: var(--bege);
     width: 30%;
     margin-top: 10px;
-    margin-left: 25%;
+    margin-left: 35%;
     border-radius: 25px;
     border: none;
     border: 25px;
@@ -244,7 +242,7 @@ header {
 }
 .batata {
     text-align: center;
-    margin: 150px;
+    margin: 100px;
 }
 .feedFull{
     margin-top: 10px;
@@ -325,7 +323,7 @@ header {
     background-color: var(--verdeEscuro);
     height: 40px;
     border-radius: 10px;
-    width: 70%;
+    width: 250px;
     margin-left: 10%;
   
 }
@@ -335,7 +333,7 @@ header {
     word-wrap: break-word;
     text-align: center;
     border-radius: 10px;
-    width: 70%;
+    width: 250px;
     margin-left: 10%;
     }
 .azul-b2{
@@ -355,7 +353,7 @@ header {
 .Vagas{
     background-color: var(--verdeEscuro);
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
    
 }
 .Vagas1{
@@ -545,6 +543,8 @@ label {
     border-radius: 11px;
     font-family: Arial;
     color: #000000;
+    width: 180px;
+    height: 52px;
     font-size: 20px;
     background: #ffffff;
     padding: 10px 20px 10px 20px;
@@ -566,9 +566,12 @@ label {
     font-family: Arial;
     color: #ffffff;
     font-size: 20px;
+    width: 180px;
+    height: 52px;
     background: var(--verdeEscuro);
     padding: 10px 20px 10px 20px;
     text-decoration: none;
+    border: solid var(--verdeEscuro) 1px;
     border: none;
 }
 .btn-liked svg{

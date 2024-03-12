@@ -15,7 +15,7 @@ INNER JOIN tb_users u ON p.idUser = u.idUser
 LEFT JOIN tb_likes l ON p.idPub = l.idPub 
 GROUP BY p.idPub 
 ORDER BY num_likes DESC 
-LIMIT 3 ;
+LIMIT 4 ;
 ";
 $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
 
@@ -31,10 +31,10 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
   <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
   <meta name="author" content="CapyCorps">
   <meta name="publisher" content="Professor Sandromir Almeida">
-  <meta name="robots" content="index,follow">
   <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
-  <link rel="manifest" href="manifest.webmanifest">
 
+  <meta name="robots" content="index,follow">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>CapyJobs - Seu Site de Eventos</title>
   <link rel="icon" href="images/favicon-16x16.png">
   <link rel="stylesheet" href="style.css">
@@ -82,7 +82,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards">
+      <div class="flex-cards disabled2">
         <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
           
             <div class="card">
@@ -116,7 +116,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
         <?php }?>
         </div>
 
-    <section>
+    <section id="sobre">
       <div class="container-fluid bullet-points">
         <div class="row">
           <div class="col-xl-6">
@@ -200,12 +200,12 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
                 <input type="password" id="password" name="password">
                 <button>Entrar</button>
               </form>
-              <div class="flex-generic">
+              <div class="flex-generic" style='margin-left:10% ;'>
                 <hr class="bg-branco" style="width: 35%;">
                 <h3 class="text-white">ou</h3>
                 <hr class="bg-branco" style="width: 35%;">
               </div>
-              <a href="cadastro.php" class="text-white" title='cadastro'>Não possui conta? cadastre-se agora</a>
+              <a href="cadastro.php" class="text-white" title='cadastro' style="margin-left:10%">Não possui conta? cadastre-se agora</a>
             </div>
           </div>
         </div>

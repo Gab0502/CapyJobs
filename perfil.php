@@ -29,6 +29,10 @@ if(isset($_GET['idUser'])){
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CapyJobs - Vagas</title>
+    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
+    <meta name="author" content="CapyCorps">
+    <meta name="publisher" content="Professor Sandromir Almeida">
+    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
     <link rel="icon" href="images/favicon-16x16.png">
     <link rel="stylesheet" href="style-login.css">
     <link rel="stylesheet" href="style.css">
@@ -174,7 +178,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
         <section>
             <!-- sessão de rosto-perfil .-->
             <div class="feed">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype='multipart/form-data'>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype='multipart/form-data'>
 
             <div class="papel_parede">
                 <?php
@@ -189,16 +193,16 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
             </div>
 
 
-                <!-- forma para alterar dados -->
+                    <!-- forma para alterar dados -->
 
-                
+
                     <div class="rosto_novo descricao">
 
 
                     <?php
                     // Verifique se o usuário na sessão é o mesmo do parâmetro GET
                     if ($_SESSION['idUser'] == $_GET['idUser']) {
-                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}' alt='{$row['nome']}' title='{$row['nome']}'></label>";
+                        echo "<label for='upload-photo'><img src='images/{$row['fotoPerfil']}'></label>";
                         echo "<input type='file' name='upload-photo' id='upload-photo' onchange='uploadFoto()' style='font-size:1px;'/>";
                         echo "<input type='submit' style='display:none;' id='submitBtn'/>";
                         echo "</form>";
@@ -208,33 +212,33 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     
                     ?>
 
-                        <div class="flex-generic" style='justify-content:space-between;'>
-                        <div class="ajuste-nome">
-                        <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
-                        </div>
-                            <?php
-                            $following = ($pubs['isFollowing'] > 0);
-                            if ($row['idUser'] == $_SESSION['idUser']) {
-                                    // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
-                                    echo '<details>';
-                                    echo '    <summary>...</summary>';
-                                    echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
-                                    echo '</details>';
+                            <div class="flex-generic" style='justify-content:space-between;'>
+                            <div class="ajuste-nome">
+                            <h2 class="alteracao" id='nome'> <?php echo($row['nome'])?></h2>
+                            </div>
+                                <?php
+                                $following = ($pubs['isFollowing'] > 0);
+                                if ($row['idUser'] == $_SESSION['idUser']) {
+                                        // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
+                                        echo '<details>';
+                                        echo '    <summary>...</summary>';
+                                        echo '    <button type="button" id="btn-editar" class="btn-edit">editar</button>';
+                                        echo '</details>';
 
-                            } else {    
-                                    // Caso contrário, mostra botão de seguir/seguindo
-                                    if ($following) {
-                                        // Se o usuário estiver seguindo, exiba o botão "Seguindo"
-                                        echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
-                                } else {
-                                        // Se o usuário não estiver seguindo, exiba o botão "Seguir"
-                                        echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
-                                }                          
-                            }
-                            ?>
-                        </div>                        
-                    </div>
-                    <!-- sessão de detalhes  -->
+                                } else {    
+                                        // Caso contrário, mostra botão de seguir/seguindo
+                                        if ($following) {
+                                            // Se o usuário estiver seguindo, exiba o botão "Seguindo"
+                                            echo "<button onclick=\"follow({$row['idUser']})\" class='btn-edit'>Capyseguindo</button>";
+                                    } else {
+                                            // Se o usuário não estiver seguindo, exiba o botão "Seguir"
+                                            echo "<button class='btn-edit' onclick=\"follow({$row['idUser']})\" class='btn-edit' >+Capyseguir</button>";
+                                    }                          
+                                }
+                                ?>
+                            </div>                        
+                        </div>
+                        <!-- sessão de detalhes  -->
 
                 </div>
                     <div class="feed muda">
@@ -243,36 +247,34 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                     </div>
                     <!-- sessão de contato -->
                     <div class="feed">
-    <div class="flex-generic">
-        <h5>Celular: </h5>
-        <h5 class='alteracao' id='celular' style="margin-left: 0;"><?php echo($row['celular']) ?></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>E-mail: </h5>
-        <h5 id='email' style="margin-left: 0;"><?php echo($row['email']) ?></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>Bairro: </h5>
-        <h5 class='alteracao' id='bairro' style="margin-left: 0;"><?php echo($row['bairro']) ?></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>Cidade: </h5>
-        <h5 class='alteracao' id='cidade' style="margin-left: 0;"><?php echo($row['cidade']) ?></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>Linkedin: </h5>
-        <h5 class='alteracao' id='linkedin' style="margin-left: 0;"><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>Twitter: </h5>
-        <h5 class='alteracao' id='twitter' style="margin-left: 0;"><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
-    </div>
-    <div class="flex-generic">
-        <h5>Instagram: </h5>
-        <h5 class='alteracao' id='instagram' style="margin-left: 0;"><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
-    </div>
-</div>
-
+                    <div class="flex-generic">
+                        <h5>Celular:</h5>
+                        <h5 class='alteracao' id='celular'><?php echo($row['celular']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>E-mail:</h5>
+                        <h5 class='alteracao' id='email'><?php echo($row['email']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Bairro:</h5>
+                        <h5 class='alteracao' id='bairro'><?php echo($row['bairro']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Cidade:</h5>
+                        <h5 class='alteracao' id='cidade'><?php echo($row['cidade']) ?></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Linkedin:</h5>
+                        <h5 class='alteracao' id='linkedin'><a href="<?php echo($row['linkedin']) ?>"><?php echo($row['linkedin']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Twitter:</h5>
+                        <h5 class='alteracao' id='twitter'><a href="<?php echo($row['twitter']) ?>"><?php echo($row['twitter']) ?></a></h5>
+                    </div>
+                    <div class="flex-generic">
+                        <h5>Instagram:</h5>
+                        <h5 class='alteracao' id='instagram'><a href="<?php echo($row['instagram']) ?>"><?php echo($row['instagram']) ?></a></h5>
+                    </div>
                     <?php
                     if ($row['idUser'] == $_SESSION['idUser']) {
                                     // Se o usuário logado é o mesmo que fez a publicação, mostra botões de edição/exclusão
@@ -281,9 +283,9 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                             }
                     ?>
 
-                </div>
-                        
-            </form>
+                    </div>
+                            
+                </form>
 
             </div>
             <!-- divisão para inserir infromações de  -->
@@ -327,7 +329,7 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                             ?>
                             
                 </div>
-                    </div>
+
                     <!-- Displaying information of the publication -->
                     <div class='post-content'>
                         <h6 class='tags'>

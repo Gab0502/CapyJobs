@@ -140,22 +140,22 @@ if (isset($_SESSION['username'])) {
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <input required type="text" id="nome" name="nome" placeholder="NOME">
-                            <input required type="text" id="email" name="email" placeholder="EMAIL" style="width: 84%;">
-                            <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
-                            <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
-                            <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
+                            <input required type="text" id="email" name="email" placeholder="EMAIL" >
+                            <input required type="password" id="senha" name="senha" placeholder="SENHA" >
+                            <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" >
+                            <input required type="text" id="cpf" name="cpf" placeholder="CPF">
                             <div id="mensagem-cep" style='color: white; margin-left:10px;'></div>
                                     <div class="flex-generic">
-                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="LOCAL digite o CEP do local do evento">
-                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                        <input id="local" name="cep" type="text" style="width: 80%;" placeholder="CEP">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%;">
                                     </div>
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
                                 <input type="checkbox" class="checkboxCustom" id="check">
-                                <a href="#" class="termos" onclick="openModal()">Li e concordo com os termos de uso</a>
+                                <a href="#" class="termos" onclick="openModal()" title="termos de uso">Li e concordo com os termos de uso</a>
                             </div>
                             <input type="submit" id="submit" disabled>
-                    </form>
+                        </form>
 
                     </div>
                 </div>

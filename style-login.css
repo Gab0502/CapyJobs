@@ -9,12 +9,11 @@
 }
 
 .tittle {
-    font-size: 5vw;
+    font-size: 30px;
 }
 
 .subTittle {
-    font-size: 45px;
-    margin-left: 20px;
+    font-size: 20px;
 }
 
 .form-login {
@@ -37,11 +36,11 @@
 .form-login input {
     background-color: var(--bege);
     border: none;
-    padding: 15px;
+    padding: 10px;
     border-radius: 25px;
-    margin: 15px;
-    width: 85%;
-    height: 50px;
+    margin: 9px;
+    width: 90%;
+    height: 40px;
     font-size: 25px;
 }
 
@@ -98,11 +97,5 @@
 @media screen and (max-width: 500px){
     .container-custom{
         margin: 0px;
-    }
-    .tittle{
-        font-size: 40px;
-    }
-    .subTittle{
-        font-size: 33px;
     }
 }

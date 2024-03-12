@@ -543,6 +543,8 @@ label {
     border-radius: 11px;
     font-family: Arial;
     color: #000000;
+    width: 180px;
+    height: 52px;
     font-size: 20px;
     background: #ffffff;
     padding: 10px 20px 10px 20px;
@@ -564,9 +566,12 @@ label {
     font-family: Arial;
     color: #ffffff;
     font-size: 20px;
+    width: 180px;
+    height: 52px;
     background: var(--verdeEscuro);
     padding: 10px 20px 10px 20px;
     text-decoration: none;
+    border: solid var(--verdeEscuro) 1px;
     border: none;
 }
 .btn-liked svg{

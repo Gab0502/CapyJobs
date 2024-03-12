@@ -10,9 +10,8 @@ Que seja feita a Tua vontade, ó Deus, e que tudo se resolva para a Tua honra e 
 
 // Métodos de conexão com BD MySQLI, MySQL e PDO
 
-/*
 //Conexão localhost com Visual Studio Code
-/* // Barra de comentário para desativar conexão local
+// Barra de comentário para desativar conexão local
 // Conexão localhost com Visual Studio Code
 $hostname_conn_capybd = "localhost";
 $database_conn_capybd = "capybd";
@@ -23,9 +22,9 @@ $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $pas
 // Verificação de conexão
 //echo("Conectado!");
 //Barra de comentário para desativar conexão local
-*/
 
 
+/* 
 
 
 //Conexão Locaweb
@@ -37,7 +36,7 @@ $password_conn_capybd = "Capys2024!";
 $conn_capybd = mysqli_connect($hostname_conn_capybd, $username_conn_capybd, $password_conn_capybd, $database_conn_capybd) or trigger_error(mysqli_connect_errno(), E_USER_ERROR);
 mysqli_set_charset($conn_capybd, 'utf8');
 
-
+*/
 
 /*
 //Barra de comentário para desativar conexão web

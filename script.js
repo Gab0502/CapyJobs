@@ -84,7 +84,7 @@ function verificaCEP(cep) {
             }
         },
         error: function() { 
-            mensagemCEP.innerHTML = 'Erro ao verificar o CEP. Tente novamente mais tarde.';
+            mensagemCEP.innerHTML = 'Erro ao verificar o CEP';
         }
     });
 }

@@ -203,7 +203,7 @@ header {
     margin-right: 75px;
 }
 .form-login-index h3 {
-    font-size: 35px;
+    font-size: 25px;
 }
 .form-login-index {
     display: flex;
@@ -217,10 +217,12 @@ header {
 .form-login-index input {
     background-color: var(--bege);
     border: none;
+    padding: 10px;
     border-radius: 25px;
-    margin: 15px;
-    height: 50px;
-    align-items: center;
+    margin: 9px;
+    width: 90%;
+    height: 40px;
+    font-size: 25px;
 }
 .form-login-index input:hover {
     border: 1px solid black;
@@ -242,7 +244,7 @@ header {
 }
 .batata {
     text-align: center;
-    margin: 100px;
+    margin: 85px;
 }
 .feedFull{
     margin-top: 10px;
@@ -269,6 +271,7 @@ header {
     margin: 0px;
     height: 70px;
     align-items: center;
+    padding: 10px;
 }
 .grupPost input:hover{
     border: 1px solid var(--bege);
@@ -723,4 +726,8 @@ details summary{
 }
 .perfil-margin{
     margin: 25px;
+}
+
+.ejob{
+    margin-right: 10px;
 }

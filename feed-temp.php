@@ -137,7 +137,7 @@ $resultVagas = $conn_capybd->query($vagas);
                                 <input type="text" id="tags" name="tags" style="width: 95%; height: 50px; margin-left: 10px;" placeholder="TAGS ex: #festa #musica">
                                 <br><br><br>
                                 <!-- checkbox ad -->
-                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="checkbox">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
+                                <div class="flex-generic" style="justify-content: flex-end; align-items: center; margin-top: -55px; text-align: center;"> <label for="checkbox" class="ejob">é vaga?</label><input type="checkbox" name="ad" class="evaga" id="checkbox"></div>
                                 <div class="checkboxFields" style="display: none;">
 
                                 <!-- informaçoes para ads -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="conn_capybd.php" server="ftp.capyjobs.com.br/httpdocs/" local="133541991646842543" remote="133541994000000000" Dst="0" />
+<file name="conn_capybd.php" server="ftp.capyjobs.com.br/httpdocs/" local="133547287497300562" remote="133547287800000000" Dst="0" />
 <file name="index.php" server="ftp.capyjobs.com.br/httpdocs/" local="133547258672648094" remote="133547262000000000" Dst="0" />
 <file name="style.css" server="ftp.capyjobs.com.br/httpdocs/" local="133547258672864304" remote="133547262000000000" Dst="0" />
 <file name="style-login.css" server="ftp.capyjobs.com.br/httpdocs/" local="133547258672793724" remote="133547262000000000" Dst="0" />
@@ -22,9 +22,9 @@
 <file name="_processa-like.php" server="ftp.capyjobs.com.br/httpdocs/" local="133518776878912070" remote="133541994000000000" Dst="0" />
 <file name="_upload-fotoPerfil.php" server="ftp.capyjobs.com.br/httpdocs/" local="133534199578703963" remote="133541994000000000" Dst="0" />
 <file name="adm.php" server="ftp.capyjobs.com.br/httpdocs/" local="133542068523689442" remote="133542946800000000" Dst="0" />
-<file name="adm_editar.php" server="ftp.capyjobs.com.br/httpdocs/" local="133542068523709233" remote="133542946800000000" Dst="0" />
+<file name="adm_editar.php" server="ftp.capyjobs.com.br/httpdocs/" local="133547287290442035" remote="133547287800000000" Dst="0" />
 <file name="adm_excluir_perfil.php" server="ftp.capyjobs.com.br/httpdocs/" local="133541991646730844" remote="133541994000000000" Dst="0" />
-<file name="adm_excluir_pub.php" server="ftp.capyjobs.com.br/httpdocs/" local="133541991646751017" remote="133541994000000000" Dst="0" />
+<file name="adm_excluir_pub.php" server="ftp.capyjobs.com.br/httpdocs/" local="133547287290442035" remote="133547287800000000" Dst="0" />
 <file name="adm_perfil.php" server="ftp.capyjobs.com.br/httpdocs/" local="133542941381866679" remote="133542946800000000" Dst="0" />
 <file name="adm_pub.php" server="ftp.capyjobs.com.br/httpdocs/" local="133542068523730889" remote="133542946800000000" Dst="0" />
 <file name="adm_visualizar_perfil.php" server="ftp.capyjobs.com.br/httpdocs/" local="133542941381866679" remote="133542946800000000" Dst="0" />

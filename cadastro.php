@@ -14,10 +14,6 @@ if (isset($_SESSION['username'])) {
 <link rel="manifest" href="pwa/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Rede Social, vagas, trabalho, freelancer, free-lancer, eventos">
-    <meta name="description" content="Capyjobs, o site ideal para buscar oportunidades ou profissionais">
-    <meta name="author" content="CapyCorps">
-    <meta name="publisher" content="Professor Sandromir Almeida">
     <title>CapyJobs - Cadastro</title>
     <meta name="description" content="Crie seu cadastro para o CapyJobs">
     <link rel="icon" href="images/favicon-16x16.png">
@@ -139,19 +135,19 @@ if (isset($_SESSION['username'])) {
         <section class="container-fluid">
         
             <div class="row bg-branco">
-                <div class="col-xl-12">
+                <div class="col-xl-6">
                     <div class="container-custom ">
                         <h1 class="tittle">Apenas mais alguns clicks...</h1>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="form-login bg-verdeMedio" style="border-radius: 25px;">
                             <input required type="text" id="nome" name="nome" placeholder="NOME">
-                            <input required type="text" id="email" name="email" placeholder="EMAIL" style="width: 84%;">
-                            <input required type="password" id="senha" name="senha" placeholder="SENHA" style="width: 84%;">
-                            <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" style="width: 84%;">
-                            <input required type="text" id="cpf" name="cpf" placeholder="CPF" style="width: 84%;">
+                            <input required type="text" id="email" name="email" placeholder="EMAIL" >
+                            <input required type="password" id="senha" name="senha" placeholder="SENHA" >
+                            <input required type="text" id="telefone" name="telefone" placeholder="TELEFONE" >
+                            <input required type="text" id="cpf" name="cpf" placeholder="CPF">
                             <div id="mensagem-cep" style='color: white; margin-left:10px;'></div>
                                     <div class="flex-generic">
-                                        <input id="local" name="cep" type="text" style="width: 80%; height: 50px; margin-left: 10px;" placeholder="CEP">
-                                        <input type="text" name="numero" placeholder="N°" style="width: 15%; height: 50px; margin-left: 10px;">
+                                        <input id="local" name="cep" type="text" style="width: 80%;" placeholder="CEP">
+                                        <input type="text" name="numero" placeholder="N°" style="width: 15%;">
                                     </div>
                             <input required type="text" id="CCOMPLEMENTO" name="CCOMPLEMENTO" placeholder="COMPLEMENTO">
                             <div class="flex-generic2" style="justify-content: space-around; text-align: center;">
@@ -159,11 +155,14 @@ if (isset($_SESSION['username'])) {
                                 <a href="#" class="termos" onclick="openModal()" title="termos de uso">Li e concordo com os termos de uso</a>
                             </div>
                             <input type="submit" id="submit" disabled>
-                    </form>
+                        </form>
 
                     </div>
                 </div>
                
+                <div class="col-xl-6">
+                    <img src="images/Puppetshow-amico.png" class="img-grande" alt="imagem cadastro" title='imagem cadastro'>
+                </div>
                 
 
             </div>

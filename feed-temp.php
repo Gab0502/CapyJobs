@@ -82,9 +82,9 @@ $resultVagas = $conn_capybd->query($vagas);
                         </div>
                         <div class="azul-b3">
                             <div class="contatos">
-                                <p>nome: <?php echo $_SESSION['name'];?></p>
-                                <p>Email: <?php echo $_SESSION['email']; ?></p>
-                                <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
+                                <p><?php ?></p>
+                                <p><?php echo $_SESSION['email']; ?></p>
+                                <p><?php echo $_SESSION['phone']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ $resultVagas = $conn_capybd->query($vagas);
             </aside>
         <?php else : ?>
             <aside class="col-xl-3 azul disabled2">
-                <div style="position:fixed;">
+                <div style="position: sticky; top: 25px; left: 0;">
                     <div class="azul-a mt-3">
                     </div>
                     <div class="azul-b">

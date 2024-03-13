@@ -16,7 +16,7 @@
           <h5>Contato</h5>
           <ul class="list-unstyled">
             <li><a href="contato.php" class="text-white" title="gmail">capyjobs@gmail.com</a></li>
-            <li><a href="https://wa.me/5511946325666?text=Bom+dia%2C+pode+me+dar+uma+capyajuda%3F%3F" class="text-white" title="whatsapp">+55 11 957910504</a></li>
+            <li><a href="https://wa.me/5511946325666?text=Bom+dia%2C+pode+me+dar+uma+capyajuda%3F%3F" target="_blank" class="text-white" title="whatsapp">+55 11 957910504</a></li>
             <li><a href="https://maps.app.goo.gl/Yu5SY5kPBdEB2p2N9" target="_blank" class="text-white" title="endereço">Rua Tito CapyCops </a></li>
           </ul>
         </div>
@@ -24,9 +24,9 @@
         <div class="col-md-3 mb-4">
           <h5>Redes Sociais</h5>
           <ul class="list-unstyled">
-            <li><a href="https://br.linkedin.com/" class="text-white" title="linkedin">Linkedin</a></li>
-            <li><a href="https://www.facebook.com/" class="text-white" title="facebook">Facebook</a></li>
-            <li><a href="https://www.instagram.com/" class="text-white" title="instagram">Instagram</a></li>
+            <li><a href="https://br.linkedin.com/"   target="_blanck" class="text-white" title="linkedin">Linkedin</a></li>
+            <li><a href="https://www.facebook.com/"  target="_blanck" class="text-white" title="facebook">Facebook</a></li>
+            <li><a href="https://www.instagram.com/" target="_blanck" class="text-white" title="instagram">Instagram</a></li>
           </ul>
         </div>
         <!-- Coluna 4 -->

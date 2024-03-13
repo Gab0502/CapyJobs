@@ -5,7 +5,7 @@ FROM tb_users u
 LEFT JOIN tb_seg s ON u.idUser = s.idSeg1 
 GROUP BY u.idUser 
 ORDER BY num_seg DESC 
-LIMIT 3;
+LIMIT 4;
 ";
 $topusers_exe = mysqli_query($conn_capybd, $topusers) or die(mysqli_error($conn_capybd));
 
@@ -15,7 +15,7 @@ INNER JOIN tb_users u ON p.idUser = u.idUser
 LEFT JOIN tb_likes l ON p.idPub = l.idPub 
 GROUP BY p.idPub 
 ORDER BY num_likes DESC 
-LIMIT 3 ;
+LIMIT 4 ;
 ";
 $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_capybd));
 
@@ -82,7 +82,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards">
+      <div class="flex-cards disabled2">
         <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
           
             <div class="card">

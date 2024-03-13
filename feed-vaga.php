@@ -126,7 +126,7 @@ $resultVagas = $conn_capybd->query($vagas);
 
                             <!-- descrição -->
 
-                            <h1>Conteudo</h1>
+                            <h1>Conteúdo</h1>
                             <textarea name="pubText" id="pubText" cols="60" rows="10"  style="resize: none;"></textarea>
                             <div class="flex-generic" style="justify-content: flex-end;"> <p id="contagemCaracteres">0/255</p></div>
 

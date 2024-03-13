@@ -111,7 +111,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
           <div class="col-xl-6">
             <div class="texto divisao">
               <h1 class="fonteIndex centrarAo">
-                seja bem vindo
+                seja bem-vindo
               </h1>
 
             </div>

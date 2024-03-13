@@ -137,12 +137,24 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
         }
 
         .btn {
-            display: block;
-            width: 100%;
+            display: inline-block;
+            width: calc(50% - 10px); /* Ajuste o tamanho conforme necessário */
             max-width: 200px;
-            margin: 20px auto;
+            margin: 20px 5px;
             padding: 15px;
             background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .btn2 {
+            display: inline-block;
+            width: calc(50% - 10px); /* Ajuste o tamanho conforme necessário */
+            max-width: 200px;
+            margin: 20px 5px;
+            padding: 15px;
+            background-color: red;
             color: white;
             text-decoration: none;
             border-radius: 15px;
@@ -203,6 +215,7 @@ $totalRow_rs_pub = mysqli_num_rows($rs_pub);
     </tr>
 </table>
 <a class="btn" href="adm_pub.php">Voltar</a>
+<a class="btn2" href="adm_excluir_pub.php?idPub=<?php echo $row_rs_pub['idPub']; ?>"  type="submit" name="submit" value="submit">Deletar Publicação</a>
 </form>
 <script src="pwa/myscripts.js"></script>
 </body>

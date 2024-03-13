@@ -105,9 +105,6 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
             <?php while($row_rs_perf = mysqli_fetch_assoc($rs_perf)) { ?>
                 <tr>
                     <td>
-                        <a href="adm_visualizar_perfil.php?idUser=<?php echo $row_rs_perf['idUser']; ?>">
-                            <img class="delete" src="images/adm/deleteee.png" alt="Excluir" width="90">
-                        </a><h6>Deletar Perfil<h6>
                     </td>
                     <td><a href="adm_visualizar_perfil.php?idUser=<?php echo $row_rs_perf['idUser']; ?>"><?php echo $row_rs_perf['idUser']; ?></a></td>
                     <td><a href="adm_visualizar_perfil.php?idUser=<?php echo $row_rs_perf['idUser']; ?>"><?php echo $row_rs_perf['nome']; ?></a></td>

@@ -1,10 +1,10 @@
 <?php require("conn_capybd.php");
 
 if(isset($_GET['idUser'])){
-    $id = $_GET['idUser'];
+    $idUser = $_GET['idUser'];
 };
 
-$query_rs_perf = "SELECT * FROM tb_users WHERE idUser = $id";
+$query_rs_perf = "SELECT * FROM tb_users WHERE idUser = $idUser";
 
 $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
 
@@ -83,6 +83,34 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
         .delete-link:hover {
             color: #f00;
         }
+        .btn {
+            display: inline-block;
+            width: calc(50% - 10px); /* Ajuste o tamanho conforme necessário */
+            max-width: 200px;
+            margin: 20px 5px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .btn2 {
+            display: inline-block;
+            width: calc(50% - 10px); /* Ajuste o tamanho conforme necessário */
+            max-width: 200px;
+            margin: 20px 5px;
+            padding: 15px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -125,8 +153,11 @@ $rs_perf = mysqli_query($conn_capybd, $query_rs_perf);
                 <p><img src="images/<?php echo $row_rs_perf['fotoPerfil']; ?>" alt="Foto de Perfil"></p>
             </td>
         </tr>
+        
         <?php } ?>
     </table>
+    <a class="btn" href="adm_perfil.php">Voltar</a>
+<a class="btn2" href="adm_excluir_perfil.php?idUser=<?php echo $row_rs_perf['idUser']; ?>"  type="submit" name="submit" value="submit">Deletar Publicação</a>
 </div>
 </body>
 </html>

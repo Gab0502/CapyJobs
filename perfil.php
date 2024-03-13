@@ -71,7 +71,6 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
     $pub = $conn_capybd->query($feed);
 
     $pubs = $follow->fetch_assoc();
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $idUser = $_SESSION['idUser']; // ID do usuário da sessão
         
@@ -99,6 +98,8 @@ $followQuery = "SELECT COUNT(*) as isFollowing FROM tb_seg WHERE idSeg1 = '{$_SE
                 $sql = "UPDATE tb_users SET fotoPerfil = ? WHERE idUser = ?";
                 $stmt = $conn_capybd->prepare($sql);
                 if ($stmt) {
+                    unset($_SESSION['profilePic']);
+                    $_SESSION['profilePic'] = $nomeAleatorio;
                     $stmt->bind_param("si", $nomeAleatorio, $idUser);
                     if ($stmt->execute()) {
                         echo "<script>alert('Imagem para foto de perfil atualizada com sucesso.');

@@ -318,6 +318,7 @@ header {
 .azul img{
     right: 70px;
     width: 70px;
+    height: 76px;
     margin: -50px;
     border-radius: 50px;
     background-color: var(--bgBranco);
@@ -689,6 +690,7 @@ details summary{
 .iconNav{
     border-radius: 50%;
     width: 55px;
+    height: 60px;
     margin-right: 10px;
 }
 .upload-label {

@@ -31,7 +31,7 @@ var_dump($password);
                 exit(); 
             }else{
                 echo "<script>alert('Login e/ou senha não encontrados');
-                window.location.href = 'perfil.php?idUser=$idUser';</script>";
+                window.location.href = 'login.php';</script>";
                 exit();
             }
         }

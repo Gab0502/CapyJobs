@@ -320,15 +320,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </section>
 </section>
 
-        <aside class="col-xl-3 mt-3 disabled2">
-            <div class="Vagas">
-            </div>
-            <div class="Vagas1">
-                <div class="d">
-                    <p>Vagas em destaque</p>
+<aside class="col-xl-3 mt-3 disabled2">
+            <div style="position: sticky; top: 25px; left: 0;">
+                <div class="Vagas">
                 </div>
-            <?php while ($rowVagas = $resultVagas->fetch_assoc()):  ?>
-                <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;" title="<?php echo($rowVagas['titulo']);?>">
+                <div class="Vagas1">
+                    <div class="d">
+                        <p>Vagas em destaque</p>
+                    </div>
+                <?php while ($rowVagas = $resultVagas->fetch_assoc()):  ?>
+                    <a href="vaga.php?idPub=<?php echo($rowVagas['idPub'])?>" style="text-decoration: none; color: black;" title="<?php echo($rowVagas['titulo']);?>">
                     <div class="buscando">
                         <div class="flex-generic">
                             <img src="images/<?php echo($rowVagas['fotoPerfil']) ?>" alt="foto de perfil de <?php echo($rowVagas['nome']) ?>" title="foto de perfil de <?php echo($rowVagas['nome']) ?>">
@@ -347,11 +348,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                     </a>
-                <?php endwhile;?>
+                    <?php endwhile;?>
 
 
+                </div>
             </div>
-        </aside>
+            </aside>
     </div>
 </main>
 <footer class="preto">

@@ -84,9 +84,9 @@ $resultVagas = $conn_capybd->query($vagas);
                         </div>
                         <div class="azul-b3">
                             <div class="contatos">
-                                <p>nome: <?php ?></p>
-                                <p>Email: <?php echo $_SESSION['email']; ?></p>
-                                <p>Telefone: <?php echo $_SESSION['phone']; ?></p>
+                                <p><?php ?></p>
+                                <p><?php echo $_SESSION['email']; ?></p>
+                                <p><?php echo $_SESSION['phone']; ?></p>
                             </div>
                         </div>
                     </div>

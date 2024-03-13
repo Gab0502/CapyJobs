@@ -82,18 +82,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
 
     <section>
       <h1 style="margin-left:55px; margin-top: 15px;" class="fonteIndex">Procurando por...</h1>
-      <div class="flex-cards disabled2">
-        <?php while ($topusers_row = mysqli_fetch_assoc($topusers_exe)) { ?>
-          
-            <div class="card">
-                <img src="images/<?php echo($topusers_row['fotoPerfil']) ?>" alt="Foto de perfil de <?php echo ($topusers_row['nome']) ?>." title="Foto de perfil de <?php echo ($topusers_row['nome'])?>.">
-                <p><?php echo ($topusers_row['nome']); ?></p>
-                <P><?php echo ($topusers_row['bio']); ?></P>
-            </div>
-        <?php } ?>
-    </div>
-
-      </section>
+    
       <div class="flex-cards" id='mini-feed'>
         <?php while($minifeed_row = mysqli_fetch_assoc($minifeed_exe)){ ?>
         <div class="col-xl-3">
@@ -122,7 +111,7 @@ $minifeed_exe = mysqli_query($conn_capybd, $minifeed) or die(mysqli_error($conn_
           <div class="col-xl-6">
             <div class="texto divisao">
               <h1 class="fonteIndex centrarAo">
-                seja bem vindo
+                seja bem-vindo
               </h1>
 
             </div>

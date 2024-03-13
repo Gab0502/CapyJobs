@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a href="index.php" title='CapyJobs'><img src="images/logofull.png" width="350" alt='CapyJobs' title='CapyJobs'></a>
+      <a href="index.php" title='CapyJobs'><img src="images/logofull.png" width="350" alt='CapyJobs' title='CapyJobs' id="capyIcon"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -21,4 +21,5 @@
         </ul>
       </div>
     </nav>
+    <script src="responsividade\script-Icon.js"></script>
   </header>

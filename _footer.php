@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <!-- Coluna 1 -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
           <h5>Links Rápidos</h5>
           <ul class="list-unstyled">
             <li><a href="index.php" class="text-white" title="inicio">Início</a></li>
@@ -12,7 +12,7 @@
           </ul>
         </div>
         <!-- Coluna 2 -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
           <h5>Contato</h5>
           <ul class="list-unstyled">
             <li><a href="contato.php" class="text-white" title="gmail">capyjobs@gmail.com</a></li>
@@ -21,7 +21,7 @@
           </ul>
         </div>
         <!-- Coluna 3 -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
           <h5>Redes Sociais</h5>
           <ul class="list-unstyled">
             <li><a href="https://br.linkedin.com/"   target="_blanck" class="text-white" title="linkedin">Linkedin</a></li>
@@ -30,16 +30,6 @@
           </ul>
         </div>
         <!-- Coluna 4 -->
-        <div class="col-md-3 mb-4">
-          <h5>Newletter</h5>
-          <p class="text-white">Inscreva-se para receber novidades</p>
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Digite seu e-mail">
-            </div>
-            <button type="submit" class="btn btn-primary">Inscreva-se</button>
-          </form>
-        </div>
       </div>
       <hr class="bg-white mb-2">
       <div class="row d-flex justify-content-center ">

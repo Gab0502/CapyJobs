@@ -1,6 +1,6 @@
 <header>
 <nav class="navbar navbar-expand navbar-light bg-verdeEscuro">
-  <a href="feed-temp.php" title="feed"><img src="images/capyIcon.png" alt="icone capyjobs" width="100" title="feed"></a>
+  <a href="feed-temp.php" title="feed"><img src="images/logofull.png" alt="icone capyjobs" width="350" title="feed" id="capyIcon"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,4 +33,5 @@
     </form>
   </div>
 </nav>
+<script src="responsividade\script-Icon.js"></script>
 </header>

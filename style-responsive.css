@@ -33,10 +33,23 @@
       display: none;
    }
    .arroz{
-    margin-right: 0px;
+    margin-right: 95px;
+     margin-left: 95px;
    }
    .batata{
     margin: 75px;
    }
    
+}
+
+@media screen and (max-width: 800px){
+
+  #mini-feed{
+    flex-direction: column;
+  }
+  .arroz{
+    margin-right: 45px;
+     margin-left: 45px;
+   }
+  
 }
